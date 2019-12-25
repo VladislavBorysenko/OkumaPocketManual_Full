@@ -825,8 +825,1042 @@ public class AlarmList {
                         "       [Referential Instruction Manual]\n" +
                         "       OSP file configuration");
 
+        //-------------------------0200_0268------------------------------------
 
-//------------------------------------------------------------------------------------------------------------------------------------//
+        ExampleItem SYSTEM_FILE_DATA = new ExampleItem("0200", "SYSTEM FILE DATA",
+                "Although an attempt is made to load the system software\n" +
+                        "       (with extension SYS) files, basic data in the file is wrong.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1->Mismatch of start address of system file\n" +
+                        "       2->Wrong load address\n" +
+                        "       3->File data block 0, offset 0 is not \"LOB1\".\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The file management information of the device in which the\n" +
+                        "       system software is stored has been destroyed.\n" +
+                        "       The system software has not been introduced through the\n" +
+                        "       correct procedure.\n" +
+                        "       [Measures to Take]\n" +
+                        "       After examining the cause carefully, load the control software\n" +
+                        "       from floppy disk or tape.");
+
+        ExampleItem MAB_FULL = new ExampleItem("0201", "MAB FULL",
+                "It is impossible to secure the memory block.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX->Start address of the memory block\n" +
+                        "       YYYY->End address of the memory block\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       A non-existent memory block is designated.");
+
+        ExampleItem RECORD_BUFFER_OVER_FLOW = new ExampleItem("0202", "RECORD BUFFER OVER FLOW",
+                "The read data file is larger than the specified data size.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] 1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The read data file does not have the end of record.");
+
+        ExampleItem LOAD_OBJECT_ADDRESS = new ExampleItem("0203", "LOAD OBJECT ADDRESS",
+                "The allocate address in the main memory for the load object\n" +
+                        "       file (program) exists in the system program area, the vector\n" +
+                        "       area or the system program variable area.\n" +
+                        "       Or the allocated start address is greater than the allocated\n" +
+                        "       end address.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] 1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The contents of the first data block (DB 0) of the load object\n" +
+                        "       file has been destroyed.\n" +
+                        "       When developing a program, area overlap has not been taken\n" +
+                        "       into consideration.\n" +
+                        "       An attempt to load the load object file to main memory\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the contents of the first data block (DB 0) of the\n" +
+                        "       program file.");
+
+        ExampleItem LOAD_OBJECT_ATTRIBUTE = new ExampleItem("0204", "LOAD OBJECT ATTRIBUTE",
+                "Error in load object attribute of the load object file\n" +
+                        "       (The data block 0 and offset 0 of the file is\n" +
+                        "        other than \"LOB1\".)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] 1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Designation of contiguous file such as PBU file\n" +
+                        "       Contents of file data block 0 have been destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the contents of the file data block (DB 0).");
+
+        ExampleItem LOAD_VERIFY = new ExampleItem("0205", "LOAD VERIFY",
+                "In the loading operation of the load object file, the data set\n" +
+                        "       at the main memory address does not match the source data.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Address at which mismatch has occurred.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Defective main memory\n" +
+                        "       During the execution of the multi-task, other task has changed\n" +
+                        "       the memory contents.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check if the result of the main memory test conducted\n" +
+                        "       when power is applied is correct.\n" +
+                        "       The display on the operation panel must be 00.\n" +
+                        "       Replace the UCMB(SRAM card , FR card)\n" +
+                        "       Load the load object file individually using the debugger\n" +
+                        "       utility.");
+
+        ExampleItem DATA_BLOCK_SIZE = new ExampleItem("0206", "DATA BLOCK SIZE",
+                "When loading a file into the main memory, an inconsistency is\n" +
+                        "       found in the information on file size of the file control\n" +
+                        "       data.\n" +
+                        "       (For example, the size of file registered at PDB is smaller\n" +
+                        "        than that of file indicatd at the data block 0.)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] 1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The information on file size is wrongly edited.\n" +
+                        "       The file control data is destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Remake the file control data file.");
+
+        ExampleItem SELECTED_NUMBER = new ExampleItem("0250", "SELECTED NUMBER",
+                "A number other than those specified in the install mode was\n" +
+                        "       selected.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Select a required number from the specified numbers.");
+
+        ExampleItem MEMORY_DISK_RAM_FORMAT = new ExampleItem("0252", "MEMORY DISK RAM FORMAT",
+                "The NC failed to properly recognize the control data\n" +
+                        "       in the memory disk (MD).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The memory disk control data is destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Properly connect the battery to the board.\n" +
+                        "       2)Change the SRAM card of UCMB.\n" +
+                        "       3)Change the UCMB.");
+
+        ExampleItem MEMORY_DISK_RAM_WRITE_READ_TEST = new ExampleItem("0254", "MEMORY DISK RAM WRITE READ TEST",
+                "The memory disk (MD) read/write test proved that the written\n" +
+                        "       data did not correspond to the read data.\n" +
+                        "       [Code]\n" +
+                        "       Address where this error occurred in the memory test of\n" +
+                        "       the memory disk RAM\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Defective memory in the memory disk\n" +
+                        "         (UCMB or RAM card)\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Change the UCMB or SRAM card.");
+
+        ExampleItem FR_PART_FILE_SIZE = new ExampleItem("0255", "FR PART FILE SIZE",
+                "The FR-part-file size is wrong.\n" +
+                        "       [Code] FR-part-file size\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The FR-part-file stored in the control floppy disk for FR is\n" +
+                        "       wrong in size.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the control floppy disk for FR.");
+
+        ExampleItem FR_PART_FILE_NUMBER = new ExampleItem("0256", "FR PART FILE NUMBER",
+                "An FR-part-file number is wrong.\n" +
+                        "       [Code] FR-part-file number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The FR-part-file stored in the control floppy disk for FR\n" +
+                        "         has a wrong number.\n" +
+                        "       2)The FR-part-file stored in the control floppy disk for FR\n" +
+                        "         is destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the control floppy disk for FR.");
+
+        ExampleItem FR_PART_FILE_LOAD_ADDRESS = new ExampleItem("0257", "FR-PART-FILE LOAD ADDRESS",
+                "The FR-part-file is stored in the memory disk (FR) with\n" +
+                        "       a wrong  address. Or, the address is larger than the last\n" +
+                        "       address used in the memory disk (FR).\n" +
+                        "       [Code] FR-part-file loading address\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The FR-part-file stored in the control floppy disk for FR\n" +
+                        "         is destroyed.\n" +
+                        "       2)The FR-part-file stored in the control floppy disk for FR\n" +
+                        "         has a wrong load address.\n" +
+                        "       3)The ROM card is not properly mounted.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Change the control floppy disk for FR.\n" +
+                        "       2)Mount the ROM card properly.\n" +
+                        "       3)Adjust the memory disk (FR) capacity.");
+
+        ExampleItem SIZE_OVER = new ExampleItem("0258", "SIZE OVER",
+                "The partition size or the total FRpartfile size exceeds\n" +
+                        "        the memory disk (MD) capacity.\n" +
+                        "       [Character-string]\n" +
+                        "       Partition setting command exceeding the memory disk capacity\n" +
+                        "       [Code]\n" +
+                        "       Memory disk capacity needed to install all the FRpartfiles\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Data size in the control floppy disk does not match\n" +
+                        "         the memory disk capacity.\n" +
+                        "       2)The memory disk or RAM card capacity is insufficient.\n" +
+                        "       3)ROM card or RAM card is not properly mounted.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Adjust the memory disk (MD) capacity.\n" +
+                        "         (Mount the RAM card properly.)\n" +
+                        "       2)Adjust the memory disk (FR) capacity.\n" +
+                        "         (Mount the ROM card properly.)\n" +
+                        "       3)Change the control floppy disk.");
+
+        ExampleItem DATA_WRITE_VERIFY = new ExampleItem("0261", "DATA WRITE VERIFY",
+                "Verification proved that the data written onto the memory disk\n" +
+                        "       did not match the original data.\n" +
+                        "       [Code] Address where the mismatch occurred\n" +
+                        "       [Probable Faulty Locations] Faulty UCMB or FR card\n" +
+                        "       [Measures to Take] Change the UCMB or FR card.");
+
+        ExampleItem MEMORY_DISK_ROM_ERASE = new ExampleItem("0262", "MEMORY DISK ROM ERASE",
+                "Erasing the memory disk (FR) was tried in vain.\n" +
+                        "       [Code] Unerased address\n" +
+                        "       [Probable Faulty Locations] Faulty UCMB or FR card\n" +
+                        "       [Measures to Take] Change the UCMB or FR card");
+
+        ExampleItem FILE_HEADER = new ExampleItem("0263", "FILE HEADER",
+                "The installation data file or format data file has a wrong\n" +
+                        "       header.\n" +
+                        "       [Character-string]\n" +
+                        "       File header\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Wrong header in the installation data file or format data file\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the control floppy disk.");
+
+        ExampleItem INSTALL_MODE_PROGRAM_LOAD = new ExampleItem("0264", "INSTALL MODE PROGRAM LOAD",
+                "The NC failed to read the installation data file or format\n" +
+                        "       data file, or failed to install a required file using the\n" +
+                        "       installation data file.\n" +
+                        "       [Character-string]\n" +
+                        "       Installation or format data file name\n" +
+                        "       [Code]\n" +
+                        "       1->The file ended without loading any character.\n" +
+                        "       3->The file ended during file loading.\n" +
+                        "       9->The device name was wrongly specified.\n" +
+                        "       10->The file name was wrongly specified.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The control floppy disk has a destroyed file.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the control floppy disk.");
+
+        ExampleItem CONTROL_SOFTWARE_ATTRIBUTE = new ExampleItem("0265", "CONTROL SOFTWARE ATTRIBUTE",
+                "The file to be installed has a wrong attribute.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The file to be installed is destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the control floppy disk.");
+
+        ExampleItem WORK_AREA_SIZE = new ExampleItem("0267", "WORK AREA SIZE",
+                "This error message is used in the testing environment and\n" +
+                        "       does not normally appear.");
+
+        ExampleItem MEMORY_DISK_BATTERY_VOLTAGE_LOW_0268 = new ExampleItem("0268", "MEMORY DISK BATTERY VOLTAGE LOW",
+                "The battery voltage of the memory disk (MD) is low.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Memory disk (MD) battery life\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the battery with a new one.");
+
+        //---------------------------300_356------------------------------------------------
+
+        ExampleItem DEVICE_NAME_0300 = new ExampleItem("0300", "DEVICE NAME",
+                "Wrong device name is designated. Or a device name designated\n" +
+                        "       for renaming differs from the source device name.\n" +
+                        "       [Character-string]\n" +
+                        "       Designated device name or None\n" +
+                        "       [Code]\n" +
+                        "       1->Mismatch of device names before and after renaming\n" +
+                        "       None->Cases other than \"code 1\".\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Error in spelling of the input device name\n" +
+                        "       Designation of device name whose use is not allowed.\n" +
+                        "       Designation of device name differing from the source device\n" +
+                        "       name (RENAME command)\n" +
+                        "       [Measures to Take]\n" +
+                        "       Refer to the operation manual.\n" +
+                        "       In the RENAME operation, designation of device name for\n" +
+                        "       the changed name is not required.");
+        ExampleItem SECTOR_DEVICE_NAME_0301 = new ExampleItem("0301", "Sector device name ",
+                "As one of the parameters to be transferred to the sector\n" +
+                        "       device or driver routine, the device name which is not allowedUC   \n" +
+                        "          as a sector device name is designated.\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF-> The device name that a region has not been decided\n" +
+                        "       \t   was designated.\n" +
+                        "       None-> The device name which is not allowed as a sector device\n" +
+                        "              name was designated.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Information on the sector device name is destroyed.\n" +
+                        "       2)The partition map of the memory disk is destroyed.\n" +
+                        "       3)The device name which is not allowed as a sector device\n" +
+                        "         name was designated.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Check the user memory information in VID of the memory disk.\n" +
+                        "       2)Please designate a device name of a normal discharge as a\n" +
+                        "         sector device name.\n" +
+                        "       [Related Specifications] OSP file structure");
+
+        ExampleItem PRINT_DEVICE_NAME_0302 = new ExampleItem("0302", "PRINT DEVICE NAME",
+                "In one of the parameters to be transferred to the printer\n" +
+                        "       driver routine, an illegal device name is designated\n" +
+                        "       as the print device name.\n" +
+                        "       [Character-string]\n" +
+                        "       Designated device name\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The content of the variable PPRDV4 for print device name is\n" +
+                        "       destroyed.");
+
+        ExampleItem READER_DEVICE_NAME = new ExampleItem("0303", "READER DEVICE NAME",
+                "A device name not allowed as a print device name is designated\n" +
+                        "       in one of parameters to be transferred to tape reader driver\n" +
+                        "       routine.\n" +
+                        "       [Character-string]\n" +
+                        "       Designate device name\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Contents of tape reader device name variable PTRDV4 have been\n" +
+                        "       destroyed.");
+
+        ExampleItem PUNCHER_DEVICE_NAME = new ExampleItem("0304", "PUNCHER DEVICE NAME",
+                "A device name not allowed as a print device name is designated\n" +
+                        "       in one of parameters to be transferred to punch driver\n" +
+                        "       routine.\n" +
+                        "       [Character-string]\n" +
+                        "       Designated device name\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Contents of punch device name variable PTPDV4 have been\n" +
+                        "       destroyed.");
+
+        ExampleItem FILE_NAME_0305 = new ExampleItem("0305", "FILE NAME",
+                "Characters \"*\" and \"?\" are used for a command not allowed\n" +
+                        "       a file name. Or either or both of the file name and\n" +
+                        "       the extension are omitted in the setting of default file name\n" +
+                        "       for the USE command.\n" +
+                        "       [Character-string]\n" +
+                        "       Designated file name\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       In the complete file name designation (except default),\n" +
+                        "       characters \"*\" and \"?\" have been used.\n" +
+                        "       File name and/or extension has been omitted in setting the\n" +
+                        "       default file name for the USE command.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Refer to the instructions for individual commands.");
+
+        ExampleItem COMMAND_CHARACTER_0306 = new ExampleItem("0306", "COMMAND_CHARACTER",
+                "A command not in the command table has been designated.\n" +
+                        "       [Character-string]\n" +
+                        "       Command characters which have been input.\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Spelling error of a command\n" +
+                        "       Input of a command not allowed in the mode currently selected\n" +
+                        "       [Measures to Take]\n" +
+                        "       Input the command using function keys.");
+
+        ExampleItem COMMAND_SYNTAX_0307 = new ExampleItem("0307", "COMMAND SYNTAX",
+                "Grammatical error in the command operand when the SBP monitor\n" +
+                        "       is used\n" +
+                        "       [Character-string]\n" +
+                        "       Programmed command\n" +
+                        "       [Code]\n" +
+                        "       1->Incorrect data size\n" +
+                        "       2->Memory verify error\n" +
+                        "       3->Wrong delimiter code\n" +
+                        "       4->Address of an odd number was designated without using bytes\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Grammatical error in the command input from the keyboard\n" +
+                        "       (code 1, 3)\n" +
+                        "       An attempt is made to write to read-only I/O address (code 2).\n" +
+                        "       An odd number address is designated to access the word size\n" +
+                        "       or long word size (code 4).\n" +
+                        "       [Measures to Take]\n" +
+                        "       Input a correct command from the keyboard.");
+
+        ExampleItem OPTION_0308 = new ExampleItem("0308", "OPTION",
+                "Wrong option characters have been designated.\n" +
+                        "       [Character-string]\n" +
+                        "       Commanded option\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       An option not usable with the command designated has been\n" +
+                        "       designated.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Refer to the instructions for individual commands.");
+
+        ExampleItem RS232C_CHANNEL_IN_USE = new ExampleItem("0309", "RS232C CHANNEL IN USE",
+                "An attempt to use the RS232C channel being used.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] 1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       During multi-task execution, an attempt is made to use\n" +
+                        "       the RS232C channel which is being used by other task.");
+
+        ExampleItem FILE_ATTRIBUTE_0310 = new ExampleItem("0310", "FILE ATTRIBUTE",
+                "An attempt is made to read a file other than sequential file\n" +
+                        "       and contiguous file.  Or an attempt is made to read\n" +
+                        "       a contiguous file in the sequential file reading processing,\n" +
+                        "       or to read a sequential file in the contiguous file reading\n" +
+                        "       processing.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Attribute code of the file to be read\n" +
+                        "       1->Contiguous file\n" +
+                        "       2->Sequential file\n" +
+                        "       Others->Unknown file\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Contiguous file has been designated in the list display,\n" +
+                        "       editing and other processing.\n" +
+                        "       File directory of the memory, floppy disk, etc. has been\n" +
+                        "       destroyed.\n" +
+                        "       During multi-task execution, directory of other file has been\n" +
+                        "       read by other task.\n" +
+                        "       Part program file has been designated in reading the control\n" +
+                        "       program file.");
+
+        ExampleItem DEVICE_FULL_0311 = new ExampleItem("0311", "DEVICE FULL",
+                "Available storage area size of the designated device is\n" +
+                        "       smaller than the required number of sectors.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Necessary number of remaining sectors\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Available area is not actually sufficient.\n" +
+                        "       SAT sector information of the device has been destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete unnecessary files.\n" +
+                        "       Check the available area size with the FREE command.\n" +
+                        "       Subtract the sizes of files registered from the device memory\n" +
+                        "       capacity and compare it with the data displayed for FREE\n" +
+                        "       command.");
+
+        ExampleItem DISK_UNINITIALIZED_0312 = new ExampleItem("0312", " DISK UNINITIALIZED",
+                "The floppy disk is not initialized to the OSP format.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Floppy disk or memory formatted to other format\n" +
+                        "       (EXORMACS, IBM, etc.)\n" +
+                        "       Contents of VID of floppy disk or memory have been destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       To use an IBM format floppy disk, change the setting.\n" +
+                        "       Check the contents at sector 0 (VID).\n" +
+                        "       Usually, new floppy disks are formatted to IBM format.\n" +
+                        "       Therefore, initialize the disk to the OSP format using\n" +
+                        "       the INIT command.");
+
+        ExampleItem FILE_LABEL_AREA_OVER_FLOW = new ExampleItem("0313", "FILE LABEL AREA OVER FLOW",
+                "There is no area for registering file label on\n" +
+                        "       the IBM-formatted floppy disk.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       File area of the IBM-formatted floppy disk is full.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete unnecessary files using DEL command.\n" +
+                        "       Check the number of files registered using the DIR command.\n" +
+                        "       45 files for FD2-128\n" +
+                        "       71 files for FD2-256D\n" +
+                        "       19 files for FD1-128");
+
+        ExampleItem ERROR_MAP_INFORMATION_0314 = new ExampleItem("0314", "ERROR MAP INFORMATION",
+                "Wrong sector identification name for error map information\n" +
+                        "       (containing faulty track information) of the IBM-formatted\n" +
+                        "       floppy disk.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       0->Wrong sector identification name\n" +
+                        "       1->Wrong data of faulty track\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Error map information sector has been destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the contents of the error map sector.");
+
+        ExampleItem VOLUME_LABEL_INFORMATION = new ExampleItem("0315", "VOLUME LABEL INFORMATION",
+                "Wrong volume label information* on the IBM-formatted floppy\n" +
+                        "       disk.\n" +
+                        "       * Equivalent to VID of OSP-formatted floppy disk.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Volume label information sector has been destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the contents of the volume label sector.");
+
+        ExampleItem FILE_REGIST = new ExampleItem("0316", "FILE REGIST",
+                "In the file directory information of the IBM-formatted floppy\n" +
+                        "       disk, sector address data of the data block indicates \"0\"\n" +
+                        "       cylinder.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       File directory sector has been destroyed.\n" +
+                        "       In file registration process, the data block sector\n" +
+                        "       information indicates \"0\" cylinder.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the contents of the file directory.");
+
+        ExampleItem MULTI_VOLUME_INFORMATION = new ExampleItem("0317", "MULTI VOLUME INFORMATION",
+                "In the registration of the file directory information to\n" +
+                        "       the IBM-formatted floppy disk, a symbol not allowable as the\n" +
+                        "       multi-volume identifier is used or the volume order number is\n" +
+                        "       outside 0 - 99.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1->Multi-volume identifier is other than \"sp\", \"C\" and \"L\".\n" +
+                        "       2->Multi-volume order number is outside 0-99.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       File directory data in the main memory has been destroyed.");
+
+        ExampleItem SVCL_0318 = new ExampleItem("0318", "SVCL",
+                "The NC control software issued an undefined system call\n" +
+                        "       (SVCL).\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Address near the wrongly called address\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Wrong control software is used.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check and change the control software.");
+
+        ExampleItem RS232C_DEVICE_READ = new ExampleItem("0319", "RS232C DEVICE READ",
+                "The DR signal which indicates that the device connected is\n" +
+                        "       ready, has been turned off during data reading operation\n" +
+                        "       through the RS232C interface.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Contents of RS232C interface status\n" +
+                        "       Bit 0->DR signal ON/OFF status\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Defective device\n" +
+                        "       Defective communication cables.\n" +
+                        "       Connection specification is not proper.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check wiring diagram.\n" +
+                        "       Continuity test of communication cables using a multi-tester.\n" +
+                        "       Check the signal operation specification of the device\n" +
+                        "       connected.");
+
+        ExampleItem RS232C_TERMINAL_NOT_READY = new ExampleItem("0320", "RS232C TERMINAL NOT READY",
+                "The DR signal which indicates that the device connected is\n" +
+                        "       ready, is not turned on.\n" +
+                        "       [Character-string]\n" +
+                        "       Input->Error has occurred during input\n" +
+                        "       Output->Error has occurred during output\n" +
+                        "       Print->Error has occurred during printer output\n" +
+                        "       [Code]\n" +
+                        "       Contents of RS232C interface status\n" +
+                        "       Bit 0->DR signal ON/OFF status\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The device is not in the ready state.\n" +
+                        "       Defective communication cables\n" +
+                        "       Connection specification is not proper.\n" +
+                        "       Improper setting at check timer\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check to be sure that the device is in the ON-LINE mode.\n" +
+                        "       Check the wiring connection diagram.\n" +
+                        "       Continuity test of communication cables using a multi-tester.\n" +
+                        "       Check the signal operation specification of the device\n" +
+                        "       connected.");
+
+        ExampleItem RS232C_READY_STATUS_TIME_OUT = new ExampleItem("0321", "RS232C READY STATUS TIME OUT",
+                "Signals and status of the device connected through the RS232C\n" +
+                        "       interface are not set in the ready state.\n" +
+                        "       During input (read operation):\n" +
+                        "            RXRDY of RS232C USART status is not turned on\n" +
+                        "            (no data transmitted from the device connected).\n" +
+                        "       During output (punch operation), during print out:\n" +
+                        "            TXEMP and TXRDY of RS232C USART status are not turned on.\n" +
+                        "       CS signal of RS232C interface status is not in the ON state.\n" +
+                        "       In case the communication parameter is set at \"READY  YES\",\n" +
+                        "       CI signal is not in the ON state.\n" +
+                        "       [Character-string]\n" +
+                        "       Input->Error has occurred during input\n" +
+                        "       Output->Error has occurred during output\n" +
+                        "       Print->Error has occurred during printer output\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Device connected is not in the ready state or defective.\n" +
+                        "       Improper communication parameter setting\n" +
+                        "       Defective communication cable\n" +
+                        "       Improper setting at check timer\n" +
+                        "       Improper wiring specification\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the wiring diagram.\n" +
+                        "       Continuity test of communication cables using a multi-tester.\n" +
+                        "       Check the operation specifications of the device connected.\n" +
+                        "       Check the communication parameter settings");
+
+        ExampleItem RS232C_READY_INTERRUPT_TIME_OUT = new ExampleItem("0322", "RS232C READY INTERRUPT TIME OUT",
+                "The interruption of the RS232C device by transmit/receive\n" +
+                        "       processing does not occur within the time specified for\n" +
+                        "       individual channels.\n" +
+                        "       [Character-string]\n" +
+                        "       Error has occurred at\n" +
+                        "       input: input\n" +
+                        "       output: output\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       During inputNo data transmission from the device connected\n" +
+                        "       Defective communication cables.\n" +
+                        "       Connection specification is not proper.\n" +
+                        "       Improper setting at check timer.\n" +
+                        "       Improper communication parameter setting\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the wiring diagram.\n" +
+                        "       Continuity test of communication cables using a multi-tester.\n" +
+                        "       Check the operation specifications of the device connected.\n" +
+                        "       Check the communication parameter settings.");
+
+        ExampleItem RS232C_DEVICE_NAME = new ExampleItem("0323", "RS232C DEVICE NAME",
+                "A channel device name other than CN0, CN1, CN2, or CN3 has\n" +
+                        "       been designated at one of parameters transferred to the RS232C\n" +
+                        "       communication control signal driver routine.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Designation of a device other than RS232C device.");
+
+        ExampleItem MEMORY_DISK_ACCESS_SECTOR_OVER_0324 = new ExampleItem("0324", "MEMORY DISK ACCESS SECTOR OVER",
+                "Reading from or writing to the memory disk (MD) is attempted\n" +
+                        "       exceeding the capacity of the largest sector.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       XXXX->Sector number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The file control data in the memory disk is destroyed.\n" +
+                        "       The data file of the control floppy is not suitable for the\n" +
+                        "       actual memory disk capacity.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the file control data for defects.\n" +
+                        "       Reinstall the suitable control data file.");
+
+        ExampleItem MEMORY_DISK_ROM_ACCESS_SECTOR_OVER = new ExampleItem("0325", "MEMORY_DISK_ROM_ACCESS_SECTOR_OVER",
+                "Reading from or writing to the memory disk (FR) is attempted\n" +
+                        "       exceeding the capacity of the largest sector.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       XXXX->Sector number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The file control data in the memory disk is destroyed.\n" +
+                        "       The data file of the control floppy is not suitable for\n" +
+                        "       the actual memory disk capacity.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the file control data for defects.\n" +
+                        "       Reinstall the suitable control data file.");
+
+        ExampleItem DMA_TRANSFER_SECTOR_OVER_0326 = new ExampleItem("0326", "DMA TRANSFER SECTOR OVER ",
+                "In one of the parameters to be transferred to the driver\n" +
+                        "       routine of the memory or the floppy disk, 0 or a value over 8\n" +
+                        "       is designated as the number of sectors to be accessed at\n" +
+                        "       a time.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Designated number of sectors\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The number of sectors is not set at the parameter.");
+
+        ExampleItem MEMORY_DISK_FORMAT_0328 = new ExampleItem("0328", "MEMORY_DISK_FORMAT",
+                "The NC failed to recognize the control data in the memory\n" +
+                        "       disk (MD).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The memory disk control data is destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Properly connect the battery to the board.\n" +
+                        "       2)Change the SRAM card of UCMB.\n" +
+                        "       3)Change the UCMB.");
+
+        ExampleItem FLOPPY_DISK_READ_WRITE_0330 = new ExampleItem("0330", " FLOPPY DISK READ WRITE",
+                "Read/write processing from and to a floppy disk is not\n" +
+                        "        correctly completed.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXXXYY\n" +
+                        "       XXXXXX:\n" +
+                        "       Contents of result status 0 - 2 of the floppy disk\n" +
+                        "       YY:\n" +
+                        "       =05 or 45->   Error in writing\n" +
+                        "        05:  head 0\n" +
+                        "        45:  head 1\n" +
+                        "       =06 or 46->   Error in reading\n" +
+                        "        06:  head 0\n" +
+                        "        46:  head 1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Floppy disk media\n" +
+                        "       Floppy disk drive\n" +
+                        "       [Measures to Take]\n" +
+                        "       Read and check the data from all the sectors.\n" +
+                        "       Try data read/write using the other disk.\n" +
+                        "       Try data read/write by setting the problem disk into\n" +
+                        "       the other disk drive.\n" +
+                        "       When data can be deleted, initialize the disk (by FORMAT\n" +
+                        "       command) and retry data writing.");
+
+        ExampleItem FLOPPY_DISK_ACCESS_SECTOR_OVER_0331 = new ExampleItem("0331", "FLOPPY DISK ACCESS SECTOR OVER",
+                "Among the parameters to be passed to the floppy disk driver\n" +
+                        "       routine, the sector number to be accessed is larger than\n" +
+                        "       the actual floppy diskette capacity.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Sector number accessed\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Diskette media type is wrong.\n" +
+                        "       Contents of VID or SDB in the diskette are destroyed.\n" +
+                        "       File directory contents are destroyed.\n" +
+                        "       The pointer data showing data block linkage in the sequential\n" +
+                        "       file is destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Display the sequential file list.\n" +
+                        "       Check the contents of VID and SDB directories.");
+
+        ExampleItem FLOPPY_DISK_WRITE_VERIFY_0332 = new ExampleItem("0332", "FLOPPY DISK WRITE VERIFY",
+                "Data mismatch is discovered when the data written into floppy\n" +
+                        "       disk is verified against source data.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Physical sector number at which error has occurred\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Defective floppy disk or floppy disk drive unit\n" +
+                        "       Defective main board or DMA\n" +
+                        "       During execution of multi-task, contents of main memory being\n" +
+                        "       written by other task have been changed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Try again using other floppy disk.\n" +
+                        "       Try again using the floppy disk causing the error at another\n" +
+                        "       floppy disk drive.\n" +
+                        "       Replace the main board.");
+
+        ExampleItem FLOPPY_DISK_SEEK_0333 = new ExampleItem("0333", "FLOPPY DISK SEEK",
+                "Floppy disk seek operation is not correctly completed.\n" +
+                        "       (\"Seek\" indicates the operation to move the FDD head to the\n" +
+                        "         designated track position.)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYY:\n" +
+                        "       XX->Result status 0 of the floppy disk\n" +
+                        "       YY->Cylinder number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Defective floppy disk\n" +
+                        "       Defective floppy disk drive unit\n" +
+                        "       [Measures to Take]\n" +
+                        "       Try floppy disk seek using the other disk.\n" +
+                        "       Try floppy disk seek by setting the problem disk into\n" +
+                        "       the other disk drive.");
+
+        ExampleItem FLOPPY_DISK_RECALIBRATE_0334 = new ExampleItem("0334", "FLOPPY DISK RECALIBRATE",
+                "Floppy disk recalibration is not correctly completed.\n" +
+                        "       Note: \"Recalibration\" means the operation to move the FDD\n" +
+                        "              head to the track No. 0 position.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       XXXX->Contents of result status 0-1 of the floppy disk\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Defective floppy disk\n" +
+                        "       Defective floppy disk drive unit\n" +
+                        "       [Measures to Take]\n" +
+                        "       Try floppy disk seek using the other disk.\n" +
+                        "       Try floppy disk seek by setting the problem disk into\n" +
+                        "       the other disk drive.");
+
+        ExampleItem FLOPPY_DISK_FORMATTING_0335 = new ExampleItem("0335", "FLOPPY DISK FORMATTING ",
+                "Error during floppy disk formatting.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       XXXXXXXX -> Contents of result status 0,1,2,3 of floppy disk\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Defective floppy disk\n" +
+                        "       Defective floppy disk drive unit\n" +
+                        "       Wrong designation of floppy disk type\n" +
+                        "       [Measures to Take] Use another diskette");
+
+        ExampleItem FLOPPY_DISK_TIME_OUT_0336 = new ExampleItem("0336", "FLOPPY DISK",
+                "The floppy disk drive controller does not return the answer\n" +
+                        "       within a specified cycle time.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1->During read/write operation\n" +
+                        "       2->During formatting\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Floppy disk media\n" +
+                        "       Floppy disk drive unit");
+
+        ExampleItem FLOPPY_READY_0337 = new ExampleItem("0337", "FLOPPY READY",
+                "The floppy disk is not in the ready state.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The floppy diskette medium is not properly set in the disk\n" +
+                        "         unit.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check if the READY lamp is lit on the drive unit front panel.");
+
+        ExampleItem FLOPPY_DISK_WRITE_PROTECT_0338 = new ExampleItem("0338", "FLOPPY DISK WRITE PROTECT",
+                "Writing onto the floppy disk is impossible.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The floppy disk is write-protected.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the disk to write-enabled (by handling the protect\n" +
+                        "       notch on the disk.)");
+
+        ExampleItem PTR_READ = new ExampleItem("0339", "PTR READ ",
+                "Error in tape reading through the tape reader\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       PTR error status\n" +
+                        "       Bit 1 ON->Asynchronization error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Tape roll size is too large causing a problem in tape feed\n" +
+                        "       by the PTR.\n" +
+                        "       Defective PTR\n" +
+                        "       [Measures to Take]\n" +
+                        "       Reduce tape size of a program.");
+
+        ExampleItem PTR_ERRATIC_OPERATION_DETECT = new ExampleItem("0340", "PTR ERRATIC OPERATION DETECT",
+                "Asynchronization error with the PTR\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       PTR status\n" +
+                        "       Bit 1 ON->Asynchronization error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Tape roll size is too large causing a problem in tape feed by\n" +
+                        "       the PTR.\n" +
+                        "       Previous error has not been reset.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Press the PTR error reset button.\n" +
+                        "       Reduce tape size of a program.");
+
+        ExampleItem PTR_READY_STATUS_TIME_OUT = new ExampleItem("0341", "PTR READY STATUS TIME OUT",
+                "The ready status of the PTR is not turned on within\n" +
+                        "       one second.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The paper tape set lever of PTR is not in position.\n" +
+                        "       Defective PTR\n" +
+                        "       [Measures to Take]\n" +
+                        "       Make sure that the paper tape set lever of PTR is in position.");
+
+        ExampleItem PTR_READY_INTERRUPT_TIME_OUT = new ExampleItem("0342", "PTR READY INTERRUPT TIME OUT",
+                "The interruption by the PTR ready does not occur within\n" +
+                        "       ten seconds.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] FFFFFFFF\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Defective PTR");
+
+        ExampleItem DMA_TRANSFER_0343 = new ExampleItem("0343", "DMA TRANSFER",
+                "An error occurred during transfer of DMA, or the transfer\n" +
+                        "       operation was not completed.\n" +
+                        "       [Character-string]\n" +
+                        "       Floppy->An error occurred in the DMA on FRP board.\n" +
+                        "       Memory disk->An error occurred in the DMA on the UCMB.\n" +
+                        "       [Code]\n" +
+                        "       XXXX: DMA error status (Refer to the end of this book.)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)DMA transfer destination board\n" +
+                        "       2)Faulty DMA of UCMB or FRP board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Change the DMA transfer destination board.\n" +
+                        "       2)Change the FRP board.\n" +
+                        "       3)Change the UCMB (SRAM card or FR card).");
+
+        ExampleItem PRINTER = new ExampleItem("0344", "PRINTER",
+                "The printer is placed in the error state.  Or it is not set\n" +
+                        "       in the ready state within a preset cycle time.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Printer\n" +
+                        "       Status\n" +
+                        "       Bit 0 ON->Printer ready (RDY)\n" +
+                        "       Bit 2 ON->Printer busy (BUSY)\n" +
+                        "       Bit 3 ON->Paper out (PE)\n" +
+                        "       Bit 4 ON->Printer in on-line mode (SEL)\n" +
+                        "       Bit 5 ON->Video signal OFF (LD)\n" +
+                        "       Bit 6 ON->Printer in error state (FLT)\n" +
+                        "       Bit 7 ON->Interruption to main CPU (INT)\n" +
+                        "       FFFFFFFF->The printer is not set in the ready state within\n" +
+                        "       \t  a preset cycle time.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Paper out\n" +
+                        "       Printer is not in the ON-LINE mode.\n" +
+                        "       Improper setting at ready check timer\n" +
+                        "       Printer cable is not connected.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the timer setting.\n" +
+                        "       Check the printer status.\n" +
+                        "       \t\tCheck the printer cable connection.");
+
+        ExampleItem PUNCHER = new ExampleItem("0345", "PUNCHER",
+                "The punch is not ready or error with the punch.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->Punch is not ready.\n" +
+                        "       Others->Punch status\n" +
+                        "       Bit 1 ON:  Remaining tape volume low\n" +
+                        "       Bit 2 ON:  Tape cut off or too tight\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Remaining tape volume is low.\n" +
+                        "       Tape is cut off, or tape tension is too high and tape\n" +
+                        "       punching is impossible.\n" +
+                        "       Improper setting at ready check timer\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace paper tape roll, or re-set it.\n" +
+                        "       Correct timer setting.");
+
+        ExampleItem CAP_ACP_READY_0346 = new ExampleItem("0346", "CAP/ACP READY ",
+                "An error occurred during initialization of CRP or ACP board.\n" +
+                        "       [Code]\n" +
+                        "       1->CRP or ACP board ready flag does not come ON.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty CRP or ACP board\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the CRP or ACP board.");
+
+        ExampleItem MEMORY_WRITE_READ_TEST_0347 = new ExampleItem("0347", "MEMORY WRITE/READ TEST",
+                "In the read/write test of the main memory, the written data\n" +
+                        "       did not match the read data.\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Address where the error was found by the main memory test\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Main memory (main board)\n" +
+                        "         The code shows the address of the main board.\n" +
+                        "       2)A memory-related switch is wrongly set on the main board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the main board switches for setting.\n" +
+                        "       Replace the main board.");
+
+        ExampleItem PROGRAM_LOAD_0348 = new ExampleItem("0348", "PROGRAM LOAD ",
+                "he loading file failed to load the program file.\n" +
+                        "       [Character-string]\n" +
+                        "       Name of file to be loaded\n" +
+                        "       [Code]\n" +
+                        "       1->The program file has ended before even one character is\n" +
+                        "          loaded.\n" +
+                        "       3->The program file has ended during loading operation.\n" +
+                        "       9->A wrong device name is designated.\n" +
+                        "       10->A wrong file name is designated.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The program file is destroyed, or a wrong loading file is\n" +
+                        "       used.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Reinstall the program file.");
+
+        ExampleItem NOT_FOUND_PROGRAM_FILE_0349 = new ExampleItem("0349", "NOT FOUND PROGRAM FILE",
+                "The loading file was not able to find the program file to be\n" +
+                        "       loaded.\n" +
+                        "       [Character-string] Program file name\n" +
+                        "       [Code] 11\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The file to be loaded does not exist or a wrong loading file\n" +
+                        "       is used.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Reinstall the program file.\n" +
+                        "        ");
+
+        ExampleItem PROGRAM_LOAD_ADDRESS_0350 = new ExampleItem("0350", "PROGRAM LOAD ADDRESS",
+                "The file has a wrong load address and, therefore, cannot be\n" +
+                        "       loaded using the load information file.\n" +
+                        "       [Character-string] Problem file name\n" +
+                        "       [Code]\n" +
+                        "       1->The file to be loaded is destroyed.\n" +
+                        "       2->The file to be loaded or the load information file is\n" +
+                        "          destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Check the data in the file to be loaded.\n" +
+                        "       2)Check the load information file data.\n" +
+                        "       3)Change the control floppy disk.");
+
+        ExampleItem PROGRAM_ATTRIBUTE_0351 = new ExampleItem("0351", "PROGRAM ATTRIBUTE",
+                "The program file to be loaded by the loading file has wrong\n" +
+                        "       attributes.\n" +
+                        "       [Character-string] Program file name\n" +
+                        "       [Code] 1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The file to be loaded is destroyed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the contents of the file to be loaded.");
+
+        ExampleItem MEMORY_DISK_ROM_WRIGHT = new ExampleItem("0352", "MEMORY DISK ROM WRIGHT ",
+                "By entry management of memory disk (FR), an error occurred.\n" +
+                        "       [Character string]\n" +
+                        "       It begins to write it and produces ->\n" +
+                        "          It can not transit on a program mode from mode of reading\n" +
+                        "          only .\n" +
+                        "       Entry end ->\n" +
+                        "          It can not transit on mode of reading only from a program\n" +
+                        "          mode.\n" +
+                        "       Verify ->\n" +
+                        "          When it collated the data which it has written to memory\n" +
+                        "          disk (FR), it did not coincide with former data.\n" +
+                        "       Element elimination ->\n" +
+                        "          It can not eliminate an element of memory disk (FR).\n" +
+                        "       In task cycle start ->\n" +
+                        "          It was about to fill in memory disk (FR) in task cycle\n" +
+                        "          start.\n" +
+                        "       [Code]\n" +
+                        "       1 -> An error occurs by the UCMB\n" +
+                        "       XXXXXXXX: An address of the vicinity that an error occurred\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Inferiority of memory disk (FR)\n" +
+                        "       A bad condition of control softwere\n" +
+                        "        (In the case of 'task cycle start in ')\n" +
+                        "       [Measures to take]\n" +
+                        "       it exchanges the UCMB or FR card.\n" +
+                        "       It amends control softwere.\n" +
+                        "        (In the case of ' task cycle start in ')");
+
+        ExampleItem ROM_CARD_WRIGHT_PROHIBITION = new ExampleItem("0353", "ROM CARD WRIGHT PROHIBITION",
+                "It was about to fill in a territory of ROM card (PROM card)\n" +
+                        "       which is mounting on a memory disk.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Partition is not generated by inferiority of file (extension\n" +
+                        "       child in terms of FRI of file) of FR part which has entered\n" +
+                        "       the 1st sheet of a control floppy for FR rightly.\n" +
+                        "       [Measures to take]\n" +
+                        "       It exchanges a control floppy for FR.");
+
+        ExampleItem FLOPPY_RS232C_BLOCK_0354 = new ExampleItem("0354", "FLOPPY RS232C BLOCK",
+                "An error occurred with the FR block which controls the UCMB\n" +
+                        "       floppy disk and RS-232C.\n" +
+                        "       [Code]\n" +
+                        "       1 -> There is no response from the FR block firmware.\n" +
+                        "       2 -> Illegal access of the main processor to the buffer memory\n" +
+                        "            of FR block.\n" +
+                        "       1XX -> The FR block firmware detected an error during\n" +
+                        "              initialization.\n" +
+                        "       Contents of XX\n" +
+                        "       bit 7 - bit 30\tFixed\n" +
+                        "       bit 2\t\tBuffer memory error\n" +
+                        "       bit 1\t\tGeneral purpose register error\n" +
+                        "       bit 0\t\tRAM error\n" +
+                        "       If an error occurs, the corresponding bit is set ON.\n" +
+                        "       There are cases that more than one bit is ON at the same time.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Faulty UCMB\n" +
+                        "       [Measures to Take]\n" +
+                        "       1) Replace the UCMB.");
+
+        ExampleItem SECTOR_DEVICE_UNINITIALIZED_0355 = new ExampleItem("0355", "SECTOR DEVICE UNINITIALIZED",
+                "The sector device is not initialized to the OSP format.\n" +
+                        "       [Character-string]\n" +
+                        "       Specified device name\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Destruction of the VID contents in the memory.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1) Check the contents of sector 0 (VID).\n" +
+                        "       [Referential Instruction Manual]\n" +
+                        "       OSP file configuration");
+
+
+        //-------------------------------------------1089_1699-------------------------------------------------------
+
+
+// ------------------------------------------------------------------------------------------------------------------------------//
 
 
         list.add(BUS_ERROR);
@@ -891,6 +1925,84 @@ public class AlarmList {
         list.add(ROMCARD_WRITE_PROHIBIT);
         list.add(FLOPPY_RS232C_BLOCK);
         list.add(SECTOR_DEVICE_UNINITIALIZED);
+        //-----------------0200_0268------------
+        list.add(SYSTEM_FILE_DATA);
+        list.add(MAB_FULL);
+        list.add(RECORD_BUFFER_OVER_FLOW);
+        list.add(LOAD_OBJECT_ADDRESS);
+        list.add(LOAD_OBJECT_ATTRIBUTE);
+        list.add(LOAD_VERIFY);
+        list.add(DATA_BLOCK_SIZE);
+        list.add(SELECTED_NUMBER);
+        list.add(MEMORY_DISK_RAM_FORMAT);
+        list.add(MEMORY_DISK_RAM_WRITE_READ_TEST);
+        list.add(FR_PART_FILE_SIZE);
+        list.add(FR_PART_FILE_NUMBER);
+        list.add(FR_PART_FILE_LOAD_ADDRESS);
+        list.add(SIZE_OVER);
+        list.add(DATA_WRITE_VERIFY);
+        list.add(MEMORY_DISK_ROM_ERASE);
+        list.add(FILE_HEADER);
+        list.add(INSTALL_MODE_PROGRAM_LOAD);
+        list.add(CONTROL_SOFTWARE_ATTRIBUTE);
+        list.add(WORK_AREA_SIZE);
+        list.add(MEMORY_DISK_BATTERY_VOLTAGE_LOW_0268);
+        //--------------0300_0355---------------------
+        list.add(DEVICE_NAME_0300);
+        list.add(SECTOR_DEVICE_NAME_0301);
+        list.add(PRINT_DEVICE_NAME_0302);
+        list.add(READER_DEVICE_NAME);
+        list.add(PUNCHER_DEVICE_NAME);
+        list.add(FILE_NAME_0305);
+        list.add(COMMAND_CHARACTER_0306);
+        list.add(COMMAND_SYNTAX_0307);
+        list.add(OPTION_0308);
+        list.add(RS232C_CHANNEL_IN_USE);
+        list.add(FILE_ATTRIBUTE_0310);
+        list.add(DEVICE_FULL_0311);
+        list.add(DISK_UNINITIALIZED_0312);
+        list.add(FILE_LABEL_AREA_OVER_FLOW);
+        list.add(ERROR_MAP_INFORMATION_0314);
+        list.add(VOLUME_LABEL_INFORMATION);
+        list.add(FILE_REGIST);
+        list.add(MULTI_VOLUME_INFORMATION);
+        list.add(SVCL_0318);
+        list.add(RS232C_DEVICE_READ);
+        list.add(RS232C_TERMINAL_NOT_READY);
+        list.add(RS232C_READY_STATUS_TIME_OUT);
+        list.add(RS232C_DEVICE_NAME);
+        list.add(MEMORY_DISK_ACCESS_SECTOR_OVER_0324);
+        list.add(MEMORY_DISK_ROM_ACCESS_SECTOR_OVER);
+        list.add(DMA_TRANSFER_SECTOR_OVER_0326);
+        list.add(MEMORY_DISK_FORMAT_0328);
+        list.add(FLOPPY_DISK_READ_WRITE_0330);
+        list.add(FLOPPY_DISK_ACCESS_SECTOR_OVER_0331);
+        list.add(FLOPPY_DISK_WRITE_VERIFY_0332);
+        list.add(FLOPPY_DISK_SEEK_0333);
+        list.add(FLOPPY_DISK_RECALIBRATE_0334);
+        list.add(FLOPPY_DISK_FORMATTING_0335);
+        list.add(FLOPPY_DISK_TIME_OUT_0336);
+        list.add(FLOPPY_READY_0337);
+        list.add(FLOPPY_DISK_WRITE_PROTECT_0338);
+        list.add(PTR_READ);
+        list.add(PTR_ERRATIC_OPERATION_DETECT);
+        list.add(PTR_READY_STATUS_TIME_OUT);
+        list.add(PTR_READY_INTERRUPT_TIME_OUT);
+        list.add(DMA_TRANSFER_0343);
+        list.add(PRINTER);
+        list.add(PUNCHER);
+        list.add(CAP_ACP_READY_0346);
+        list.add(MEMORY_WRITE_READ_TEST_0347);
+        list.add(PROGRAM_LOAD_0348);
+        list.add(NOT_FOUND_PROGRAM_FILE_0349);
+        list.add(PROGRAM_LOAD_ADDRESS_0350);
+        list.add(PROGRAM_ATTRIBUTE_0351);
+        list.add(MEMORY_DISK_ROM_WRIGHT);
+        list.add(ROM_CARD_WRIGHT_PROHIBITION);
+        list.add(FLOPPY_RS232C_BLOCK_0354);
+        list.add(SECTOR_DEVICE_UNINITIALIZED_0355);
+
+
 
         return list;
     }
