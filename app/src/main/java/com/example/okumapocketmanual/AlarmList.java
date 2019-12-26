@@ -4102,6 +4102,1759 @@ public class AlarmList {
                         "       the workpiece failed to reach the opposite chuck.)\n" +
                         "       [Code]2->The axis reaches the designated point (Z-L).");
 
+        ExampleItem DUPLICATE_M_CODE = new ExampleItem("1221", "DUPLICATE M-CODE",
+                "Before the execution of an M code, another M code which\n" +
+                        "       belongs to the same M-code group is designated (M07/M08, \n" +
+                        "       and so forth).\n" +
+                        "       (In the case of process-combined machining such as thread\n" +
+                        "       cutting, this error occurs when the program is read and\n" +
+                        "       stored in the buffer.)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Character-string]Designated M-code group\n" +
+                        "       (\"M08\" is displayed in the case of M08/M09.)");
+
+        ExampleItem INTERRUPT_RETURN_POINTER_UNMATCH = new ExampleItem("1222", "INTERRUPT RETURN POINTER UNMATCH",
+                "After manual operation intervention to retract the cutting\n" +
+                        "       tool, the tool is returned to a different block from the\n" +
+                        "       block where the interruption was made. This alarm occurs\n" +
+                        "       when the number of execution blocks differs between the\n" +
+                        "       cycle starting after the reset and the sequence restart\n" +
+                        "       operation.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The program contains a conditional statement which changes\n" +
+                        "       the number  of sequences to be executed. The conditional \n" +
+                        "       statement is judged by whether the conditional expression \n" +
+                        "       is true or the local variable is defined.\n" +
+                        "       Program Example:\n" +
+                        "        N0018 IF ABCD N0020\n" +
+                        "        N0019 ABCD=1 <- This defines the local variable.\n" +
+                        "        N0020\n" +
+                        "       In the first execution of the program, sequence N0019 is\n" +
+                        "       executed because there is no local variable ABCD. \n" +
+                        "       In the sequence restart operation, however, sequence N0019\n" +
+                        "       is not executed.\n" +
+                        "       Related SpecificationTool retraction cycle");
+
+        ExampleItem THREAD_FEED = new ExampleItem("1223", "THREAD FEED",
+                "In cutting a variable lead thread, the lead is zero or a\n" +
+                        "       negative value.\n" +
+                        "       Calculation error has occurred in the calculation of feed\n" +
+                        "       for variable lead thread cutting.\n" +
+                        "       [Object]AXIS, SYSTEM\n" +
+                        "       [Code]XX->Floating point calculation error\n" +
+                        "        Will convert to binary number.\n" +
+                        "             --X--   --X--\n" +
+                        "        bit 7 6 5 4 3 2 1 0\t\t\t       HEX\n" +
+                        "        bit0->Overflow in converting into integer------01\n" +
+                        "        bit1->Exponential underflow--------------------02\n" +
+                        "        bit2->Exponential overflow---------------------04\n" +
+                        "        bit3->Calculation of root of a negative number-08\n" +
+                        "        bit4->Division by 0----------------------------10\n" +
+                        "        bit5->Angle overflow---------------------------20\n" +
+                        "       The codes indicated above are generated when calculation\n" +
+                        "       becomes impossible during thread lead calculation processing.\n" +
+                        "       [Probable Faulty Locations]Wrong F and E commands in the\n" +
+                        "       variable lead thread cutting command\n" +
+                        "       Program Example:\n" +
+                        "        G00  X100  Z100\n" +
+                        "        G33  X50   Z50  E-5  F10\n" +
+                        "       Feed becomes a negative value with the program indicated\n" +
+                        "       above.");
+
+        ExampleItem CONTOUR_GENERATION_CALCULATION = new ExampleItem("1225", "CONTOUR GENERATION CALCULATION",
+                "Calculation error has occurred during the tool path\n" +
+                        "       generation of contour generation function of G101, G102\n" +
+                        "       or G103.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XYY\n" +
+                        "       YY:\n" +
+                        "        Bit0->Overflow in converting into integer\n" +
+                        "        Bit1->Exponential underflow\n" +
+                        "        Bit2->Exponential overflow\n" +
+                        "        Bit3->Calculation of root of a negative number\n" +
+                        "        Bit4->Division by 0\n" +
+                        "        Bit5->Angle overflow for SIN, COS, TAN and COT\n" +
+                        "       X:\n" +
+                        "        1->Former half of G101 tool path generation operation\n" +
+                        "        2->Latter half of G101 tool path generation operation\n" +
+                        "        3->Former half of G102 (G103) tool path generation \n" +
+                        "           operation\n" +
+                        "        4->Latter half of G102 (G103) tool path generation \n" +
+                        "           operation\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       This alarm is set taking the following possibility into\n" +
+                        "       consideration, and does not occur in normal conditions.\n" +
+                        "       During calculation processing in the NC, calculation might\n" +
+                        "       become impossible due to the influence of calculation error.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the command value in the program within an allowable\n" +
+                        "       range.");
+
+        ExampleItem SPINDLE_MODE_ILLEGAL = new ExampleItem("1228", "SPINDLE MODE ILLEGAL",
+                "A W-axis move command is designated while the same spindle\n" +
+                        "       is not selected for both turrets.\n" +
+                        "       [Code]\n" +
+                        "       1->A W-axis move command is designated.\n" +
+                        "       2->The W-axis synchronized feed command is designated.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Related Specifications]Specified model (LT)");
+
+        ExampleItem SPINDLE_MAX_REVOLUTION_DESIGNATION = new ExampleItem("1229", "SPINDLE MAX REVOLUTION DESIGNATION",
+                "The allowable maximum spindle speed (G50 S****) is not\n" +
+                        "       designated before the spindle rotation command is \n" +
+                        "       designated for the automatic operation.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem SPINDLE_INTERFERENCE_DISTANCE = new ExampleItem("1238", "SPINDLE INTERFERENCE DISTANCE",
+                "1)ZA axis or ZB axis moved to the position where distance\n" +
+                        "         between ZA axis and ZB axes become smaller than setting\n" +
+                        "         value of parameter 1 concerning new LT control.\n" +
+                        "       2)ZB axis moved to the position which becomes smaller than\n" +
+                        "         setting value of parameter 2 by the condition\n" +
+                        "         whose XA axis and XB axis are not together concerning\n" +
+                        "         new LT control on Plus variable limit.\n" +
+                        "       3)By the Spindlehead interlock specification, Z axis moved\n" +
+                        "         to the position which becomes smaller than setting value\n" +
+                        "         of parameter 3 by the condition whose X axis is not on\n" +
+                        "         Plus variable limit.\n" +
+                        "       [Code]\n" +
+                        "       1->A case of mention above 1)\n" +
+                        "       2->A case of mention above 2)\n" +
+                        "       3->A case of mention above 3)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Incorrect parameter setting.\n" +
+                        "       2)Operation or program error.");
+
+        ExampleItem TURRET_ROTATION = new ExampleItem("1243", "TURRET ROTATION",
+                "Turret indexing was attempted when the turret indexing\n" +
+                        "       conditions are not met.\n" +
+                        "       [Code]XX\n" +
+                        "       1->A turret index command was issued when the facing or\n" +
+                        "          OD tool clamp confirmation signal was OFF.\n" +
+                        "       2->A T-command was issued when the touch setter is in\n" +
+                        "          advance position.\n" +
+                        "       3->On the FTL machine, the Z-axis is located in a\n" +
+                        "          negative position beyond the interference position.\n" +
+                        "       4->On the machine with Y-axis function, a turret index\n" +
+                        "          command was issued while the YS-axis is lower than\n" +
+                        "          the spindle center.\n" +
+                        "       5->On the machine with NC turret, the simple tow-along\n" +
+                        "          tailstock is in connection.\n" +
+                        "       8->A turret index command was issued while the YS-axis\n" +
+                        "          was located, in the machine coordinate system, lower\n" +
+                        "          than Spindle CENTER POSITION specified by the system\n" +
+                        "          parameter.\n" +
+                        "       12->On the machine equipped with C-axis zero offset\n" +
+                        "           function by laser sensor, a turret index command was\n" +
+                        "           issued when the laser sensor retract confirmation input\n" +
+                        "           was OFF.\n" +
+                        "       13->The turret index instruction which is divided\n" +
+                        "           impossibility was performed by the state which attached\n" +
+                        "           long tool (tool variety setting at ML with do tool) \n" +
+                        "           to turret T1 or the state which attached touch sensor\n" +
+                        "           of a measure within a machine specification.\n" +
+                        "       14->When a long tool (tool type: ML) was mounted in the\n" +
+                        "           turret T1, a turret index command was issued with the\n" +
+                        "           shutter closed.\n" +
+                        "       15->The turret rotation interlock against special long\n" +
+                        "           tool was activated because turret rotation was attempted\n" +
+                        "           with a special long tool mounted on the turret.\n" +
+                        "       16->Turret rotation was attempted during spindle rotation.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1->A turret index command was issued while a tool was\n" +
+                        "        projected for tool change or manual tool loading/unloading.\n" +
+                        "        Malfunction occurred in the proximity switch for checking\n" +
+                        "        clamping condition of facing/OD tool.\n" +
+                        "        The signal wire from the proximity switch is damaged.\n" +
+                        "        The hydraulic solenoid valve for clamping face/OD tool\n" +
+                        "        is broken.\n" +
+                        "       8->A turret indexing command was issued while the Y-axis\n" +
+                        "        is in a negative position in Y-axis mode.\n" +
+                        "       12->A turret index command was issued with the laser sensor\n" +
+                        "        located in advance position, or the laser sensor retract\n" +
+                        "        confirmation LS is at fault.\n" +
+                        "       [Related Specifications]\n" +
+                        "       1) ATC , multiple machine , Y axis");
+
+        ExampleItem TOOL_INTERFERENCE_CHECK = new ExampleItem("1245", "TOOL INTERFERENCE CHECK",
+                "The turrets approach each other within the tool\n" +
+                        "       interference check area.\n" +
+                        "       The machine equipped with ATC specification, turret\n" +
+                        "       indexingcommand is designated in the direction a tool on\n" +
+                        "       the ATC turret will interfere with the duct.\n" +
+                        "       [Object]SYSTEM for the machine equipped with ATC\n" +
+                        "             None for other machines\n" +
+                        "       [Code]\n" +
+                        "       1->Interference between tools on A- and B-turret\n" +
+                        "       2->Interference between the B-turret and a tool on \n" +
+                        "          A-turret\n" +
+                        "       3->Interference between the A-turret and a tool on \n" +
+                        "          B-turret\n" +
+                        "       4->Interference between the A- and B-turret\n" +
+                        "       11->Interference between L-tool (T1) and duct in clockwise\n" +
+                        "          rotation. Or interference between M-tool (T3) and\n" +
+                        "          duct in counterclockwise rotation.\n" +
+                        "       13->Interference between L-tool (T1) and duct in\n" +
+                        "          counterclockwise rotation. Or interference between\n" +
+                        "          M-tool (T3) and duct in clockwise rotation.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Programming error for simultaneous cuts on the 2saddle\n" +
+                        "         models\n" +
+                        "       2)Error in setting tool interference check area\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Check the simultaneous cuts program.\n" +
+                        "       2)Check the tool interference check data.");
+
+        ExampleItem CHUCK_BARRIER_AREA = new ExampleItem("1257", "CHUCK BARRIER AREA",
+                "Entry into chuck barrier area\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]interference check area\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The program includes a command which causes an axis to\n" +
+                        "         enter chuck barrier area.\n" +
+                        "       2)Setting error of chuck barrier area");
+
+        ExampleItem TAILSTOCK_BARRIER_AREA = new ExampleItem("1258", "TAILSTOCK BARRIER_AREA",
+                "Entry into tailstock barrier area\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]interference check area\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The executed program includes a command which causes an\n" +
+                        "         axis to enter tailstock barrier area.\n" +
+                        "       2)Setting error of tailstock barrier area");
+
+        ExampleItem TOW_ALONG_TAILSTOCK_CONNECT = new ExampleItem("1259", "TOW-ALONG TAILSTOCK CONNECT",
+                "G02, G03, G30, G31, G32, G33, G34, or G35 is designated\n" +
+                        "       while the tow-along tailstock body is connected. Or with\n" +
+                        "       the simple tow-along tailstock specification, an axis move\n" +
+                        "       command or turret indexing command is designated while\n" +
+                        "       the tailstock body is connected.\n" +
+                        "       [Code]\n" +
+                        "       None->An illegal G code is designated while the tow-along\n" +
+                        "             tailstock body is connected.\n" +
+                        "       2->With the simple tow-along specification, axis movement\n" +
+                        "          or turret indexing is attempted while the tailstock\n" +
+                        "          body is connected.\n" +
+                        "       3->In the automatic or MDI mode of operation,an axis\n" +
+                        "          move command is designated while the tailstock body \n" +
+                        "          is connected.\n" +
+                        "       4->The tow-along tailstock connection command was issued\n" +
+                        "          in the Y-axis control mode.\n" +
+                        "       5->In tow-along tailstook concatenaion, home position\n" +
+                        "          translocation instruction (OGL) was performed.\n" +
+                        "       6->In self-travelling type tail-stock unclamp, G02,G03,\n" +
+                        "          G30,G31,G32,G33,G34,G35 commnd was designated.\n" +
+                        "       7->In self-travelling type tail-stock unclamp,\n" +
+                        "          axis-movement expect for W-axis was designated.\n" +
+                        "       8->W-axis order was performed by the state that there was\n" +
+                        "          not tail-stock in backplace edge, or there was not\n" +
+                        "          X-axis in plus limit, or self-travelling type tail-stock\n" +
+                        "          was unclamp, or main-spindle was not hung-up.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The tailstock body connected state is established\n" +
+                        "         although it is actually not connected due to faulty EC \n" +
+                        "         input signals.\n" +
+                        "       2)Operation error\n" +
+                        "       Program Example:\n" +
+                        "         :\n" +
+                        "         M189\n" +
+                        "         G02  X100  Z50  I1  F10\n" +
+                        "         :\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Correct the program.\n" +
+                        "       2)Check the EC input signals\n" +
+                        "         I/O check No.27 bit6 -> tailstock connection \n" +
+                        "         confirmation\n" +
+                        "         I/O check No.27 bit7 -> tailstock disconnection \n" +
+                        "         confirmation\n" +
+                        "       <For the simple tow-along tailstock specification>\n" +
+                        "         I/O check No.27 bit7 -> tailstock disconnection \n" +
+                        "         confirmation\n" +
+                        "         (ON when disconnected, OFF when connected)\n" +
+                        "       3)If the code 3 appears, use the pulse handle for axis\n" +
+                        "         feed while the tow-along tailstock is connected.\n" +
+                        "       4)After canceling the Y-axis control mode, issue the\n" +
+                        "         tow-along tailstock connection command.\n" +
+                        "       5)After tow-along tailstook concatenaion is separated,\n" +
+                        "         a home position instruction is performed.\n" +
+                        "       [Related Specifications]Programmable tailstock");
+
+        ExampleItem TOW_ALONG_TAILSTOCK_CONDITION = new ExampleItem("1260", "TOW ALONG TAILSTOCK CONDITION",
+                "M188 (Tailstock disconnect), or M189 (Tailstock connect) is\n" +
+                        "       designated with G152 calling for tailstock towing mode while\n" +
+                        "       the spindle is not in zero speed or while the spindle is not\n" +
+                        "       at a still.\n" +
+                        "       M188, M189 or G152 is designated while the spindle rotation\n" +
+                        "       command is active.\n" +
+                        "       M188, M189 or G152 is designated while the center work is not\n" +
+                        "       selected.\n" +
+                        "       M188, M189 or G152 is designated while the tailstock spindle\n" +
+                        "       is not at the retraction end, or the turrets are not at the\n" +
+                        "       stroke end in the positive direction.\n" +
+                        "       [Code]\n" +
+                        "        1->M188, M189 or G153 is designated while the spindle is not\n" +
+                        "           in zero speed.\n" +
+                        "        2->M188, M189 or G153 is designated while the spindle is not\n" +
+                        "           at a still.\n" +
+                        "        3->M188, M189 or G152 is designated while the spindle rotation\n" +
+                        "           command is active.\n" +
+                        "        4->M188, M189 or G152 is designated while center work is not\n" +
+                        "           selected.\n" +
+                        "        5->M188, M189 or G152 is designated while the tailstock spindle\n" +
+                        "           is not at the retraction end.\n" +
+                        "        6->M188, M189 or G152 is designated while the turrets are not\n" +
+                        "           at the stroke end in the positive direction.\n" +
+                        "        7->M189, M152 are designated while both of the disconnect and\n" +
+                        "           connect signals are ON or OFF.\n" +
+                        "        8->When the tailstock connect ON key is pressed, the spindle\n" +
+                        "           is not at a still.\n" +
+                        "        9->When the tailstock connect ON key is pressed, XA-axis is \n" +
+                        "           not at the travel end in the positive direction.\n" +
+                        "       10->When the tailstock connect ON key is pressed, the tailstock\n" +
+                        "           is not at the retract end.\n" +
+                        "       11->When the tailstock connect ON key is pressed, the tailstock\n" +
+                        "           is not unclamped.\n" +
+                        "       12->M189 is designated when the tailstock chuck is not unclamped.\n" +
+                        "       13->While the tow-along tailstock or simple tow-along tailstock\n" +
+                        "           was being connected, the tailstock chuck was clamped.\n" +
+                        "           Or, while the tailstock chuck was being clamped, the signal\n" +
+                        "           for confirming disconnection of simple tow-along tailstock\n" +
+                        "           went OFF.\n" +
+                        "       14->When the signal for confirming disconnection of tailstock\n" +
+                        "           was OFF, a tailstock chuck clamp command was issued.\n" +
+                        "       15->When it was not a tailstock concatenation carriage return\n" +
+                        "           place , they went along M189 instructions.\n" +
+                        "       16->Concerning NC tailstook in tailstook unclamp at G02, G03,\n" +
+                        "           G30, G31, G32, G33, G34, G35 command is designated.\n" +
+                        "       17->Concerning NC tailstook, an axis movement instruction\n" +
+                        "           except for W, Z axis was performed in tailstook unclamp.\n" +
+                        "       18->Concerning NC tailstook, W axis movement instruction was\n" +
+                        "           performed by following state.\n" +
+                        "              It is not XA axis plus limit.\n" +
+                        "              It is not tailstock spindle retracted position\n" +
+                        "              It is not tailstook unclamp\n" +
+                        "              Main spindle has not stopped\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Operation error\n" +
+                        "       [Related Specifications]\n" +
+                        "        Programmable tailstock");
+
+        ExampleItem W_AXIS_PLUS_VARIABLE_LIMIT_OVER = new ExampleItem("1262", "W-AXIS PLUS VARIABLE LIMIT OVER",
+                "Tow-along tailstock exceeds the W-axis plus variable \n" +
+                        "       limit.\n" +
+                        "       [Object]AXIS, SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->During operation using programmed commands\n" +
+                        "       2->During automatic returning to the joint point in\n" +
+                        "          manual operation intervention mode\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       W-axis limit has been set so that the tow-along tailstock\n" +
+                        "       joint position will be outside the soft-limit position.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Shift the W-axis limit position outside if possible. \n" +
+                        "       If such setting is not allowed, operate the turret\n" +
+                        "       manually  and carefully to connect the tailstock so that\n" +
+                        "       interference will not occur.\n" +
+                        "       [Related Specifications]Programmable tailstock");
+
+        ExampleItem W_AXIS_MINUS_VARIABLE_LIMIT_OVER = new ExampleItem("1263", "W-AXIS MINUS VARIABLE LIMIT OVER",
+                "Tow-along tailstock exceeds the W-axis minus variable \n" +
+                        "       limit.\n" +
+                        "       [Object]AXIS, SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->During operation using programmed command\n" +
+                        "       2->During automatic returning to the joint point in\n" +
+                        "          manual operation intervention mode\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       W-axis limit has been set so that the tow-along tailstock\n" +
+                        "       point position will be outside the soft-limit position.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Shift the W-axis limit position outside if possible.\n" +
+                        "       If such setting is not allowed, operate the turret\n" +
+                        "       manually and carefully to connect the tailstock so that\n" +
+                        "       interference will not occur.\n" +
+                        "       Related Specification:Programmable tailstock");
+
+        ExampleItem PARTS_CATCHER_INTERLOCK = new ExampleItem("1265", "PARTS CATCHER INTERLOCK",
+                "Parts catcher interlock is activated when an attempt is\n" +
+                        "       made to advance or retract the parts catcher.\n" +
+                        "       [Code]\n" +
+                        "       0->The parts catcher advance command is designated when\n" +
+                        "          the Z-axis is not at the positive end limit.  Or an\n" +
+                        "          axis move command is designated while the parts catcher\n" +
+                        "          is at the advance position.\n" +
+                        "       1->The parts catcher advance command is designated when\n" +
+                        "          the door is not closed.\n" +
+                        "       2->The parts catcher advance or retract command is\n" +
+                        "          designated when the touch setter is not at the retract\n" +
+                        "          end.\n" +
+                        "       3->The parts catcher advance or retract command is\n" +
+                        "          designated when the door is not closed.\n" +
+                        "       4->The\tparts catcher advance or retract command is\n" +
+                        "          designatedwhen the ZB-axis is not at the positive end\n" +
+                        "          limit.  ZB-axis move command is designated while the\n" +
+                        "          parts catcher is not at the retract end.  Or the parts\n" +
+                        "          catcher is placed at a position other than the retract\n" +
+                        "          end while the ZB-axis is moving.\n" +
+                        "       5->The parts catcher retract command is designated when\n" +
+                        "          the parts catcher is not at the swing-up end or while\n" +
+                        "          the parts catcher is going down.\n" +
+                        "       6->The parts catcher swing up or down command is\n" +
+                        "          designated when the parts catcher is not at the\n" +
+                        "          advance end or while the parts catcher is retracting.\n" +
+                        "       7->A command to move the parts catcher to the workpiece\n" +
+                        "          receive position or retract position is designated\n" +
+                        "          when the parts catcher is not at the advance end or\n" +
+                        "          while the parts catcher is going up.\n" +
+                        "       8->A command to swing the parts catcher forward or\n" +
+                        "          backward is designated when the parts catcher is not\n" +
+                        "          at the advance end or while the parts catcher is\n" +
+                        "          retracting.\n" +
+                        "       9->A command to swing the parts catcher forward or\n" +
+                        "          backward is designated when the parts catcher guide\n" +
+                        "          axis is not at the retract end or while the parts \n" +
+                        "          catcher is advancing.\n" +
+                        "       10->The parts catcher arm retract command is designated\n" +
+                        "           when the parts catcher is not at the swing end\n" +
+                        "           position in the forward direction or while the parts catcher is \t    \n" +
+                        "           advancing.\n" +
+                        "       11->The parts catcher guide axis advance command is\n" +
+                        "           designated when the parts catcher is not at the swing\n" +
+                        "           end position in the backward direction while the parts \n" +
+                        "           catcher is advancing\n" +
+                        "       12->Parts catcher advanced-retracted command was performed\n" +
+                        "           by the state which became disconnected in XA, ZA axis\n" +
+                        "           plus limit place. Or, an axis movement instruction was\n" +
+                        "           performed by a parts catcher advanced state and it was.\n" +
+                        "       13->When it was not a Main spindle stopped state, parts\n" +
+                        "           catcher advanced-retracted command was performed. Or,\n" +
+                        "           a main spindle rotation instruction was performed by\n" +
+                        "           a parts catcher advanced state.\n" +
+                        "       14->Except for XA, ZA axis plus variable limit position,\n" +
+                        "           a rising order of a parts catcher or a descent order\n" +
+                        "           was performed. Or, an axis movement order was performed\n" +
+                        "           by a decline condition of a parts catcher.\n" +
+                        "       15->When it was not in a Main spindle stop, it performed\n" +
+                        "           a rising order of a parts catcher or a descent order.\n" +
+                        "           Or, it performed a main spindle rotation order by a\n" +
+                        "           decline condition of a parts catcher.\n" +
+                        "       16->Though shot work confirmation input had not turned it\n" +
+                        "           on by automatic operation, door open-close command was\n" +
+                        "           performed.\n" +
+                        "       17->Though shot work confirmation input had not turned it\n" +
+                        "           on by automatic operation, a rising order of parts\n" +
+                        "           catcher was performed.\n" +
+                        "       18->Door open-close command was performed by the condition\n" +
+                        "           which is not a rise of a parts catcher.\n" +
+                        "       < For parts catchers designed for the sub spindle of\n" +
+                        "          2-saddle models, parts catcher swing slide model, \n" +
+                        "          LT+ sub spindle model >\n" +
+                        "       21->The parts catcher advance or retract command is \n" +
+                        "           designated when the XB-axis is not at the positive end \n" +
+                        "           limit.\n" +
+                        "       22->The parts catcher advance or retract command is\n" +
+                        "           designated when the ZB-axis is not at the workpiece\n" +
+                        "           chuting position.\n" +
+                        "       23->The parts catcher advance or retract command is\n" +
+                        "           designated when the W-axis is not at a position within\n" +
+                        "           the operation enabled range.\n" +
+                        "       24->The parts catcher advance or retract command is\n" +
+                        "           designated while the sub spindle is rotating.  Or,\n" +
+                        "           when there was not a parts catcher in retraction edge,\n" +
+                        "           a sub spindle rotation instruction was performed.\n" +
+                        "       25->The parts catcher advance or retract command is\n" +
+                        "           designated when the door is not closed. However, parts\n" +
+                        "           catcher advanced-retracted command was performed by the\n" +
+                        "           state that there is not on R side door close in the \n" +
+                        "           case of 'LT specification + sub spindle specification'.\n" +
+                        "       26->A command to move the XB- or ZB-axis is designated\n" +
+                        "           when the parts catcher is not at the retract end.  \n" +
+                        "           Or the  parts catcher is placed at a position other \n" +
+                        "           than the retract end while the XB- or ZB-axis is moving.\n" +
+                        "       27->A command which moves the W-axis toward the workpiece\n" +
+                        "           chuting position exceeding the workpiece transfer\n" +
+                        "           position is designated when the parts catcher is not\n" +
+                        "           at the retract end.\n" +
+                        "       30->When there was Za axis in a place on the side of plus\n" +
+                        "           from Za axis operation possibility place, parts catcher\n" +
+                        "           advanced/retracted command was performed.\n" +
+                        "       31->When there was Zb axis in a place on the side of a\n" +
+                        "           minus from Zb axis operation possibility place, parts\n" +
+                        "           catcher advanced/retracted command was performed.\n" +
+                        "       32->When there was Zc axis in a place on the side of plus\n" +
+                        "           from Zc axis operation possibility place, parts catcher\n" +
+                        "           advanced/retracted command was performed.\n" +
+                        "       33->Except for parts catcher retraction end, Za axis\n" +
+                        "           transferred in a place on the side of plus from Za\n" +
+                        "           axis operation possibility place.\n" +
+                        "       34->Except for parts catcher retraction end, Zb axis\n" +
+                        "           transferred in a place on the side of a minus from\n" +
+                        "           Zb axis operation possibility place.\n" +
+                        "       35->Except for parts catcher retraction end, Zc axis\n" +
+                        "           transferred in a place on the side of plus from Zc axis\n" +
+                        "           operation possibility place.\n" +
+                        "       36->When it was not R Main spindle side touch setter\n" +
+                        "           retraction end, parts catcher advanced/retracted command\n" +
+                        "           was performed.\n" +
+                        "       37->Except for parts catcher retraction end, R Main spindle\n" +
+                        "           side touch setter is not retraction end.\n" +
+                        "       40->When there was ZB axis on place on the side of plus\n" +
+                        "           more ZB axis operation possibility place,parts catcher\n" +
+                        "           advanced/retracted command was performed.\n" +
+                        "       41->When the W-axis was not in the specified W-axis position,\n" +
+                        "           a parts catcher advance/retract command was issued.\n" +
+                        "           When the parts catcher was not in retract end,\n" +
+                        "           a command was issued to move the W-axis in the minus\n" +
+                        "           direction beyond the specified W-axis position.\n" +
+                        "       42->When it was not touch setter retraction edge, parts\n" +
+                        "           catcher command was done. Or, when there was not a\n" +
+                        "           parts catcher in retraction edge, a touch setter was\n" +
+                        "           not retraction edge and became.\n" +
+                        "       43->When it was not parts catcher retraction edge, axis\n" +
+                        "           transfer instruction on the side of plus was done from\n" +
+                        "           ZB axis operation possibility place.\n" +
+                        "       44->When it was not parts catcher retraction edge, XB axis\n" +
+                        "           transferred in the direction of a minus.\n" +
+                        "       45->Concerning parts catcher limit switch failure detection\n" +
+                        "           function, before parts catcher advanced/retraction\n" +
+                        "           operation timer progress after parts catcher\n" +
+                        "           advanced/retracted command, it became operation \n" +
+                        "           completion.");
+
+        ExampleItem LOAD_MONITOR_TOOL_BROKEN = new ExampleItem("1272", "LOAD MONITOR TOOL BROKEN",
+                "While monitoring, cutting load has exceeded the second\n" +
+                        "       limit level for longer than a designated period of time.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code] XXYY\n" +
+                        "       XX:part number(hexadecimal)\n" +
+                        "       YY=00->Z-axis\n" +
+                        "          01->X-axis\n" +
+                        "          02->C-axis\n" +
+                        "          03->Spindle\n" +
+                        "          04->M-tool spindle\n" +
+                        "          05->W-axis\n" +
+                        "          06->Sub spindle (B-spindle)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The second limit is changed.\n" +
+                        "       2)Time duration to cause the alarm is changed.\n" +
+                        "       3)Cutting conditions are changed.\n" +
+                        "       4)Chipping of the cutting tool");
+
+        ExampleItem LOAD_MONITOR_COMMAND_EXECUTION = new ExampleItem("1273", "LOAD MONITOR COMMAND EXECUTION",
+                "Execution of monitor command is attempted during monitoring.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->A load monitor command was issued while being executed.\n" +
+                        "       2->A load monitor W command was issued while being executed.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "        N100VLMON[1] = 1\tN100VLMON[1] = 1\n" +
+                        "        N101G01  X250\tF100 -> N101G01   X250\tF100\n" +
+                        "        N102VLMON[2] = 2\tN102VLMON[1] = 0\n" +
+                        "        :\t\t\tN103VLMON[2] = 2\n" +
+                        "        To perform load monitor W, specify the system variable\n" +
+                        "        VWMON.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Cancel the former monitor command before executing the\n" +
+                        "       new one.");
+
+        ExampleItem LASER_MEASUREMENT_DATA_NG = new ExampleItem("1278", "LASER MEASUREMENT DATA NG",
+                "Inductosyn pitch error between the encoder read data and\n" +
+                        "       the laser measurement data does not satisfy the following:\n" +
+                        "        In the X-axis:-0.0254mm - +0.0254mm\n" +
+                        "        In the Z-axis:-0.0127mm - +0.0127mm\n" +
+                        "       [Code]Hexadecimal number of the difference between the\n" +
+                        "       encoder read data and the laser measurement data\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Position encoder\n" +
+                        "       2)Inductosyn\n" +
+                        "       3)Setting of Inductosyn coupling compensation amount\n" +
+                        "       Program Example:\n" +
+                        "        G0  X1000\n" +
+                        "        LMW X0\n" +
+                        "        :");
+
+        ExampleItem IND_CMP_DATA_VERIFY_NG = new ExampleItem("1279", "IND. CMP. DATA VERIFY NG",
+                "The difference between the designated inductosyn pitch\n" +
+                        "       error compensation data and the read pitch error \n" +
+                        "       compensation data does not satisfy the following:\n" +
+                        "        In X-axis:-0.006mm - +0.006mm\n" +
+                        "        In Z-axis:-0.003mm - +0.003mm\n" +
+                        "       [Code]Hexadecimal number of the difference between the\n" +
+                        "       designated pitch error compensation data and the read\n" +
+                        "       pitch error compensation data.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Position encoder\n" +
+                        "       2)Inductosyn\n" +
+                        "       3)Setting of Inductosyn coupling compensation amount\n" +
+                        "       Program Example\n" +
+                        "        G0 X1000\n" +
+                        "        LMV X0\n" +
+                        "        :");
+
+        ExampleItem HP9825A_SEND = new ExampleItem("1280", "HP9825A SEND",
+                "In the communication with the desk top computer HP9825A\n" +
+                        "       by the YHP, reception is impossible on the HP9825A side.\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]HP9825A\n" +
+                        "       Communication line cable\n" +
+                        "       RS232C Interface(FRP board)\n" +
+                        "       Program Example:\n" +
+                        "        G0 X1000\n" +
+                        "        LMW X0\n" +
+                        "        :");
+
+        ExampleItem HP9825A_RECEIVE = new ExampleItem("1281", "HP9825A  RECEIVE",
+                "In the communication with the desk top computer HP9825A\n" +
+                        "       of the YHP,the received characters are other than 0 through\n" +
+                        "       9, A or E. Or the received data is more than 20 characters. \n" +
+                        "       Or an error has occurred in the RS232C interface.\n" +
+                        "       [Code]\n" +
+                        "       1->The received data is more than 20 characters.\n" +
+                        "       2->The received characters are other than 0 through 9,\n" +
+                        "          A or E. Codes other than 1 or 2->Error in the RS232C\n" +
+                        "          interface\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)HP9825A\n" +
+                        "       2)Communication line cable\n" +
+                        "       3)RS232C Interface(FRP board)\n" +
+                        "       Program Example:\n" +
+                        "        G00 X1000\n" +
+                        "        LMW X0\n" +
+                        "        :");
+
+        ExampleItem HP9825A_RECEIVE_DATA_FORMAT = new ExampleItem("1282", "HP9825A RECEIVE DATA FORMAT",
+                "In the communication with the desk top computer HP9825A\n" +
+                        "       (YHP), an error has been received on the HP9825A side.\n" +
+                        "       Or the received data is more than 8 digits.\n" +
+                        "       [Code]\n" +
+                        "       1->HP9825A failed to receive signal from laser.\n" +
+                        "       2->A request-to-send error has occurred in the HP9825A.\n" +
+                        "       3->The received data is more than 8 digits.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)HP9825A; laser interferometer\n" +
+                        "       2)Communication line cable\n" +
+                        "       3)RS232C Interface\n" +
+                        "       Program Example:\n" +
+                        "        G00 X1000\n" +
+                        "        LMW X0\n" +
+                        "        :");
+
+        ExampleItem C_AXIS_COMMAND = new ExampleItem("1283", "C-AXIS COMMAND",
+                "C-axis movement command is designated while it is not\n" +
+                        "       acceptable.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->C-axis is not connected.\n" +
+                        "       2->C-axis is not unclamped.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error\n" +
+                        "       Program Example:\n" +
+                        "        N100  M109\t\t C-axis disconnection\n" +
+                        "        N101  G00  X100  C100\t C-axis rapid feed to 100-deg\n" +
+                        "       \t\t\t\t\t       position\n" +
+                        "       Operation Example:\n" +
+                        "       C-axis movement command is designated while C-axis is not\n" +
+                        "       clamped.");
+
+        ExampleItem SUB_SPINDLE_INTERFERENCE_DISTANCE = new ExampleItem("1299", "SUB SPINDLE INTERFERENCE DISTANCE",
+                "The issued command requires the sub spindle headstock \n" +
+                        "       (W-axis) and B-turret (ZB-axis) to come closer beyond the\n" +
+                        "       interference distance specified by the parameter.\n" +
+                        "       (The machine of LT series conducts interference check\n" +
+                        "        between L and R spindles.)\n" +
+                        "       (In the spec of Turret ZA-W IL. or ZA-W AXIS IL. conducts \n" +
+                        "       interference check between ZA-axis and W-axis.)\n" +
+                        "       [Code]\n" +
+                        "       1->Sub-spindle interference distance.\n" +
+                        "       2->The Sub-spindle movement command exceeded Maximum\n" +
+                        "          distance between the Steady rest and the Tailstock.\n" +
+                        "       3->The Sub-spindle movement command exceeded Minimum\n" +
+                        "          distance between the Steady rest and the Tailstock.\n" +
+                        "       4->The Steady rest movement command exceeded Maximum\n" +
+                        "          distance between the Steady rest and the Tailstock.\n" +
+                        "       5->The Steady rest movement command exceeded Minimum\n" +
+                        "          distance between the Steady rest and the Tailstock.\n" +
+                        "       6->The Axis moved to the interference distance between the\n" +
+                        "          Turret and the R-spindle\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Parameter set value");
+
+        ExampleItem W_AXIS_MOVEMENT_CONDITION = new ExampleItem("1300", "W-AXIS MOVEMENT CONDITION",
+                "A side A command was issued for moving W-axis in G141 mode\n" +
+                        "       (sub-spindle coordinate system).\n" +
+                        "       Or, a side B command was issued for W-axis movement while\n" +
+                        "       G141 mode (sub-spindle coordinate system) is selected on\n" +
+                        "       side A.\n" +
+                        "       [Code]\n" +
+                        "       0->W-axis movement by side A command in G141 mode\n" +
+                        "       \t\t\t   (sub spindle coordinate system).\n" +
+                        "          W-axis movement by side B command A while G141\n" +
+                        "          (sub spindle coordinate system) is active on side A.\n" +
+                        "       1->W-axis movement was attempted with the second workhead\n" +
+                        "          placed in the lowering position.\n" +
+                        "       2->W-axis movement was attempted with the second workhead\n" +
+                        "          clamped.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Programming error\n" +
+                        "       Program Example:\n" +
+                        "        G13\t    G14\n" +
+                        "       \t    :\n" +
+                        "        :\t    G141\n" +
+                        "        G00 W100-> :\t  Code 0\n" +
+                        "        :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the program so that G141 is not selected before\n" +
+                        "       W-axis movement by side A command, or that G141 is not\n" +
+                        "       selected on side A  when W-axis movement is executed by\n" +
+                        "       side B command.\n" +
+                        "       1)Specify the W-axis movement command while the second\n" +
+                        "         workhead is unclamped.\n" +
+                        "         Move the W-axis using G154(W-axis positioning command).");
+
+        ExampleItem PICKOFF_INDEX_POSITION = new ExampleItem("1303", "PICKOFF INDEX POSITION",
+                "With pickoff-spindle specification models, pickoff-spindle\n" +
+                        "       rotation or pickoff-spindle synchronized rotation with the\n" +
+                        "       main spindle is commanded though the pickoff spindle is\n" +
+                        "       not indexed. Or the M-tool spindle rotation command or the\n" +
+                        "       spindle and M-tool spindle synchronized rotation command\n" +
+                        "       is designated when the pickoff spindle is indexed.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The pickoff spindle is not indexed.\n" +
+                        "       2->The pickoff spindle is indexed.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Turret indexing command in the program");
+
+        ExampleItem SENSOR_TOUCH_G00 = new ExampleItem("1306", "SENSOR TOUCH G00",
+                "The sensor has been brought into contact with the workpiece\n" +
+                        "       during G00 mode feed while the execution of the G30 work\n" +
+                        "       gauging cycle.\n" +
+                        "       In the work gauging cycle, the touch sensor is fed in the\n" +
+                        "       G00 mode between the gauging cycle start point and the\n" +
+                        "       approach point.  The touch sensor contacts the workpiece\n" +
+                        "       surface during this feed mode.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the target point for the work gauging cycle. (Check\n" +
+                        "       whether the programmed target point and the actual workpiece\n" +
+                        "       position coincide each other.)\n" +
+                        "       Related Specification:Gauging cycle specification");
+
+        ExampleItem SENSOR_NO_TOUCH = new ExampleItem("1307", "SENSOR NO TOUCH",
+                "The sensor has not been brought into contact with the\n" +
+                        "       workpiece during execution of the G30 work gauging cycle.\n" +
+                        "       The sensor failed to contact the workpiece surface when\n" +
+                        "       it was fed from the approach point to the imaginary target\n" +
+                        "       point. Or, the sensor touched a turret other than the one\n" +
+                        "       on which gauging operation is to be carried out.\n" +
+                        "       [Object]\n" +
+                        "        SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1->During execution of the G30,\n" +
+                        "           the sensor of other-turret has touched.\n" +
+                        "        2->In the G30-order, waiting-time of sensor-state\n" +
+                        "       10->During execution of the G30 for diagonal direction,\n" +
+                        "           the sensor did not come in contact.\n" +
+                        "       The under code is unusually occured.\n" +
+                        "       10000->Sensor was touch. But NC has not get the skip-data.\n" +
+                        "       20000->NC had not get skip-data of X-axis or Z-axis.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "        Check the target point for the work gauging cycle.\n" +
+                        "        (Check whether the programmed target point and the actual\n" +
+                        "         workpiece position coincide each other.)\n" +
+                        "       [Related Specification]\n" +
+                        "        Gauging cycle specification");
+
+        ExampleItem SENSOR_PROTECT = new ExampleItem("1309", "SENSOR PROTECT",
+                "After touching, the sensor moved over the preset distance\n" +
+                        "       Or, the turret directly hit the protection limit before\n" +
+                        "       it touches the sensor.\n" +
+                        "       preset distance:OPTIONAL PARAMETER (GAUGING)\n" +
+                        "       \t\tSensor protection distance\n" +
+                        "       [Object]AXIS\n" +
+                        "       [Code]Sensor input number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Parameter setting error:The value set at the parameter\n" +
+                        "         (long word) No. 24 is too small compared with the\n" +
+                        "        feedrate in the gauging cycle.\n" +
+                        "       2)Program error, operation error:An attempt is made to\n" +
+                        "         execute the program in which the sensor is brought into\n" +
+                        "         contact with the object in cycles other than the gauging\n" +
+                        "         cycle.  Or the similar operation is attempted.\n" +
+                        "       3)Contact failure of slip ring\n" +
+                        "       4)Defective sensor element\n" +
+                        "       5)Chartering occurs depending on the machining condition.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Reset the alarm in MANUAL mode by turning ON the emergency\n" +
+                        "         limit release switch in the control box and take the\n" +
+                        "         turret away from the touch setter using the pulse handle.\n" +
+                        "         When the turret moves out of the stroke end limit, turn\n" +
+                        "         OFF the emergency limit release switch.\n" +
+                        "       2)Set a proper value at parameter (long word) No. 24, or\n" +
+                        "         reduce the feedrate in the gauging cycle.\n" +
+                        "       3)Correct the program so that the sensor is not brought\n" +
+                        "         into contact with the object in cycles other than the \n" +
+                        "         gauging cycle.\n" +
+                        "       4)Check the slip ring.\n" +
+                        "       5)Change the sensor element.\n" +
+                        "       6)Eliminate chartering during machining.\n" +
+                        "         If chartering cannot be eliminated, change the parameter\n" +
+                        "         MC USER PARAMETER (MEASUREMENT)\n" +
+                        "         Touch setter alarm check ineffect. at retract.\n" +
+                        "          0->Sensor contact (or limit switch input) is always\n" +
+                        "             monitored.\n" +
+                        "          1->Sensor contact (or limit switch input) is monitored\n" +
+                        "             only in gauging cycle.");
+
+        ExampleItem ATC_MANUAL_OPERATION_MODE_IMPOSSIBLE = new ExampleItem("1316", "ATC MANUAL OPERATION MODE IMPOSSIBLE",
+                "The optional parameter bit for establishing ATC arbitrary\n" +
+                        "       operation mode was turned on without selecting the manual\n" +
+                        "       operation mode.");
+
+        ExampleItem Y_AXIS_PARAMETER_ILLEGAL = new ExampleItem("1322", "Y-AXIS PARAMETER ILLEGAL",
+                "A calculation error occurred when the internal constant is\n" +
+                        "       calculated according to Y-axis parameter.\n" +
+                        "       [Code]XX\n" +
+                        "       XX:\n" +
+                        "        Bit0->Integer overflow\n" +
+                        "        Bit1->Exponent underflow\n" +
+                        "        Bit2->Exponent overflow\n" +
+                        "        Bit3->Square root of a negative value\n" +
+                        "        Bit4->Zero divide error\n" +
+                        "        Bit5->Overflow of SIN, COS, TAN, or COT value\n" +
+                        "       [Probable Faulty Locations]Wrong Y-axis parameter setting");
+
+        ExampleItem YS_AXIS_POSITION = new ExampleItem("1323", "YS AXIS POSITION", "Except for Y-axis mode, though YS axis place was not in \n" +
+                "       turning position of system parameter, they went along axis\n" +
+                "       movement command.\n" +
+                "       Except for Y-axis mode, though YS axis place is not in YS\n" +
+                "       axis carriage return place, they went along axis movement\n" +
+                "       command (YS axis carriage return positioning specification)\n" +
+                "       [Object]SYSTEM\n" +
+                "       [Probable Faulty Locations]\n" +
+                "       1)The system parameter data for specifying YS-axis spindle\n" +
+                "         center position is changed.\n" +
+                "       2)After installation of NC software, axis movement was\n" +
+                "         attempted before setting the system parameter data for\n" +
+                "         YS-axis spindle center position.\n" +
+                "       3)In YS axis carriage return positioning specification, \n" +
+                "         after YS axis carriage return place was changed, they\n" +
+                "         went along axis movement command by the state which is\n" +
+                "         not in YS axis carriage return place.\n" +
+                "       [Measures to Take]\n" +
+                "       1)Change the system parameter data to the original data.\n" +
+                "         Or, bring the YS-axis to the newly set spindle center\n" +
+                "         position by executing G138 (Y-axis mode ON) and G136 \n" +
+                "         (Y-axis mode OFF).\n" +
+                "         If the machine is provided with home position function\n" +
+                "         and ATC unit, specify G21 (home position command) HP=4,5\n" +
+                "         to return the saddle to the return point before issuing\n" +
+                "         the axis movement command again.\n" +
+                "       2)Set the system parameter data for YS-axis spindle center\n" +
+                "         position.\n" +
+                "       3)In YS axis carriage return positioning specification,\n" +
+                "         Y-axis mode ON/OFF is performed. \n" +
+                "         Or, in order that present YS axis place results in a\n" +
+                "         carriage return place, YS axis carriage return place\n" +
+                "         is modified.");
+
+        ExampleItem ADAPTIVE_CONTROL_COMMUNICATION_ERROR = new ExampleItem("1328", "ADAPTIVE CONTROL COMMUNICATION ERROR",
+                "An abnormality occurred during communication in adaptive\n" +
+                        "       control mode.\n" +
+                        "       [Code]XYYZZ\n" +
+                        "       X:\n" +
+                        "        0->Error code of four or less digits\n" +
+                        "         YYZZ: Adaptive control communication error number\n" +
+                        "        1->Open command ended abnormally.\n" +
+                        "       YY: Error code\n" +
+                        "       ZZ: Detailed error code\n" +
+                        "          If YY=ZZ=0, the open command failed to end within a\n" +
+                        "       \t       preset period of time.\n" +
+                        "        2->Forced close was not completed within a preset period\n" +
+                        "           of time");
+
+        ExampleItem SHIFT_AMOUNT_ERROR = new ExampleItem("1329", "SHIFT AMOUNT ERROR",
+                "The shift amount is unsuitable.\n" +
+                        "       [Code]\n" +
+                        "       1->The shift amount is not 0 although shift amount is not\n" +
+                        "          overlapped.\n" +
+                        "       2->The CON value fell to a negative value after addition\n" +
+                        "          of shift amount.\n" +
+                        "       3->The CON value exceeded the plus variable limit after\n" +
+                        "          addition of shift amount.\n" +
+                        "       4->The CON value exceeded the minus variable limit after\n" +
+                        "          addition of shift amount.\n" +
+                        "       5->The shift amount does not solidarity in the anticus\n" +
+                        "          which turns a shift amount into a fixation state and \n" +
+                        "          posterior.");
+
+        ExampleItem SPINDLE_BELT_SLIP = new ExampleItem("1332", "SPINDLE BELT SLIP",
+                "On the machine with the function for detecting spindle\n" +
+                        "       belt slip, belt slip was detected.\n" +
+                        "       [Code]\n" +
+                        "       1->The number of revolution ratio set (at the parameter)\n" +
+                        "          as a criterion for detecting belt slip continued for\n" +
+                        "          the time also set (at the parameter) as the belt slip\n" +
+                        "          detection time.");
+
+        ExampleItem APA_ILLEGAL = new ExampleItem("1334", "APA ILLEGAL",
+                "It was detected that a present-position of MCS differs\n" +
+                        "       from a position-order of NC.\n" +
+                        "       Please contact to OKUMA, after copying the buffering-data\n" +
+                        "       of NC-axis to FD by the attachment-document.");
+
+        ExampleItem LOAD_MONITOR_W_OVER_LOAD = new ExampleItem("1338", "LOAD MONITOR W OVER LOAD",
+                "While the load monitor W function is activated, the load\n" +
+                        "       ratio of X-axis/Z-axis or Z-axis/X-axis exceeds the limit\n" +
+                        "       value. In the automatic mode, each of the programmed\n" +
+                        "       monitoring sections is controlled by the limit value S.\n" +
+                        "       The value obtained by the following formula exceeded the\n" +
+                        "       limit value S.\n" +
+                        "       VWMON[*]=1 (Z-axis torque command value/X-axis torque\n" +
+                        "       command value)*100 (%)\n" +
+                        "       VWMON[*]=1 (X-axis torque command value/Z-axis torque\n" +
+                        "       command value)*100 (%)\n" +
+                        "       [Object]SYSTEM, AXIS\n" +
+                        "       [Code]Load monitor W supervising part No. in hexadecimal");
+
+        ExampleItem DOOR_INTERLOCK_RESET = new ExampleItem("1339", "DOOR INTERLOCK RESET",
+                "On the machine intended for CE marking, when the state of\n" +
+                        "       servo off by door-open returned to the state of servo on\n" +
+                        "       by door-close, the following conditions are not met.\n" +
+                        "       1)In C-axis control, the position of Main spindle  is at\n" +
+                        "         least 0.36 (equivalent to 0.5mm) away from the switch\n" +
+                        "         OFF position.\n" +
+                        "       2)The spindle or M-tool spindle in the state of synchronized\n" +
+                        "         rotation, or flat turning is at least 0.36 (equivalent to\n" +
+                        "         0.5mm) away from the switch OFF position.\n" +
+                        "       [Object]SYSTEM, M-TOOL SPINDLE");
+
+        ExampleItem G21_IMPOSSIBLE = new ExampleItem("1345", "G21 IMPOSSIBLE",
+                "Axis movement to the tool change position G21 is issued\n" +
+                        "       without satisfying the conditions for executing the command. \n" +
+                        "       (G21 command is also issued in execution of ATC macro\n" +
+                        "       command G171 and M321.)\n" +
+                        "       [Code]X\n" +
+                        "       1->There are not a present place at the time of an\n" +
+                        "          instruction of G21 HP=1,2,3 and the translocation target\n" +
+                        "          place which has set on system parameter within movable\n" +
+                        "          range limit 1. Or,a turret index state has resulted in \n" +
+                        "          the following state.\n" +
+                        "        HP=1 .... Turret is not indexed to ATC position.\n" +
+                        "       \t   LB15II/LB35II-MATC-Y Turret T2-T4 T6-T8\n" +
+                        "       \t   LU45-MATC-Y Turret T2\n" +
+                        "       \t   MacTurn Turret T1\n" +
+                        "        HP=2 .... Turret is not indexed to ATC position .\n" +
+                        "       \t   LB15II/LB35II-MATC-Y Turret T5\n" +
+                        "       \t   LU45-MATC-Y turret T3\n" +
+                        "       \t   MacTurn Turret T3\n" +
+                        "        HP=3 .... T1 is not indexed to ATC position \n" +
+                        "       \t   on LB15II/LB35II-M\n" +
+                        "       \t   ATC-Y and LU45-MATC-Y turret.\n" +
+                        "       3->G21 was issued without opening the shutter.\n" +
+                        "       5->There is not the translocation target place that there\n" +
+                        "          are not a present place at the time of G21 HP=4,5\n" +
+                        "          instructions and the translocation target place which\n" +
+                        "          has set on system parameter within movable range limit\n" +
+                        "          1 within stroke end limit.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)There is an error in tool change position data or working\n" +
+                        "         range limit 1 setting data. The G21 HP=* command was \n" +
+                        "         given after correcting only the tool change position\n" +
+                        "         data or working range limit 1 setting data.\n" +
+                        "       2)With HP = 1, the L-tool mounted station is indexed to\n" +
+                        "         the tool change position. With HP = 2, the facing tool \n" +
+                        "         mounted station is indexed to the tool change position.\n" +
+                        "         (With MacTurn,M-tool mounted station is indexed to the\n" +
+                        "          tool change position.)\n" +
+                        "         With HP = 3,side machining tool is indexed to the tool\n" +
+                        "         change position.\n" +
+                        "         If the turret station having the tool type corresponding\n" +
+                        "         to G21 HP=* is not indexed to the ATC position, this\n" +
+                        "         alarm occurs.\n" +
+                        "         Satisfy the turret indexing conditions before issuing\n" +
+                        "         G21 HP=* command.\n" +
+                        "       3)G21 HP=* command cannot be issued without opening the\n" +
+                        "         shutter Issue the shutter open command before issuing \n" +
+                        "         G21 HP=* command.");
+
+        ExampleItem STM_TIME_OVER = new ExampleItem("1347", "STM TIME OVER",
+                "The STM operation time exceeded the parameter-set time.\n" +
+                        "       [Parameter] OPTIONAL PARAMETER (CYCLE TIME OVER CHECK)\n" +
+                        "       \t     STM time over timer (0.1s)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Parameter-set time in hexadecimal\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The NC received no answer to the STM command being\n" +
+                        "         executed when this alarm occurred.\n" +
+                        "       Program Example:\n" +
+                        "          :\n" +
+                        "         M03 M42 S1000 T0303\n" +
+                        "          :\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Display the check screen to see if the input signal is\n" +
+                        "         sent in answer to the STM command executed on occurrence\n" +
+                        "         of the alarm. If two or more commands are given, give\n" +
+                        "         the commands one by one in MDI operation to find out\n" +
+                        "         which STM command causes the alarm.\n" +
+                        "       2)If \"0\" is set at the OPTIONAL PARAMETER (CYCLE TIME OVER\n" +
+                        "         CHECK) Cycle/STM time over alarm level,\n" +
+                        "         the alarm B 2295 STM time over occurs instead of this \n" +
+                        "         alarm.");
+
+        ExampleItem CYCLE_TIME_OVER = new ExampleItem("1348", "CYCLE TIME OVER",
+                "One cycle time (from start to M02 or M30) exceeded the\n" +
+                        "       parameter-set time.\n" +
+                        "       [Parameter]\n" +
+                        "       OPTIONAL PARAMETER (CYCLE TIME OVER CHECK)\n" +
+                        "        Cycle time over timer (s)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The part program has a long machining time. Or, the part\n" +
+                        "         program failed to end because a programmed operation was\n" +
+                        "         not completed.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Review the machining time in the part program or check\n" +
+                        "         the machining operations.\n" +
+                        "       2)if \"0\" is set at the OPTIONAL PARAMETER (CYCLE TIME OVER\n" +
+                        "         CHECK) Cycle/STM time over alarm level.\n" +
+                        "         the alarm C 3206 Cycle time over occurs instead of this\n" +
+                        "         alarm.");
+
+        ExampleItem CONTOUR_GENERATION_IMPOSSIBLE = new ExampleItem("1349", "CONTOUR GENERATION IMPOSSIBLE",
+                "After locating the X-axis in a negative position by G00\n" +
+                        "       or G01 command with X-C coordinates, contour generation\n" +
+                        "       was commanded. Or, the contour generation command includes\n" +
+                        "       a negative X-axis value.");
+
+        ExampleItem MEASUREMENT_SYSTEM_ERROR = new ExampleItem("1353", "MEASUREMENT SYSTEM ERROR",
+                "Concerning the optical measure within a machine specification,\n" +
+                        "       ERROR signal changed on ON -> OFF in G30 cyclic practices.\n" +
+                        "       When a power supply of an optical measure within a machine\n" +
+                        "       sensor was turned on by a manually operated operational\n" +
+                        "       mode condition, ERROR signal became \"OFF\".");
+
+        ExampleItem TOW_ALONG_STEADY_REST_CONNECT = new ExampleItem("1355", "TOW ALONG STEADY REST CONNECT",
+                "[Code]\n" +
+                        "       1->Traverse Command is issued when engaged code is on.\n" +
+                        "          Measures: Issue traverse command through Pulse Handle.\n" +
+                        "       2->G00, G01, G03, G31, G32, G33, G34, or G35 is issued\n" +
+                        "          during Automatic Tow-Along Steady Rest engaging cycle.\n" +
+                        "       3->Traverse Command, Not ZA-Traverse Command, is issued\n" +
+                        "          during Automatic Tow-Along Steady Rest engaging cycle.\n" +
+                        "       4->While automatic Tow-Along Steady Rest is connection mode,\n" +
+                        "          axis command of the negative direction from parameter\n" +
+                        "          set deta was designated.\n" +
+                        "       5->While automatic Tow-Along Steady Rest is connection\n" +
+                        "          mode and a touch setter was not a retract position,\n" +
+                        "          axis command of the negative direction from parameter\n" +
+                        "          set data was designated.\n" +
+                        "       [ Measures to take ]\n" +
+                        "       1->During a Steady Rest connection mode, axis movement is\n" +
+                        "          only possible by pulse handle.");
+
+        ExampleItem STEADY_REST_TORQUE_OVER = new ExampleItem("1356", "STEADY REST TORQUE OVER",
+                "[Code]\n" +
+                        "       1->The state where the actual torque is larger than 70%\n" +
+                        "          of ZA-axis servomotor rating continued for 0.1s or over.\n" +
+                        "       (Movement of steady rest was attempted while the steady\n" +
+                        "        rest lower base was clamped.)");
+
+        ExampleItem POSITIONING_UNCERTAIN = new ExampleItem("1357", "POSITIONING UNCERTAIN",
+                "The input signal notifying that positioning of the spring\n" +
+                        "       alignment tool is not confirmed went OFF.");
+
+        ExampleItem NC_TAILSTOCK_ADVANCE_ERROR = new ExampleItem("1367", "NC TAILSTOCK ADVANCE ERROR",
+                "Out advance of the NC tailstock.\n" +
+                        "       Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       out advance of the NC tailstock.\n" +
+                        "       Concerning W axis Cut-tailstock Control specification,\n" +
+                        "       out advance of the NC tailstock.\n" +
+                        "       [Code]\n" +
+                        "       1->When the command position(CON)does not reach the\n" +
+                        "          command torque before entering the sizing position\n" +
+                        "          area1,the command torque is generated within the\n" +
+                        "          tailstock quill expand/shrink Time.\n" +
+                        "       2->The torque higher than the set thrust is generated\n" +
+                        "          when the current position(APA) is moved to the +side\n" +
+                        "          viewed from the sizing position area2.\n" +
+                        "          the tailstock to the sizing position was ordered before \n" +
+                        "          more than  the approach position.\n" +
+                        "       3->The toraue exceeding the threshold is generated\n" +
+                        "          when the tailstock moves or the time constant(T1+T2)*\n" +
+                        "          1.25+48 msec from the approach position or movement\n" +
+                        "          start position.\n" +
+                        "       4->The current position is not within the sizing position\n" +
+                        "          area while the tailstock is in sizing position status.\n" +
+                        "       5->The torque higher than the set thrust is generated\n" +
+                        "          after lower.\n" +
+                        "       6->The torrue over for the ball screw Inertia.\n" +
+                        "       7->Real thrust is outside the tolerance of the instruction\n" +
+                        "          thrust.\n" +
+                        "       8->Difference between sizing position and current position\n" +
+                        "          values has exceeded the allowable limit.\n" +
+                        "       9->When the tailstock wasn't in A position,\n" +
+                        "          the sizing command in position B was ordered.\n" +
+                        "       10->The motor torque came off from the threshold\n" +
+                        "           by 'work position state'.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       A workpiece shorter than the required one is mounted.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Re-positon the tailstock closer to the workpiece.");
+
+        ExampleItem CUTTING_ERROR = new ExampleItem("1376", "CUTTING ERROR",
+                "The load detected by the non-load detection function is\n" +
+                "       lower than the 2nd lower limit continuously for a preset\n" +
+                "       length of time.\n" +
+                "       The length of time and the 2nd lower limit value are set\n" +
+                "       for the following parameters.\n" +
+                "       Optional parameter (LOAD MONITOR 2)\n" +
+                "        Low load alarm duration\n" +
+                "        2st lower limit automatic setting para.\n" +
+                "       [Probable Faulty Locations]\n" +
+                "       Damaged tool tip\n" +
+                "       [Measures to take]\n" +
+                "       Change tool chip\n" +
+                "       [Related Specifications]\n" +
+                "       Non load detection function");
+
+        ExampleItem TOW_ALONG_STEADY_REST_INTERFERENCE_POSITION = new ExampleItem("1393", "TOW-ALONG STEADY REST INTERFERENCE POSITION",
+                "[Code]\n" +
+                        "       None->Programmable tailstock (Tow-Along type, NC tailstock\n" +
+                        "             type) was moved on interference position with\n" +
+                        "             Tow-Along Steady Rest.\n" +
+                        "       1->Designated Tow-Along Steady Rest command is on\n" +
+                        "          interference position with Tow-Along tailstock.\n" +
+                        "       [Measures to take]\n" +
+                        "       Check programmable tailstock command(G152)");
+
+        ExampleItem HOME_POSITION_MOVEMENT_INTERLOCK = new ExampleItem("1412", "HOME POSITION MOVEMENT INTERLOCK",
+                "It performed a home position command to HP1, HP2 in main\n" +
+                        "       spindle rotation.\n" +
+                        "       Or, when turret had not divided the turret-number that\n" +
+                        "       the loader could approach, the command of moving\n" +
+                        "       home-position from the loader was performed.\n" +
+                        "       [Code]\n" +
+                        "       1->Main spindle did not hang-up.\n" +
+                        "       2->There was not turret in the position that loader could\n" +
+                        "          approach.\n" +
+                        "       [Measures to take]\n" +
+                        "       1)It performs a home position command in a Main spindle \n" +
+                        "         stop.\n" +
+                        "       2)Divide turret in the position that loader could approach.");
+
+        ExampleItem BARRIER_AREA = new ExampleItem("1426", "BARRIER AREA",
+                "Axis entered into a barrier area.\n" +
+                        "       [Code]\n" +
+                        "       1->Concerning MacTurn30, axis entered into a barrier area\n" +
+                        "          by axis movement of X-Y plane in Y-axis mode(in G138\n" +
+                        "          command).\n" +
+                        "       3->In the spec of Sub-Spindle Unit Barria, axis move to\n" +
+                        "          the barrier area. The interference range is set \n" +
+                        "          by the next screen\n" +
+                        "            \"OPTIONAL PARAMETER Y-axis BARRIER\"  (NO.4-6)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Barrier area boundary is located on a point that added\n" +
+                        "          barrier length set data added minus stroke end limit\n" +
+                        "          position data.\n" +
+                        "          Axis entered into a barrier area beyond boundary.\n" +
+                        "          By manual jog feed, please move axis out from a barrier\n" +
+                        "          area.\n" +
+                        "       Barrier length set data\n" +
+                        "       X-axis: optional parameter long word No.66(It is Radius)\n" +
+                        "       Y-axis: optional parameter long word No.67\n" +
+                        "       Z-axis: optional parameter long word No.68");
+
+        ExampleItem SAFETY_SPEED_OVER = new ExampleItem("1431", "SAFETY SPEED OVER",
+                "Concering velocity supervision automatic formatting\n" +
+                        "       on the side of NC, Axis-speed surpassed a safety speed\n" +
+                        "       for the speed supervision which has set by data file for\n" +
+                        "       Safety-Speed-Monitor.\n" +
+                        "       [Object]Axis\n" +
+                        "       [Code]X\n" +
+                        "       1->Concering velocity supervision automatic formatting\n" +
+                        "          on the side of NC, Axis-speed surpassed a safety speed\n" +
+                        "          for the speed supervision which has set by data file\n" +
+                        "          for Safety-Speed-Monitor.\n" +
+                        "       [Probable Faulty Location]\n" +
+                        "       NC software\n" +
+                        "       Data file for Safety-Speed-Monitor");
+
+        ExampleItem SAFETY_MONITOR_ERROR_DETECTION = new ExampleItem("1432", "SAFETY MONITOR ERROR DETECTION",
+                "Safety monitor detected speed-over.\n" +
+                        "       Or, By some cause, it resulted in the state as errar signal\n" +
+                        "       turned on.\n" +
+                        "       [Code]Corresponding guard number\n" +
+                        "       [Probable Faulty Location]\n" +
+                        "       Safety monitor\n" +
+                        "       NC software\n" +
+                        "       Data file for Safety monitor");
+
+        ExampleItem TURRET_INTERFERANCE = new ExampleItem("1435", "TURRET INTERFERANCE",
+                "The ZB-axis has moved to a position shorter than the preset\n" +
+                "       ZB-axis work transfer point under the new LT control,\n" +
+                "       while the B-turret is not indexed to the station number\n" +
+                "       specified by T1 or parameter.\n" +
+                "       [Probable Faulty Locations]\n" +
+                "       1)Parameter-Setting error\n" +
+                "       2)Operation/Program error\n" +
+                "       [Parameter]\n" +
+                "       Parameter Word No.64");
+
+        ExampleItem START_UP_APA_DEVIATION = new ExampleItem("1436", "START UP APA DEVIATION",
+                "After a power supply input, APA deviation became excessive\n" +
+                        "       at the time of power sequent execution.\n" +
+                        "       Or, the value of detector coupling compenzation was not\n" +
+                        "       set in ABSO-SCALE specification.\n" +
+                        "       [Object] AXIS\n" +
+                        "       [Probable Faulty Location]\n" +
+                        "       NC Software\n" +
+                        "       Value of detector coupling compenzation (System Parameter)");
+
+        ExampleItem STEADY_REST_TAILSTOCK_INTERLOCK = new ExampleItem("1440", "STEADY REST-TAILSTOCK INTERLOCK",
+                "[Code]\n" +
+                        "        1->A position command of programable tailstock is over\n" +
+                        "           than maximum distance of a steady rest and a tailstock.\n" +
+                        "        2->A position command of programable tailstock is less\n" +
+                        "           than minimum distance of a steady rest and a tailstock.\n" +
+                        "        3->The Steady rest movement command exceeded Maximum\n" +
+                        "           distance between the Steady rest and the Tailstock.\n" +
+                        "        4->The Steady rest movement command exceeded Minimum\n" +
+                        "           distance between the Steady rest and the Tailstock.\n" +
+                        "        5->It started moving to the position in which it interfered\n" +
+                        "           with Steady rest and Tailstock.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Please turn the instruction-position on a right value.");
+
+        ExampleItem SAFETY_SPEED_CLAMP = new ExampleItem("1441", "SAFETY SPEED CLAMP",
+                "The feed rate of C-axis was about to surpass a\n" +
+                        "       restrictive value at the time of G102 or G103 command\n" +
+                        "       execution by the state which an object guard of\n" +
+                        "       Main-spindle opened.\n" +
+                        "       [Code]X\n" +
+                        "       1->At the time of G102 or G103 command execution, the\n" +
+                        "          feed rate of C-axis was about to surpass a restrictive\n" +
+                        "          value.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Please close an object guard of Main-spindle.");
+
+        ExampleItem HEAVY_WORK_DATA_NOT_FOUND = new ExampleItem("1453", "HEAVY WORK DATA NOT FOUND",
+                "There are not \"Heavy Work DATA\" that selected by the\n" +
+                        "       parameter in axis-data-file.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Axis data file");
+
+        ExampleItem TEMP_RISE_LIMIT_OVER = new ExampleItem("1460", "TEMP RISE LIMIT OVER",
+                "Temperature rise value has exceeded the limit value.\n" +
+                        "       [Character-String]None\n" +
+                        "       [Code]XYY\n" +
+                        "       X=0->Temperature rise value has exceeded the limit value.\n" +
+                        "       X=1->Thermal deviation compensation parameter A has not\n" +
+                        "            been set.\n" +
+                        "       YY->Thermal deviation number, or block number of\n" +
+                        "           compensation parameter A\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Measured temperature\n" +
+                        "       2)Thermal deviation compensation parameter");
+
+        ExampleItem SPINDLE_WENT_INTO_TRANSPORTATION_BARRIER = new ExampleItem("1463", "SPINDLE WENT INTO TRANSPORTATION BARRIER",
+                "Spindle entered into a barrier-area that set by the\n" +
+                        "       parameter of work transportation barrier data.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program erro");
+
+        ExampleItem SPINDLE_LOW_ACCELERATION_MODE_CONDITION = new ExampleItem("1465", "SPINDLE LOW ACCELERATION MODE CONDITION",
+                "M671 or M672 command was issued while the spindle\n" +
+                        "       was not stopped.\n" +
+                        "       [Object] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None");
+
+        ExampleItem HOB_CUTTING_OVER_LOAD = new ExampleItem("1466", "HOB CUTTING OVER LOAD",
+                "Spindle,M-spindle,Y-axis had big DIFF value during HOB\n" +
+                        "       cutting.\n" +
+                        "       [CODE]\n" +
+                        "       1->Main spindle or Sub spindle DIFF over\n" +
+                        "       2->MA-axis or MB-axis DIFF over\n" +
+                        "       3->Monitoring-axis(XA-axis or YB-axis) DIFF over\n" +
+                        "       4->Main spindle or Sub spindle over load\n" +
+                        "       5->MA-axis or MB-axis over load");
+
+        ExampleItem POSITION_SCALE_ABNORMAL_XS_AXIS = new ExampleItem("1467", "POSITION SCALE ABNORMAL XS AXIS",
+                "he Xs-axis(cam-axis) position encoder(optical scale)\n" +
+                        "       is faulty.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty optical scale or pulse sinnal unit\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace the faulty scale unit.\n" +
+                        "       [Note]\n" +
+                        "       This alarm can be cleared by reseting the NC.");
+
+        ExampleItem SERVO_AMP_ABNORMAL_XS_AXIS = new ExampleItem("1468", "SERVO AMP ABNORMAL XS AXIS",
+                "The Xs-axis(cam-axis) servo controller is faulty.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty servo controller(fuse blown)\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace the unit(change the fuse).\n" +
+                        "       [Note]\n" +
+                        "       The alarm state can be cleared by turning off the power\n" +
+                        "       and turn it back on again.");
+
+        ExampleItem APA_VEROCITY_XS_AXIS = new ExampleItem("1469", "APA VEROCITY XS AXIS",
+                "Actual position velocity of Xs-axis exceeds 15 m/min.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]Hexadecimal of APA velocity(unit:0.2 um/s)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty position encoder.\n" +
+                        "       The command given in the synchronization mode is too large.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the position encoder.\n" +
+                        "       Review the cutting condition such as cam profit and\n" +
+                        "       spindle speed.");
+
+        ExampleItem APA_RANGE_XS_AXIS = new ExampleItem("1470", "APA RANGE XS AXIS",
+                "Actual position reachea the soft-limit during\n" +
+                        "       synchronization operation (in other than learning).\n" +
+                        "       During learning operation, actual position data exceeds\n" +
+                        "       the value which is the sum of the maximum position command\n" +
+                        "       value and the parameter setting (XS AXIS SYATEM PARAMETER \n" +
+                        "       NO.6) or becomes smaller than the value which is the \n" +
+                        "       difference between the minimum position command value and\n" +
+                        "       the parameter setting (XS AXIS SYATEM PARAMETER NO.6).\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1->The actual position data exceeds the allowable range\n" +
+                        "          in the positive direction.\n" +
+                        "       2->The actual position data is smaller than the smallest\n" +
+                        "          limit of the allowable range in the negative direction.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The command given in the synchronization mode is too large.\n" +
+                        "       The compensation data exceeds the proper amount during\n" +
+                        "       lerning operation.\n" +
+                        "       Faulty position encoder.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the cutting conditions.\n" +
+                        "       Review the setting of the learning operation monitoring\n" +
+                        "       parameter (XS AXIS LEARNING CONTROL PARAMETER No.6).\n" +
+                        "       Check the position encoder.");
+
+        ExampleItem CON_VEROSITY_XS_AXIS = new ExampleItem("1471", "CON VEROSITY XS AXIS",
+                "When the Xs-axis(cam-axis) machining data and the\n" +
+                        "       compensation data are calculated and set to the memory,\n" +
+                        "       the spindle exceeds the allowable limit.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]Hexademical of the allowable spindle speed\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The spindle speed designated optionally for developing\n" +
+                        "       the profile is too large.\n" +
+                        "       The major diameter or cam lift amount designated to\n" +
+                        "       define the cam profile is too large.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the spindle speed designated optionally for\n" +
+                        "       developing the profile.\n" +
+                        "       Review the cam profile definition file.");
+
+        ExampleItem STROKE_END_OVER_XS_AXIS = new ExampleItem("1472", "STROKE END OVER XS AXIS",
+                "The Xs-axis(cam-axis) reaches the travel end.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1->Emergency limit in the positive direction\n" +
+                        "       2->Emergency limit in the negative direction\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The Xs-axis soft-limit is set outside the range defined\n" +
+                        "       by the travel limit to be detected by the limit switch.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Select the manual mode and reset the NC while pressing\n" +
+                        "         the Xs-axis emergency limit release button provide at\n" +
+                        "         the side of the operation panel to clear the alarm state.\n" +
+                        "       2)Press the Xs-axis fog button while holding down the\n" +
+                        "         Xs-axis emergency limit release button.\n" +
+                        "         The Xs-axis is automatically positioned inside the\n" +
+                        "         allowable travel range.\n" +
+                        "       3)Set the soft-limits correctly.");
+
+        ExampleItem ACTUAL_POSITION_INITIALIZE_ERROR_XS_AXIS = new ExampleItem("1473", "ACTUAL POSITION INITIALIZE ERROR XS AXIS",
+                "Xs-axis(cam-axis) has not returned to the zero point\n" +
+                        "       correctly.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1->The Xs-axis fails to enter the zero return zone.\n" +
+                        "       2->The zero point is not found.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The zero return range signal and the zero return signal\n" +
+                        "       are not input.\n" +
+                        "       Faulty optical scale or pulse signal unit.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the input of the zero return range signal and the\n" +
+                        "       zero point signal.");
+
+        ExampleItem LEARNING_CONTROL_ERROR_XS_AXIS = new ExampleItem("1474", "LEARNING CONTROL ERROR XS AXIS",
+                "Any of the following errors occurred during learning\n" +
+                        "       control mode.\n" +
+                        "       - The learning command is given while in asynchronization\n" +
+                        "         control mode.\n" +
+                        "       - Learning does not finish within the set learing quit\n" +
+                        "         time (XS AXIS LEARNING CONTROL PARAMETER No.5).\n" +
+                        "       - Overflow of the compensation value to be obtained in\n" +
+                        "         the learning control mode.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "        1->This error does not occur usually.\n" +
+                        "        2->Illegal parameter setting value.\n" +
+                        "        3->This error does not occur usually.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1->Learning command given during asynchronous control mode.\n" +
+                        "        2->Learning time over.\n" +
+                        "        3->Compensation value overflow.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Set a large value for learning quit time\n" +
+                        "          (XS AXIS LEARNING CONTROL PARAMETER No.5).");
+
+        ExampleItem CAM_EXECUTE_DATA_NOT_SELECT_XS_AXIS = new ExampleItem("1475", "CAM EXECUTE DATA NOT SELECT XS AXIS",
+                "When the synchronization command is designated, the cutting\n" +
+                        "       data has not been transferred to the PSC board.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Synchronization mode A ... Program error (entry to the\n" +
+                        "       \t\t\t   synchronization mode a is\n" +
+                        "       \t\t\t   designated without the FCALL\n" +
+                        "       \t\t\t   command.)\n" +
+                        "       Synchronization mode B ... Operator's error (entry to the\n" +
+                        "       \t\t\t   synchronization mode a is\n" +
+                        "       \t\t\t   designated without loading the\n" +
+                        "       \t\t\t   files.)\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the program.\n" +
+                        "       Load the first by displaying the CAM EXECUTE PARAMETER\n" +
+                        "       screen.");
+
+        ExampleItem LEARNING_CONTROL_COMMAND_XS_AXIS = new ExampleItem("1476", "LEARNING CONTROL COMMAND XS AXIS",
+                "The learning control commands is designated while the\n" +
+                        "       control mode is not the synchronization mode.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the program.");
+
+        ExampleItem SYNCHRONOUS_MODE_COMMAND = new ExampleItem("1477", "SYNCHRONOUS MODE COMMAND",
+                "The synchronous mode operation command is designated\n" +
+                        "       while spindle rotation command has not been designated.\n" +
+                        "       The synchronous operation start command is designated in\n" +
+                        "       the MDI mode.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1->The synchronous mode operation command is designated\n" +
+                        "          while spindle rotation command has not been designated.\n" +
+                        "       2->The synchronous operation start command is designated\n" +
+                        "          in the MDI mode.\n" +
+                        "       4->The different synchronous operation start command was\n" +
+                        "          executed while synchronously operation.\n" +
+                        "       5->The synchronous operation start command was executed\n" +
+                        "          though the cam processing data is a unforwarding.\n" +
+                        "       6->The synchronous operation start command was executed while\n" +
+                        "          controlling the spindle speed variation.\n" +
+                        "       7->The spindle speed variation control command was executed\n" +
+                        "          while synchronously operation.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1->Program error\n" +
+                        "       2->Operator's error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the program.");
+
+        ExampleItem CHUCK_COORDINATES_UNMATCH = new ExampleItem("1478", "CHUCK COORDINATES UNMATCH",
+                "ACC coordinates (Cutting Station or Select Station) is not\n" +
+                        "       corresponding.\n" +
+                        "       [Object] Turret\n" +
+                        "       01:A-turret\n" +
+                        "       02:B-turret\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] X\n" +
+                        "       X=1->The axis movement instruction was executed, while chuck\n" +
+                        "            Coordinate system and Cutting Station chuck was not\n" +
+                        "            corresponding.\n" +
+                        "       X=2->The executed coordinate system instruction was not\n" +
+                        "            corresponding in Cutting Station chuck.\n" +
+                        "       X=3->The system variable (Origin Offset, Origin Shift, Chuck)\n" +
+                        "            instruction was executed, while chuck Coordinate system\n" +
+                        "            and Cutting Station chuck was not corresponding.\n" +
+                        "       [Related Specifications]\n" +
+                        "       ACC Specification");
+
+        ExampleItem PSCB_COMMAND_ERROR = new ExampleItem("1479", "PSCB COMMAND ERROR",
+                "More than one command is sent simultaneously to the PSC\n" +
+                        "       board. This error does not occur usually.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None");
+
+        ExampleItem DIFF_OVER_XS_AXIS = new ExampleItem("1480", "DIFF OVER XS AXIS",
+                "Follow-up error of the Xs-axis(cam-axis) exceeds the\n" +
+                        "       allowable limit.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]Hexadecimal of follow-up error(units:0.2 us)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Mechanical ploblems such as large slide resistance and\n" +
+                        "       collision of the turret.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Remove the cause of the mechanical ploblems and reduse\n" +
+                        "       slide resistance.");
+
+        ExampleItem DRIFTCOMPENSATION_VALUE_OVER = new ExampleItem("1481", "DRIFTCOMPENSATION VALUE OVER",
+                "he drift compensation value of the Xs-axis(cam-axis)\n" +
+                        "       exceeds the allowable limit.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal of drift compensation value (units:0.2 um)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       D/A gain adjusting error with the PSC board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Adjust the D/A gain of the PSC board.");
+
+        ExampleItem PSCB_REAL_TIME_TASK_ERROR = new ExampleItem("1482", "PSCB REAL TIME TASK ERROR",
+                "Real time task control is not impossible with the PSC \n" +
+                        "       board.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty PSC board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace the PSC board.");
+
+        ExampleItem PSCB_INT_TASK_LOOP_ERROR = new ExampleItem("1483", "PSCB INT TASK LOOP ERROR",
+                "The INT task loop error occured with the PSC board.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       Program counter of the program block involved with the\n" +
+                        "       loop error.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty PSC board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace the PSC board.");
+
+        ExampleItem PSCB_EC_TASK_LOOP_ERROR = new ExampleItem("1484", "PSCB EC TASK LOOP ERROR",
+                "Before the currently EC task is completed, the task is\n" +
+                        "       going to be started.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty PSC board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace the PSC board.");
+
+        ExampleItem PSCB_TIME_SHARING_TASK_ERROR = new ExampleItem("1485", "PSCB TIME SHARING TASK ERROR",
+                "Time sharing task control is not impossible with the PSC\n" +
+                        "       board.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty PSC board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace the PSC board.");
+
+        ExampleItem 	PSCB_EXCEPTION_ERROR = new ExampleItem("1486", "PSCB EXCEPTION ERROR",
+                "Abnormal exception occurred with the PSC board.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty PSC board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace the PSC board.");
+
+        ExampleItem PSCB_MEMORY_TEST_ERROR = new ExampleItem("1487", "PSCB MEMORY TEST ERROR",
+                "The memory of the PSC board does not work normally.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty PSC board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Replace the PSC board.");
+
+        ExampleItem PSCB_OVER_HEAT = new ExampleItem("1488", "PSCB OVER HEAT",
+                "Overheat of the cam-axis drive motor or the servo \n" +
+                        "       amplifier.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Motor ... The thermal protector is tripped due to \n" +
+                        "       \t  overcurrent.\n" +
+                        "       Servo amplifier ... The heat sink is overheated.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Turn off the power once and then turn it on after several\n" +
+                        "       10min.");
+
+        ExampleItem FIRST_TIME_DRIFT_COMPENSATION_VALUE_OVER = new ExampleItem("1489", "FIRST TIME DRIFT COMPENSATION VALUE OVER",
+                "The first drift compensation value of the Xs-axis(cam-axis)\n" +
+                        "       exceeded the allowable limit.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]Hexadecimal of drift compensation value(units: 0.2um)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       D/A gain adjusting error with the PSC board.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Adjust the D/A gain of the PSC board.");
+
+        ExampleItem SYNCHRONOUS_MODE_SPINDLE_SPEED_COMMAND = new ExampleItem("1490", "SYNCHRONOUS MODE SPINDLE SPEED COMMAND",
+                "When the synchronous mode is entered, the spindle speed\n" +
+                        "       in the cam execute data and the programmed spindle speed\n" +
+                        "       do not agree with each other.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal of the spindle speed in the cam execute data\n" +
+                        "       and the programmed spindle speed do not agree with each\n" +
+                        "       other.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The programmed spindle speed differs from the one used in\n" +
+                        "       the learning control.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the spindle speed.\n" +
+                        "       Carry out the learning control again.");
+
+        ExampleItem HEAVY_TOOLING_DATA_NOT_FOUND = new ExampleItem("1491", "HEAVY TOOLING DATA NOT FOUND",
+                "In the spec of Heavy Tooling, there  are not\n" +
+                        "       \"Heavy Tooling DATA\" that selected by the parameter in\n" +
+                        "       axis-data-file.\n" +
+                        "       [Object]TURRET\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Axis data file");
+
+        ExampleItem PSCB_PG_UNDER_PULSE = new ExampleItem("1492", "PSCB P.G. UNDER PULSE", " ");
+
+        ExampleItem PSCB_PG_OVER_PULSE = new ExampleItem("1493", "PSCBP.G. OVER PULSE", " ");
+
+        ExampleItem PSCB_MINUS_STROKE_END_OVER = new ExampleItem("1494", "PSCB MINUS STROKE END OVER", " ");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
 
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
@@ -4197,6 +5950,271 @@ public class AlarmList {
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
 
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
 
 
 // ------------------------------------------------------------------------------------------------------------------------------//
