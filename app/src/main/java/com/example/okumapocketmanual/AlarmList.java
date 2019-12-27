@@ -2014,7 +2014,7 @@ public class AlarmList {
                         "       For other files in MD0:, select the OS mode to release the\n" +
                         "       protect state.");
 
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("0410", "SYSTEM GENERATE",
+        ExampleItem SYSTEM_GENERATE_410 = new ExampleItem("0410", "SYSTEM GENERATE",
                 "A wrong file is specified by the system program registration\n" +
                         "       (SG) command.\n" +
                         "       [Character-string] None\n" +
@@ -2032,14 +2032,14 @@ public class AlarmList {
 
 //------------------------------------1071_1951-------------------------------------------------------------------------
 
-        ExampleItem MEMORY_BOARD_BATTERY_HURRY_EXCHANGE = new ExampleItem("1071", "MEMORY BOARD BATTERY HURRY EXCHANGE",
+        ExampleItem MEMORY_BOARD_BATTERY_HURRY_EXCHANGE = new ExampleItem("1071  ALARM-A", "MEMORY BOARD BATTERY HURRY EXCHANGE",
                 "The memory board battery has finished its service life.\n" +
                         "       [Probable Faulty Locations]\n" +
                         "        Battery in the memory board\n" +
                         "       [Measures to Take]\n" +
                         "        Replace the battery in the memory board.");
 
-        ExampleItem PLC_ALARM_No_ILLEGAL = new ExampleItem("1089", "PLC ALARM No. ILLEGAL",
+        ExampleItem PLC_ALARM_No_ILLEGAL = new ExampleItem("1089  ALARM-A", "PLC ALARM No. ILLEGAL",
                 "The PLC requested an alarm number outside the setting\n" +
                         "       range.\n" +
                         "       [Code]XYYYY\n" +
@@ -2050,7 +2050,7 @@ public class AlarmList {
                         "         D->Request of alarm D\n" +
                         "        YYYY:Requested alarm number in hexadecimal");
 
-        ExampleItem PLC_ALARM_MESSAGE_FILE_NOT_LOAD = new ExampleItem("1091", "PLC ALARM MESSAGE FILE NOT LOAD",
+        ExampleItem PLC_ALARM_MESSAGE_FILE_NOT_LOAD = new ExampleItem("1091  ALARM-A", "PLC ALARM MESSAGE FILE NOT LOAD",
                 "he PLC alarm message file is not found, disabling normal\n" +
                         "       alarm processing.\n" +
                         "       [Code] \n" +
@@ -2061,13 +2061,13 @@ public class AlarmList {
                         "        A-> The file name was wrongly specified.\n" +
                         "        B-> The file was not found.");
 
-        ExampleItem PLC_BACKUP_DATA_FILE_LOAD = new ExampleItem("1092", "PLC BACKUP DATA FILE LOAD",
+        ExampleItem PLC_BACKUP_DATA_FILE_LOAD = new ExampleItem("1092  ALARM-A", "PLC BACKUP DATA FILE LOAD",
                 "Backup copy onto the PLC backup file failed.\n" +
                         "       [Code] XXXXYYYY\n" +
                         "        XXXX->Backup processing error status\n" +
                         "        YYYY->Backup cycle number");
 
-        ExampleItem PLC_BACKUP_DATA_FILE_NOT_LOAD = new ExampleItem("1093", "PLC BACKUP DATA FILE NOT LOAD",
+        ExampleItem PLC_BACKUP_DATA_FILE_NOT_LOAD = new ExampleItem("1093  ALARM-A", "PLC BACKUP DATA FILE NOT LOAD",
                 "The PLC backup data file is not found, disabling backup\n" +
                         "       processing.\n" +
                         "       [Code]\n" +
@@ -2081,7 +2081,7 @@ public class AlarmList {
                         "        200-> Wrong PLC class\n" +
                         "        300-> Wrong file version");
 
-        ExampleItem PLC_BACKUP_DATA_FILE_READING = new ExampleItem("1094", "PLC BACKUP DATA FILE PLC_BACKUP_DATA_FILE_READING",
+        ExampleItem PLC_BACKUP_DATA_FILE_READING = new ExampleItem("1094  ALARM-A", "PLC BACKUP DATA FILE PLC_BACKUP_DATA_FILE_READING",
                 "PLC back up data file does not read from memory.\n" +
                         "       [Code] XXX\n" +
                         "        2  ->file open errors (file none)\n" +
@@ -2094,7 +2094,7 @@ public class AlarmList {
                         "        200->A class of PLC differs.\n" +
                         "        300->File version differs.");
 
-        ExampleItem SAFETY_SPEED_MONITOR_ERROR = new ExampleItem("1097", "SAFETY SPEED MONITOR ERROR",
+        ExampleItem SAFETY_SPEED_MONITOR_ERROR = new ExampleItem("1097  ALARM-A", "SAFETY SPEED MONITOR ERROR",
                 "Concerning check processing of Safety-Speed-Monitor\n" +
                         "       at the time of guard-close of production mode, error\n" +
                         "       signal of Safety-Speed-Monitor did not turn ON after\n" +
@@ -2113,7 +2113,7 @@ public class AlarmList {
                         "          Safety-Speed-Monitor\n" +
                         "        2)Safety-Speed-Monitor or PLC software");
 
-        ExampleItem MCS_OPERATION_READY_OFF = new ExampleItem("1098", "MCS OPERATION READY OFF",
+        ExampleItem MCS_OPERATION_READY_OFF = new ExampleItem("1098  ALARM-A", "MCS OPERATION READY OFF",
                 "MCS operation ready turns off.\n" +
                         "       [Object] Axis\n" +
                         "       [Code] X\n" +
@@ -2129,7 +2129,7 @@ public class AlarmList {
                         "        bit1:Not used\n" +
                         "        bit0:Not used");
 
-        ExampleItem RESET_MACHINE_DATA = new ExampleItem("1100", "RESET MACHINE DATA",
+        ExampleItem RESET_MACHINE_DATA = new ExampleItem("1100  ALARM-A", "RESET MACHINE DATA",
                 "The backup data caused an error and the factory-set\n" +
                         "       initial data was forciby loaded. Machine data must be\n" +
                         "       set again.\n" +
@@ -2160,7 +2160,7 @@ public class AlarmList {
                         "          7:File write open error\n" +
                         "          8:File write error");
 
-        ExampleItem BLUE_SCREEN = new ExampleItem("1101", "BLUE SCREEN",
+        ExampleItem BLUE_SCREEN = new ExampleItem("1101  ALARM-A", "BLUE SCREEN",
                 "Blue screen(kernel stop error)occurred.\n" +
                         "       [Object]\n" +
                         "       None\n" +
@@ -2173,7 +2173,7 @@ public class AlarmList {
                         "       2.Windows failure\n" +
                         "       3.Windows driver faliure");
 
-        ExampleItem P100_MENU_ERROR = new ExampleItem("1102", "P100-MENU ERROR",
+        ExampleItem P100_MENU_ERROR = new ExampleItem("1102  ALARM-A", "P100-MENU ERROR",
                 "An abnormal condition of P100-Menu was detected.\n" +
                         "       [Object]\n" +
                         "       None\n" +
@@ -2184,7 +2184,7 @@ public class AlarmList {
                         "       [ Probable Faulty Locations ]\n" +
                         "       1.P100-Menu failure");
 
-        ExampleItem ALARM_SERVICE_INTENAL_ERROR = new ExampleItem("1103", "ALARMSERVICE INTENAL ERROR",
+        ExampleItem ALARM_SERVICE_INTENAL_ERROR = new ExampleItem("1103  ALARM-A", "ALARMSERVICE INTENAL ERROR",
                 "An error occurred inside of AlarmService.\n" +
                         "       [Object]\n" +
                         "       None\n" +
@@ -2196,7 +2196,7 @@ public class AlarmList {
                         "       1.NC software failure\n" +
                         "       2.P100-Menu failure");
 
-        ExampleItem DEVICE_NET_SLAVE_IDLE_MODE = new ExampleItem("1104", "DEVICENETSLAVE IDLE MODE",
+        ExampleItem DEVICE_NET_SLAVE_IDLE_MODE = new ExampleItem("1104  ALARM-A", "DEVICENETSLAVE IDLE MODE",
                 "DeviceNet slave station was in idle condition.\n" +
                         "       [Object]\n" +
                         "       None\n" +
@@ -2245,14 +2245,14 @@ public class AlarmList {
                         "       1.Hardware failure\n" +
                         "       2.Software failure");
 
-        ExampleItem DTL_ERROR = new ExampleItem("1105", "DTL ERROR",
+        ExampleItem DTL_ERROR = new ExampleItem("1105  ALARM-A", "DTL ERROR",
                 "A DTL error was detected.\n" +
                         "       [Object]\n" +
                         "       None\n" +
                         "       [ Probable Faulty Locations ]\n" +
                         "       1.Software failure");
 
-        ExampleItem FL_NET_INITIAL_ERROR = new ExampleItem("1106", "FL NET INITIAL ERROR",
+        ExampleItem FL_NET_INITIAL_ERROR = new ExampleItem("1106  ALARM-A", "FL NET INITIAL ERROR",
                 "An error occurred during initialization of FL-net.\n" +
                         "       [Object]\n" +
                         "       None\n" +
@@ -2268,7 +2268,7 @@ public class AlarmList {
                         "       Then, set the correct communication parameters before \n" +
                         "       restarting the FL-net. ");
 
-        ExampleItem IMPORTANT_ILLEGAL = new ExampleItem("1107", "IMPORTANT ILLEGAL",
+        ExampleItem IMPORTANT_ILLEGAL = new ExampleItem("1107  ALARM-A", "IMPORTANT ILLEGAL",
                 "A serious error occurred during startup of the FL-net card.\n" +
                         "       [Object]\n" +
                         "       None\n" +
@@ -2295,7 +2295,7 @@ public class AlarmList {
                         "       [ Probable Faulty Locations ]\n" +
                         "       FL-net card is defective.");
 
-        ExampleItem NON_ANSWERED_SOFTWARE_WAS_DETECTED = new ExampleItem("1108", "NON-ANSWERED SOFTWARE WAS DETECTED",
+        ExampleItem NON_ANSWERED_SOFTWARE_WAS_DETECTED = new ExampleItem("1108  ALARM-A", "NON-ANSWERED SOFTWARE WAS DETECTED",
                 "[Object]\n" +
                         "       None\n" +
                         "       [Character-string]\n" +
@@ -2305,7 +2305,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       NC software");
 
-        ExampleItem THE_ERROR_OCCURRED_WHILE_CAS_WORK = new ExampleItem("1109", "THE ERROR OCCURRED WHILE CAS WORK",
+        ExampleItem THE_ERROR_OCCURRED_WHILE_CAS_WORK = new ExampleItem("1109  ALARM-A", "THE ERROR OCCURRED WHILE CAS WORK",
                 "A virtual machine is controlled with the CAS software. \n" +
                         "       The error occurred by processing this CAS software. \n" +
                         "       Under such a condition, the processing of the interference \n" +
@@ -2326,7 +2326,7 @@ public class AlarmList {
                         "       to make the collision avoidance function effective. \n" +
                         "       Please inquire of our service if the phenomenon relapses.");
 
-        ExampleItem PLC_CONTROL_ERROR = new ExampleItem("1110", "PLC CONTROL ERROR",
+        ExampleItem PLC_CONTROL_ERROR = new ExampleItem("1110  ALARM-A", "PLC CONTROL ERROR",
                 "An error has occurred in the PLC Control.\n" +
                         "       [Index]\n" +
                         "       None\n" +
@@ -2339,7 +2339,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       PLC software failure");
 
-        ExampleItem SHUTTING_DOWN_TO_AVOID_DAMAGE = new ExampleItem("1111", "SHUTTING DOWN TO AVOID DAMAGE",
+        ExampleItem SHUTTING_DOWN_TO_AVOID_DAMAGE = new ExampleItem("1111  ALARM-A", "SHUTTING DOWN TO AVOID DAMAGE",
                 "The system shut down to avoid the damage of instruments\n" +
                         "       because the data from sensor indicate that the instruments may\n" +
                         "       be influenced.\n" +
@@ -2353,7 +2353,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       Cooling system for panel computer unit");
 
-        ExampleItem A_NON_FUNCTIONING_INSTRUMENT_IS_DETECTED = new ExampleItem("1112", "A NON-FUNCTIONING INSTRUMENT IS DETECTED",
+        ExampleItem A_NON_FUNCTIONING_INSTRUMENT_IS_DETECTED = new ExampleItem("1112  ALARM-A", "A NON-FUNCTIONING INSTRUMENT IS DETECTED",
                 "The system found a non-functioning instrument. But the\n" +
                         "       installed software does not know about details of the\n" +
                         "       instrument.\n" +
@@ -2366,7 +2366,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       [Measures to Take]");
 
-        ExampleItem MCS_PARAMETER_LEARNING_ERROR = new ExampleItem("1113", "MCS PARAMETER LEARNING ERROR",
+        ExampleItem MCS_PARAMETER_LEARNING_ERROR = new ExampleItem("1113  ALARM-A", "MCS PARAMETER LEARNING ERROR",
                 "An error occurred in the correction parameter learning.\n" +
                         "       [Object]\n" +
                         "       SYSTEM\n" +
@@ -2378,7 +2378,7 @@ public class AlarmList {
                         "       Programming error\n" +
                         "       Faulty MCS controller");
 
-        ExampleItem MCS_INERTIA_IDENTIFICATION_ERROR = new ExampleItem("1114", "MCS INERTIA IDENTIFICATION ERROR",
+        ExampleItem MCS_INERTIA_IDENTIFICATION_ERROR = new ExampleItem("1114  ALARM-A", "MCS INERTIA IDENTIFICATION ERROR",
                 "An error occurred in the spindle inertia identification.\n" +
                         "       [Object]\n" +
                         "       None\n" +
@@ -2391,7 +2391,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       Faulty MCS controller");
 
-        ExampleItem OVERLOAD_DETECTED = new ExampleItem("1120", "OVERLOAD DETECTED",
+        ExampleItem OVERLOAD_DETECTED = new ExampleItem("1120  ALARM-A", "OVERLOAD DETECTED",
                 "Overload of External motor was detected in \"GENERAL OVERLOAD\n" +
                         "       DETECT\"\n" +
                         "       [Object]\n" +
@@ -2404,7 +2404,7 @@ public class AlarmList {
                         "       [Probable Faulty Location]\n" +
                         "       External motor 1 to 8");
 
-        ExampleItem PSC_OPTICAL_SCALE_ENCODER_ERROR = new ExampleItem("1121", "PSC OPTICAL SCALE ENCODER ERROR",
+        ExampleItem PSC_OPTICAL_SCALE_ENCODER_ERROR = new ExampleItem("1121  ALARM-A", "PSC OPTICAL SCALE ENCODER ERROR",
                 "An error was detected by the position encoder of optical scale.\n" +
                         "       [Character-string]None\n" +
                         "       [Code]XXYYZZ\n" +
@@ -2425,7 +2425,7 @@ public class AlarmList {
                         "       - Exchange of optical scale\n" +
                         "       - Exchange of optical scale cables");
 
-        ExampleItem SAFETY_CONTROLLER_ERROR = new ExampleItem("1122", "SAFETY CONTROLLER ERROR",
+        ExampleItem SAFETY_CONTROLLER_ERROR = new ExampleItem("1122  ALARM-A", "SAFETY CONTROLLER ERROR",
                 "An error occurred in the safety controller.\n" +
                         "       [Object]None\n" +
                         "       [Character-string]None\n" +
@@ -2470,7 +2470,7 @@ public class AlarmList {
                         "        - The switche which is displayed with above code is broken.\n" +
                         "        - Safety controller");
 
-        ExampleItem SAFETY_SPEED_MONITOR_ERROR_1123 = new ExampleItem("1123", "SAFETY SPEED MONITOR ERROR",
+        ExampleItem SAFETY_SPEED_MONITOR_ERROR_1123 = new ExampleItem("1123  ALARM-A", "SAFETY SPEED MONITOR ERROR",
                 "An error occurred in the safety speed monitor.\n" +
                         "       [Object]None\n" +
                         "       [Character-string]None\n" +
@@ -2513,7 +2513,7 @@ public class AlarmList {
                         "        - Safety speed monitor\n" +
                         "        - Safety speed monitor data file");
 
-        ExampleItem VDU_COMMUNICATION_ERROR = new ExampleItem("1132", "VDU COMMUNICATION ERROR",
+        ExampleItem VDU_COMMUNICATION_ERROR = new ExampleItem("1132  ALARM-A", "VDU COMMUNICATION ERROR",
                 "An error occurred in the VDU(Vibration Detect Unit)\n" +
                         "       communication link, disabling the VDU \n" +
                         "       from detecting acceleration.\n" +
@@ -2545,7 +2545,7 @@ public class AlarmList {
                         "       - Encoder link cables\n" +
                         "       - VFA unit");
 
-        ExampleItem VDU_ERROR = new ExampleItem("1133", "VDU ERROR",
+        ExampleItem VDU_ERROR = new ExampleItem("1133  ALARM-A", "VDU ERROR",
                 "The VDU(Vibration Detect Unit) has become unable to\n" +
                         "       detect acceleration data. \n" +
                         "       [Object]Axis name or none (spindle)\n" +
@@ -2573,7 +2573,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       - VDU");
 
-        ExampleItem VDU_INITIALIZE_FAILED = new ExampleItem("1134", "VDU INITIALIZE FAILED",
+        ExampleItem VDU_INITIALIZE_FAILED = new ExampleItem("1134  ALARM-A", "VDU INITIALIZE FAILED",
                 "An error occurred in initialization of\n" +
                         "       VDU(Vibration Detect Unit).\n" +
                         "       [Object]Axis name or none (spindle)\n" +
@@ -2616,7 +2616,7 @@ public class AlarmList {
                         "       - Encoder link cables\n" +
                         "       - VFA unit");
 
-        ExampleItem MCS_DD_ENCODER_LINK_ERROR = new ExampleItem("1135", "MCS DD ENCODER-LINK ERROR",
+        ExampleItem MCS_DD_ENCODER_LINK_ERROR = new ExampleItem("1135  ALARM-A", "MCS DD ENCODER-LINK ERROR",
                 "An error occurred in the encoder communication link.\n" +
                         "       [Object]\n" +
                         "        Axis name or none (spindle)\n" +
@@ -2653,7 +2653,7 @@ public class AlarmList {
                         "        Encoder link cables or connectors\n" +
                         "        Inverter unit control board");
 
-        ExampleItem MCS_DD_ENCODER_ERROR = new ExampleItem("1136", "MCS DD ENCODER ERROR",
+        ExampleItem MCS_DD_ENCODER_ERROR = new ExampleItem("1136  ALARM-A", "MCS DD ENCODER ERROR",
                 "The DD encoder has become undetectable.\n" +
                         "       [Object]\n" +
                         "        Axis name or none (spindle)\n" +
@@ -2691,7 +2691,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "        DD encoder");
 
-        ExampleItem MCS_DD_ENCODER_SLAVE_SENSOR_ERROR = new ExampleItem("1137", "MCS DD ENCODER (SLAVE SENSOR) ERROR",
+        ExampleItem MCS_DD_ENCODER_SLAVE_SENSOR_ERROR = new ExampleItem("1137  ALARM-A", "MCS DD ENCODER (SLAVE SENSOR) ERROR",
                 "The DD encoder (slave sensor) has become undetectable.\n" +
                         "       [Object]\n" +
                         "        Axis name or none (spindle)\n" +
@@ -2729,7 +2729,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "        DD encoder (slave sensor)");
 
-        ExampleItem MCS_DD_ENCODER_INITIALIZE_FAILED = new ExampleItem("1138", "MCS DD ENCODER INITIALIZE FAILED",
+        ExampleItem MCS_DD_ENCODER_INITIALIZE_FAILED = new ExampleItem("1138  ALARM-A", "MCS DD ENCODER INITIALIZE FAILED",
                 "An error occurred in the initialization of the DD encoder.\n" +
                         "       [Object]\n" +
                         "       Axis name or none (spindle)\n" +
@@ -2785,7 +2785,7 @@ public class AlarmList {
                         "        Encoder link cables and connectors\n" +
                         "        Inverter unit control board");
 
-        ExampleItem MCS_DD_ENCODER_SLAVE_SENSOR_INITIALIZE_FAILED = new ExampleItem("1139", "MCS DD ENCODER (SLAVE_SENSOR) INITIALIZE FAILED",
+        ExampleItem MCS_DD_ENCODER_SLAVE_SENSOR_INITIALIZE_FAILED = new ExampleItem("1139  ALARM-A", "MCS DD ENCODER (SLAVE_SENSOR) INITIALIZE FAILED",
                 "An error occurred in the initialization of the DD encoder\n" +
                         "       (slave sensor).\n" +
                         "       [Index]\n" +
@@ -2842,7 +2842,7 @@ public class AlarmList {
                         "        Encoder link cables and connectors\n" +
                         "        Inverter unit control board");
 
-        ExampleItem MCS_POWER_SUPPLY_UNIT_OVER_LOAD = new ExampleItem("1144", "MCS POWER SUPPLY UNIT OVER LOAD",
+        ExampleItem MCS_POWER_SUPPLY_UNIT_OVER_LOAD = new ExampleItem("1144  ALARM-A", "MCS POWER SUPPLY UNIT OVER LOAD",
                 "Power Supply Unit over load\n" +
                         "       [Object]\n" +
                         "        Axis name or none (spindle)\n" +
@@ -2854,7 +2854,7 @@ public class AlarmList {
                         "        Power unit\n" +
                         "        Overload operation");
 
-        ExampleItem TAILSTOCK_TORQUE_OVER = new ExampleItem("1146", "TAILSTOCK TORQUE OVER",
+        ExampleItem TAILSTOCK_TORQUE_OVER = new ExampleItem("1146  ALARM-A", "TAILSTOCK TORQUE OVER",
                 "Concerning the simple tow-along tailstook specification,\n" +
                         "       it surpassed W axis torque set data Z axis motor torque\n" +
                         "       has set on a systematic parameter by a tailstook\n" +
@@ -2864,7 +2864,7 @@ public class AlarmList {
                         "       1) Slide resistance of tailstook Z axis direction is big.\n" +
                         "       2) Tailstook is clamped.");
 
-        ExampleItem MCS_UNDEFINED_ALARM_NUMBER = new ExampleItem("1150", "MCS UNDEFINED ALARM NUMBER",
+        ExampleItem MCS_UNDEFINED_ALARM_NUMBER = new ExampleItem("1150  ALARM-A", "MCS UNDEFINED ALARM NUMBER",
                 "The MCS caused an error related with axis control.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] Alarm number in decimal\n" +
@@ -2873,7 +2873,7 @@ public class AlarmList {
                         "       - Depends on the number indicated in the character-string.\n" +
                         "         Inform us of the code and the character string.");
 
-        ExampleItem MCS_EXCEPTION_PROCESSING = new ExampleItem("1151", "MCS EXCEPTION_PROCESSING",
+        ExampleItem MCS_EXCEPTION_PROCESSING = new ExampleItem("1151  ALARM-A", "MCS EXCEPTION_PROCESSING",
                 "A fatal alarm occurred while the MCS invertor unit and\n" +
                         "       MCS software are executing their processing.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -2935,7 +2935,7 @@ public class AlarmList {
                         "       In other cases,\n" +
                         "        - Invertor unit");
 
-        ExampleItem MCS_PROCESSING_TROUBLE = new ExampleItem("1152", "MCS PROCESSING TROUBLE",
+        ExampleItem MCS_PROCESSING_TROUBLE = new ExampleItem("1152  ALARM-A", "MCS PROCESSING TROUBLE",
                 "MCS\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -2977,7 +2977,7 @@ public class AlarmList {
                         "       - Faulty MCS controller\n" +
                         "       - Faulty software");
 
-        ExampleItem MCS_CON_APA_DEVIATION = new ExampleItem("1153", "MCS_CON_APA_DEVIATION",
+        ExampleItem MCS_CON_APA_DEVIATION = new ExampleItem("1153  ALARM-A", "MCS_CON_APA_DEVIATION",
                 "Difference between CON and APA values has exceeded the\n" +
                         "       allowable limit. The CON-APC deviation is the absolute\n" +
                         "       value of difference between [calculated value written \n" +
@@ -2995,7 +2995,7 @@ public class AlarmList {
                         "       - Faulty MCS controller\n" +
                         "       - Mismatch between MCS data and NC data");
 
-        ExampleItem MCS_POWER_SUPPLY_UNIT_ERROR = new ExampleItem("1154", "MCS POWER SUPPLY UNIT ERROR",
+        ExampleItem MCS_POWER_SUPPLY_UNIT_ERROR = new ExampleItem("1154  ALARM-A", "MCS POWER SUPPLY UNIT ERROR",
                 "The power unit caused an error.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3044,7 +3044,7 @@ public class AlarmList {
                         "       In the case of high voltage\n" +
                         "        - Power unit");
 
-        ExampleItem MCS_CONVERTER_LINK_ERROR = new ExampleItem("1155", "MCS CONVERTER-LINK ERROR",
+        ExampleItem MCS_CONVERTER_LINK_ERROR = new ExampleItem("1155  ALARM-A", "MCS CONVERTER-LINK ERROR",
                 "The convertor link (used for communication between power\n" +
                         "       unit and invertor unit) caused an error, disabling \n" +
                         "       the NC from monitoring the power unit condition.\n" +
@@ -3061,7 +3061,7 @@ public class AlarmList {
                         "       - Power unit\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_DC_BUS_VOLTAGE_ERROR = new ExampleItem("1156", "MCS DC-BUS VOLTAGE ERROR",
+        ExampleItem MCS_DC_BUS_VOLTAGE_ERROR = new ExampleItem("1156  ALARM-A", "MCS DC-BUS VOLTAGE ERROR",
                 "The DC-bus voltage in the invertor unit has abnormally\n" +
                         "       risen or fallen, disabling the invertor from supplying\n" +
                         "       the current.\n" +
@@ -3078,7 +3078,7 @@ public class AlarmList {
                         "        - Invertor unit\n" +
                         "        - Instantaneous power interruption");
 
-        ExampleItem MCS_MOTOR_OVER_CURRENT = new ExampleItem("1157", "MCS MOTOR OVER CURRENT",
+        ExampleItem MCS_MOTOR_OVER_CURRENT = new ExampleItem("1157  ALARM-A", "MCS MOTOR OVER CURRENT",
                 "The invertor unit has detected excessive current flowing\n" +
                         "       in the motor cable.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3092,7 +3092,7 @@ public class AlarmList {
                         "       - Invertor unit\n" +
                         "       - Faulty motor insulation");
 
-        ExampleItem MCS_POWER_UNIT_OVER_HEAT = new ExampleItem("1158", "MCS POWER UNIT OVER HEAT",
+        ExampleItem MCS_POWER_UNIT_OVER_HEAT = new ExampleItem("1158  ALARM-A", "MCS POWER UNIT OVER HEAT",
                 "The invertor unit temperature has risen abnormally.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3101,7 +3101,7 @@ public class AlarmList {
                         "       - Invertor unit\n" +
                         "       - Overload operation");
 
-        ExampleItem MCS_POWER_UNIT_OVER_LOAD = new ExampleItem("1159", "MCS POWER UNIT OVER LOAD",
+        ExampleItem MCS_POWER_UNIT_OVER_LOAD = new ExampleItem("1159  ALARM-A", "MCS POWER UNIT OVER LOAD",
                 "The invertor load has exceeded the specified value, \n" +
                         "       activating the overload protection function.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3114,7 +3114,7 @@ public class AlarmList {
                         "       - Invertor unit\n" +
                         "       - Overload operation");
 
-        ExampleItem MCS_SUPPLY_VOLTAGE_FLUTTER = new ExampleItem("1160", "MCS SUPPLY VOLTAGE FLUTTER",
+        ExampleItem MCS_SUPPLY_VOLTAGE_FLUTTER = new ExampleItem("1160  ALARM-A", "MCS SUPPLY VOLTAGE FLUTTER",
                 "The power unit input voltage is abnormally high or low.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3124,7 +3124,7 @@ public class AlarmList {
                         "       - Power cables or connectors\n" +
                         "       - Instantaneous power interruption");
 
-        ExampleItem MCS_POWER_UNIT_VERSION_ERROR = new ExampleItem("1161", "MCS POWER UNIT VERSION ERROR",
+        ExampleItem MCS_POWER_UNIT_VERSION_ERROR = new ExampleItem("1161  ALARM-A", "MCS POWER UNIT VERSION ERROR",
                 "The invertor unit allowable current is smaller than the\n" +
                         "       current limit specified in the servo data file.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3134,7 +3134,7 @@ public class AlarmList {
                         "       - Invertor unit\n" +
                         "       - Servo data file");
 
-        ExampleItem MCS_WINDING_CHANGE_FAILED = new ExampleItem("1162", "MCS WINDING CHANGE FAILED",
+        ExampleItem MCS_WINDING_CHANGE_FAILED = new ExampleItem("1162  ALARM-A", "MCS WINDING CHANGE FAILED",
                 "The winding-change magnet switch does not come on.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3149,7 +3149,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       - Winding-change magnet switch");
 
-        ExampleItem MCS_ENCODER_LINK_ERROR = new ExampleItem("1163", "MCS ENCODER LINK ERROR",
+        ExampleItem MCS_ENCODER_LINK_ERROR = new ExampleItem("1163  ALARM-A", "MCS ENCODER LINK ERROR",
                 "An error occurred in the encoder communication link,\n" +
                         "       disabling the encoder from detecting positioning speed.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3190,24 +3190,25 @@ public class AlarmList {
                         "       - Encoder link cables or connectors\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_ENCODER_ERROR = new ExampleItem("1164", "MCS ENCODER ERROR", "The motor encoder has become unable to detect\n" +
-                "       positional data.\n" +
-                "       [Object] Axis name or none (spindle)\n" +
-                "       [Character-string] None\n" +
-                "       [Code] XXYYZZZZ\n" +
-                "        XX= Encoder error code depending on the encoder type\n" +
-                "        YY = Detailed encoder status. The status varies with\n" +
-                "             the encoder type.\n" +
-                "        ZZZZ = Multi-turn position data. This data appears when\n" +
-                "       \tthe multi-turn\n" +
-                "       position data has exceeded the rotating range.\n" +
-                "        XX = 0 (fixed)\n" +
-                "        YY = 1 (fixed)\n" +
-                "        ZZZZ = Multi-turn position data\n" +
-                "       [Probable Faulty Locations]\n" +
-                "       - Motor encoder");
+        ExampleItem MCS_ENCODER_ERROR = new ExampleItem("1164  ALARM-A", "MCS ENCODER ERROR",
+                "The motor encoder has become unable to detect\n" +
+                        "       positional data.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "        XX= Encoder error code depending on the encoder type\n" +
+                        "        YY = Detailed encoder status. The status varies with\n" +
+                        "             the encoder type.\n" +
+                        "        ZZZZ = Multi-turn position data. This data appears when\n" +
+                        "       \tthe multi-turn\n" +
+                        "       position data has exceeded the rotating range.\n" +
+                        "        XX = 0 (fixed)\n" +
+                        "        YY = 1 (fixed)\n" +
+                        "        ZZZZ = Multi-turn position data\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Motor encoder");
 
-        ExampleItem MCS_ENCODER_INITIALIZE_FAILED = new ExampleItem("1165", "MCS ENCODER INITIALIZE FAILED",
+        ExampleItem MCS_ENCODER_INITIALIZE_FAILED = new ExampleItem("1165  ALARM-A", "MCS ENCODER INITIALIZE FAILED",
                 "An error occurred in initialization of the motor encoder.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3247,7 +3248,7 @@ public class AlarmList {
                         "       - Encoder link cables or connectors\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_ENCODER_WITH_SHAFT_ERROR = new ExampleItem("1166", "MCS ENCODER WITH SHAFT ERROR",
+        ExampleItem MCS_ENCODER_WITH_SHAFT_ERROR = new ExampleItem("1166  ALARM-A", "MCS ENCODER WITH SHAFT ERROR",
                 "The encoder with shaft has become unable to detect\n" +
                         "       positional data.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3256,7 +3257,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       - Encoder with shaft");
 
-        ExampleItem MCS_ENCODER_WITH_SHAFT_INITIAL = new ExampleItem("1167", "MCS ENCODER WITH SHAFT INITIAL",
+        ExampleItem MCS_ENCODER_WITH_SHAFT_INITIAL = new ExampleItem("1167  ALARM-A", "MCS ENCODER WITH SHAFT INITIAL",
                 "An error occurred in initialization of the encoder with\n" +
                         "       shaft.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3267,13 +3268,13 @@ public class AlarmList {
                         "       - Encoder link cables or connectors\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_ABSO_SCALE_ERROR = new ExampleItem("1168", "MCS ABSO SCALE ERROR",
+        ExampleItem MCS_ABSO_SCALE_ERROR = new ExampleItem("1168  ALARM-A", "MCS ABSO SCALE ERROR",
                 "An error occurred in initialization of ABSO SCALE.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Probable Faulty Locations]\n" +
                         "       - ABSO SCALE    ");
 
-        ExampleItem MCS_ABSO_SCALE_INITIALIZE = new ExampleItem("1169", "MCS ABSO SCALE INITIALIZE",
+        ExampleItem MCS_ABSO_SCALE_INITIALIZE = new ExampleItem("1169  ALARM-A", "MCS ABSO SCALE INITIALIZE",
                 "An error occurred in initialization of ABSO SCALE.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3283,7 +3284,7 @@ public class AlarmList {
                         "       - Encoder link cables or connectors\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_MAGNETIC_ENCODER_ALARM = new ExampleItem("1170", "MCS MAGNETIC ENCODER ALARM",
+        ExampleItem MCS_MAGNETIC_ENCODER_ALARM = new ExampleItem("1170  ALARM-A", "MCS MAGNETIC ENCODER ALARM",
                 "The magnetic pulse generator has become unable to detect\n" +
                         "       the motor speed. Or, the number of magnetic encoder gear\n" +
                         "       teeth does not match the data in the MCS data file.\n" +
@@ -3309,7 +3310,7 @@ public class AlarmList {
                         "       - Mismatch between the number of gear teeth of magnetic\n" +
                         "         encoder and the servo data file data");
 
-        ExampleItem MCS_RESOLVER_ALARM = new ExampleItem("1171", "MCS RESOLVER ALARM",
+        ExampleItem MCS_RESOLVER_ALARM = new ExampleItem("1171  ALARM-A", "MCS RESOLVER ALARM",
                 "The resolver does not send any signal.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3318,7 +3319,7 @@ public class AlarmList {
                         "       - Resolver trouble, or disconnection or contact failure\n" +
                         "         of the resolver cable");
 
-        ExampleItem MCS_PULSE_GENERATOR_ALARM = new ExampleItem("1172", "MCS PULSE GENERATOR ALARM",
+        ExampleItem MCS_PULSE_GENERATOR_ALARM = new ExampleItem("1172  ALARM-A", "MCS PULSE GENERATOR ALARM",
                 "he PG (pulse generator) count value per one turn differs\n" +
                         "       from the corresponding data specified in servo data file.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3331,7 +3332,7 @@ public class AlarmList {
                         "       - Mismatch between the number of PG gear teeth and the\n" +
                         "         servo data file data");
 
-        ExampleItem MCS_MOTOR_OVER_HEAT = new ExampleItem("1173", "MCS MOTOR OVER HEAT",
+        ExampleItem MCS_MOTOR_OVER_HEAT = new ExampleItem("1173  ALARM-A", "MCS MOTOR OVER HEAT",
                 "The motor temperature is abnormally high.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3349,7 +3350,7 @@ public class AlarmList {
                         "       - BL motor\n" +
                         "       - Motor encoder (BL motor detects overheat by its encoder.)");
 
-        ExampleItem MCS_SERVO_LINK_ERROR = new ExampleItem("1174", "MCS SERVO-LINK ERROR",
+        ExampleItem MCS_SERVO_LINK_ERROR = new ExampleItem("1174  ALARM-A", "MCS SERVO-LINK ERROR",
                 "A communication error occurred in the servo link, disabling\n" +
                         "       the servo unit from receiving commands from the NC.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3380,7 +3381,7 @@ public class AlarmList {
                         "       - Servo link cables or connectors\n" +
                         "       - FCP board");
 
-        ExampleItem MCS_SERVO_LINK_DISCONNECT = new ExampleItem("1175", "MCS SERVO LINK DISCONNECT",
+        ExampleItem MCS_SERVO_LINK_DISCONNECT = new ExampleItem("1175  ALARM-A", "MCS SERVO LINK DISCONNECT",
                 "The servo link is disconnected, disabling the servo unit\n" +
                         "       from receiving commands from the NC.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3396,7 +3397,7 @@ public class AlarmList {
                         "       - Invertor unit control board\n" +
                         "       - FCP board");
 
-        ExampleItem MCS_SERVO_LINK_PROTOCOL_ERROR = new ExampleItem("1176", "MCS SERVO-LINK PROTOCOL ERROR",
+        ExampleItem MCS_SERVO_LINK_PROTOCOL_ERROR = new ExampleItem("1176  ALARM-A", "MCS SERVO-LINK PROTOCOL ERROR",
                 "The NC and the invertor unit exchange commands and \n" +
                         "       responses at constant intervals according to the specified \n" +
                         "       protocol through the servo link. In this communication, \n" +
@@ -3417,7 +3418,7 @@ public class AlarmList {
                         "         software\n" +
                         "       - FCP board");
 
-        ExampleItem MCS_SERVO_DATA_ERROR = new ExampleItem("1177", "MCS SERVO DATA ERROR",
+        ExampleItem MCS_SERVO_DATA_ERROR = new ExampleItem("1177  ALARM-A", "MCS SERVO DATA ERROR",
                 "The servo data sent from the NC for initialization or\n" +
                         "       operation is not applicable to the invertor unit.\n" +
                         "       If this alarm occurs after change of invertor unit, the\n" +
@@ -3441,7 +3442,7 @@ public class AlarmList {
                         "       - Invertor unit control board\n" +
                         "       - NC software");
 
-        ExampleItem MCS_ILLEGAL_COMMAND = new ExampleItem("1178", "MCS ILLEGAL COMMAND",
+        ExampleItem MCS_ILLEGAL_COMMAND = new ExampleItem("1178  ALARM-A", "MCS ILLEGAL COMMAND",
                 "The NC and the invertor unit exchange commands and\n" +
                         "       responses through the servo link. In this communication,\n" +
                         "       the NC sent an abnormal or inexecutable command to the\n" +
@@ -3479,7 +3480,7 @@ public class AlarmList {
                         "       - Invertor unit control board\n" +
                         "       - NC software");
 
-        ExampleItem MCS_CON_SPEED_OVER = new ExampleItem("1179", "MCS CON SPEED OVER",
+        ExampleItem MCS_CON_SPEED_OVER = new ExampleItem("1179  ALARM-A", "MCS CON SPEED OVER",
                 "Increments for positioning command (SRCOND) issued from\n" +
                         "       the NC to the invertor unit exceed the allowable limit.\n" +
                         "       If this alarm occurs in the axis to be positioned, the\n" +
@@ -3502,7 +3503,7 @@ public class AlarmList {
                         "       - Servo data file\n" +
                         "       - NC software");
 
-        ExampleItem MCS_SPEED_COMMAND_OVER = new ExampleItem("1180", "MCS SPEED COMMAND OVER",
+        ExampleItem MCS_SPEED_COMMAND_OVER = new ExampleItem("1180  ALARM-A", "MCS SPEED COMMAND OVER",
                 "Speed command value issued from the NC to the invertor\n" +
                         "       unit exceeds the allowable limit.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3513,7 +3514,7 @@ public class AlarmList {
                         "       - Servo data file\n" +
                         "       - NC software");
 
-        ExampleItem MCS_DIFF_OVER = new ExampleItem("1181", "MCS DIFF OVER",
+        ExampleItem MCS_DIFF_COVER = new ExampleItem("1181  ALARM-A", "MCS DIFF OVER",
                 "Axis movement caused a large positioning error.\n" +
                         "       While the axis is in a target position or stopped, the\n" +
                         "       target value and the calculated value are the same. \n" +
@@ -3535,7 +3536,7 @@ public class AlarmList {
                         "       - Invertor unit\n" +
                         "       - Servo data file");
 
-        ExampleItem MCS_APA_SPEED_OVER = new ExampleItem("1182", "MCS APA SPEED OVER",
+        ExampleItem MCS_APA_SPEED_OVER = new ExampleItem("1182  ALARM-A", "MCS APA SPEED OVER",
                 "The position encoder value (RAPA) changes as the motor\n" +
                         "       rotates. The NC checks this change with preset frequency.\n" +
                         "       This alarm occurs if the change per unit time exceeds the\n" +
@@ -3561,7 +3562,7 @@ public class AlarmList {
                         "       - PG or magnetic encoder cables or connectors (VAC motor)\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_FULL_CLOSED_APA_ERROR = new ExampleItem("1183", "MCS FULL-CLOSED APA ERROR",
+        ExampleItem MCS_FULL_CLOSED_APA_ERROR = new ExampleItem("1183  ALARM-A", "MCS FULL-CLOSED APA ERROR",
                 "Difference between the full-closed loop encoder value\n" +
                         "       and the motor encoder value exceeds the allowable range.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3577,7 +3578,7 @@ public class AlarmList {
                         "       - Loose coupling between motor and ball screw\n" +
                         "       - Improper positional loop gain (too high)");
 
-        ExampleItem MCS_OVER_SPEED = new ExampleItem("1184", "MCS OVER SPEED",
+        ExampleItem MCS_OVER_SPEED = new ExampleItem("1184  ALARM-A", "MCS OVER SPEED",
                 "Actual motor speed is too high.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3592,7 +3593,7 @@ public class AlarmList {
                         "         (VAC motor)\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_VELOCITY_DEVIATION_OVER = new ExampleItem("1185", "MCS VELOCITY DEVIATION OVER",
+        ExampleItem MCS_VELOCITY_DEVIATION_OVER = new ExampleItem("1185  ALARM-A", "MCS VELOCITY DEVIATION OVER",
                 "Actual motor speed excessively deviates from the speed\n" +
                         "       command.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3613,7 +3614,7 @@ public class AlarmList {
                         "       - The motor does not turn because of (mechanical lock or)\n" +
                         "         application of large load.");
 
-        ExampleItem MCS_COLLISION_DETECTED = new ExampleItem("1186", "MCS COLLISION DETECTED",
+        ExampleItem MCS_COLLISION_DETECTED = new ExampleItem("1186  ALARM-A", "MCS COLLISION DETECTED",
                 "The NC torque limiter has detected collision of axis by\n" +
                         "       monitoring the relation between motor output torque and\n" +
                         "       motor acceleration.\n" +
@@ -3634,7 +3635,7 @@ public class AlarmList {
                         "       - Motor encoder\n" +
                         "       - NC torque limiter set value");
 
-        ExampleItem MCS_URGENT_STOP_TIME_OVER = new ExampleItem("1187", "MCS URGENT-STOP TIME OVER",
+        ExampleItem MCS_URGENT_STOP_TIME_OVER = new ExampleItem("1187  ALARM-A", "MCS URGENT-STOP TIME OVER",
                 "The axis cannot stop within a preset time after reception\n" +
                         "       emergency stop command.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3647,7 +3648,7 @@ public class AlarmList {
                         "       - Invertor unit control board\n" +
                         "       - NC software");
 
-        ExampleItem MCS_BELT_IS_BROKEN = new ExampleItem("1188", "MCS BELT IS BROKEN",
+        ExampleItem MCS_BELT_IS_BROKEN = new ExampleItem("1188  ALARM-A", "MCS BELT IS BROKEN",
                 "Breakage of belt was detected in the belt-driven axis.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3656,7 +3657,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       - Broken belt");
 
-        ExampleItem MCS_AXIS_CHANGE_CONTROL_ERROR = new ExampleItem("1189", "MCS AXIS CHANGE CONTROL ERROR",
+        ExampleItem MCS_AXIS_CHANGE_CONTROL_ERROR = new ExampleItem("1189  ALARM-A", "MCS AXIS CHANGE CONTROL ERROR",
                 "Axis change wasü@not performed normally. \n" +
                         "       (This is not an alarm caused in MCS.)\n" +
                         "       [Object]Axis to be selected by axis change\n" +
@@ -3675,7 +3676,7 @@ public class AlarmList {
                         "       - Faulty MCS controller for PLC axis\n" +
                         "       - Faulty software");
 
-        ExampleItem MCS_INDEPENDENT_ENCODER_INIT = new ExampleItem("1190", "MCS INDEPENDENT ENCODER INIT",
+        ExampleItem MCS_INDEPENDENT_ENCODER_INIT = new ExampleItem("1190  ALARM-A", "MCS INDEPENDENT ENCODER INIT",
                 "An error occurred during initialization of the MCS\n" +
                         "       independent encoder.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3714,7 +3715,7 @@ public class AlarmList {
                         "       - Encoder link cables and connectors\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_APA_ERROR = new ExampleItem("1191", "MCS APA ERROR",
+        ExampleItem MCS_APA_ERROR = new ExampleItem("1191  ALARM-A", "MCS APA ERROR",
                 "An error occurred during calculation of APA value.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3737,7 +3738,7 @@ public class AlarmList {
                         "       If the alarm code is \"5\" or \"6\", the motor coupling, \n" +
                         "       encoder with shaft, or ABSO SCALE may be loosely mounted.");
 
-        ExampleItem MCS_MOTOR_OVER_LOAD = new ExampleItem("1192", "MCS MOTOR OVER LOAD",
+        ExampleItem MCS_MOTOR_OVER_LOAD = new ExampleItem("1192  ALARM-A", "MCS MOTOR OVER LOAD",
                 "The motor load has exceeded the preset value,\n" +
                         "       activating the overload protection function.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3750,7 +3751,7 @@ public class AlarmList {
                         "       - Overload caused by machine operation\n" +
                         "       - Servo data file");
 
-        ExampleItem MCS_ABSO_SCALE_SUB_SLIDER_ERROR = new ExampleItem("1194", "MCS ABSO SCALE SUB SLIDER ERROR",
+        ExampleItem MCS_ABSO_SCALE_SUB_SLIDER_ERROR = new ExampleItem("1194  ALARM-A", "MCS ABSO SCALE SUB SLIDER ERROR",
                 "ERROR occurred by sub-slider of absoscale for the\n" +
                         "       transfer spec.\n" +
                         "       [Index]Axis or None\n" +
@@ -3783,7 +3784,7 @@ public class AlarmList {
                         "         2=Incongruousness of Communucation basis information\n" +
                         "         3=Incongruousness of many rotation detection range");
 
-        ExampleItem MCS_TANDEM_COMMUNICATION_ERROR = new ExampleItem("1195", "MCS TANDEM COMMUNICATION ERROR",
+        ExampleItem MCS_TANDEM_COMMUNICATION_ERROR = new ExampleItem("1195  ALARM-A", "MCS TANDEM COMMUNICATION ERROR",
                 "Concerning tandem control of synchronism-axis,\n" +
                         "       The communication data that slave-axis received in\n" +
                         "       communication between slave-station was ERROR.\n" +
@@ -3799,7 +3800,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       MCS unit,MCS soft");
 
-        ExampleItem MCS_FULL_ABSO_SCALE_LINK_ERROR = new ExampleItem("1196", "MCS FULL ABSO SCALE LINK ERROR",
+        ExampleItem MCS_FULL_ABSO_SCALE_LINK_ERROR = new ExampleItem("1196  ALARM-A", "MCS FULL ABSO SCALE LINK ERROR",
                 "An alarm occurred in full absolute scale communication.\n" +
                         "       [Object] AXIS or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3833,7 +3834,7 @@ public class AlarmList {
                         "       - Encoder link cable or connector\n" +
                         "       - Inverter unit control board");
 
-        ExampleItem MCS_FULL_ABSO_SCALE_ERROR = new ExampleItem("1197", "MCS FULL ABSO SCALE ERROR",
+        ExampleItem MCS_FULL_ABSO_SCALE_ERROR = new ExampleItem("1197  ALARM-A", "MCS FULL ABSO SCALE ERROR",
                 "The full absolute scale has become unable to detect\n" +
                         "       positional data.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
@@ -3851,7 +3852,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       - Full absolute scale");
 
-        ExampleItem MCS_FULL_ABSO_SCALE_INITIAL = new ExampleItem("1198", "MCS FULL ABSO SCALE INITIAL",
+        ExampleItem MCS_FULL_ABSO_SCALE_INITIAL = new ExampleItem("1198  ALARM-A", "MCS FULL ABSO SCALE INITIAL",
                 "An error occurred in initialization of the full absolute scale.\n" +
                         "       [Object] Axis name or none (spindle)\n" +
                         "       [Character-string] None\n" +
@@ -3896,7 +3897,7 @@ public class AlarmList {
                         "       - Encoder link cables or connectors\n" +
                         "       - Invertor unit control board");
 
-        ExampleItem MCS_AXIS_STOP_SIGNAL_ERROR = new ExampleItem("1199", "MCS AXIS STOP SIGNAL ERROR",
+        ExampleItem MCS_AXIS_STOP_SIGNAL_ERROR = new ExampleItem("1199  ALARM-A", "MCS AXIS STOP SIGNAL ERROR",
                 "OSP detected that a PSRDY signal input into an MIV unit\n" +
                         "       malfunctioned.\n" +
                         "       [Object]Axis name or none(spindle)\n" +
@@ -3911,7 +3912,7 @@ public class AlarmList {
                         "       poor contact of a connector.\n" +
                         "       FUB-DR3 or malfunction of a POS unit.");
 
-        ExampleItem STROKE_END_OVER = new ExampleItem("1200", "STROKE END OVER",
+        ExampleItem STROKE_END_OVER = new ExampleItem("1200  ALARM-A", "STROKE END OVER",
                 "An axis has hit the stroke end limit.\n" +
                         "       [Code]\n" +
                         "       None->The turret has hit the stroke end limit by X- or\n" +
@@ -3945,7 +3946,7 @@ public class AlarmList {
                         "       an axis in the direction which goes away from stroke end\n" +
                         "       limit.");
 
-        ExampleItem PLUS_VARIABLE_LIMIT_OVER = new ExampleItem("1202", "PLUS VARIABLE LIMIT OVER",
+        ExampleItem PLUS_VARIABLE_LIMIT_OVER = new ExampleItem("1202  ALARM-A", "PLUS VARIABLE LIMIT OVER",
                 "An axis movement command to move the axis beyond the\n" +
                         "       variable limit position in the positive direction is\n" +
                         "       designated.\n" +
@@ -3969,7 +3970,7 @@ public class AlarmList {
                         "       3)Check the tool offset value.\n" +
                         "       4)Check the zero offset value.");
 
-        ExampleItem MINUS_VARIABLE_LIMIT_OVER = new ExampleItem("1203", "MINUS VARIABLE LIMIT OVER",
+        ExampleItem MINUS_VARIABLE_LIMIT_OVER = new ExampleItem("1203  ALARM-A", "MINUS VARIABLE LIMIT OVER",
                 "An axis movement command to move the axis beyond the\n" +
                         "       variable limit position in the negative direction is\n" +
                         "       designated.\n" +
@@ -3993,7 +3994,7 @@ public class AlarmList {
                         "       3)Check the tool offset value.\n" +
                         "       4)Check the zero offset value.");
 
-        ExampleItem USER_RESERVE_CODE = new ExampleItem("1213", "USER RESERVE CODE",
+        ExampleItem USER_RESERVE_CODE = new ExampleItem("1213  ALARM-A", "USER RESERVE CODE",
                 "The alarm designated by output variable 993.\n" +
                         "       This alarm occurs when the following program is executed.\n" +
                         "       VDOUT [993] = oooo\n" +
@@ -4006,7 +4007,7 @@ public class AlarmList {
                         "       [Measures to Take]Cancel the conditions set by the user.\n" +
                         "       Related Specification:User task 2");
 
-        ExampleItem SM_COMMAND_ASYNCHRONOUS = new ExampleItem("1215", "S.M COMMAND ASYNCHRONOUS",
+        ExampleItem SM_COMMAND_ASYNCHRONOUS = new ExampleItem("1215  ALARM-A", "S.M COMMAND ASYNCHRONOUS",
                 "Under simultaneous four-axis control mode, S or M command\n" +
                         "       provided with constant cutting speed code does not match\n" +
                         "       between turret A and B for 2-saddle specification.\n" +
@@ -4046,7 +4047,7 @@ public class AlarmList {
                         "       turrets.\n" +
                         "       [Related Specifications]2S specification");
 
-        ExampleItem SYNCHRONOUS_P_CODE = new ExampleItem("1216", "SYNCHRONOUS P CODE",
+        ExampleItem SYNCHRONOUS_P_CODE = new ExampleItem("1216  ALARM-A", "SYNCHRONOUS P CODE",
                 "P code commands are not designated in the ascending order\n" +
                         "       for 2-saddle specification (except when the P commands are\n" +
                         "       negative values).\n" +
@@ -4066,7 +4067,7 @@ public class AlarmList {
                         "       In the example, change P20 into P40 so that P code values\n" +
                         "       increase orderly.");
 
-        ExampleItem TORQUE_LIMITER = new ExampleItem("1217", "TORQUE LIMITER",
+        ExampleItem TORQUE_LIMITER = new ExampleItem("1217  ALARM-A", "TORQUE LIMITER",
                 "With the torque limiter cancel switch OFF in a mode other\n" +
                         "       than MANUAL, the input from the mechanical torque limiter\n" +
                         "       is turned OFF.\n" +
@@ -4076,13 +4077,13 @@ public class AlarmList {
                         "       3->ZB-axis\n" +
                         "       4->XB-axis");
 
-        ExampleItem TORQUE_LIMITER_CANCEL = new ExampleItem("1218", "TORQUE LIMITER CANCEL",
+        ExampleItem TORQUE_LIMITER_CANCEL = new ExampleItem("1218  ALARM-A", "TORQUE LIMITER CANCEL",
                 "With the torque limiter cancel switch ON, automatic mode\n" +
                         "       is selected.In automatic mode, the torque limiter cancel\n" +
                         "       switch is turned ON.\n" +
                         "        ");
 
-        ExampleItem TORQUE_LIMITER_OVER = new ExampleItem("1219", "TORQUE LIMITER OVER",
+        ExampleItem TORQUE_LIMITER_OVER = new ExampleItem("1219  ALARM-A", "TORQUE LIMITER OVER",
                 "In torque skip cycle, the set torque value is exceeded\n" +
                         "       before the axis reaches the deceleration point D.\n" +
                         "       [Code]X\n" +
@@ -4096,13 +4097,13 @@ public class AlarmList {
                         "       Data setting error at the parameter (word) No. 70 \"Torque\n" +
                         "       monitor delay time\". Data setting error with G22, G23 command.");
 
-        ExampleItem TORQUE_SKIP_CONDITION_NO_SATISFY = new ExampleItem("1220", "TORQUE SKIP CONDITION NO SATISFY",
+        ExampleItem TORQUE_SKIP_CONDITION_NO_SATISFY = new ExampleItem("1220  ALARM-A", "TORQUE SKIP CONDITION NO SATISFY",
                 "Torque skip is not generated when it is attempted, and the\n" +
                         "       axis reaches the designated point. (In workpiece transfer,\n" +
                         "       the workpiece failed to reach the opposite chuck.)\n" +
                         "       [Code]2->The axis reaches the designated point (Z-L).");
 
-        ExampleItem DUPLICATE_M_CODE = new ExampleItem("1221", "DUPLICATE M-CODE",
+        ExampleItem DUPLICATE_M_CODE = new ExampleItem("1221  ALARM-A", "DUPLICATE M-CODE",
                 "Before the execution of an M code, another M code which\n" +
                         "       belongs to the same M-code group is designated (M07/M08, \n" +
                         "       and so forth).\n" +
@@ -4113,7 +4114,7 @@ public class AlarmList {
                         "       [Character-string]Designated M-code group\n" +
                         "       (\"M08\" is displayed in the case of M08/M09.)");
 
-        ExampleItem INTERRUPT_RETURN_POINTER_UNMATCH = new ExampleItem("1222", "INTERRUPT RETURN POINTER UNMATCH",
+        ExampleItem INTERRUPT_RETURN_POINTER_UNMATCH = new ExampleItem("1222  ALARM-A", "INTERRUPT RETURN POINTER UNMATCH",
                 "After manual operation intervention to retract the cutting\n" +
                         "       tool, the tool is returned to a different block from the\n" +
                         "       block where the interruption was made. This alarm occurs\n" +
@@ -4136,7 +4137,7 @@ public class AlarmList {
                         "       is not executed.\n" +
                         "       Related SpecificationTool retraction cycle");
 
-        ExampleItem THREAD_FEED = new ExampleItem("1223", "THREAD FEED",
+        ExampleItem THREAD_FEED = new ExampleItem("1223  ALARM-A", "THREAD FEED",
                 "In cutting a variable lead thread, the lead is zero or a\n" +
                         "       negative value.\n" +
                         "       Calculation error has occurred in the calculation of feed\n" +
@@ -4162,7 +4163,7 @@ public class AlarmList {
                         "       Feed becomes a negative value with the program indicated\n" +
                         "       above.");
 
-        ExampleItem CONTOUR_GENERATION_CALCULATION = new ExampleItem("1225", "CONTOUR GENERATION CALCULATION",
+        ExampleItem CONTOUR_GENERATION_CALCULATION = new ExampleItem("1225  ALARM-A", "CONTOUR GENERATION CALCULATION",
                 "Calculation error has occurred during the tool path\n" +
                         "       generation of contour generation function of G101, G102\n" +
                         "       or G103.\n" +
@@ -4191,7 +4192,7 @@ public class AlarmList {
                         "       Change the command value in the program within an allowable\n" +
                         "       range.");
 
-        ExampleItem SPINDLE_MODE_ILLEGAL = new ExampleItem("1228", "SPINDLE MODE ILLEGAL",
+        ExampleItem SPINDLE_MODE_ILLEGAL = new ExampleItem("1228  ALARM-A", "SPINDLE MODE ILLEGAL",
                 "A W-axis move command is designated while the same spindle\n" +
                         "       is not selected for both turrets.\n" +
                         "       [Code]\n" +
@@ -4200,7 +4201,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]Program error\n" +
                         "       [Related Specifications]Specified model (LT)");
 
-        ExampleItem SPINDLE_MAX_REVOLUTION_DESIGNATION = new ExampleItem("1229", "SPINDLE MAX REVOLUTION DESIGNATION",
+        ExampleItem SPINDLE_MAX_REVOLUTION_DESIGNATION = new ExampleItem("1229  ALARM-A", "SPINDLE MAX REVOLUTION DESIGNATION",
                 "The allowable maximum spindle speed (G50 S****) is not\n" +
                         "       designated before the spindle rotation command is \n" +
                         "       designated for the automatic operation.\n" +
@@ -4208,7 +4209,7 @@ public class AlarmList {
                         "       [Code]1\n" +
                         "       [Probable Faulty Locations]Program error");
 
-        ExampleItem SPINDLE_INTERFERENCE_DISTANCE = new ExampleItem("1238", "SPINDLE INTERFERENCE DISTANCE",
+        ExampleItem SPINDLE_INTERFERENCE_DISTANCE = new ExampleItem("1238  ALARM-A", "SPINDLE INTERFERENCE DISTANCE",
                 "1)ZA axis or ZB axis moved to the position where distance\n" +
                         "         between ZA axis and ZB axes become smaller than setting\n" +
                         "         value of parameter 1 concerning new LT control.\n" +
@@ -4228,7 +4229,7 @@ public class AlarmList {
                         "       1)Incorrect parameter setting.\n" +
                         "       2)Operation or program error.");
 
-        ExampleItem TURRET_ROTATION = new ExampleItem("1243", "TURRET ROTATION",
+        ExampleItem TURRET_ROTATION = new ExampleItem("1243  ALARM-A", "TURRET ROTATION",
                 "Turret indexing was attempted when the turret indexing\n" +
                         "       conditions are not met.\n" +
                         "       [Code]XX\n" +
@@ -4279,7 +4280,7 @@ public class AlarmList {
                         "       [Related Specifications]\n" +
                         "       1) ATC , multiple machine , Y axis");
 
-        ExampleItem TOOL_INTERFERENCE_CHECK = new ExampleItem("1245", "TOOL INTERFERENCE CHECK",
+        ExampleItem TOOL_INTERFERENCE_CHECK = new ExampleItem("1245  ALARM-A", "TOOL INTERFERENCE CHECK",
                 "The turrets approach each other within the tool\n" +
                         "       interference check area.\n" +
                         "       The machine equipped with ATC specification, turret\n" +
@@ -4308,7 +4309,7 @@ public class AlarmList {
                         "       1)Check the simultaneous cuts program.\n" +
                         "       2)Check the tool interference check data.");
 
-        ExampleItem CHUCK_BARRIER_AREA = new ExampleItem("1257", "CHUCK BARRIER AREA",
+        ExampleItem CHUCK_BARRIER_AREA = new ExampleItem("1257  ALARM-A", "CHUCK BARRIER AREA",
                 "Entry into chuck barrier area\n" +
                         "       [Object]SYSTEM\n" +
                         "       [Code]interference check area\n" +
@@ -4317,7 +4318,7 @@ public class AlarmList {
                         "         enter chuck barrier area.\n" +
                         "       2)Setting error of chuck barrier area");
 
-        ExampleItem TAILSTOCK_BARRIER_AREA = new ExampleItem("1258", "TAILSTOCK BARRIER_AREA",
+        ExampleItem TAILSTOCK_BARRIER_AREA = new ExampleItem("1258  ALARM-A", "TAILSTOCK BARRIER_AREA",
                 "Entry into tailstock barrier area\n" +
                         "       [Object]SYSTEM\n" +
                         "       [Code]interference check area\n" +
@@ -4326,7 +4327,7 @@ public class AlarmList {
                         "         axis to enter tailstock barrier area.\n" +
                         "       2)Setting error of tailstock barrier area");
 
-        ExampleItem TOW_ALONG_TAILSTOCK_CONNECT = new ExampleItem("1259", "TOW-ALONG TAILSTOCK CONNECT",
+        ExampleItem TOW_ALONG_TAILSTOCK_CONNECT = new ExampleItem("1259  ALARM-A", "TOW-ALONG TAILSTOCK CONNECT",
                 "G02, G03, G30, G31, G32, G33, G34, or G35 is designated\n" +
                         "       while the tow-along tailstock body is connected. Or with\n" +
                         "       the simple tow-along tailstock specification, an axis move\n" +
@@ -4382,7 +4383,7 @@ public class AlarmList {
                         "         a home position instruction is performed.\n" +
                         "       [Related Specifications]Programmable tailstock");
 
-        ExampleItem TOW_ALONG_TAILSTOCK_CONDITION = new ExampleItem("1260", "TOW ALONG TAILSTOCK CONDITION",
+        ExampleItem TOW_ALONG_TAILSTOCK_CONDITION = new ExampleItem("1260  ALARM-A", "TOW ALONG TAILSTOCK CONDITION",
                 "M188 (Tailstock disconnect), or M189 (Tailstock connect) is\n" +
                         "       designated with G152 calling for tailstock towing mode while\n" +
                         "       the spindle is not in zero speed or while the spindle is not\n" +
@@ -4442,7 +4443,7 @@ public class AlarmList {
                         "       [Related Specifications]\n" +
                         "        Programmable tailstock");
 
-        ExampleItem W_AXIS_PLUS_VARIABLE_LIMIT_OVER = new ExampleItem("1262", "W-AXIS PLUS VARIABLE LIMIT OVER",
+        ExampleItem W_AXIS_PLUS_VARIABLE_LIMIT_OVER = new ExampleItem("1262  ALARM-A", "W-AXIS PLUS VARIABLE LIMIT OVER",
                 "Tow-along tailstock exceeds the W-axis plus variable \n" +
                         "       limit.\n" +
                         "       [Object]AXIS, SYSTEM\n" +
@@ -4460,7 +4461,7 @@ public class AlarmList {
                         "       interference will not occur.\n" +
                         "       [Related Specifications]Programmable tailstock");
 
-        ExampleItem W_AXIS_MINUS_VARIABLE_LIMIT_OVER = new ExampleItem("1263", "W-AXIS MINUS VARIABLE LIMIT OVER",
+        ExampleItem W_AXIS_MINUS_VARIABLE_LIMIT_OVER = new ExampleItem("1263  ALARM-A", "W-AXIS MINUS VARIABLE LIMIT OVER",
                 "Tow-along tailstock exceeds the W-axis minus variable \n" +
                         "       limit.\n" +
                         "       [Object]AXIS, SYSTEM\n" +
@@ -4478,7 +4479,7 @@ public class AlarmList {
                         "       interference will not occur.\n" +
                         "       Related Specification:Programmable tailstock");
 
-        ExampleItem PARTS_CATCHER_INTERLOCK = new ExampleItem("1265", "PARTS CATCHER INTERLOCK",
+        ExampleItem PARTS_CATCHER_INTERLOCK = new ExampleItem("1265  ALARM-A", "PARTS CATCHER INTERLOCK",
                 "Parts catcher interlock is activated when an attempt is\n" +
                         "       made to advance or retract the parts catcher.\n" +
                         "       [Code]\n" +
@@ -4624,7 +4625,7 @@ public class AlarmList {
                         "           advanced/retracted command, it became operation \n" +
                         "           completion.");
 
-        ExampleItem LOAD_MONITOR_TOOL_BROKEN = new ExampleItem("1272", "LOAD MONITOR TOOL BROKEN",
+        ExampleItem LOAD_MONITOR_TOOL_BROKEN = new ExampleItem("1272  ALARM-A", "LOAD MONITOR TOOL BROKEN",
                 "While monitoring, cutting load has exceeded the second\n" +
                         "       limit level for longer than a designated period of time.\n" +
                         "       [Object]SYSTEM\n" +
@@ -4643,7 +4644,7 @@ public class AlarmList {
                         "       3)Cutting conditions are changed.\n" +
                         "       4)Chipping of the cutting tool");
 
-        ExampleItem LOAD_MONITOR_COMMAND_EXECUTION = new ExampleItem("1273", "LOAD MONITOR COMMAND EXECUTION",
+        ExampleItem LOAD_MONITOR_COMMAND_EXECUTION = new ExampleItem("1273  ALARM-A", "LOAD MONITOR COMMAND EXECUTION",
                 "Execution of monitor command is attempted during monitoring.\n" +
                         "       [Object]SYSTEM\n" +
                         "       [Code]\n" +
@@ -4661,7 +4662,7 @@ public class AlarmList {
                         "       Cancel the former monitor command before executing the\n" +
                         "       new one.");
 
-        ExampleItem LASER_MEASUREMENT_DATA_NG = new ExampleItem("1278", "LASER MEASUREMENT DATA NG",
+        ExampleItem LASER_MEASUREMENT_DATA_NG = new ExampleItem("1278  ALARM-A", "LASER MEASUREMENT DATA NG",
                 "Inductosyn pitch error between the encoder read data and\n" +
                         "       the laser measurement data does not satisfy the following:\n" +
                         "        In the X-axis:-0.0254mm - +0.0254mm\n" +
@@ -4677,7 +4678,7 @@ public class AlarmList {
                         "        LMW X0\n" +
                         "        :");
 
-        ExampleItem IND_CMP_DATA_VERIFY_NG = new ExampleItem("1279", "IND. CMP. DATA VERIFY NG",
+        ExampleItem IND_CMP_DATA_VERIFY_NG = new ExampleItem("1279  ALARM-A", "IND. CMP. DATA VERIFY NG",
                 "The difference between the designated inductosyn pitch\n" +
                         "       error compensation data and the read pitch error \n" +
                         "       compensation data does not satisfy the following:\n" +
@@ -4695,7 +4696,7 @@ public class AlarmList {
                         "        LMV X0\n" +
                         "        :");
 
-        ExampleItem HP9825A_SEND = new ExampleItem("1280", "HP9825A SEND",
+        ExampleItem HP9825A_SEND = new ExampleItem("1280  ALARM-A", "HP9825A SEND",
                 "In the communication with the desk top computer HP9825A\n" +
                         "       by the YHP, reception is impossible on the HP9825A side.\n" +
                         "       [Code]1\n" +
@@ -4707,7 +4708,7 @@ public class AlarmList {
                         "        LMW X0\n" +
                         "        :");
 
-        ExampleItem HP9825A_RECEIVE = new ExampleItem("1281", "HP9825A  RECEIVE",
+        ExampleItem HP9825A_RECEIVE = new ExampleItem("1281  ALARM-A", "HP9825A  RECEIVE",
                 "In the communication with the desk top computer HP9825A\n" +
                         "       of the YHP,the received characters are other than 0 through\n" +
                         "       9, A or E. Or the received data is more than 20 characters. \n" +
@@ -4726,7 +4727,7 @@ public class AlarmList {
                         "        LMW X0\n" +
                         "        :");
 
-        ExampleItem HP9825A_RECEIVE_DATA_FORMAT = new ExampleItem("1282", "HP9825A RECEIVE DATA FORMAT",
+        ExampleItem HP9825A_RECEIVE_DATA_FORMAT = new ExampleItem("1282  ALARM-A", "HP9825A RECEIVE DATA FORMAT",
                 "In the communication with the desk top computer HP9825A\n" +
                         "       (YHP), an error has been received on the HP9825A side.\n" +
                         "       Or the received data is more than 8 digits.\n" +
@@ -4743,7 +4744,7 @@ public class AlarmList {
                         "        LMW X0\n" +
                         "        :");
 
-        ExampleItem C_AXIS_COMMAND = new ExampleItem("1283", "C-AXIS COMMAND",
+        ExampleItem C_AXIS_COMMAND = new ExampleItem("1283  ALARM-A", "C-AXIS COMMAND",
                 "C-axis movement command is designated while it is not\n" +
                         "       acceptable.\n" +
                         "       [Object]SYSTEM\n" +
@@ -4761,7 +4762,7 @@ public class AlarmList {
                         "       C-axis movement command is designated while C-axis is not\n" +
                         "       clamped.");
 
-        ExampleItem SUB_SPINDLE_INTERFERENCE_DISTANCE = new ExampleItem("1299", "SUB SPINDLE INTERFERENCE DISTANCE",
+        ExampleItem SUB_SPINDLE_INTERFERENCE_DISTANCE = new ExampleItem("1299  ALARM-A", "SUB SPINDLE INTERFERENCE DISTANCE",
                 "The issued command requires the sub spindle headstock \n" +
                         "       (W-axis) and B-turret (ZB-axis) to come closer beyond the\n" +
                         "       interference distance specified by the parameter.\n" +
@@ -4785,7 +4786,7 @@ public class AlarmList {
                         "       1)Program error\n" +
                         "       2)Parameter set value");
 
-        ExampleItem W_AXIS_MOVEMENT_CONDITION = new ExampleItem("1300", "W-AXIS MOVEMENT CONDITION",
+        ExampleItem W_AXIS_MOVEMENT_CONDITION = new ExampleItem("1300  ALARM-A", "W-AXIS MOVEMENT CONDITION",
                 "A side A command was issued for moving W-axis in G141 mode\n" +
                         "       (sub-spindle coordinate system).\n" +
                         "       Or, a side B command was issued for W-axis movement while\n" +
@@ -4817,7 +4818,7 @@ public class AlarmList {
                         "         workhead is unclamped.\n" +
                         "         Move the W-axis using G154(W-axis positioning command).");
 
-        ExampleItem PICKOFF_INDEX_POSITION = new ExampleItem("1303", "PICKOFF INDEX POSITION",
+        ExampleItem PICKOFF_INDEX_POSITION = new ExampleItem("1303  ALARM-A", "PICKOFF INDEX POSITION",
                 "With pickoff-spindle specification models, pickoff-spindle\n" +
                         "       rotation or pickoff-spindle synchronized rotation with the\n" +
                         "       main spindle is commanded though the pickoff spindle is\n" +
@@ -4831,7 +4832,7 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       1)Turret indexing command in the program");
 
-        ExampleItem SENSOR_TOUCH_G00 = new ExampleItem("1306", "SENSOR TOUCH G00",
+        ExampleItem SENSOR_TOUCH_G00 = new ExampleItem("1306  ALARM-A", "SENSOR TOUCH G00",
                 "The sensor has been brought into contact with the workpiece\n" +
                         "       during G00 mode feed while the execution of the G30 work\n" +
                         "       gauging cycle.\n" +
@@ -4847,7 +4848,7 @@ public class AlarmList {
                         "       position coincide each other.)\n" +
                         "       Related Specification:Gauging cycle specification");
 
-        ExampleItem SENSOR_NO_TOUCH = new ExampleItem("1307", "SENSOR NO TOUCH",
+        ExampleItem SENSOR_NO_TOUCH = new ExampleItem("1307  ALARM-A", "SENSOR NO TOUCH",
                 "The sensor has not been brought into contact with the\n" +
                         "       workpiece during execution of the G30 work gauging cycle.\n" +
                         "       The sensor failed to contact the workpiece surface when\n" +
@@ -4874,7 +4875,7 @@ public class AlarmList {
                         "       [Related Specification]\n" +
                         "        Gauging cycle specification");
 
-        ExampleItem SENSOR_PROTECT = new ExampleItem("1309", "SENSOR PROTECT",
+        ExampleItem SENSOR_PROTECT = new ExampleItem("1309  ALARM-A", "SENSOR PROTECT",
                 "After touching, the sensor moved over the preset distance\n" +
                         "       Or, the turret directly hit the protection limit before\n" +
                         "       it touches the sensor.\n" +
@@ -4915,12 +4916,12 @@ public class AlarmList {
                         "          1->Sensor contact (or limit switch input) is monitored\n" +
                         "             only in gauging cycle.");
 
-        ExampleItem ATC_MANUAL_OPERATION_MODE_IMPOSSIBLE = new ExampleItem("1316", "ATC MANUAL OPERATION MODE IMPOSSIBLE",
+        ExampleItem ATC_MANUAL_OPERATION_MODE_IMPOSSIBLE = new ExampleItem("1316  ALARM-A", "ATC MANUAL OPERATION MODE IMPOSSIBLE",
                 "The optional parameter bit for establishing ATC arbitrary\n" +
                         "       operation mode was turned on without selecting the manual\n" +
                         "       operation mode.");
 
-        ExampleItem Y_AXIS_PARAMETER_ILLEGAL = new ExampleItem("1322", "Y-AXIS PARAMETER ILLEGAL",
+        ExampleItem Y_AXIS_PARAMETER_ILLEGAL = new ExampleItem("1322  ALARM-A", "Y-AXIS PARAMETER ILLEGAL",
                 "A calculation error occurred when the internal constant is\n" +
                         "       calculated according to Y-axis parameter.\n" +
                         "       [Code]XX\n" +
@@ -4933,7 +4934,7 @@ public class AlarmList {
                         "        Bit5->Overflow of SIN, COS, TAN, or COT value\n" +
                         "       [Probable Faulty Locations]Wrong Y-axis parameter setting");
 
-        ExampleItem YS_AXIS_POSITION = new ExampleItem("1323", "YS AXIS POSITION", "Except for Y-axis mode, though YS axis place was not in \n" +
+        ExampleItem YS_AXIS_POSITION = new ExampleItem("1323  ALARM-A", "YS AXIS POSITION", "Except for Y-axis mode, though YS axis place was not in \n" +
                 "       turning position of system parameter, they went along axis\n" +
                 "       movement command.\n" +
                 "       Except for Y-axis mode, though YS axis place is not in YS\n" +
@@ -4967,7 +4968,7 @@ public class AlarmList {
                 "         carriage return place, YS axis carriage return place\n" +
                 "         is modified.");
 
-        ExampleItem ADAPTIVE_CONTROL_COMMUNICATION_ERROR = new ExampleItem("1328", "ADAPTIVE CONTROL COMMUNICATION ERROR",
+        ExampleItem ADAPTIVE_CONTROL_COMMUNICATION_ERROR = new ExampleItem("1328  ALARM-A", "ADAPTIVE CONTROL COMMUNICATION ERROR",
                 "An abnormality occurred during communication in adaptive\n" +
                         "       control mode.\n" +
                         "       [Code]XYYZZ\n" +
@@ -4982,7 +4983,7 @@ public class AlarmList {
                         "        2->Forced close was not completed within a preset period\n" +
                         "           of time");
 
-        ExampleItem SHIFT_AMOUNT_ERROR = new ExampleItem("1329", "SHIFT AMOUNT ERROR",
+        ExampleItem SHIFT_AMOUNT_ERROR = new ExampleItem("1329  ALARM-A", "SHIFT AMOUNT ERROR",
                 "The shift amount is unsuitable.\n" +
                         "       [Code]\n" +
                         "       1->The shift amount is not 0 although shift amount is not\n" +
@@ -4997,7 +4998,7 @@ public class AlarmList {
                         "          which turns a shift amount into a fixation state and \n" +
                         "          posterior.");
 
-        ExampleItem SPINDLE_BELT_SLIP = new ExampleItem("1332", "SPINDLE BELT SLIP",
+        ExampleItem SPINDLE_BELT_SLIP = new ExampleItem("1332  ALARM-A", "SPINDLE BELT SLIP",
                 "On the machine with the function for detecting spindle\n" +
                         "       belt slip, belt slip was detected.\n" +
                         "       [Code]\n" +
@@ -5006,13 +5007,13 @@ public class AlarmList {
                         "          the time also set (at the parameter) as the belt slip\n" +
                         "          detection time.");
 
-        ExampleItem APA_ILLEGAL = new ExampleItem("1334", "APA ILLEGAL",
+        ExampleItem APA_ILLEGAL = new ExampleItem("1334  ALARM-A", "APA ILLEGAL",
                 "It was detected that a present-position of MCS differs\n" +
                         "       from a position-order of NC.\n" +
                         "       Please contact to OKUMA, after copying the buffering-data\n" +
                         "       of NC-axis to FD by the attachment-document.");
 
-        ExampleItem LOAD_MONITOR_W_OVER_LOAD = new ExampleItem("1338", "LOAD MONITOR W OVER LOAD",
+        ExampleItem LOAD_MONITOR_W_OVER_LOAD = new ExampleItem("1338  ALARM-A", "LOAD MONITOR W OVER LOAD",
                 "While the load monitor W function is activated, the load\n" +
                         "       ratio of X-axis/Z-axis or Z-axis/X-axis exceeds the limit\n" +
                         "       value. In the automatic mode, each of the programmed\n" +
@@ -5026,7 +5027,7 @@ public class AlarmList {
                         "       [Object]SYSTEM, AXIS\n" +
                         "       [Code]Load monitor W supervising part No. in hexadecimal");
 
-        ExampleItem DOOR_INTERLOCK_RESET = new ExampleItem("1339", "DOOR INTERLOCK RESET",
+        ExampleItem DOOR_INTERLOCK_RESET = new ExampleItem("1339  ALARM-A", "DOOR INTERLOCK RESET",
                 "On the machine intended for CE marking, when the state of\n" +
                         "       servo off by door-open returned to the state of servo on\n" +
                         "       by door-close, the following conditions are not met.\n" +
@@ -5038,7 +5039,7 @@ public class AlarmList {
                         "         0.5mm) away from the switch OFF position.\n" +
                         "       [Object]SYSTEM, M-TOOL SPINDLE");
 
-        ExampleItem G21_IMPOSSIBLE = new ExampleItem("1345", "G21 IMPOSSIBLE",
+        ExampleItem G21_IMPOSSIBLE = new ExampleItem("1345  ALARM-A", "G21 IMPOSSIBLE",
                 "Axis movement to the tool change position G21 is issued\n" +
                         "       without satisfying the conditions for executing the command. \n" +
                         "       (G21 command is also issued in execution of ATC macro\n" +
@@ -5087,7 +5088,7 @@ public class AlarmList {
                         "         shutter Issue the shutter open command before issuing \n" +
                         "         G21 HP=* command.");
 
-        ExampleItem STM_TIME_OVER = new ExampleItem("1347", "STM TIME OVER",
+        ExampleItem STM_TIME_OVER = new ExampleItem("1347  ALARM-A", "STM TIME OVER",
                 "The STM operation time exceeded the parameter-set time.\n" +
                         "       [Parameter] OPTIONAL PARAMETER (CYCLE TIME OVER CHECK)\n" +
                         "       \t     STM time over timer (0.1s)\n" +
@@ -5111,7 +5112,7 @@ public class AlarmList {
                         "         the alarm B 2295 STM time over occurs instead of this \n" +
                         "         alarm.");
 
-        ExampleItem CYCLE_TIME_OVER = new ExampleItem("1348", "CYCLE TIME OVER",
+        ExampleItem CYCLE_TIME_OVER = new ExampleItem("1348  ALARM-A", "CYCLE TIME OVER",
                 "One cycle time (from start to M02 or M30) exceeded the\n" +
                         "       parameter-set time.\n" +
                         "       [Parameter]\n" +
@@ -5129,20 +5130,20 @@ public class AlarmList {
                         "         the alarm C 3206 Cycle time over occurs instead of this\n" +
                         "         alarm.");
 
-        ExampleItem CONTOUR_GENERATION_IMPOSSIBLE = new ExampleItem("1349", "CONTOUR GENERATION IMPOSSIBLE",
+        ExampleItem CONTOUR_GENERATION_IMPOSSIBLE = new ExampleItem("1349  ALARM-A", "CONTOUR GENERATION IMPOSSIBLE",
                 "After locating the X-axis in a negative position by G00\n" +
                         "       or G01 command with X-C coordinates, contour generation\n" +
                         "       was commanded. Or, the contour generation command includes\n" +
                         "       a negative X-axis value.");
 
-        ExampleItem MEASUREMENT_SYSTEM_ERROR = new ExampleItem("1353", "MEASUREMENT SYSTEM ERROR",
+        ExampleItem MEASUREMENT_SYSTEM_ERROR = new ExampleItem("1353  ALARM-A", "MEASUREMENT SYSTEM ERROR",
                 "Concerning the optical measure within a machine specification,\n" +
                         "       ERROR signal changed on ON -> OFF in G30 cyclic practices.\n" +
                         "       When a power supply of an optical measure within a machine\n" +
                         "       sensor was turned on by a manually operated operational\n" +
                         "       mode condition, ERROR signal became \"OFF\".");
 
-        ExampleItem TOW_ALONG_STEADY_REST_CONNECT = new ExampleItem("1355", "TOW ALONG STEADY REST CONNECT",
+        ExampleItem TOW_ALONG_STEADY_REST_CONNECT = new ExampleItem("1355  ALARM-A", "TOW ALONG STEADY REST CONNECT",
                 "[Code]\n" +
                         "       1->Traverse Command is issued when engaged code is on.\n" +
                         "          Measures: Issue traverse command through Pulse Handle.\n" +
@@ -5161,18 +5162,18 @@ public class AlarmList {
                         "       1->During a Steady Rest connection mode, axis movement is\n" +
                         "          only possible by pulse handle.");
 
-        ExampleItem STEADY_REST_TORQUE_OVER = new ExampleItem("1356", "STEADY REST TORQUE OVER",
+        ExampleItem STEADY_REST_TORQUE_OVER = new ExampleItem("1356  ALARM-A", "STEADY REST TORQUE OVER",
                 "[Code]\n" +
                         "       1->The state where the actual torque is larger than 70%\n" +
                         "          of ZA-axis servomotor rating continued for 0.1s or over.\n" +
                         "       (Movement of steady rest was attempted while the steady\n" +
                         "        rest lower base was clamped.)");
 
-        ExampleItem POSITIONING_UNCERTAIN = new ExampleItem("1357", "POSITIONING UNCERTAIN",
+        ExampleItem POSITIONING_UNCERTAIN = new ExampleItem("1357  ALARM-A", "POSITIONING UNCERTAIN",
                 "The input signal notifying that positioning of the spring\n" +
                         "       alignment tool is not confirmed went OFF.");
 
-        ExampleItem NC_TAILSTOCK_ADVANCE_ERROR = new ExampleItem("1367", "NC TAILSTOCK ADVANCE ERROR",
+        ExampleItem NC_TAILSTOCK_ADVANCE_ERROR = new ExampleItem("1367  ALARM-A", "NC TAILSTOCK ADVANCE ERROR",
                 "Out advance of the NC tailstock.\n" +
                         "       Concerning Sub spindle-tailstock Control specification,\n" +
                         "       out advance of the NC tailstock.\n" +
@@ -5210,23 +5211,23 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Re-positon the tailstock closer to the workpiece.");
 
-        ExampleItem CUTTING_ERROR = new ExampleItem("1376", "CUTTING ERROR",
+        ExampleItem CUTTING_ERROR = new ExampleItem("1376  ALARM-A", "CUTTING ERROR",
                 "The load detected by the non-load detection function is\n" +
-                "       lower than the 2nd lower limit continuously for a preset\n" +
-                "       length of time.\n" +
-                "       The length of time and the 2nd lower limit value are set\n" +
-                "       for the following parameters.\n" +
-                "       Optional parameter (LOAD MONITOR 2)\n" +
-                "        Low load alarm duration\n" +
-                "        2st lower limit automatic setting para.\n" +
-                "       [Probable Faulty Locations]\n" +
-                "       Damaged tool tip\n" +
-                "       [Measures to take]\n" +
-                "       Change tool chip\n" +
-                "       [Related Specifications]\n" +
-                "       Non load detection function");
+                        "       lower than the 2nd lower limit continuously for a preset\n" +
+                        "       length of time.\n" +
+                        "       The length of time and the 2nd lower limit value are set\n" +
+                        "       for the following parameters.\n" +
+                        "       Optional parameter (LOAD MONITOR 2)\n" +
+                        "        Low load alarm duration\n" +
+                        "        2st lower limit automatic setting para.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Damaged tool tip\n" +
+                        "       [Measures to take]\n" +
+                        "       Change tool chip\n" +
+                        "       [Related Specifications]\n" +
+                        "       Non load detection function");
 
-        ExampleItem TOW_ALONG_STEADY_REST_INTERFERENCE_POSITION = new ExampleItem("1393", "TOW-ALONG STEADY REST INTERFERENCE POSITION",
+        ExampleItem TOW_ALONG_STEADY_REST_INTERFERENCE_POSITION = new ExampleItem("1393  ALARM-A", "TOW-ALONG STEADY REST INTERFERENCE POSITION",
                 "[Code]\n" +
                         "       None->Programmable tailstock (Tow-Along type, NC tailstock\n" +
                         "             type) was moved on interference position with\n" +
@@ -5236,7 +5237,7 @@ public class AlarmList {
                         "       [Measures to take]\n" +
                         "       Check programmable tailstock command(G152)");
 
-        ExampleItem HOME_POSITION_MOVEMENT_INTERLOCK = new ExampleItem("1412", "HOME POSITION MOVEMENT INTERLOCK",
+        ExampleItem HOME_POSITION_MOVEMENT_INTERLOCK = new ExampleItem("1412  ALARM-A", "HOME POSITION MOVEMENT INTERLOCK",
                 "It performed a home position command to HP1, HP2 in main\n" +
                         "       spindle rotation.\n" +
                         "       Or, when turret had not divided the turret-number that\n" +
@@ -5251,7 +5252,7 @@ public class AlarmList {
                         "         stop.\n" +
                         "       2)Divide turret in the position that loader could approach.");
 
-        ExampleItem BARRIER_AREA = new ExampleItem("1426", "BARRIER AREA",
+        ExampleItem BARRIER_AREA = new ExampleItem("1426  ALARM-A", "BARRIER AREA",
                 "Axis entered into a barrier area.\n" +
                         "       [Code]\n" +
                         "       1->Concerning MacTurn30, axis entered into a barrier area\n" +
@@ -5273,7 +5274,7 @@ public class AlarmList {
                         "       Y-axis: optional parameter long word No.67\n" +
                         "       Z-axis: optional parameter long word No.68");
 
-        ExampleItem SAFETY_SPEED_OVER = new ExampleItem("1431", "SAFETY SPEED OVER",
+        ExampleItem SAFETY_SPEED_OVER = new ExampleItem("1431  ALARM-A", "SAFETY SPEED OVER",
                 "Concering velocity supervision automatic formatting\n" +
                         "       on the side of NC, Axis-speed surpassed a safety speed\n" +
                         "       for the speed supervision which has set by data file for\n" +
@@ -5288,7 +5289,7 @@ public class AlarmList {
                         "       NC software\n" +
                         "       Data file for Safety-Speed-Monitor");
 
-        ExampleItem SAFETY_MONITOR_ERROR_DETECTION = new ExampleItem("1432", "SAFETY MONITOR ERROR DETECTION",
+        ExampleItem SAFETY_MONITOR_ERROR_DETECTION = new ExampleItem("1432  ALARM-A", "SAFETY MONITOR ERROR DETECTION",
                 "Safety monitor detected speed-over.\n" +
                         "       Or, By some cause, it resulted in the state as errar signal\n" +
                         "       turned on.\n" +
@@ -5298,18 +5299,18 @@ public class AlarmList {
                         "       NC software\n" +
                         "       Data file for Safety monitor");
 
-        ExampleItem TURRET_INTERFERANCE = new ExampleItem("1435", "TURRET INTERFERANCE",
+        ExampleItem TURRET_INTERFERANCE = new ExampleItem("1435  ALARM-A", "TURRET INTERFERANCE",
                 "The ZB-axis has moved to a position shorter than the preset\n" +
-                "       ZB-axis work transfer point under the new LT control,\n" +
-                "       while the B-turret is not indexed to the station number\n" +
-                "       specified by T1 or parameter.\n" +
-                "       [Probable Faulty Locations]\n" +
-                "       1)Parameter-Setting error\n" +
-                "       2)Operation/Program error\n" +
-                "       [Parameter]\n" +
-                "       Parameter Word No.64");
+                        "       ZB-axis work transfer point under the new LT control,\n" +
+                        "       while the B-turret is not indexed to the station number\n" +
+                        "       specified by T1 or parameter.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Parameter-Setting error\n" +
+                        "       2)Operation/Program error\n" +
+                        "       [Parameter]\n" +
+                        "       Parameter Word No.64");
 
-        ExampleItem START_UP_APA_DEVIATION = new ExampleItem("1436", "START UP APA DEVIATION",
+        ExampleItem START_UP_APA_DEVIATION = new ExampleItem("1436  ALARM-A", "START UP APA DEVIATION",
                 "After a power supply input, APA deviation became excessive\n" +
                         "       at the time of power sequent execution.\n" +
                         "       Or, the value of detector coupling compenzation was not\n" +
@@ -5319,7 +5320,7 @@ public class AlarmList {
                         "       NC Software\n" +
                         "       Value of detector coupling compenzation (System Parameter)");
 
-        ExampleItem STEADY_REST_TAILSTOCK_INTERLOCK = new ExampleItem("1440", "STEADY REST-TAILSTOCK INTERLOCK",
+        ExampleItem STEADY_REST_TAILSTOCK_INTERLOCK = new ExampleItem("1440  ALARM-A", "STEADY REST-TAILSTOCK INTERLOCK",
                 "[Code]\n" +
                         "        1->A position command of programable tailstock is over\n" +
                         "           than maximum distance of a steady rest and a tailstock.\n" +
@@ -5336,7 +5337,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Please turn the instruction-position on a right value.");
 
-        ExampleItem SAFETY_SPEED_CLAMP = new ExampleItem("1441", "SAFETY SPEED CLAMP",
+        ExampleItem SAFETY_SPEED_CLAMP = new ExampleItem("1441  ALARM-A", "SAFETY SPEED CLAMP",
                 "The feed rate of C-axis was about to surpass a\n" +
                         "       restrictive value at the time of G102 or G103 command\n" +
                         "       execution by the state which an object guard of\n" +
@@ -5348,13 +5349,13 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Please close an object guard of Main-spindle.");
 
-        ExampleItem HEAVY_WORK_DATA_NOT_FOUND = new ExampleItem("1453", "HEAVY WORK DATA NOT FOUND",
+        ExampleItem HEAVY_WORK_DATA_NOT_FOUND = new ExampleItem("1453  ALARM-A", "HEAVY WORK DATA NOT FOUND",
                 "There are not \"Heavy Work DATA\" that selected by the\n" +
                         "       parameter in axis-data-file.\n" +
                         "       [Probable Faulty Locations]\n" +
                         "       Axis data file");
 
-        ExampleItem TEMP_RISE_LIMIT_OVER = new ExampleItem("1460", "TEMP RISE LIMIT OVER",
+        ExampleItem TEMP_RISE_LIMIT_OVER = new ExampleItem("1460  ALARM-A", "TEMP RISE LIMIT OVER",
                 "Temperature rise value has exceeded the limit value.\n" +
                         "       [Character-String]None\n" +
                         "       [Code]XYY\n" +
@@ -5367,20 +5368,20 @@ public class AlarmList {
                         "       1)Measured temperature\n" +
                         "       2)Thermal deviation compensation parameter");
 
-        ExampleItem SPINDLE_WENT_INTO_TRANSPORTATION_BARRIER = new ExampleItem("1463", "SPINDLE WENT INTO TRANSPORTATION BARRIER",
+        ExampleItem SPINDLE_WENT_INTO_TRANSPORTATION_BARRIER = new ExampleItem("1463  ALARM-A", "SPINDLE WENT INTO TRANSPORTATION BARRIER",
                 "Spindle entered into a barrier-area that set by the\n" +
                         "       parameter of work transportation barrier data.\n" +
                         "       [Probable Faulty Locations]\n" +
                         "       Program erro");
 
-        ExampleItem SPINDLE_LOW_ACCELERATION_MODE_CONDITION = new ExampleItem("1465", "SPINDLE LOW ACCELERATION MODE CONDITION",
+        ExampleItem SPINDLE_LOW_ACCELERATION_MODE_CONDITION = new ExampleItem("1465  ALARM-A", "SPINDLE LOW ACCELERATION MODE CONDITION",
                 "M671 or M672 command was issued while the spindle\n" +
                         "       was not stopped.\n" +
                         "       [Object] None\n" +
                         "       [Character-string] None\n" +
                         "       [Code] None");
 
-        ExampleItem HOB_CUTTING_OVER_LOAD = new ExampleItem("1466", "HOB CUTTING OVER LOAD",
+        ExampleItem HOB_CUTTING_OVER_LOAD = new ExampleItem("1466  ALARM-A", "HOB CUTTING OVER LOAD",
                 "Spindle,M-spindle,Y-axis had big DIFF value during HOB\n" +
                         "       cutting.\n" +
                         "       [CODE]\n" +
@@ -5390,7 +5391,7 @@ public class AlarmList {
                         "       4->Main spindle or Sub spindle over load\n" +
                         "       5->MA-axis or MB-axis over load");
 
-        ExampleItem POSITION_SCALE_ABNORMAL_XS_AXIS = new ExampleItem("1467", "POSITION SCALE ABNORMAL XS AXIS",
+        ExampleItem POSITION_SCALE_ABNORMAL_XS_AXIS = new ExampleItem("1467  ALARM-A", "POSITION SCALE ABNORMAL XS AXIS",
                 "he Xs-axis(cam-axis) position encoder(optical scale)\n" +
                         "       is faulty.\n" +
                         "       [Index]None\n" +
@@ -5403,7 +5404,7 @@ public class AlarmList {
                         "       [Note]\n" +
                         "       This alarm can be cleared by reseting the NC.");
 
-        ExampleItem SERVO_AMP_ABNORMAL_XS_AXIS = new ExampleItem("1468", "SERVO AMP ABNORMAL XS AXIS",
+        ExampleItem SERVO_AMP_ABNORMAL_XS_AXIS = new ExampleItem("1468  ALARM-A", "SERVO AMP ABNORMAL XS AXIS",
                 "The Xs-axis(cam-axis) servo controller is faulty.\n" +
                         "       [Index]None\n" +
                         "       [Character-string]None\n" +
@@ -5416,7 +5417,7 @@ public class AlarmList {
                         "       The alarm state can be cleared by turning off the power\n" +
                         "       and turn it back on again.");
 
-        ExampleItem APA_VEROCITY_XS_AXIS = new ExampleItem("1469", "APA VEROCITY XS AXIS",
+        ExampleItem APA_VEROCITY_XS_AXIS = new ExampleItem("1469  ALARM-A", "APA VEROCITY XS AXIS",
                 "Actual position velocity of Xs-axis exceeds 15 m/min.\n" +
                         "       [Index]None\n" +
                         "       [Character-string]None\n" +
@@ -5429,7 +5430,7 @@ public class AlarmList {
                         "       Review the cutting condition such as cam profit and\n" +
                         "       spindle speed.");
 
-        ExampleItem APA_RANGE_XS_AXIS = new ExampleItem("1470", "APA RANGE XS AXIS",
+        ExampleItem APA_RANGE_XS_AXIS = new ExampleItem("1470  ALARM-A", "APA RANGE XS AXIS",
                 "Actual position reachea the soft-limit during\n" +
                         "       synchronization operation (in other than learning).\n" +
                         "       During learning operation, actual position data exceeds\n" +
@@ -5456,7 +5457,7 @@ public class AlarmList {
                         "       parameter (XS AXIS LEARNING CONTROL PARAMETER No.6).\n" +
                         "       Check the position encoder.");
 
-        ExampleItem CON_VEROSITY_XS_AXIS = new ExampleItem("1471", "CON VEROSITY XS AXIS",
+        ExampleItem CON_VEROSITY_XS_AXIS = new ExampleItem("1471  ALARM-A", "CON VEROSITY XS AXIS",
                 "When the Xs-axis(cam-axis) machining data and the\n" +
                         "       compensation data are calculated and set to the memory,\n" +
                         "       the spindle exceeds the allowable limit.\n" +
@@ -5473,7 +5474,7 @@ public class AlarmList {
                         "       developing the profile.\n" +
                         "       Review the cam profile definition file.");
 
-        ExampleItem STROKE_END_OVER_XS_AXIS = new ExampleItem("1472", "STROKE END OVER XS AXIS",
+        ExampleItem STROKE_END_OVER_XS_AXIS = new ExampleItem("1472  ALARM-A", "STROKE END OVER XS AXIS",
                 "The Xs-axis(cam-axis) reaches the travel end.\n" +
                         "       [Index]None\n" +
                         "       [Character-string]None\n" +
@@ -5493,7 +5494,7 @@ public class AlarmList {
                         "         allowable travel range.\n" +
                         "       3)Set the soft-limits correctly.");
 
-        ExampleItem ACTUAL_POSITION_INITIALIZE_ERROR_XS_AXIS = new ExampleItem("1473", "ACTUAL POSITION INITIALIZE ERROR XS AXIS",
+        ExampleItem ACTUAL_POSITION_INITIALIZE_ERROR_XS_AXIS = new ExampleItem("1473  ALARM-A", "ACTUAL POSITION INITIALIZE ERROR XS AXIS",
                 "Xs-axis(cam-axis) has not returned to the zero point\n" +
                         "       correctly.\n" +
                         "       [Index]None\n" +
@@ -5509,7 +5510,7 @@ public class AlarmList {
                         "       Check the input of the zero return range signal and the\n" +
                         "       zero point signal.");
 
-        ExampleItem LEARNING_CONTROL_ERROR_XS_AXIS = new ExampleItem("1474", "LEARNING CONTROL ERROR XS AXIS",
+        ExampleItem LEARNING_CONTROL_ERROR_XS_AXIS = new ExampleItem("1474  ALARM-A", "LEARNING CONTROL ERROR XS AXIS",
                 "Any of the following errors occurred during learning\n" +
                         "       control mode.\n" +
                         "       - The learning command is given while in asynchronization\n" +
@@ -5532,7 +5533,7 @@ public class AlarmList {
                         "       Set a large value for learning quit time\n" +
                         "          (XS AXIS LEARNING CONTROL PARAMETER No.5).");
 
-        ExampleItem CAM_EXECUTE_DATA_NOT_SELECT_XS_AXIS = new ExampleItem("1475", "CAM EXECUTE DATA NOT SELECT XS AXIS",
+        ExampleItem CAM_EXECUTE_DATA_NOT_SELECT_XS_AXIS = new ExampleItem("1475  ALARM-A", "CAM EXECUTE DATA NOT SELECT XS AXIS",
                 "When the synchronization command is designated, the cutting\n" +
                         "       data has not been transferred to the PSC board.\n" +
                         "       [Index]None\n" +
@@ -5552,7 +5553,7 @@ public class AlarmList {
                         "       Load the first by displaying the CAM EXECUTE PARAMETER\n" +
                         "       screen.");
 
-        ExampleItem LEARNING_CONTROL_COMMAND_XS_AXIS = new ExampleItem("1476", "LEARNING CONTROL COMMAND XS AXIS",
+        ExampleItem LEARNING_CONTROL_COMMAND_XS_AXIS = new ExampleItem("1476  ALARM-A", "LEARNING CONTROL COMMAND XS AXIS",
                 "The learning control commands is designated while the\n" +
                         "       control mode is not the synchronization mode.\n" +
                         "       [Index]None\n" +
@@ -5563,7 +5564,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Review the program.");
 
-        ExampleItem SYNCHRONOUS_MODE_COMMAND = new ExampleItem("1477", "SYNCHRONOUS MODE COMMAND",
+        ExampleItem SYNCHRONOUS_MODE_COMMAND = new ExampleItem("1477  ALARM-A", "SYNCHRONOUS MODE COMMAND",
                 "The synchronous mode operation command is designated\n" +
                         "       while spindle rotation command has not been designated.\n" +
                         "       The synchronous operation start command is designated in\n" +
@@ -5589,7 +5590,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Review the program.");
 
-        ExampleItem CHUCK_COORDINATES_UNMATCH = new ExampleItem("1478", "CHUCK COORDINATES UNMATCH",
+        ExampleItem CHUCK_COORDINATES_UNMATCH = new ExampleItem("1478  ALARM-A", "CHUCK COORDINATES UNMATCH",
                 "ACC coordinates (Cutting Station or Select Station) is not\n" +
                         "       corresponding.\n" +
                         "       [Object] Turret\n" +
@@ -5608,14 +5609,14 @@ public class AlarmList {
                         "       [Related Specifications]\n" +
                         "       ACC Specification");
 
-        ExampleItem PSCB_COMMAND_ERROR = new ExampleItem("1479", "PSCB COMMAND ERROR",
+        ExampleItem PSCB_COMMAND_ERROR = new ExampleItem("1479  ALARM-A", "PSCB COMMAND ERROR",
                 "More than one command is sent simultaneously to the PSC\n" +
                         "       board. This error does not occur usually.\n" +
                         "       [Index]None\n" +
                         "       [Character-string]None\n" +
                         "       [Code]None");
 
-        ExampleItem DIFF_OVER_XS_AXIS = new ExampleItem("1480", "DIFF OVER XS AXIS",
+        ExampleItem DIFF_OVER_XS_AXIS = new ExampleItem("1480  ALARM-A", "DIFF OVER XS AXIS",
                 "Follow-up error of the Xs-axis(cam-axis) exceeds the\n" +
                         "       allowable limit.\n" +
                         "       [Index]None\n" +
@@ -5628,7 +5629,7 @@ public class AlarmList {
                         "       Remove the cause of the mechanical ploblems and reduse\n" +
                         "       slide resistance.");
 
-        ExampleItem DRIFTCOMPENSATION_VALUE_OVER = new ExampleItem("1481", "DRIFTCOMPENSATION VALUE OVER",
+        ExampleItem DRIFTCOMPENSATION_VALUE_OVER = new ExampleItem("1481  ALARM-A", "DRIFTCOMPENSATION VALUE OVER",
                 "he drift compensation value of the Xs-axis(cam-axis)\n" +
                         "       exceeds the allowable limit.\n" +
                         "       [Index]None\n" +
@@ -5640,7 +5641,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Adjust the D/A gain of the PSC board.");
 
-        ExampleItem PSCB_REAL_TIME_TASK_ERROR = new ExampleItem("1482", "PSCB REAL TIME TASK ERROR",
+        ExampleItem PSCB_REAL_TIME_TASK_ERROR = new ExampleItem("1482  ALARM-A", "PSCB REAL TIME TASK ERROR",
                 "Real time task control is not impossible with the PSC \n" +
                         "       board.\n" +
                         "       [Index]None\n" +
@@ -5651,7 +5652,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Replace the PSC board.");
 
-        ExampleItem PSCB_INT_TASK_LOOP_ERROR = new ExampleItem("1483", "PSCB INT TASK LOOP ERROR",
+        ExampleItem PSCB_INT_TASK_LOOP_ERROR = new ExampleItem("1483  ALARM-A", "PSCB INT TASK LOOP ERROR",
                 "The INT task loop error occured with the PSC board.\n" +
                         "       [Index]None\n" +
                         "       [Character-string]None\n" +
@@ -5663,7 +5664,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Replace the PSC board.");
 
-        ExampleItem PSCB_EC_TASK_LOOP_ERROR = new ExampleItem("1484", "PSCB EC TASK LOOP ERROR",
+        ExampleItem PSCB_EC_TASK_LOOP_ERROR = new ExampleItem("1484  ALARM-A", "PSCB EC TASK LOOP ERROR",
                 "Before the currently EC task is completed, the task is\n" +
                         "       going to be started.\n" +
                         "       [Index]None\n" +
@@ -5674,7 +5675,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Replace the PSC board.");
 
-        ExampleItem PSCB_TIME_SHARING_TASK_ERROR = new ExampleItem("1485", "PSCB TIME SHARING TASK ERROR",
+        ExampleItem PSCB_TIME_SHARING_TASK_ERROR = new ExampleItem("1485  ALARM-A", "PSCB TIME SHARING TASK ERROR",
                 "Time sharing task control is not impossible with the PSC\n" +
                         "       board.\n" +
                         "       [Index]None\n" +
@@ -5685,7 +5686,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Replace the PSC board.");
 
-        ExampleItem 	PSCB_EXCEPTION_ERROR = new ExampleItem("1486", "PSCB EXCEPTION ERROR",
+        ExampleItem PSCB_EXCEPTION_ERROR = new ExampleItem("1486  ALARM-A", "PSCB EXCEPTION ERROR",
                 "Abnormal exception occurred with the PSC board.\n" +
                         "       [Index]None\n" +
                         "       [Character-string]None\n" +
@@ -5695,7 +5696,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Replace the PSC board.");
 
-        ExampleItem PSCB_MEMORY_TEST_ERROR = new ExampleItem("1487", "PSCB MEMORY TEST ERROR",
+        ExampleItem PSCB_MEMORY_TEST_ERROR = new ExampleItem("1487  ALARM-A", "PSCB MEMORY TEST ERROR",
                 "The memory of the PSC board does not work normally.\n" +
                         "       [Index]None\n" +
                         "       [Character-string]None\n" +
@@ -5705,7 +5706,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Replace the PSC board.");
 
-        ExampleItem PSCB_OVER_HEAT = new ExampleItem("1488", "PSCB OVER HEAT",
+        ExampleItem PSCB_OVER_HEAT = new ExampleItem("1488  ALARM-A", "PSCB OVER HEAT",
                 "Overheat of the cam-axis drive motor or the servo \n" +
                         "       amplifier.\n" +
                         "       [Index]None\n" +
@@ -5719,7 +5720,7 @@ public class AlarmList {
                         "       Turn off the power once and then turn it on after several\n" +
                         "       10min.");
 
-        ExampleItem FIRST_TIME_DRIFT_COMPENSATION_VALUE_OVER = new ExampleItem("1489", "FIRST TIME DRIFT COMPENSATION VALUE OVER",
+        ExampleItem FIRST_TIME_DRIFT_COMPENSATION_VALUE_OVER = new ExampleItem("1489  ALARM-A", "FIRST TIME DRIFT COMPENSATION VALUE OVER",
                 "The first drift compensation value of the Xs-axis(cam-axis)\n" +
                         "       exceeded the allowable limit.\n" +
                         "       [Index]None\n" +
@@ -5730,7 +5731,7 @@ public class AlarmList {
                         "       [Measures to Take]\n" +
                         "       Adjust the D/A gain of the PSC board.");
 
-        ExampleItem SYNCHRONOUS_MODE_SPINDLE_SPEED_COMMAND = new ExampleItem("1490", "SYNCHRONOUS MODE SPINDLE SPEED COMMAND",
+        ExampleItem SYNCHRONOUS_MODE_SPINDLE_SPEED_COMMAND = new ExampleItem("1490  ALARM-A", "SYNCHRONOUS MODE SPINDLE SPEED COMMAND",
                 "When the synchronous mode is entered, the spindle speed\n" +
                         "       in the cam execute data and the programmed spindle speed\n" +
                         "       do not agree with each other.\n" +
@@ -5747,7 +5748,7 @@ public class AlarmList {
                         "       Review the spindle speed.\n" +
                         "       Carry out the learning control again.");
 
-        ExampleItem HEAVY_TOOLING_DATA_NOT_FOUND = new ExampleItem("1491", "HEAVY TOOLING DATA NOT FOUND",
+        ExampleItem HEAVY_TOOLING_DATA_NOT_FOUND = new ExampleItem("1491  ALARM-A", "HEAVY TOOLING DATA NOT FOUND",
                 "In the spec of Heavy Tooling, there  are not\n" +
                         "       \"Heavy Tooling DATA\" that selected by the parameter in\n" +
                         "       axis-data-file.\n" +
@@ -5757,264 +5758,2555 @@ public class AlarmList {
                         "       [Probable Faulty Locations]\n" +
                         "       Axis data file");
 
-        ExampleItem PSCB_PG_UNDER_PULSE = new ExampleItem("1492", "PSCB P.G. UNDER PULSE", " ");
+        ExampleItem PSCB_PG_UNDER_PULSE = new ExampleItem("1492  ALARM-A", "PSCB P.G. UNDER PULSE", " ");
+
+        ExampleItem PSCB_PG_OVER_PULSE = new ExampleItem("1493  ALARM-A", "PSCBP.G. OVER PULSE", " ");
+
+        ExampleItem PSCB_MINUS_STROKE_END_OVER = new ExampleItem("1494  ALARM-A", "PSCB MINUS STROKE END OVER", " ");
+
+        ExampleItem WORK_REST_INTERLOCK = new ExampleItem("1500  ALARM-A", "WORK REST INTERLOCK",
+                "[Code]\n" +
+                        "       None->Traverse command was issued when tow-along work\n" +
+                        "             rest was connection mode.\n" +
+                        "          1->W-axis order was performed by the state that there was not\n" +
+                        "             X-axis in plus limit.\n" +
+                        "          2->W-axis entered into an interference area when the work rest\n" +
+                        "             was not a down position.");
+
+        ExampleItem WORK_REST_TORQUE_OVER = new ExampleItem("1501  ALARM-A", "WORK REST TORQUE OVER",
+                "[Code]\n" +
+                        "       None->The Z axis motor load exceeded 70% of the rated\n" +
+                        "             load  for 0.1 second or longer,when tow-along work\n" +
+                        "             rest  was connection mode.\n" +
+                        "             (Movement of work rest was attempted while the work\n" +
+                        "             rest lower base was clamped.)");
+
+        ExampleItem ALARM_A_IS_OCCURRING_IN_OTHER_SYSTEM = new ExampleItem("1504  ALARM-A", "ALARM-A IS OCCURRING IN OTHER-SYSTEM",
+                "");
+
+        ExampleItem CAN_NOT_ENTER_C_AXIS_SYNC_MODE = new ExampleItem("1507  ALARM-A", "CAN NOT ENTER C AXIS SYNC. MODE",
+                "Concerning sequence return, CA/CB Offset different when C sync.\n" +
+                        "       mode block\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1->Concerning sequence return, CA/CB Offset different when C sync.\n" +
+                        "       mode block\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       CA or a CB moved an axis alone\n" +
+                        "       [Measures to Take]\n" +
+                        "       C-axis sync. Oder(M889-M890) afer C-axis connection oder");
+
+        ExampleItem THE_BETWEEN_THE_TURRET_INTERFERED = new ExampleItem("1509  ALARM-A", "THE BETWEEN THE TURRET INTERFERED",
+                "The interference of Between the turret (The cover part \n" +
+                        "       contains it) was detected with two saddle machine or three saddle\n" +
+                        "       machine. \n" +
+                        "       This alarm approximates by rectangular shape to project \n" +
+                        "       the turret shape to the XZ plane, and detects the interference \n" +
+                        "       of Between the turret. \n" +
+                        "       This alarm is not detected while manual mode and \n" +
+                        "       manual interrupting mode.\n" +
+                        "       [Character string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       1->A turret and B turret interfered.\n" +
+                        "       2->A turret and B turret cover (only ZB moves) interfered.\n" +
+                        "       3->A turret cover (Only ZA moves) and B turret interfered.\n" +
+                        "       4->A turret and C turret interfered.\n" +
+                        "       5->A turret and C turret cover (only ZC moves) interfered.\n" +
+                        "       6->A turret cover (Only ZA moves) and C turret interfered.\n" +
+                        "       7->C turret and B turret interfered.\n" +
+                        "       8->C turret and B turret cover (only ZB moves) interfered.\n" +
+                        "       9->C turret cover (Only ZC moves) and B turret interfered.\n" +
+                        "       [Expected faulty point]\n" +
+                        "       Mistake of NC program instruction\n" +
+                        "       [Treatment measures]\n" +
+                        "       Please confirm the NC program on A saddle side and B saddle side \n" +
+                        "       and C saddle side of the part where the alarm is generated. \n" +
+                        "       This alarm might be actually generated when not interfering \n" +
+                        "       because this alarm detects interference by the rectangular \n" +
+                        "       approximation shape of the XZ plane for safety. \n" +
+                        "       In that case, when it instructs the NC program of the part \n" +
+                        "       (A saddle side or B saddle side or C saddle side) in M867\n" +
+                        "       (CAS function release), this alarm is not detected.\n" +
+                        "       However, please drive in that case after it confirms it enough.");
+
+        ExampleItem HI_CUT_PRO_CONTROL_CANNOT_EXECUTE = new ExampleItem("1510  ALARM-A", "HI-CUT PRO CONTROL CANNOT EXECUTE",
+                "Hi-CUT Pro control was attempted although the conditions for \n" +
+                        "       executing Hi-CUT Pro control were not met. \n" +
+                        "       [Index] \n" +
+                        "        None \n" +
+                        "       [Character-string] \n" +
+                        "        None \n" +
+                        "       [Code] XYY\n" +
+                        "        XYY=200:Teaching mode was detected under the control \n" +
+                        "       .\t by Hi-CUT Pro. \n" +
+                        "       [Measures to Take] \n" +
+                        "        Turn off the teaching mode because Hi-CUT Pro control is \n" +
+                        "        impossible during the teaching mode. ");
+
+        ExampleItem SPM_CONTOUR_CONTROL_CANNOT_EXECUTE = new ExampleItem("1511  ALARM-A", "SPM CONTOUR CONTROL CANNOT EXECUTE",
+                "Super-NURBS control was attempted without satisfying the \n" +
+                        "       conditions for executing the control. \n" +
+                        "       [Index] \n" +
+                        "        None \n" +
+                        "       [Character-string] \n" +
+                        "        None \n" +
+                        "       [Code] XYY\n" +
+                        "        X=1:NURBS interpolation processing and the other function \n" +
+                        "            generation processing were attempted at the same time.\n" +
+                        "          YY:States of the other commands when NURBS interpolation \n" +
+                        "       .     processing was attempted\n" +
+                        "       .   bit0->positioning command (G00) is specified at the time.\n" +
+                        "       .   bit1->Linear interpolation (G01) is specified at the time.\n" +
+                        "       .   bit2->Arc interpolation or helical cutting (G02/G03) is \n" +
+                        "       .\t  specified at the same time.\n" +
+                        "       .   bit3->Dwell (G04) is specified at the same time.\n" +
+                        "       .   bit4->Manual shift amount cancel is specified at the same time.\n" +
+                        "       .   bit7->Tolerance control mode ON is specified at the same time.\n" +
+                        "       [Cause] \n" +
+                        "        NC control software design error\n" +
+                        "         X=F:Return to the middle of NURBS block was attempted by \n" +
+                        "       .     the return search function.\n" +
+                        "       .   YY=01->Option code MX was specified.\n" +
+                        "       .   YY=02->Option code MY was specified.\n" +
+                        "       .   YY=03->Option code MZ was specified.\n" +
+                        "       .   YY=04->Option code TS was specified.\n" +
+                        "       [Measures to Take] \n" +
+                        "        The above option codes for returning to the middle of NURBS \n" +
+                        "        block by return search cannot be used. Perform return search \n" +
+                        "        without specifying these option codes.\n" +
+                        "        XYY=200:Teaching mode was detected under the control by \n" +
+                        "       .\t Super-NURBS.\n" +
+                        "       [Measures to Take] \n" +
+                        "        Turn off the teaching mode. Super-NURBS control is impossible \n" +
+                        "        during the teaching mode. ");
+
+        ExampleItem SPM_CONTROL_ERROR = new ExampleItem("1512  ALARM-A", "SPM CONTROL ERROR",
+                "The NC detected such a fatal error that it was impossible to\n" +
+                        "       continue\n" +
+                        "       processing by SPM engine.\n" +
+                        "       SPMC(Super Precision Machining control) is the control of\n" +
+                        "       \"Super-NURBS\" or \"Hi-Cut Pro\".\n" +
+                        "       [Code]\n" +
+                        "       2000100->B Buf. Abnormality of Super Control Interval Code\n" +
+                        "       2000200->B Buf. Abnormality of G code\n" +
+                        "       2001000->B Buf. Abnormality of Dryrun Function Flag\n" +
+                        "       2001100->B Buf. Abnormality of Feedrate Override Function Flag\n" +
+                        "       2001110->B Buf. Abnormality of Soft Feedrate Override Function Flag\n" +
+                        "       2001120->B Buf. Abnormality of Feedrate Override Function Flag\n" +
+                        "       2001200->B Buf. Abnormality of Spindle Override Function Flag\n" +
+                        "       2001300->B Buf. Abnormality of Single Block Function Flag\n" +
+                        "       2001400->B Buf. Abnormality of Slide Hold Function Flag\n" +
+                        "       2002000->B Buf. Abnormality of F1 Feedrate Order Number\n" +
+                        "       2002100->B Buf. Abnormality of NC Program Instructions Unit\n" +
+                        "       2002300->B Buf. Abnormality of Data Block Sequence Number\n" +
+                        "       2002400->B Buf. Abnormality of F1 Feedrate Override\n" +
+                        "       2002500->B Buf. Abnormality of F code direct Feedrate\n" +
+                        "       2002600->B Buf. Abnormality of S code direct Spindle Velocity\n" +
+                        "       2002700->B Buf. Abnormality of Program Tolerance\n" +
+                        "       2002800->B Buf. Abnormality of Machining Tolerance\n" +
+                        "       2003200->B Buf. Abnormality of ARC:Vector(Start->Center)\n" +
+                        "       2003210->B Buf. Abnormality of ARC:Vector(Center Axis)\n" +
+                        "       2003220->B Buf. Abnormality of ARC:Vector(End->Center)\n" +
+                        "       2003240->B Buf. Abnormality of ARC:Radius\n" +
+                        "       2003300->B Buf. Abnormality of HELICAL:Vector(Start->Center)\n" +
+                        "       2003310->B Buf. Abnormality of HELICAL:Vector(Center Axis)\n" +
+                        "       2003320->B Buf. Abnormality of HELICAL:Vector(End->Center)\n" +
+                        "       2003340->B Buf. Abnormality of HELICAL:Radius\n" +
+                        "       2003400->B Buf. Abnormality of NURBS:Degree(Order-1)\n" +
+                        "       2003420->B Buf. Abnormality of NURBS:Knot Sequence\n" +
+                        "       3002300->C Buf. Abnormality of Data Block Sequence Number\n" +
+                        "       4000000->E Process Can't interpolate NURBS Data (0-differential).\n" +
+                        "       4002300->D Buf Abnormality of Data Block Sequence Number\n" +
+                        "       5000000->F Process Can't interpolate NURBS Data (0-differential).\n" +
+                        "       5002300->E Buf Abnormality of Data Block Sequence Number\n" +
+                        "       5006000->Abnormal length of the block for process F data\n" +
+                        "       6000600->F Buf Abnormality of Interpolation Data Sequence Number\n" +
+                        "       F000000->T Process Abnormality of Control Parameter\n" +
+                        "       10000000->TB Data Manager The abnormal (end of the beginning) \n" +
+                        "       \tdetection on the continuous sequence\n" +
+                        "       10000001->TB Data Procedure The G code violation in implementation\n" +
+                        "       \tblock\n" +
+                        "       10000002->TB Data Procedure The plane specification violation\n" +
+                        "       \tin implementation block (Unreasonable axis index)\n" +
+                        "       10000004->T Ground Manager Data Transfer Replying Timeout\n" +
+                        "       10000005->TH Data Manager Serial Number Irregular\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty software");
+
+        ExampleItem DONT_CLAMP_WORK = new ExampleItem("1513  ALARM-A", "DON'T CLAMP WORK",
+                "Chuck becomes open/close limit without clamped work in the chuck\n" +
+                        "       clamp command.\n" +
+                        "       [Object] Spindle\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Chuck clamp command execute without work.\n" +
+                        "       [Measure to Take]\n" +
+                        "       Chuck clamp command execute with work.");
+
+        ExampleItem CLUTCH_A_SLIP_OVER_LIMIT = new ExampleItem("1514  ALARM-A", "CLUTCH A SLIP OVER LIMIT",
+                "Clutch A slip over the allowable limit.\n" +
+                        "       [Object] Spindle\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Clamp power over the clutch A connected force.\n" +
+                        "       [Measure to Take]\n" +
+                        "       Change the clamp power.");
+
+        ExampleItem DATA_WORD_X_Z = new ExampleItem("1515  ALARM-A", "DATA WORD 'X','Z'", "");
+
+        ExampleItem NC_TAILSTOCK_SLIDE_RESISTANCE_OVER = new ExampleItem("1516  ALARM-A", "NC TAILSTOCK SLIDE RESISTANCE OVER",
+                "Slide Resistance was superior to a mechanical biggest restriction\n" +
+                        "       driving force.\n" +
+                        "       [Object] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Slide Resistance is excessive.\n" +
+                        "       [Measure to Take]\n" +
+                        "       Please exclude an obstacle in a rubbing surface.");
+
+        ExampleItem TURRET_OR_TOOL_NOT_INDEX_CUT_POSITION = new ExampleItem("1517  ALARM-A", "TURRET OR TOOL NOT INDEX CUT POSITION",
+                "Executed Manual gauging cycle when Turret or tool not index cut \n" +
+                        "       position.\n" +
+                        "       Or Turret not index cut position.\n" +
+                        "       [Object]\n" +
+                        "        Turret\n" +
+                        "       [Character-string]\n" +
+                        "        None\n" +
+                        "       [Code] X\n" +
+                        "        1->Turret not index cut position.\n" +
+                        "        2->Executed Manual gauging cycle when Turret not index cut\n" +
+                        "        position.\n" +
+                        "        3->Executed Manual gauging cycle when tool not index cut position.\n" +
+                        "        4->Executed Manual gauging cycle when Cursor offset of Manual\n" +
+                        "           gauging setting error.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1->NC software failure\n" +
+                        "        2->Executed Manual gauging cycle when ATC position.\n" +
+                        "        3->Executed Manual gauging cycle when tool not index cut position.\n" +
+                        "        4->Executed Manual gauging cycle when Cursor offset of Manual\n" +
+                        "           gauging setting error.\n" +
+                        "       [Measures to Take]\n" +
+                        "        1->Please contact to OKUMA\n" +
+                        "        2->Executed Manual gauging cycle when Turret index cut position.\n" +
+                        "        3->Executed Manual gauging cycle when tool index cut position,\n" +
+                        "           Or Set Tool to cut position Turret.\n" +
+                        "        4->Changing the setting to a value of Cursor offset of Manual\n" +
+                        "           gauging.");
+
+        ExampleItem SPINDLE_PHASE_OVER_LIMIT = new ExampleItem("1519  ALARM-A", "SPINDLE PHASE OVER LIMIT",
+                "Spindle phase is over limit when the spindle synchronized\n" +
+                        "       control is on and the both chuck 1st spindle and 2nd spindle\n" +
+                        "       are clamped.\n" +
+                        "       [Object]\n" +
+                        "        None\n" +
+                        "       [Code]\n" +
+                        "        None");
+
+        ExampleItem SYNCHRONOUS_ERROR_LIMIT_OVER = new ExampleItem("1520  ALARM-A", "SYNCHRONOUS ERROR LIMIT OVER",
+                "1.The synchronization error exceeds permissible limit B \n" +
+                        "         for 128 ms or longer upon the powerup.\n" +
+                        "       2.The synchronization error exceeds permissible limit A\n" +
+                        "         for 128 ms or longer at any time other than power-up.\n" +
+                        "       Permissible maximum synchronization error A: System parameter\n" +
+                        "       Permissible maximum synchronization error B: System parameter \n" +
+                        "       [Object]\n" +
+                        "        Axis\n" +
+                        "       [Character-string]\n" +
+                        "        None\n" +
+                        "       [Code]\n" +
+                        "        The synchronization error at the time of alarm as expressed\n" +
+                        "        by hexadecimal notation.\n" +
+                        "       [Probable Faulty Location]\n" +
+                        "        In the case of 1: \n" +
+                        "          The master or slave axis fell down after the power-down \n" +
+                        "          or the brake has Failed\n" +
+                        "        In the case of 2: \n" +
+                        "          The master or slave axis was overloaded during operation \n" +
+                        "          or the servo has failed.\n" +
+                        "       [Measures to Take]\n" +
+                        "        In the case of 1:\n" +
+                        "          Correct using the pulse handle set to X1 in the synchronized \n" +
+                        "          error correction mode. \n" +
+                        "          Then, exit the mode and press RESET.\n" +
+                        "        In the case of 2: \n" +
+                        "          Turn the power off and then on again.\n" +
+                        "       [related Specifications]\n" +
+                        "        ZA AXIS SYC. AXIS\n" +
+                        "        XA AXIS SYC. AXIS");
+
+        ExampleItem NC_TAILSTOCK_ERROR = new ExampleItem("1521  ALARM-A", "NC_TAILSTOCK_ERROR",
+                "NC Tailstock Error\n" +
+                        "       [Object] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1->A spring stopper came off during movement in the low thrust\n" +
+                        "       mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1->A spring stopper failure in the low thrust Spec.\n" +
+                        "       [Measure to Take]\n" +
+                        "       1->Please check the operation of a spring stopper.");
+
+        ExampleItem LINEAR_GUIDE_COVER_AREA = new ExampleItem("1522  ALARM-A", "LINEAR GUIDE COVER AREA",
+                "Axis entered into a Linear guide interference position area.\n" +
+                        "       Or it ordered in the linear guide cover interference area\n" +
+                        "       when the restart was executed.\n" +
+                        "       [Object] AXIS, SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Axis entered into a Linear guide interference position area.\n" +
+                        "       2->It ordered in the linear guide cover interference area\n" +
+                        "          when the restart was executed.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Axis entered into a Linear guide interference position area. \n" +
+                        "       [Measure to Take]\n" +
+                        "       Please move axis out from a Linear guide interference\n" +
+                        "       position area.");
+
+        ExampleItem WORK_WEIGHT_MCS_DATA_FILE_NOT_FOUND = new ExampleItem("1523  ALARM-A", "WORK WEIGHT MCS DATA FILE NOT FOUND",
+                "Work weight MCS data file specified by the parameter is not found.\n" +
+                        "       [Object]None\n" +
+                        "       [Code]XY\n" +
+                        "       X:Sub Spindle\n" +
+                        "        0->MCS Data File exists\n" +
+                        "        1->No Chuck\n" +
+                        "        2->Standard\n" +
+                        "        3->Semi-standard\n" +
+                        "        4->Heavy\n" +
+                        "       Y:Main Spindle\n" +
+                        "        0->MCS Data File exists\n" +
+                        "        1->No Chuck\n" +
+                        "        2->Standard\n" +
+                        "        3->Semi-standard\n" +
+                        "        4->Heavy\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Installation error\n" +
+                        "       Software production error\n" +
+                        "       Specification code error \n" +
+                        "       [Measure to Take]\n" +
+                        "       Reinstall the software or reissue the install disk.");
+
+        ExampleItem FEED_SPEED_OVER = new ExampleItem("1524  ALARM-A", "FEED SPEED OVER",
+                "The feederate command value is larger than the upper limit\n" +
+                        "       speed of the machine.\n" +
+                        "       [Object]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Programming error.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check F command.");
+
+        ExampleItem M_TOOL_SPINDLE_SPEED_OVER_IN_HOB_MODE = new ExampleItem("1525  ALARM-A", "M TOOL SPINDLE SPEED OVER IN HOB MODE",
+                "M-tool spindle speed exceeded a permissible rotational speed in the\n" +
+                        "       Hob mode.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)SB command value\n" +
+                        "       2)Set value of O.P.L No.194\n" +
+                        "       [Measure to Take]\n" +
+                        "       1)Review the SB command.\n" +
+                        "       2)Review the O.P.L. No.194");
+
+        ExampleItem TURRET_INDEX_ERROR_POSITION = new ExampleItem("1526  ALARM-A", "TURRET INDEX ERROR POSITION",
+                "Manual gauging cycle operation was issued in turret index error\n" +
+                        "       position.\n" +
+                        "       The position of turret became error position during axis movement.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]None\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)The turret is moved to X-axis or Z-axis plus variable limit\n" +
+                        "         position in MANUAL operation mode, and the turret index\n" +
+                        "         command is executed.");
+
+        ExampleItem CANNOT_EXECUTE_IT_WHILE_MOUNTING_LBB = new ExampleItem("1527  ALARM-A", "CANNOT EXECUTE IT WHILE MOUNTING LBB",
+                "The instruction that was not able to be executed\n" +
+                        "       while mounting LBB was done.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->It rotating instructed in M-spindle.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       M-spindle rotation instruction was done.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)The instruction is corrected.");
+
+        ExampleItem THE_ATTACHMENT_STATUS_IS_NOT_THE_SAME = new ExampleItem("1528  ALARM-A", "THE ATTACHMENT STATUS IS NOT THE SAME",
+                "The attachment status differed by NC and PLC.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The attachment number is different.\n" +
+                        "       2->The attachment turn angle is different.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       software");
+
+        ExampleItem M_AXIS_BELT_SLIP = new ExampleItem("1529  ALARM-A", "M AXIS BELT SLIP",
+                "On the machine with the function for detecting M axis belt slip,\n" +
+                        "       belt slip was detected.\n" +
+                        "       [Object]\n" +
+                        "        Turret\n" +
+                        "       [Code]\n" +
+                        "        1->The number of revolution ratio set (at the parameter)\n" +
+                        "           as a criterion for detecting belt slip continued for the time\n" +
+                        "           also set (at the parameter) as the belt slip detection time.");
+
+        ExampleItem STEADY_RESTS_INTERFERENCE_POSITION = new ExampleItem("1530  ALARM-A", "STEADY-RESTS INTERFERENCE POSITION",
+                "Steady-rests, Tail stock or W-axis exceeded the interference\n" +
+                        "       position and it moved.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1-> The axis position exceeded the minimal distance. \n" +
+                        "       2-> The axis position exceeded the maximum distance.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)program error.\n" +
+                        "       2)interference range parameter is not correctly.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)check the movement command of the axis.\n" +
+                        "       2)set the interference range parameter correctly. ");
+
+        ExampleItem TOOL_POSTURE_FLUCTUATION_REDUCTION_ERROR = new ExampleItem("1531  ALARM-A", "TOOL POSTURE FLUCTUATION REDUCTION ERROR",
+                "Fatal abnormality to which processing was not able to be\n" +
+                        "       continued by Tool Posture Fluctuation Reduction function\n" +
+                        "       was detected.\n" +
+                        "       [Object] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       VVWWXXYZ:\n" +
+                        "       VV: Module code\n" +
+                        "       WW: Common processing code\n" +
+                        "       XX: Peculiar code in each module\n" +
+                        "       Y: Axis index\n" +
+                        "       Z: Buffer manager error code\n" +
+                        "       1=Error\n" +
+                        "       2=Range of argument error\n" +
+                        "       3=Effective number operation error\n" +
+                        "       4=Empty numerical operation error\n" +
+                        "       5=Data none\n" +
+                        "       6=Write pointer overflow\n" +
+                        "       7=Operation result error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty software\n" +
+                        "       [related Specifications]\n" +
+                        "       Tool Posture Fluctuation Reduction");
+
+        ExampleItem INTERFERENCE_DISTANCE_BETWEEN_THE_TURRETS = new ExampleItem("1532  ALARM-A", "INTERFERENCE DISTANCE BETWEEN THE TURRETS",
+                "The axis moved to the interference distance between the turrets\n" +
+                        "       specified by the parameter.\n" +
+                        "       [Code]\n" +
+                        "       1-> The axis moved to the interference distance between the\n" +
+                        "           A-Turret and the C-Turret.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) program error.\n" +
+                        "       2) interference distance parameter is not correctly.");
+
+        ExampleItem CONDITION_OF_AXIS_MOVEMENT_IS_WRONG = new ExampleItem("1534  ALARM-A", "CONDITION OF AXIS MOVEMENT IS WRONG",
+                "When the command of axis-move was ordered, the condition\n" +
+                        "       of moving was not satisfied.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-String] None\n" +
+                        "       [Code]\n" +
+                        "        1:X-axis was not in plus variable limit.\n" +
+                        "        2:W-axis was not in plus variable limit.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        After correcting the condition, the command orders.");
+
+        ExampleItem DETECTED_SPEED_ERROR_BY_MAGNETIC_ENCODER = new ExampleItem("1682  ALARM-A", "DETECTED SPEED ERROR BY MAGNETIC ENCODER",
+                "The difference between speed feed back value and current\n" +
+                        "       frequency of Magnetic encoder was always observed,\n" +
+                        "       and there was a difference in excessive.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]XXXXYYYY\n" +
+                        "        XXXX=speed reference value(2B)\n" +
+                        "        YYYY=speed detect value(2B)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Magnetic encoder\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Magnetic encoder");
+
+        ExampleItem MCS_ROTARY_ENCODER_5_INITIALIZE_FAILED = new ExampleItem("1683  ALARM-A", "MCS ROTARY ENCODER 5 INITIALIZE FAILED",
+                "It failed in initialization of Rotary encoder 5(Others).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 5(Others).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 5(Others).");
+
+        ExampleItem MCS_ROTARY_ENCODER_5_ERROR = new ExampleItem("1684  ALARM-A", "MCS ROTARY ENCODER 5 ERROR",
+                "Illegal data was detected in Rotary encoder 5(Others).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 5(Others).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 5(Others).");
+
+        ExampleItem MCS_ROTARY_ENCODER_4_INITIALIZE_FAILED = new ExampleItem("1685  ALARM-A", "MCS ROTARY ENCODER 5 INITIALIZE FAILED",
+                "It failed in initialization of Rotary encoder 4(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 4(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 4(HEIDENHAIN).");
+
+        ExampleItem MCS_ROTARY_ENCODER_4_ERROR = new ExampleItem("1686  ALARM-A", "MCS ROTARY ENCODER 4 ERROR",
+                "Illegal data was detected in Rotary encoder 4(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 4(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 4(HEIDENHAIN).");
+
+        ExampleItem MCS_ROTARY_ENCODER_3_INITIALIZE_FAILED = new ExampleItem("1687  ALARM-A", "MCS ROTARY ENCODER 3 INITIALIZE FAILED",
+                "It failed in initialization of Rotary encoder 3(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 3(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 3(HEIDENHAIN).");
+
+        ExampleItem MCS_ROTARY_ENCODER_3_ERROR = new ExampleItem("1688  ALARM-A", "MCS ROTARY ENCODER 3 ERROR",
+                "Illegal data was detected in Rotary encoder 3(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 3(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 3(HEIDENHAIN).");
+
+        ExampleItem MCS_ROTARY_ENCODER_2_ERROR = new ExampleItem("1689  ALARM-A", "MCS ROTARY ENCODER 2 ERROR",
+                "Illegal data was detected in Rotary encoder 2(INA-BEARING).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX= Content of illegal data\n" +
+                        "             000A[HEX] : illegal data of A aspect voltage\n" +
+                        "             000B[HEX] : illegal data of B aspect voltage\n" +
+                        "       YYYY= Illegal data\n" +
+                        "        XXXX=000A[HEX] : A aspect voltage value\n" +
+                        "        XXXX=000B[HEX] : B aspect voltage value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 2(INA-BEARING).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 2(INA-BEARING).");
+
+        ExampleItem MCS_ROTARY_ENCODER_1_INITIALIZE_FAILED = new ExampleItem("1690  ALARM-A", "MCS ROTARY ENCODER 1 INITIALIZE FAILED",
+                "It failed in initialization of Rotary encoder 1.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       Same with the alarm No. 0865 \"MCS Encoder initialize failed\"\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 1\n" +
+                        "        Motor encoder\n" +
+                        "        Encoder link cable & connector\n" +
+                        "        Control base of Inverter Unit\n" +
+                        "       [Corrective Action]\n" +
+                        "        Exchange & check on thing Above Unit");
+
+        ExampleItem MCS_ROTARY_ENCODER_1_ERROR = new ExampleItem("1691  ALARM-A", "MCS ROTARY ENCODER 1 ERROR",
+                "Illegal data was detected in Rotary encoder 1.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       XX= Rotary encoder status\n" +
+                        "        bit7  alarm\n" +
+                        "        bit6  communication error\n" +
+                        "        8X  The output amplitude is normal.\n" +
+                        "        9X  Output amplitude smallness\n" +
+                        "        AX  Output amplitude bigness\n" +
+                        "        BX  Output amplitude too small\n" +
+                        "       YY= Rotary encoder alarm code\n" +
+                        "        00  Unstart\n" +
+                        "        01  Stop command stop\n" +
+                        "        02  The control parameter is illegal.\n" +
+                        "        0E  Synchronous mistake\n" +
+                        "        0F  The excitation output is illegal.\n" +
+                        "        11  B face Ad offset Voltage decrease\n" +
+                        "        12  A face AD offset voltage decrease\n" +
+                        "        13  A and B face AD offset voltage decrease\n" +
+                        "        15  B face AD offset voltage decrease\n" +
+                        "        16  A face Ad offset voltage rise\n" +
+                        "        17  A and B face AD offset voltage rise\n" +
+                        "        25  B face signal amplitude is excessive\n" +
+                        "        26  A face signal amplitude is excessive\n" +
+                        "        27  A and B face signal amplitude is excessive.\n" +
+                        "        29  The signal amplitude is underestimates.\n" +
+                        "        2D  B face signal amplitude is underestimates.\n" +
+                        "        2E  A and signal amplitude is underestimates.\n" +
+                        "        2F  A and B face signal amplitude is underestimates.\n" +
+                        "        80-FF\tCPU illegal\n" +
+                        "       ZZZZ= Rotary encoder position data\n" +
+                        "        Positional data of each pitch\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 1\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 1");
+
+        ExampleItem MCS_LINEAR_SCALE_4_INITIALIZE_FAILED = new ExampleItem("1692  ALARM-A", "MCS LINEAR SCALE 4 INITIALIZE FAILED",
+                "It failed in initialization of Linear scale 4(Others).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 4(Others).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 4(Others).");
+
+        ExampleItem MCS_LINEAR_SCALE_4_ERROR = new ExampleItem("1693  ALARM-A", "MCS LINEAR SCALE 4 ERROR",
+                "Illegal data was detected in Liner scale 4(Others).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 4(Others).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 4(Others).");
+
+        ExampleItem MCS_LINEAR_SCALE_3_INITIALIZE_FAILED = new ExampleItem("1694  ALARM-A", "MCS LINEAR SCALE 3 INITIALIZE FAILED",
+                "It failed in initialization of Linear scale 3(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 3(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 3(HEIDENHAIN).");
+
+        ExampleItem MCS_LINEAR_SCALE_3_ERROR = new ExampleItem("1695  ALARM-A", "MCS LINEAR SCALE 3 ERROR",
+                "Illegal data was detected in Liner scale 3(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 3(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 3(HEIDENHAIN).");
+
+        ExampleItem MCS_LINEAR_SCALE_2_INITIALIZE_FAILED = new ExampleItem("1696  ALARM-A", "MCS LINEAR SCALE 2 INITIALIZE FAILED",
+                "It failed in initialization of Linear scale 2(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 2(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 2(HEIDENHAIN).");
+
+        ExampleItem MCS_LINEAR_SCALE_2_ERROR = new ExampleItem("1697  ALARM-A", "MCS LINEAR SCALE 2 ERROR",
+                "Illegal data was detected in Liner scale 2(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 2(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 2(HEIDENHAIN).");
+
+        ExampleItem MCS_LINEAR_SCALE_1_INITIALIZE_FAILED = new ExampleItem("1698  ALARM-A", "MCS LINEAR SCALE 1 INITIALIZE FAILED",
+                "It failed in initialization of Linear scale 1(MITUTOYO).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       Same with the alarm No. 0865 \"MCS Encoder initialize failed\"\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 1\n" +
+                        "        Motor encoder\n" +
+                        "        Encoder link cable & connector\n" +
+                        "        Control base of Inverter Unit\n" +
+                        "       [Corrective Action]\n" +
+                        "        Exchange & check on thing Above Unit");
+
+        ExampleItem MCS_LINEAR_SCALE_1_ERROR = new ExampleItem("1699  ALARM-A", "MCS LINEAR SCALE 1 ERROR",
+                "Illegal data was detected in Liner scale 1(MITUTOYO).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [code]XXYYZZZZ\n" +
+                        "       XX= Liner scale 1 status\n" +
+                        "        bit7: alarm\n" +
+                        "        bit6: communication error\n" +
+                        "        bit2: communication error(every detection)\n" +
+                        "        bit0: alarm code distinction bit\n" +
+                        "              (bit0=1: An alarm occurred in MITUTOYO scale.)\n" +
+                        "       YY=Liner scale 1\n" +
+                        "        case of XX=88\n" +
+                        "         bit7: over speed\n" +
+                        "         bit6: communication error\n" +
+                        "         bit5: EEPROM error\n" +
+                        "         bit4: CPU error\n" +
+                        "         bit3: electric capacity error\n" +
+                        "         bit2: photo electron error\n" +
+                        "         bit1: digit match error\n" +
+                        "         bit0: initialize error\n" +
+                        "        case of XX=80\n" +
+                        "         43: MITUTOYO scale no response\n" +
+                        "         44: MITUTOYO scale ID error\n" +
+                        "        case of XX=C0\n" +
+                        "         00-3F: Gateway receive error\n" +
+                        "         46: REQ time over error\n" +
+                        "       ZZZZ= Liner scale 1 position data\n" +
+                        "        position data of every 2mm pitch\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 1\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 1");
+
+        ExampleItem PLUS_VARIABLE_LIMIT_OVER_1900 = new ExampleItem("1900  ALARM-A", "PLUS VARIABLE LIMIT OVER",
+                "An axis is going to be moved beyond the soft-limit in the\n" +
+                        "       positive direction.\n" +
+                        "       [Object]\n" +
+                        "       2->Y-axis\n" +
+                        "       3->Z-axis\n" +
+                        "       [Code]Value of SRCON\n" +
+                        "       [Probable Faulty Locations]Parameter setting error");
+
+        ExampleItem MINUS_VARIABLE_LIMIT_OVER_1901 = new ExampleItem("1901  ALARM-A", "MINUS VARIABLE LIMIT OVER",
+                "An axis is going to be moved beyond the soft-limit in the\n" +
+                        "       negative direction.\n" +
+                        "       [Object]\n" +
+                        "       2->Y-axis\n" +
+                        "       3->Z-axis\n" +
+                        "       [Code]Value of SRCON\n" +
+                        "       [Probable Faulty Locations]Parameter setting error");
+
+        ExampleItem USER_RESERVE_CODE_1920 = new ExampleItem("1920  ALARM-A", "USER RESERVE CODE",
+                "The alarm set for register No.97. This alarm occurs if the\n" +
+                        "       following program is executed.\n" +
+                        "       R97 = oooo(oooois displayed in a code.)\n" +
+                        "       [Code]The code set for register No.97\n" +
+                        "       [Probable Faulty Locations]Conditions set by the program");
+
+        ExampleItem TORQUE_LIMIT_OVER = new ExampleItem("1922  ALARM-A", "TORQUE LIMIT OVER",
+                "While the torque skip cycle is executed, the detected\n" +
+                        "       torque has exceeded the set limit before the loader axis\n" +
+                        "       reaches point D where deceleration starts.\n" +
+                        "       Or while the torque skip cycle is excuted, the loader\n" +
+                        "       axis reached the point designated by the program before\n" +
+                        "       the torque skip occurs.\n" +
+                        "       In a torque limit check instruction, a torque value exceeded\n" +
+                        "       set data in a transfer to target position + L.\n" +
+                        "       [Code]\n" +
+                        "       1->Torque limit is executed  before arriving at point D.\n" +
+                        "       2->A loader axis has arrive at \"target point + L\" before\n" +
+                        "          torque limit exceeded.\n" +
+                        "       3->Concerning torque limit check function, while axis\n" +
+                        "          reached target position + L, a torque value exceeded\n" +
+                        "          set data.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Setting error of parameter (torque monitor delay time)\n" +
+                        "       2)Setting error for arguments in the G22 block\n" +
+                        "       3)Setting error for arguments in the G23 block");
+
+        ExampleItem BARRIER_INVASION = new ExampleItem("1924  ALARM-A", "BARRIER INVASION",
+                "The loader entered the interference zone of the NC lathe\n" +
+                        "       or the peripheral.\n" +
+                        "       [Code]\n" +
+                        "       1-8->Barrier number causing the interference\n" +
+                        "       10->When loader had entered the machine interference area,\n" +
+                        "           Loader enterable inside of the lathe signal turned it\n" +
+                        "           off. Or, when Loader enterable inside of the lathe\n" +
+                        "           signal had turned it off,loader entered the machine\n" +
+                        "           interference area.\n" +
+                        "       11->Loader is entering the interference range in the\n" +
+                        "           machine not linked.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Program error");
+
+        ExampleItem M_CODE_TIME_OVER = new ExampleItem("1927  ALARM-A", "M-CODE TIME OVER",
+                "The answer to the specified M failed to come ON within\n" +
+                        "       the time set at the parameter No. 88 (Y).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Check of answer signal");
+
+        ExampleItem CYCLE_TIME_OVER_1928 = new ExampleItem("1928  ALARM-A", "CYCLE TIME OVER",
+                "After the start of loader program, the time set at the\n" +
+                        "       parameter No. 89 (Y) elapsed before reception of M02.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Time setting error\n" +
+                        "       Find out the factors in prolonged cycle time");
+
+        ExampleItem HAND_OPEN_CLOSE_INTERLOCK = new ExampleItem("1939  ALARM-A", "HAND OPEN/CLOSE INTERLOCK",
+                "Hand B opening and shutting order (M310 /M311) was\n" +
+                        "       performed except for swinging hand A position or swinging\n" +
+                        "       hand B position\n" +
+                        "       [Code] It is made to do nothing and\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Illegal of a limited switch\n" +
+                        "       [Measures to take]\n" +
+                        "       Exchange of a limited switch");
+
+        ExampleItem LOADER_Z_AXIS_STOPPER_SET = new ExampleItem("1940  ALARM-A", "LOADER Z AXIS STOPPER SET",
+                "It performed Z axis movement order by the condition that\n" +
+                        "       a stopper pin entered it.\n" +
+                        "       [Measures to take]\n" +
+                        "       It pulls out a stopper pin and performs Z axis movement\n" +
+                        "       order.");
+
+        ExampleItem SAFETY_GUARD_INTERLOCK = new ExampleItem("1941  ALARM-A", "SAFETY GUARD INTERLOCK",
+                "Concerning CE-mark specification of OGL-loader, the request\n" +
+                        "       that is prohibited in the state of safety-guard-unlock was\n" +
+                        "       performed from this mathine.\n" +
+                        "       [Code]X\n" +
+                        "       1->In loader gerning mode, the request was performed from\n" +
+                        "          this machine to loader by safety guard which state was\n" +
+                        "          unlock.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation or program error\n" +
+                        "       2)Regulatinal inferiority or inferior of limit-SW of safety\n" +
+                        "         guard\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Please recheck opretionl method or program.\n" +
+                        "       2)Please adjust or exchange limit-SW of safety guard in\n" +
+                        "         safety-fence and front-door.");
+
+        ExampleItem SAFETY_SPEED_OVER_1942 = new ExampleItem("1942  ALARM-A", "SAFETY_SPEED_OVER",
+                "Concerning velocity supervision function in CE-mark\n" +
+                        "       specification of OGL-loader, a feed rate of loader-axis\n" +
+                        "       exceeded safety speed for velocity supervision which was\n" +
+                        "       set up in data file for safety speed monitor.\n" +
+                        "       [Object]Axis\n" +
+                        "       [Code]X\n" +
+                        "       1->Concerning velocity supervision function on the side\n" +
+                        "          of NC-loader, a feed rate of loader-axis exceeded\n" +
+                        "          safety speed for velocity supervision which was set\n" +
+                        "          up in data file for safety speed monitor.\n" +
+                        "          ( Safety speed is 15 m/min. )\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       NC software\n" +
+                        "       Data file for safety speed monitor for NC-loader");
+
+        ExampleItem SAFETY_SPEED_MONITOR_ERROR_1943 = new ExampleItem("1943  ALARM-A", "SAFETY SPEED MONITOR ERROR",
+                "Concerning CE-mark specification of OGL-loader:\n" +
+                        "       After Speed-over was detected by velocity supervision\n" +
+                        "       function on the side of NC  in check processing of safety\n" +
+                        "       speed monitor at the time of safety-guard-lock in loader\n" +
+                        "       gerning mode, error signal of safety speed monitor did not\n" +
+                        "       turn on once within a specific time.\n" +
+                        "       Or, NC was informed of the mode which was not production,\n" +
+                        "       setting or test.\n" +
+                        "       [Code]X\n" +
+                        "       1->In check processing of safety speed monitor at the\n" +
+                        "          time that safety-fence and front-door was lock all in \n" +
+                        "          loader gerning mode, error signal of safety speed\n" +
+                        "          monitor did not turn on once within a specific time.\n" +
+                        "       2->NC was informed of the mode which was not production\n" +
+                        "          (loader gerning), setting(loader instruction), or test\n" +
+                        "          (loader OFF).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Safety speed monitor or PLC software\n" +
+                        "       2)Safety speed monitor, PLC software or data file for\n" +
+                        "         safety speed monitor.");
+
+        ExampleItem SAFETY_SPEED_MONITOR_ERROR_DETECTION = new ExampleItem("1944  ALARM-A", "SAFETY SPEED MONITOR ERROR DETECTION",
+                "Safety speed monitor detected speed-over.\n" +
+                        "       Or, error signal keeps ON-state by something cause.\n" +
+                        "       Please input a power supply again, because this alarm was\n" +
+                        "       not clear by NC reset.\n" +
+                        "       [Code]\n" +
+                        "       Correspond to guard number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Safety speed monitor\n" +
+                        "       NC software\n" +
+                        "       Data file for safety speed monitor");
+
+        ExampleItem RUNNING_MODE_ILLEGAL = new ExampleItem("1945  ALARM-A", "RUNNING MODE ILLEGAL",
+                "The loader operation mode was changed from automatic\n" +
+                        "       to manual during automatic operation.");
+
+        ExampleItem ALARM_A_IS_OCCURRING_IN_OTHER_SYSTEM_1949 = new ExampleItem("1949  ALARM-A", "ALARM-A IS OCCURRING IN OTHER-SYSTEM",
+                "");
+
+        ExampleItem SAFETY_SPEED_MONITOR_ERROR_1950 = new ExampleItem("1950  ALARM-A", "SAFETY SPEED MONITOR ERROR",
+                "An error occurred in the safety speed monitor.\n" +
+                        "       [Object]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       0x61XX0000->Speed over\n" +
+                        "         XX=Axis number of the target axis\n" +
+                        "       0x67XX0000->Stop monitoring displacement distance over\n" +
+                        "         XX=Axis number of the target axis\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        - Safety speed monitor\n" +
+                        "        - Safety speed monitor data file");
+
+        ExampleItem SAFETY_CONTROLLER_ERROR_1951 = new ExampleItem("1951  ALARM-A", "SAFETY CONTROLLER ERROR",
+                "An error occurred in the safety controller.\n" +
+                        "       [Object]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "        2->Axis power control failure\n" +
+                        "        3->Safety speed monitor failure\n" +
+                        "        4->Operation mode failure\n" +
+                        "        5->Enabling switch failure\n" +
+                        "        8->Machine-2 front door condition failure\n" +
+                        "        A->Safety protocol failure\n" +
+                        "        C->Emergency stop button failure\n" +
+                        "        D->Emergency stop output failure\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        - The switche which is displayed with above code is broken.\n" +
+                        "        - Safety controller");
+
+        //----------------------------------------2001_2982-----------------------------------------
+
+        ExampleItem SVP_PROCESSING_TROUBLE = new ExampleItem("2001  ALARM-B", "SVP PROCESSING TROUBLE",
+                "The SVP is in the trouble indicated by the following codes.\n" +
+                        "       [Object]AXIS\n" +
+                        "       [Code]XYYZZZZ\n" +
+                        "       X=1->Internal error\n" +
+                        "       The SVP has caused any of parity error, loop error and\n" +
+                        "       protect error.\n" +
+                        "         YY:Internal error status\n" +
+                        "         ZZZZ:Two high-order bytes of the SVP system address in\n" +
+                        "              trouble\n" +
+                        "       X=2->Time out\n" +
+                        "       The SVP does not send any response within 20s at the time\n" +
+                        "       of start up. Minute investigation should be made to locate\n" +
+                        "       the cause.\n" +
+                        "       Since the SVP cannot detect the start up signal, it cannot\n" +
+                        "       execute the start up sequence.\n" +
+                        "         YY=00\n" +
+                        "         ZZZZ=0000\n" +
+                        "       X=3->Double bus error\n" +
+                        "       During bus error exception processing by SVP, a bus error\n" +
+                        "       has occurred again. The SVP hardware will probably be \n" +
+                        "       defective.\n" +
+                        "         YY:SVP status\n" +
+                        "         ZZZZ=0000\n" +
+                        "       X=4SVP command execution\n" +
+                        "       The SVP has obtained wrong diagnostic results of CPU\n" +
+                        "       command execution. The CPU will probably be defective.\n" +
+                        "         YY:Diagnostic results\n" +
+                        "         ZZZZ=0000\n" +
+                        "       X=5->SVP trouble detected by the control software such\n" +
+                        "            as that for NC\n" +
+                        "       Some trouble has occurred in the SVP.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)SVP hardware of the problem axis\n" +
+                        "       2)SVP software of the problem axis\n" +
+                        "       3)Control software such as that for NC");
+
+        ExampleItem PLC_AXIS_STROKE_END_OVER = new ExampleItem("2049  ALARM-B", "PLC AXIS STROKE END OVER",
+                "The PLC axis tried to move exceeding the travel end limit.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The PLC axis travel end limit is wrongly set.\n" +
+                        "       2)The sequence program for moving PLC axis contains an \n" +
+                        "         error.\n" +
+                        "       [Measures to Take]consult the machine tool builder.");
+
+        ExampleItem PLC_AXIS_COMMANAD = new ExampleItem("2050  ALARM-B", "PLC AXIS COMMAND",
+                "The PLC axis control command is improper.\n" +
+                        "       Concerning the machine of 1CAM-ATC, the command-table-data\n" +
+                        "       is wrong.\n" +
+                        "       [Object]AXIS\n" +
+                        "       [Code]\n" +
+                        "       case XXYYYY\n" +
+                        "         XX:control command code\n" +
+                        "            (However, the positioning command is represented by\n" +
+                        "             FF instead of 00.)\n" +
+                        "         YYYY:\n" +
+                        "          0001->After designation of continuous positioning\n" +
+                        "       \t start command, a command other than the end\n" +
+                        "       \t command is designated.\n" +
+                        "       \t Or, the continuous positioning end command is\n" +
+                        "       \t designated immediately after the start command.\n" +
+                        "          0002->the control command code is improper.\n" +
+                        "          0003->Though the servo amplifier is not ready to\n" +
+                        "       \t operate, an axis control command such as\n" +
+                        "       \t positioning or dwell command is designated.\n" +
+                        "          0004->The designated feedrate is abnormal.\n" +
+                        "          0005->The command data includes a value exceeding the\n" +
+                        "       \t designation range.\n" +
+                        "          0006->The number of blocks does not match in\n" +
+                        "       \t simultaneous start mode.\n" +
+                        "          0007->The target position exceeds the travel end.\n" +
+                        "          0008->The continuous position start command does not\n" +
+                        "       \t include the data on axis moving direction.\n" +
+                        "          0009->The simultaneous start mode ON command is\n" +
+                        "       \t designated though the mode is already estabrished.\n" +
+                        "          000A->In the spec. of PLC-axis, the control cord which\n" +
+                        "       \t can not be used  had instructed.\n" +
+                        "          000C->The command-table-data is wrong: part of header\n" +
+                        "          000D->The command-table-data is wrong: instruction value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Error in the sequence program for moving PLC axis\n" +
+                        "       2)Concerning the machine of 1CAM-ATC, the command-table-data\n" +
+                        "         is wrong.\n" +
+                        "       [Measure to Take]\n" +
+                        "       1)Consult the machine tool builder.");
+
+        ExampleItem PLC_AXIS_CONTINUOUS_POSITIONING_OVER = new ExampleItem("2051  ALARM-B", "PLC AXIS CONTINUOUS POSITIONING OVER",
+                "The PLC axis target position after continuous positioning\n" +
+                        "       is improper.\n" +
+                        "       [Object]AXIS\n" +
+                        "       [Code]Hexadecimal number of the difference between the\n" +
+                        "       distance required for slow down and the remaining distance\n" +
+                        "       to the target position\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Error in the sequence program for moving PLC axis.\n" +
+                        "       [Measures to Take]Consult the machine tool builder.");
+
+        ExampleItem BULE_SCREEN = new ExampleItem("2052  ALARM-B", "BLUE SCREEN",
+                "Blue screen(kernel stop error)occurred.\n" +
+                        "       [Object]None\n" +
+                        "       [Charecter-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1.Win32 application failure\n" +
+                        "       2.Windows failure\n" +
+                        "       3.Windows driver failure");
+
+        ExampleItem P100_MENU_ERROR_B = new ExampleItem("2053  ALARM-B", "P100 MENU  ERROR",
+                "An abnomal condition of P100-Menu was detected.\n" +
+                        "       [Object]None\n" +
+                        "       [Charecter-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1.P100-Menu failure");
+
+        ExampleItem UNUSABLE_COMMAND_WHILE_CAS_WORKS = new ExampleItem("2058  ALARM-B", "UNUSABLE COMMAND WHILE CAS WORKS",
+                "The instruction not used while CAS works.\n" +
+                        "       [Charecter-string]None\n" +
+                        "       [Code]\n" +
+                        "       1-> M64 and M65 were instructed in. \n" +
+                        "       2-> M110/M109 and XZW axis rapid feed was instructed \n" +
+                        "           in the same block, in case of the operation time \n" +
+                        "           reduction function II was effective (NC optional \n" +
+                        "           parameter bit No.11 bit3=1).\n" +
+                        "       3-> M220, M221, M222, M223, M224, M225, and M226 were \n" +
+                        "           instructed in. \n" +
+                        "       4-> The home position instruction to which the movement\n" +
+                        "           order was set was instructed in. \n" +
+                        "       5-> M153 was instructed in.\n" +
+                        "       6-> G101 was instructed in.\n" +
+                        "       7-> G21 was instructed in by switching off Y axis mode.\n" +
+                        "       8-> G24 was instructed in.\n" +
+                        "       9-> M110 (C axis connection) was instructed in after\n" +
+                        "           workpiece transfer without M151 comannd . \n" +
+                        "           Please transfer a workpiece in M151 mode when you \n" +
+                        "           use C axis instruction after workpiece transfer.\n" +
+                        "       A-> M66(Turret indexing position free) was instructed in. \n" +
+                        "           The turret index sequence must be executed on programmable\n" +
+                        "           limit.\n" +
+                        "       B-> The G00 function of Y axis and Z axis was instructed in\n" +
+                        "           to the same block in the G136 mode.\n" +
+                        "       C-> M556 was instructed in.\n" +
+                        "       D-> G265, G255 is effective\n" +
+                        "       E-> G266 was instructed in.\n" +
+                        "       F-> In Steady rest ZB axis control specification, \n" +
+                        "           There are instructions other than M122 (Or, M123) \n" +
+                        "           in the block in which it instructs in M122 (Or, M123) \n" +
+                        "           on A saddle side. Please instruct one block only \n" +
+                        "           in M122 (Or, M123) when instructing in M122 (Or, M123) \n" +
+                        "           on A saddle side.\n" +
+                        "       10-> G149 was instructed in.\n" +
+                        "       11-> G117 was instructed in.\n" +
+                        "       12-> C axis rapid feed and XYZW axis rapid feed  was instructed \n" +
+                        "            in the same block.Because the rapid feed movement of C axis\n" +
+                        "            and a straight line axis simultaneously is not the linear \n" +
+                        "            interpolation operation, correct interference detection \n" +
+                        "            cannot be done.  Therefore, this alarm is generated. \n" +
+                        "            This alarm might be generated in the block in which C axis \n" +
+                        "            is not instructed either because the change of the internal \n" +
+                        "            instruction value of C axis is checked.\n" +
+                        "       14-> There are instructions other than DRAW, CASCME, CASCTL\n" +
+                        "            in the block in which DRAW, CASCME, CASCTL was instructed.\n" +
+                        "       15-> Tool breakage detection sensor instruction (M698/M699), \n" +
+                        "            and the turret index are instructed in the same block.\n" +
+                        "       16-> Invalid external HP instruction.\n" +
+                        "       17-> G149 was instructed in.\n" +
+                        "            In case of collision check way between A turret and B turret\n" +
+                        "            was chosen BARRIER.(2-saddle model)\n" +
+                        "       18-> Effective steady rests to open/close and 2-saddle model,\n" +
+                        "            There are instructions other than M78 (Or, M79, M121)\n" +
+                        "            in the block in which it instructs in M78 (Or, M79, M121) \n" +
+                        "            on A saddle side. Please instruct one block only \n" +
+                        "            in M78 (Or, M79, M121) when instructing in\n" +
+                        "            M78 (Or, M79, M121) on A saddle side.\n" +
+                        "       [Expected faulty point]\n" +
+                        "       There is an instruction that cannot be used while CAS\n" +
+                        "       engine works. Please confirm the NC  program.\n" +
+                        "       [Treatment measures]\n" +
+                        "       Please release the Collision Avoidance function by \n" +
+                        "       switching off (CAS parameter or M instruction) when you\n" +
+                        "       want to execute the instruction. \n" +
+                        "       However, interference is not detected in that case and \n" +
+                        "       drive, please after it confirms it enough.\n" +
+                        "       In case of code=12, After it is confirmed not to interfere, \n" +
+                        "       bit 2 of NC optional parameter bit No.62 is set to \"1\". \n" +
+                        "       The NC program can be executed without correcting \n" +
+                        "       the NC program because alarm B becomes alarm D.");
+
+        ExampleItem A_NON_FUNCTIONING_INSTRUMENT_IS_DETECTED_B = new ExampleItem("2059  ALARM-B", "A NON FUNCTIONING INSTRUMENT IS DETECTED B",
+                "The system found a non-functioning instrument. But the\n" +
+                        "       installed software does not know about details of the\n" +
+                        "       instrument.\n" +
+                        "       [Object]\n" +
+                        "       None\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       Non-functioning instrument. \n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       [Measures to Take]");
+
+        ExampleItem FAN_MOTOR_ERROR_ON_PANEL_COMPUTER_UNIT = new ExampleItem("2060  ALARM-B", "FAN MOTOR ERROR ON PANEL COMPUTER UNIT",
+                "The rotational speed of the cooling fan motor on panel\n" +
+                        "       computer unit is out of the regular range.\n" +
+                        "       [Object]\n" +
+                        "       None\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       Fan motor identifier\n" +
+                        "       10101->CPU\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The cooling fan motor of panel computer unit\n" +
+                        "       [Measures to Take]\n" +
+                        "       Please turn off the power supply of the operation\n" +
+                        "       panel. Please change the cooling fan motor.");
+
+        ExampleItem THE_REMAINING_TIME_AFTER_RELOCATION_HAS_PASSED = new ExampleItem("2090  ALARM-B", "THE REMAINING TIME AFTER RELOCATION HAS PASSED",
+                "The grace period passed without setting the password after\n" +
+                        "       the machine had been relocated.\n" +
+                        "       [code]\n" +
+                        "       000000XX\n" +
+                        "           XX = Error state\n" +
+                        "       \t bit7:Relocation detection\n" +
+                        "       \t bit6:Battery exchange\n" +
+                        "       \t bit5:The grace period overtime\n" +
+                        "       \t bit4:No capacity of the battery.\n" +
+                        "       \t bit3:The battery capacity decreases.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        The machine had been relocated.");
+
+        ExampleItem MCS_PARAMETER_LEARNING_ERROR_B = new ExampleItem("2092  ALARM-B", "MCS PARAMETER LEARNING ERROR B",
+                "It cannot execute the correction parameter learning.\n" +
+                        "       [Object]\n" +
+                        "       SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       4->The version of the MCS firmware is not supported.\n" +
+                        "       5->The detector is not a magnetic encoder.\n" +
+                        "       6->M41 was not commanded.\n" +
+                        "       7->M109 was not commanded.\n" +
+                        "       8->The SDF parameter \"Speed control frequency\" is inappropriate.");
+
+        ExampleItem MCS_INERTIA_IDENTIFICATION_ERROR_B = new ExampleItem("2114  ALARM-B", "MCS INERTIA IDENTIFICATION ERROR",
+                "It cannot execute the spindle inertia identification.\n" +
+                        "       [Object]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       4->The version of the MCS firmware is not supported.\n" +
+                        "       5->It was executed at C axis control mode.\n" +
+                        "       6->It was executed at very low speed mode.");
+
+        ExampleItem OVERLOAD_DETECTED_B = new ExampleItem("2120  ALARM-B", "OVERLOAD DETECTED B",
+                "Overload of External motor was detected in \"GENERAL OVERLOAD\n" +
+                        "       DETECT\"\n" +
+                        "       [Object]\n" +
+                        "       Case Parallel 2 spindle : Machine system\n" +
+                        "       Case Other\t\t: None\n" +
+                        "       [Character-string]\n" +
+                        "       Refer to General overload detection monitor\n" +
+                        "       [Code]\n" +
+                        "       1-8 : External motor\n" +
+                        "       [Probable Faulty Location]\n" +
+                        "       External motor 1 to 8");
+
+        ExampleItem VDU_COMMUNICATION_ERROR_B = new ExampleItem("2132  ALARM-B", "VDU COMMUNICATION ERROR",
+                "An error occurred in the VDU(Vibration Detect Unit)\n" +
+                        "       communication link, disabling the VDU \n" +
+                        "       from detecting acceleration.\n" +
+                        "       [Object]Axis name or none (spindle)\n" +
+                        "       [Character-string]NONE\n" +
+                        "       [Code]XXYYZZZZ\n" +
+                        "       XX = FF [HEX] (fixed)\n" +
+                        "       YY = 00 [HEX] (fixed)\n" +
+                        "       ZZZZ = VDU link error status at the time of error detection.\n" +
+                        "       (Each bit represents the kind of communication error.)\n" +
+                        "        bit 15 Undefined\n" +
+                        "        bit 14 Undefined\n" +
+                        "        bit 13 Undefined\n" +
+                        "        bit 12 1: Error in communication with VDU(AT mode)\n" +
+                        "        bit 11 1: Error in communication with VDU(MT mode)\n" +
+                        "        bit 10 1: Transmission loop error in AT (auto) mode\n" +
+                        "        bit 9\t1: Data over error in data receiving part of interface\n" +
+                        "        bit 8\tUndefined\n" +
+                        "        bit 7\tUndefined\n" +
+                        "        bit 6\t1: Modulation code error\n" +
+                        "        bit 5\t1: CRC error\n" +
+                        "        bit 4\t1: Format error\n" +
+                        "        bit 3\t1: Double transmission error\n" +
+                        "        bit 2\t1: Double reception error\n" +
+                        "        bit 1\t1: Modulation code error\n" +
+                        "        bit 0\t1: Time-out error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - VDU\n" +
+                        "       - Encoder link cables\n" +
+                        "       - VFA unit");
+
+        ExampleItem VDU_ERROR_B = new ExampleItem("2133  ALARM-B", "VDU ERROR",
+                "The VDU(Vibration Detect Unit) has become unable to\n" +
+                        "       detect acceleration data. \n" +
+                        "       [Object]Axis name or none (spindle)\n" +
+                        "       [Character-string]NONE\n" +
+                        "       [Code]XXYYZZZZ\n" +
+                        "       XX = VDU error status\n" +
+                        "        bit7\t1: Error bit (1 is error)\n" +
+                        "        bit6\t1: Empty bit\n" +
+                        "        bit5\t1: Latest acceleration data is overflow(Y axis)\n" +
+                        "        bit4\t1: Latest acceleration data is overflow(X axis)\n" +
+                        "        bit3\t1: Empty bit\n" +
+                        "        bit2\t1: Error in communication\n" +
+                        "       (toggled detecting each error)\n" +
+                        "        bit1\t1: Previous acceleration data is overflow(Y axis)\n" +
+                        "        bit0\t1: Previous acceleration data is overflow(X axis)\n" +
+                        "       YY = VDU alarm code\n" +
+                        "        01: Stop command halt\n" +
+                        "        02: Control parameter error\n" +
+                        "        07: User parameter check sum error\n" +
+                        "        0E: Synchronous miss error\n" +
+                        "        15: Acceleration sensor signal error (X axis)\n" +
+                        "        16: Acceleration sensor signal error (Y axis)\n" +
+                        "        17: Acceleration sensor signal error (X and Y axis)\n" +
+                        "       ZZZZ= 0 (fixed)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - VDU");
+
+        ExampleItem VDU_INITIALIZE_FAILED_B = new ExampleItem("2134  ALARM-B", "VDU INITIALIZE FAILED",
+                "An error occurred in initialization of\n" +
+                        "       VDU(Vibration Detect Unit).\n" +
+                        "       [Object]Axis name or none (spindle)\n" +
+                        "       [Character-string]NONE\n" +
+                        "       [Code]XXYYZZZZ\n" +
+                        "       XX = Encoder link sequence number\n" +
+                        "            at the time of error detection\n" +
+                        "        0: Reset\n" +
+                        "        1: Network address setting\n" +
+                        "        2: Request of basic information on communication\n" +
+                        "        3: Change of communication version\n" +
+                        "        4: Acquisition of device information\n" +
+                        "        5: Parameter change\n" +
+                        "        6: AT (auto) mode start\n" +
+                        "       YY = Error content\n" +
+                        "        0: Communication error\n" +
+                        "        1: Transmission start time over\n" +
+                        "        2: Transmission finishes time over\n" +
+                        "        3: Reception finishes time over\n" +
+                        "        4: Abnormal response address\n" +
+                        "        5: Abnormal response code\n" +
+                        "        6: Parameter error\n" +
+                        "       ZZZZ = Additional data\n" +
+                        "        If YY=0,\n" +
+                        "         the encoder link error status C2ERR at the\n" +
+                        "         time of error detection appears.\n" +
+                        "        If YY=1, 2, or 3,\n" +
+                        "         the transferred frame information C2MTINF appears.\n" +
+                        "        If YY=4,\n" +
+                        "         the network address of the responding device appears.\n" +
+                        "        If YY=5,\n" +
+                        "         the received frame information C2RXINF appears.\n" +
+                        "        If YY=6,\n" +
+                        "         the number of parameter that caused the alarm appears.\n" +
+                        "          1 = Not all the necessary parameters are received.\n" +
+                        "          2 = Basic information on communication is incompatible.\n" +
+                        "          4 = Protocol version on communication is incompatible.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - VDU\n" +
+                        "       - Encoder link cables\n" +
+                        "       - VFA unit");
+
+        ExampleItem MCS_DD_ENCODER_LiNK_ERROR_B = new ExampleItem("2135  ALARM-B", "MCS DD ENCODER LiNK ERROR",
+                "An error occurred in the encoder communication link.\n" +
+                        "       [Object]\n" +
+                        "        Axis name or none (spindle)\n" +
+                        "       [Character-string]\n" +
+                        "        None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "        XX = $FF (fixed)\n" +
+                        "        YY = $00: Error is detected at the DD encoder.\n" +
+                        "             $01: Error is detected at the \n" +
+                        "       \t\t DD encoder(slave sensor).\n" +
+                        "        ZZZZ = Encoder link error status at the\n" +
+                        "       \t\t\t      time of error detection\n" +
+                        "       \tbit15: Undefined\n" +
+                        "       \tbit14: Undefined\n" +
+                        "       \tbit13: Error in communication with the DD encoder\n" +
+                        "       \t\t(slave sensor)\n" +
+                        "       \tbit12: Error in communication with the DD encoder\n" +
+                        "       \tbit11: MT buffer error\n" +
+                        "       \tbit10: Transmission loop error in AT mode\n" +
+                        "       \tbit9 : Data over error in data receiving part of\n" +
+                        "       \t       interface\n" +
+                        "       \tbit8 : Undefined\n" +
+                        "       \tbit7 : Undefined\n" +
+                        "       \tbit6 : Modulation code error\n" +
+                        "       \tbit5 : CRC error\n" +
+                        "       \tbit4 : Format error\n" +
+                        "       \tbit3 : Double transmission error\n" +
+                        "       \tbit2 : Double reception error\n" +
+                        "       \tbit1 : Parity error\n" +
+                        "       \tbit0 : Time-out error\n" +
+                        "        This alarm occurs only at ICB-H.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        DD encoder of DD encoder (slave sensor) of the pertinent axis\n" +
+                        "        Encoder link cables or connectors\n" +
+                        "        Inverter unit control board");
+
+        ExampleItem MCS_DD_ENCODER_ERROR_B = new ExampleItem("2136  ALARM-B", "MCS DD ENCODER ERROR",
+                "The DD encoder has become undetectable.\n" +
+                        "       [Object]\n" +
+                        "        Axis name or none (spindle)\n" +
+                        "       [Character-string]\n" +
+                        "        None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "        XX = Positional data status\n" +
+                        "             bit7  : Error bit (1:error)\n" +
+                        "             bit6  : Absolute position sensor margin error\n" +
+                        "             .       (0:Normal, 1:Warning)\n" +
+                        "             bit5  : Gap-Warning (1:Gap-small,Toggle:Gap-big)\n" +
+                        "             bit4  : Inclination-Warning (1:CCW-big, Toggle:CW-big)\n" +
+                        "             bit3  : Auto set mode (0:Normal, 1:Auto mode)\n" +
+                        "             bit2  : Communication error (Toggle by detecting)\n" +
+                        "             bit1,0: Error bit number of absolute position code\n" +
+                        "             .       (It is indicated by 2bits.)\n" +
+                        "        YY = Alarm code\n" +
+                        "             01: Stop command has stopped.\n" +
+                        "             02: Control parameter error\n" +
+                        "             04: Absolutization error\n" +
+                        "             05: Initialization speed too high\n" +
+                        "             08: Auto-set-data error\n" +
+                        "             0D: Speed too high\n" +
+                        "             0E: Synchronization error\n" +
+                        "             20: Absolutization mismatch (Only Format-5)\n" +
+                        "             21: Communication-error of Master-sensor (Only Format-5)\n" +
+                        "             3E: Code-error by Absolute-position-sensor\n" +
+                        "             3F: Check-errotr by Absolute-position-code\n" +
+                        "             40: Inclination-error (for plus)\n" +
+                        "             41: Inclination-error (for minus)\n" +
+                        "             42: Gap is narrow\n" +
+                        "             43: Gap is wide\n" +
+                        "        ZZZZ = 0000 fixed\n" +
+                        "        This alarm occurs only at ICB-H.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        DD encoder");
+
+        ExampleItem MCS_DD_ENCODER_SLAVE_SENSOR_ERROR_B = new ExampleItem("2137  ALARM-B", "MCS DD ENCODER (SLAVE SENSOR) ERROR",
+                "The DD encoder (slave sensor) has become undetectable.\n" +
+                        "       [Object]\n" +
+                        "        Axis name or none (spindle)\n" +
+                        "       [Character-string]\n" +
+                        "        None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "        XX = Positional data status\n" +
+                        "             bit7  : Error bit (1:error)\n" +
+                        "             bit6  : Absolute position sensor margin error\n" +
+                        "             .       (0:Normal, 1:Warning)\n" +
+                        "             bit5  : Gap-Warning (1:Gap-small,Toggle:Gap-big)\n" +
+                        "             bit4  : Inclination-Warning (1:CCW-big, Toggle:CW-big)\n" +
+                        "             bit3  : Auto set mode (0:Normal, 1:Auto mode)\n" +
+                        "             bit2  : Communication error (Toggle by detecting)\n" +
+                        "             bit1,0: Error bit number of absolute position code\n" +
+                        "             .       (It is indicated by 2bits.)\n" +
+                        "        YY = Alarm code\n" +
+                        "             01: Stop command has stopped.\n" +
+                        "             02: Control parameter error\n" +
+                        "             04: Absolutization error\n" +
+                        "             05: Initialization speed too high\n" +
+                        "             08: Auto-set-data error\n" +
+                        "             0D: Speed too high\n" +
+                        "             0E: Synchronization error\n" +
+                        "             20: Absolutization mismatch (Only Format-5)\n" +
+                        "             21: Communication-error of Master-sensor (Only Format-5)\n" +
+                        "             3E: Code-error by Absolute-position-sensor\n" +
+                        "             3F: Check-errotr by Absolute-position-code\n" +
+                        "             40: Inclination-error (for plus)\n" +
+                        "             41: Inclination-error (for minus)\n" +
+                        "             42: Gap is narrow\n" +
+                        "             43: Gap is wide\n" +
+                        "        ZZZZ = 0000 fixed\n" +
+                        "        This alarm occurs only at ICB-H.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        DD encoder (slave sensor)");
+
+        ExampleItem MCS_DD_ENCODER_INITIALIZE_FAILED_B = new ExampleItem("2138  ALARM-B", "MCS DD ENCODER INITIALIZE FAILED",
+                "An error occurred in the initialization of the DD encoder.\n" +
+                        "       [Object]\n" +
+                        "       Axis name or none (spindle)\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "        XX = Encoder link initialization sequence number (1B) \n" +
+                        "             at the time of the error detection\n" +
+                        "              0: Reset\n" +
+                        "              1: Network address setting\n" +
+                        "              2: Request to send the basic information for communication\n" +
+                        "              3: Change of communication software version\n" +
+                        "              4: Acquisition of device information\n" +
+                        "              5: Parameter change\n" +
+                        "              6: Position detection start\n" +
+                        "              7: AT mode start\n" +
+                        "        YY = Error content (1B)\n" +
+                        "              0: Communication error\n" +
+                        "              1: Transmission start time over\n" +
+                        "              2: Transmission finish time over\n" +
+                        "              3: Reception finish time over\n" +
+                        "              4: Abnormal response address\n" +
+                        "              5: Abnormal response code\n" +
+                        "              6: Parameter error\n" +
+                        "        ZZZZ = Data (2B)\n" +
+                        "          If YY = 0,\n" +
+                        "             The encoder link error status C2ERR at the time of error\n" +
+                        "             detection appears.\n" +
+                        "          If YY = 1, 2 or 3,\n" +
+                        "             The transmitted frame information QC2MTINF appears.\n" +
+                        "          If YY = 4,\n" +
+                        "             The network address of the responding device appears.\n" +
+                        "          If YY = 5,\n" +
+                        "             Alarm code + positional data status\n" +
+                        "             Refer to MCS DD Encoder error (alarm 1136).\n" +
+                        "          If YY = 6,\n" +
+                        "             Parameter number at which the error is detected\n" +
+                        "              1: Reception of insufficient number of parameters\n" +
+                        "              2: Basic information for communication being incompatible\n" +
+                        "              3: Multi-turn detection range over\n" +
+                        "              4: Communication protocol version being incompatible\n" +
+                        "              5: Positional data format being incompatible\n" +
+                        "              6: Abbreviated data mode being incompatible\n" +
+                        "        However, when abnormal voltage is detected at the encoder fuse\n" +
+                        "          XXYY = $FFFF fixed\n" +
+                        "          ZZZZ = Detected voltage value of the encoder fuse\n" +
+                        "       \t  (12[V] = $9980)\n" +
+                        "       \t  Normal range: 10.6[V] to 13.8[V]\n" +
+                        "       \t  Allowable range: $8800 to $B000\n" +
+                        "        This alarm occurs only at ICB-H.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        DD encoder\n" +
+                        "        Encoder link cables and connectors\n" +
+                        "        Inverter unit control board");
+
+        ExampleItem MCS_DD_ENCODER_SLAVE_SENSOR_INITIALIZE_FAILED_B = new ExampleItem("2139  ALARM-B", "MCS DD ENCODER (SLAVE SENSOR) INITIALIZE FAILED",
+                "An error occurred in the initialization of the DD encoder\n" +
+                        "       (slave sensor).\n" +
+                        "       [Index]\n" +
+                        "        Axis name or none (spindle)\n" +
+                        "       [Character-string]\n" +
+                        "        None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "        XX = Encoder link initialization sequence number (1B) at\n" +
+                        "             the time of the error detection\n" +
+                        "              0: Reset\n" +
+                        "              1: Network address setting\n" +
+                        "              2: Request to send the basic information for communication\n" +
+                        "              3: Change of communication software version\n" +
+                        "              4: Acquisition of device information\n" +
+                        "              5: Parameter change\n" +
+                        "              6: Position detection start\n" +
+                        "              7: AT mode start\n" +
+                        "        YY = Error content (1B)\n" +
+                        "              0: Communication error\n" +
+                        "              1: Transmission start time over\n" +
+                        "              2: Transmission finish time over\n" +
+                        "              3: Reception finish time over\n" +
+                        "              4: Abnormal response address\n" +
+                        "              5: Abnormal response code\n" +
+                        "              6: Parameter error\n" +
+                        "        ZZZZ = Data (2B)\n" +
+                        "         If YY = 0,\n" +
+                        "            The encoder link error status C2ERR at the time of error\n" +
+                        "            detection appears.\n" +
+                        "         If YY = 1, 2 or 3,\n" +
+                        "            The transmitted frame information QC2MTINF appears.\n" +
+                        "         If YY = 4,\n" +
+                        "            The network address of the responding device appears.\n" +
+                        "         If YY = 5,\n" +
+                        "            Alarm code + positional data status\n" +
+                        "            Refer to MCS DD Encoder error (alarm 1136).\n" +
+                        "         If YY = 6,\n" +
+                        "            Parameter number at which the error is detected\n" +
+                        "             1: Reception of insufficient number of parameters\n" +
+                        "             2: Basic information for communication being incompatible\n" +
+                        "             3: Multi-turn detection range over\n" +
+                        "             4: Communication protocol version being incompatible\n" +
+                        "             5: Positional data format being incompatible\n" +
+                        "             6: Abbreviated data mode being incompatible\n" +
+                        "        However, when abnormal voltage is detected at the encoder fuse\n" +
+                        "          XXYY = $FFFF fixed\n" +
+                        "          ZZZZ = Detected voltage value of the encoder fuse\n" +
+                        "       \t  (12[V] = $9980)\n" +
+                        "       \t  Normal range: 10.6[V] to 13.8[V]\n" +
+                        "       \t  Allowable range: $8800 to $B000\n" +
+                        "        This alarm occurs only at ICB-H.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        DD encoder (slave sensor)\n" +
+                        "        Encoder link cables and connectors\n" +
+                        "        Inverter unit control board");
+
+        ExampleItem MCS_POWER_SUPPLY_UNIT_OVER_LOAD_B = new ExampleItem("2144  ALARM-B", "MCS POWER SUPPLY UNIT OVER LOAD",
+                "Power Supply Unit over load\n" +
+                        "       [Object]\n" +
+                        "        Axis name or none (spindle)\n" +
+                        "       [Character-string]\n" +
+                        "        None\n" +
+                        "       [Code]\n" +
+                        "        1(fixed)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Power unit\n" +
+                        "        Overload operation");
+
+        ExampleItem MCS_UNDEFINED_ALARM_NUMBER_B = new ExampleItem("2150  ALARM-B", "MCS UNDEFINED ALARM NUMBER"
+                , "The MCS caused an error related with axis control.\n" +
+                "       [Object] Axis name or none (spindle)\n" +
+                "       [Character-string] Alarm number in decimal\n" +
+                "       [Code] Alarm code\n" +
+                "       [Probable Faulty Locations]\n" +
+                "       - Depends on the number indicated in the character-string.\n" +
+                "       Inform us of the code and the character string.");
+
+        ExampleItem MCS_EXCEPTION_PROCESSING_B = new ExampleItem("2151  ALARM-B", "MCS EXCEPTION PROCESSING ",
+                "A fatal alarm occurred while the MCS invertor unit and\n" +
+                        "       MCS software are executing their processing.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] Cause of alarm detected\n" +
+                        "       \"#1\"-> Control board error\n" +
+                        "       \"#2\"-> Voltage drop of +-12 V battery for control board\n" +
+                        "       \"#3\"-> OPF error\n" +
+                        "       \"#11\"-> Voltage drop of 5 V battery for control board\n" +
+                        "       \"#12\"-> Invertor bridge shorted\n" +
+                        "       \"#13\"-> IPM protective function activated\n" +
+                        "       \"#14\"-> Motor overcurrent\n" +
+                        "       \"#20\"-> INT loop error\n" +
+                        "       \"#21\"-> INT5 loop error\n" +
+                        "       \"#22\"-> INT4 loop error\n" +
+                        "       \"#23\"-> INT3 loop error\n" +
+                        "       \"#24\"-> INT2 loop error\n" +
+                        "       \"#25\"-> INT1 loop error\n" +
+                        "       \"#26\"-> Access denied\n" +
+                        "       \"#27\"-> Ram check error in initialization\n" +
+                        "       \"#28\"-> Party error\n" +
+                        "       \"#29\"-> Watchdog error\n" +
+                        "       \"#30\"-> IRQ7 interruption\n" +
+                        "       \"#31\"-> NMI interruption\n" +
+                        "       \"#32\"-> General illegal command\n" +
+                        "       \"#33\"-> Slot illegal command\n" +
+                        "       \"#34\"-> CPU address error\n" +
+                        "       \"#35\"-> DMA address error\n" +
+                        "       \"#36\"-> Undefined trap error\n" +
+                        "       \"#37\"-> Undefined interruption\n" +
+                        "       \"#38\"-> DMAC\n" +
+                        "       \"#39\"-> ITU\n" +
+                        "       \"#40\"-> SCI\n" +
+                        "       \"#41\"-> REF\n" +
+                        "       \"#42\"-> A/D\n" +
+                        "       \"#43\"-> System reserved\n" +
+                        "       \"#44\"-> User break\n" +
+                        "       [Code]\n" +
+                        "       In the case of #1, the code shows the error content of the\n" +
+                        "       control board.\n" +
+                        "       In the case of #3, the code shows the error content of the\n" +
+                        "       optional program file.\n" +
+                        "        1: Identification code \"OPF1\" error\n" +
+                        "        2: End code \"ED\" error\n" +
+                        "        3: Sum check error\n" +
+                        "        4: Board name error\n" +
+                        "       In the case of #11-14, #20-21, #25-26 and #30-31, the code\n" +
+                        "       shows the data in the error status register.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       In the case of #1,\n" +
+                        "        - Invertor unit\n" +
+                        "       In the case of #3,\n" +
+                        "        - Optional program file\n" +
+                        "        - Optional program file incompatible with invertor unit\n" +
+                        "       In the case of #2 or #11,\n" +
+                        "        - Power unit (when this alarm occurred in several invertor\n" +
+                        "        units)\n" +
+                        "       In the case of #12, #13, or #14,\n" +
+                        "        - Invertor unit\n" +
+                        "       In other cases,\n" +
+                        "        - Invertor unit");
+
+        ExampleItem MCS_PROCESSING_TROUBLE_B = new ExampleItem("2152  ALARM-B", "MCS PROCESSING TROUBLE",
+                "MCS\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXZZAAAA\n" +
+                        "       XX:\n" +
+                        "        04...The self-diagnostic data has an error. \n" +
+                        "             (ZZ: Received data)\n" +
+                        "        06...Software sync bit or format code of buffer A is \n" +
+                        "             wrong.\n" +
+                        "        07...Software sync bit or format code of buffer B is \n" +
+                        "             wrong.\n" +
+                        "        08...An error occurred in data communication.\n" +
+                        "        ZZ shows the data kind. AAAA is always 0.\n" +
+                        "       ZZ:\n" +
+                        "        1...Speed command (8408)\n" +
+                        "        2...Laser linear scale value (4413)\n" +
+                        "        3...Backlash (4406)\n" +
+                        "        4...Actual position without positioning error compensation\n" +
+                        "            (440A)\n" +
+                        "        5...Positioning error compensation amount\n" +
+                        "        6...Full-closed loop encoder value (4410)\n" +
+                        "        7...Semi-closed loop encoder value (4411)\n" +
+                        "        8...ODIFF (4415)\n" +
+                        "        10..APA in divided stroke (4404)\n" +
+                        "        11..Acceleration/deceleration time for positioning (4422)\n" +
+                        "        12..Zero offset amount\n" +
+                        "        13..In-position width (4420)\n" +
+                        "        14..Maximum of divided stroke (4405)\n" +
+                        "       15..Point data change\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Faulty MCS controller\n" +
+                        "       - Faulty software");
+
+        ExampleItem MCS_CON_APA_DEVIATION_B = new ExampleItem("2153  ALARM-B", "MCS CON APA DEVIATION",
+                "Difference between CON and APA values has exceeded the\n" +
+                        "       allowable limit. The CON-APC deviation is the absolute\n" +
+                        "       value of difference between [calculated value written \n" +
+                        "       in MCS] and [actual position read from MCS]. \n" +
+                        "       The NC control software monitors this deviation. \n" +
+                        "       The MCS normally  monitors DIFF value.\n" +
+                        "       This alarm appears if the MCS causes a fatal error and\n" +
+                        "       cannot monitor the DIFF value.\n" +
+                        "       [Object] Axis name\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Absolute value of deviation in hexadecimal \n" +
+                        "        (reference unit)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Faulty MCS controller\n" +
+                        "       - Mismatch between MCS data and NC data");
+
+        ExampleItem MCS_POWER_SUPPLY_UNIT_ERROR_B = new ExampleItem("2154  ALARM-B", "MCS POWER-SUPPLY UNIT ERROR",
+                "The power unit caused an error.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] AAAAAAXX\n" +
+                        "       AAAAAA is always 0.\n" +
+                        "       X Alarm number\n" +
+                        "        0:DC voltage alarm\n" +
+                        "        1:Abnormal input voltage\n" +
+                        "        2:Abnormal control power\n" +
+                        "        3:Abnormal control status\n" +
+                        "        4:Overload in regenerative circuit\n" +
+                        "        5:Heat sink overheat\n" +
+                        "        6:CPU error\n" +
+                        "        7:Spare\n" +
+                        "       Y: Power unit status\n" +
+                        "        bit3 1:An alarm occurred in the power unit. l\n" +
+                        "       \t(Warning signa status: 0)\n" +
+                        "        bit2 1:DC power is being supplied\n" +
+                        "        bit1 1:OPRON input is closed\n" +
+                        "        bit0 1:PWON input is closed.\n" +
+                        "       ZZ: Data\n" +
+                        "        X(alarm No.):0 ... Detected DC voltage in hexadecimal \n" +
+                        "       \t\t\t\t\t\t[3.9V]\n" +
+                        "        X(alarm No.):1 ... Detected AC voltage in hexadecimal\n" +
+                        "       \t\t\t\t\t\t[3.1V]\n" +
+                        "        X(alarm No.):2\n" +
+                        "         1:+5V abnormal voltage\n" +
+                        "         2:+12V abnormal voltage\n" +
+                        "         3:-12V abnormal voltage\n" +
+                        "        X(alarm No.):3\n" +
+                        "         1:Converter over current\n" +
+                        "         2:Abnormal power element\n" +
+                        "         3:Converter short circut\n" +
+                        "         4:Abnormal regenerative circuit(type in power\n" +
+                        "           regenerative circuit)\n" +
+                        "         5:Abnormal regenerative circuit(type in resistor \n" +
+                        "           discharge)\n" +
+                        "        X(alarm No.):4 Uncertain\n" +
+                        "        X(alarm No.):5 Uncertain\n" +
+                        "        X(alarm No.):6 Uncertain\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       In the case of abnormal control power,\n" +
+                        "        - Power unit\n" +
+                        "       In the case of low voltage,\n" +
+                        "        - Input voltage drop, power failure, blown fuse in input \n" +
+                        "          power circuit, or instantaneous power interruption\n" +
+                        "       In the case of high voltage\n" +
+                        "        - Power unit");
+
+        ExampleItem MCS_CONVERTER_LINK_ERROR_B = new ExampleItem("2155  ALARM-B", "MCS CONVERTER-LINK ERROR",
+                "The convertor link (used for communication between power\n" +
+                        "       unit and invertor unit) caused an error, disabling the\n" +
+                        "       NC from monitoring the power unit condition.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]XAAAAAYY\n" +
+                        "       AAAAA is always 0.\n" +
+                        "        X=0:communication error\n" +
+                        "        X=1:Time-out error (communication interrupted)\n" +
+                        "       YY=communication status\n" +
+                        "         When X is ONE(1),always 0\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Convertor link cables or connectors\n" +
+                        "       - Power unit\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_DC_BUS_VOLTAGE_ALARM = new ExampleItem("2156  ALARM-B", "MCS DC BUS VOLTAGE ALARM",
+                "The DC-bus voltage in the invertor unit has abnormally\n" +
+                        "       risen or fallen, disabling the invertor from supplying\n" +
+                        "       the current.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX= Detected overvoltage in hexadecimal [15.3 mV]\n" +
+                        "       YYYY= Detected undervoltage in hexadecimal [15.3 mV]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       In the case of voltage rise,\n" +
+                        "        - Power unit\n" +
+                        "       In the case of voltage drop,\n" +
+                        "        - Power unit\n" +
+                        "        - Invertor unit\n" +
+                        "        - Instantaneous power interruption");
+
+        ExampleItem MCS_MOTOR_OVER_CURRENT_B = new ExampleItem("2157  ALARM-B", "MCS MOTOR OVER CURRENT",
+                "The invertor unit has detected excessive current flowing\n" +
+                        "       in the motor cable.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX= U-phase current detected when this alarm occurs,\n" +
+                        "        expressed in signed hexadecimal [Tolerance: 3FFF]\n" +
+                        "       YYYY= V-phase current detected when this alarm occurs,\n" +
+                        "        expressed in signed hexadecimal [Tolerance: 3FFF]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Invertor unit\n" +
+                        "       - Faulty motor insulation");
+
+        ExampleItem MCS_POWER_UNIT_OVER_HEAT_B = new ExampleItem("2158  ALARM-B", "MCS POWER UNIT OVER HEAT",
+                "The invertor unit temperature has risen abnormally.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] 1 (fixed)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Invertor unit\n" +
+                        "       - Overload operation");
+
+        ExampleItem MCS_POWER_UNIT_OVER_LOAD_B = new ExampleItem("2159  ALARM-B", "MCS POWER UNIT OVER LOAD",
+                "The invertor load has exceeded the specified value,\n" +
+                        "       activating the overload protection function.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] YYYYZZZZ\n" +
+                        "       YYYY-> Gamma of the protection curve used to detect \n" +
+                        "              overload\n" +
+                        "       ZZZZ-> Internally calculated overload data\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Invertor unit\n" +
+                        "       - Overload operation");
+
+        ExampleItem MCS_SUPPLY_VOLTAGE_FLUTTER_BATE = new ExampleItem("2160  ALARM-B", "MCS SUPPLY VOLTAGE FLUTTER",
+                "The power unit input voltage is abnormally high or low.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Detected abnormal voltage in hexadecimal [Volt]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Power unit\n" +
+                        "       - Power cables or connectors\n" +
+                        "       - Instantaneous power interruption");
+
+        ExampleItem MCS_POWER_UNIT_VERSION_ERROR_B = new ExampleItem("2161  ALARM-B", "MCS POWER UNIT VERSION ERROR",
+                "The invertor unit allowable current is smaller than the\n" +
+                        "       current limit specified in the servo data file.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] 1 (fixed)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Invertor unit\n" +
+                        "       - Servo data file");
+
+        ExampleItem MCS_WINDING_CHANGE_FAILED_B = new ExampleItem("2162  ALARM-B", "MCS WINDING CHANGE FAILED",
+                "The winding-change magnet switch does not come on.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] YYYYZZZZ\n" +
+                        "       If YYYY = 0000\n" +
+                        "        ZZZZ = 0001: Magnet conductor for low-speed winding is ON.\n" +
+                        "        ZZZZ = 0002: Magnet conductor for high-speed winding is ON.\n" +
+                        "        ZZZZ = 0003: Magnet conductors for both windings are ON.\n" +
+                        "        ZZZZ = 0004: Winding change time-out\n" +
+                        "       If YYYY = 1010\n" +
+                        "        ZZZZ = 0001: Faulty servo data file\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Winding-change magnet switch");
+
+        ExampleItem MCS_ENCODER_LINK_ERROR_B = new ExampleItem("2163  ALARM-B", "MCS ENCODER LINK ERROR",
+                "An error occurred in the encoder communication link,\n" +
+                        "       disabling the encoder from detecting positioning speed.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       XX = FF (fixed)\n" +
+                        "       YY = 00: YY = 00: Error is detected at the motor encoder.\n" +
+                        "            01: Error is detected at the position encoder with\n" +
+                        "       \t shaft.\n" +
+                        "            02: Error is detected at the independent position\n" +
+                        "       \t encoder.\n" +
+                        "            03: Error is detected at ABSO SCALE.\n" +
+                        "       ZZZZ= Encoder link error status at the time of error\n" +
+                        "             detection.\n" +
+                        "             Each bit represents the kind of communication\n" +
+                        "             error.\n" +
+                        "        bit 15 1: Error in communication with a stand-alone \n" +
+                        "       \t   encoder\n" +
+                        "        bit 14 1: Error in communication with ABSO SCALE 2\n" +
+                        "        bit 13 1: Error in communication with ABSO SCALE or \n" +
+                        "       \t   encoder with shaft\n" +
+                        "        bit 12 1: Error in communication with motor encoder\n" +
+                        "        bit 11 1: Undefined\n" +
+                        "        bit 10 1: Transmission loop error in AT (auto) mode\n" +
+                        "        bit 9\t1: Data over error in data receiving part of \n" +
+                        "       \t   interface\n" +
+                        "        bit 8\t1: Undefined\n" +
+                        "        bit 7\t1: Undefined\n" +
+                        "        bit 6\t1: Modulation code error\n" +
+                        "        bit 5\t1: CRC error\n" +
+                        "        bit 4\t1: Format error\n" +
+                        "        bit 3\t1: Double transmission error\n" +
+                        "        bit 2\t1: Double reception error\n" +
+                        "        bit 1\t1: Parity error\n" +
+                        "        bit 0\t1: Time-out error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Motor encoder, ABSO SCALE, encoder with shaft, or\n" +
+                        "         stand-alone encoder of the problem axis\n" +
+                        "       - Encoder link cables or connectors\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_ENCODER_ERROR_B = new ExampleItem("2164  ALARM-B", "MCS ENCODER ERROR",
+                "The motor encoder has become unable to detect\n" +
+                        "       positional data.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "        XX= Encoder error code depending on the encoder type\n" +
+                        "        YY= Detailed encoder status. The status varies with\n" +
+                        "            the encoder type.\n" +
+                        "        ZZZZ= Multi-turn position data. This data appears when\n" +
+                        "       \tthe multi-turn\n" +
+                        "       position data has exceeded the rotating range.\n" +
+                        "        XX= 0 (fixed)\n" +
+                        "        YY= 1 (fixed)\n" +
+                        "        ZZZZ= Multi-turn position data\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Motor encoder");
+
+        ExampleItem MCS_ENCODER_INITIALIZE_FAILED_B = new ExampleItem("2165  ALARM-B", "MCS ENCODER INITIALIZE FAILED",
+                "An error occurred in initialization of the motor encoder.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       XX= Encoder link sequence number at the time of error\n" +
+                        "       detection\n" +
+                        "        0: Reset\n" +
+                        "        1: Network address setting\n" +
+                        "        2: Request of basic information on communication\n" +
+                        "        3: Change of communication version\n" +
+                        "        4: Acquisition of device information\n" +
+                        "        5: Parameter change\n" +
+                        "        6: AT (auto) mode start\n" +
+                        "       YY= Error content\n" +
+                        "        0: Communication error\n" +
+                        "        1: Transmission start time over\n" +
+                        "        2: Transmission finish time over\n" +
+                        "        3: Reception finish time over\n" +
+                        "        4: Abnormal response address\n" +
+                        "        5: Abnormal response code\n" +
+                        "        6: Parameter error\n" +
+                        "       ZZZZ= Additional data\n" +
+                        "        If YY=0, the encoder link error status C2ERR at the\n" +
+                        "           time of error detection appears.\n" +
+                        "        If YY=1, 2, or 3, the transferred frame information\n" +
+                        "           QC2MTINF appears.\n" +
+                        "        If YY=4, the network address of the responding device\n" +
+                        "           appears.\n" +
+                        "        If YY=5, the received frame information QC2RXINF appears.\n" +
+                        "        If YY=6, the number of parameter that caused the alarm\n" +
+                        "           appears.\n" +
+                        "          1= Not all the necessary parameters are received.\n" +
+                        "          2= Basic information on communication is incompatible.\n" +
+                        "          3= Multi-rotation detection range does not match.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Motor encoder\n" +
+                        "       - Encoder link cables or connectors\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_ENCODER_WITH_SHAFT_ERROR_B = new ExampleItem("2166  ALARM-B", "MCS ENCODER WITH SHAFT ERROR",
+                "The encoder with shaft has become unable to detect\n" +
+                        "       positional data.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Same with <MCS Encoder error>\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Encoder with shaft");
+
+        ExampleItem MCS_ENCODER_WITH_SHAFT_INITIAL_B = new ExampleItem("2167  ALARM-B", "MCS ENCODER WITH SHAFT INITIAL",
+                "An error occurred in initialization of the encoder with\n" +
+                        "       shaft.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Same with <MCS Encoder initialize failed>\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Encoder with shaft\n" +
+                        "       - Encoder link cables or connectors\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_ABSO_SCALE_ERROR_B = new ExampleItem("2168  ALARM-B", "MCS ABSO SCALE ERROR",
+                "An error occurred in initialization of ABSO SCALE.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - ABSO SCALE");
+
+        ExampleItem MCS_ABSO_SCALE_INITIALIZE_B = new ExampleItem("2169  ALARM-B", "MCS ABSO SCALE INITIALIZE",
+                "An error occurred in initialization of ABSO SCALE.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Same with <MCS Encoder initialize failed>\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - ABSO SCALE\n" +
+                        "       - Encoder link cables or connectors\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_MAGNETIC_ENCODER_ALARM_B = new ExampleItem("2170  ALARM-B", "MCS MAGNETIC ENCODER ALARM",
+                "The magnetic pulse generator has become unable to detect\n" +
+                        "       the motor speed. Or, the number of magnetic encoder gear\n" +
+                        "       teeth does not match the data in the MCS data file.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX= Error content\n" +
+                        "        A->A-phase voltage is abnormal.\n" +
+                        "        B->B-phase voltage is abnormal.\n" +
+                        "        C->Magnetic encoder data error\n" +
+                        "        Others->Servo data file set value detected when the\n" +
+                        "       \t count over error occurred in the magnetic encoder\n" +
+                        "       \t  (No. of PG gear teeth * 4 - 1)\n" +
+                        "       YYYY= Additional error data (Varies with XXXX.)\n" +
+                        "        If XXXX is A, A-phase voltage appears.\n" +
+                        "        If XXXX is B, B-phase voltage appears.\n" +
+                        "        If XXXX is C, 0 (fixed) appears.\n" +
+                        "        Others-> Detected count value of magnetic encoder\n" +
+                        "       \t (No. of PG gear teeth * 4 - 1)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Magnetic encoder or its wiring, or large gap between\n" +
+                        "         magnetic encoder and gear\n" +
+                        "       - Mismatch between the number of gear teeth of magnetic\n" +
+                        "         encoder and the servo data file data");
+
+        ExampleItem MCS_RESOLVER_ALARM_B = new ExampleItem("2171  ALARM-B", "MCS RESOLVER ALARM",
+                "The resolver does not send any signal.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] 1 (fixed)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Resolver trouble, or disconnection or contact failure\n" +
+                        "         of the resolver cable");
+
+        ExampleItem MCS_PULSE_GENERATOR_COUNT_OVER = new ExampleItem("2172  ALARM-B", "MCS PULSE GENERATOR COUNT OVER",
+                "The PG (pulse generator) count value per one turn differs\n" +
+                        "       from the corresponding data specified in servo data file.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX= PBU set value (Count number for one PG turn)\n" +
+                        "       YYYY= Actual count number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Faulty PG\n" +
+                        "       - Mismatch between the number of PG gear teeth and the\n" +
+                        "         servo data file data");
+
+        ExampleItem MCS_MOTOR_OVER_HEAT_B = new ExampleItem("2173  ALARM-B", "MCS MOTOR OVER HEAT",
+                "The motor temperature is abnormally high.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]YYYYZZZZ\n" +
+                        "       YYYY = 0 (fixed)\n" +
+                        "       ZZZZ = 0010: Motor overheat\n" +
+                        "       ZZZZ = 0011: Motor overheat is detected at the motor.\n" +
+                        "       ZZZZ = 0012: Motor overheat is detected at the position\n" +
+                        "       \t     encoder.\n" +
+                        "       ZZZZ = 0013: Motor overhead is detected at the motor\n" +
+                        "       \t     and the encoder.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Malfunction of VAC motor fan, dirty heat sink, CW/CCW\n" +
+                        "         turns and stops at high frequency\n" +
+                        "       - BL motor\n" +
+                        "       - Motor encoder (BL motor detects overheat by its encoder.)");
+
+        ExampleItem MCS_SERVO_LINK_ERROR_B = new ExampleItem("2174  ALARM-B", "MCS SERVO-LINK ERROR",
+                "A communication error occurred in the servo link,\n" +
+                        "       disabling the servo unit from receiving commands from \n" +
+                        "       the NC.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX=0 (fixed)\n" +
+                        "       YYYY= Bit number indicating the kind of communication\n" +
+                        "             error\n" +
+                        "        (Servo link error status at the time of error detection)\n" +
+                        "        bit 15  1: 2nd B-buffer error\n" +
+                        "        bit 14  1: 2nd A-buffer error\n" +
+                        "        bit 13  1: 1st B-buffer error\n" +
+                        "        bit 12  1: 1st A-buffer error\n" +
+                        "        bit 11  1: MT buffer error\n" +
+                        "        bit 10  1: Relay processing error\n" +
+                        "        bit 9\t 1: Data over error in data receiving part of\n" +
+                        "       \t    interface\n" +
+                        "        bit 8\t 1: Disconnection\n" +
+                        "        bit 7\t 1: Address pointer error\n" +
+                        "        bit 6\t 1: Modulation code error\n" +
+                        "        bit 5\t 1: CRC error\n" +
+                        "        bit 4\t 1: Format error\n" +
+                        "        bit 3\t 1: Double transmission error\n" +
+                        "        bit 2\t 1: Double reception error\n" +
+                        "        bit 1\t 1: Parity error\n" +
+                        "        bit 0\t 1: Time-out error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Invertor unit control board\n" +
+                        "       - Servo link cables or connectors\n" +
+                        "       - FCP board");
+
+        ExampleItem MCS_SERVO_LINK_DISCONNECT_B = new ExampleItem("2175  ALARM-B", "MCS SERVO-LINK DISCONNECT",
+                "The servo link is disconnected, disabling the servo unit\n" +
+                        "       from receiving commands from the NC.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX= Disconnected position\n" +
+                        "         0...Disconnected right in front of the problem unit\n" +
+                        "         8000...Disconnected before the problem unit\n" +
+                        "       YYYY= Servo link error status at the time of error detection\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Servo cables or connectors\n" +
+                        "       - Invertor unit control board\n" +
+                        "       - FCP board");
+
+        ExampleItem MCS_SERVO_LINK_PROTOCOL_ERROR_B = new ExampleItem("2176  ALARM-B", "MCS SERVO-LINK PROTOCOL ERROR",
+                "The NC and the invertor unit exchange commands and\n" +
+                        "       responses at constant intervals according to the specified\n" +
+                        "       protocol through the servo link. In this communication,\n" +
+                        "       a wrong protocol or abnormal timing was used to transfer\n" +
+                        "       the data from NC to the invertor unit.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Number indicating the error content\n" +
+                        "        1: A-buffer Software synchronization error\n" +
+                        "        2: A-buffer Format code error\n" +
+                        "        3: B-buffer Software synchronization error\n" +
+                        "        4: B-buffer Format code error\n" +
+                        "        5: B-buffer Block number error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Invertor unit control board\n" +
+                        "       - NC software\n" +
+                        "       - Invertor unit control board not compatible with NC\n" +
+                        "         software\n" +
+                        "       - FCP board");
+
+        ExampleItem MCS_SERVO_DATA_ERROR_B = new ExampleItem("2177  ALARM-B", "MCS SERVO DATA ERROR",
+                "The servo data sent from the NC for initialization or\n" +
+                        "       operation is not applicable to the invertor unit.\n" +
+                        "       If this alarm occurs after change of invertor unit, the\n" +
+                        "       servo data file is not applicable to the invertor unit.\n" +
+                        "       If this alarm occurs after adjustment or change of the\n" +
+                        "       servo data, the servo data is wrongly changed.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX= Data ID number of the data that caused the error\n" +
+                        "       YY= Data set number of the data that caused the error\n" +
+                        "       ZZ= Error content\n" +
+                        "        1: Out of setting range\n" +
+                        "        2: Wrongly set timing\n" +
+                        "        3: No transmission\n" +
+                        "        4: Calculation error\n" +
+                        "        5: Others\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Servo data file not compatible with invertor unit\n" +
+                        "       - Invertor unit not compatible with NC software\n" +
+                        "       - Invertor unit control board\n" +
+                        "       - NC software");
+
+        ExampleItem MCS_ILLEGAL_COMMAND_B = new ExampleItem("2178  ALARM-B", "MCS ILLEGAL COMMAND",
+                "The NC and the invertor unit exchange commands and\n" +
+                        "       responses through the servo link. In this communication,\n" +
+                        "       the NC sent an abnormal or inexecutable command to the\n" +
+                        "       invertor unit.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX=\n" +
+                        "        10:  Positioning mode\tCommand point number over\n" +
+                        "        11:  Positioning mode\tNegative command value\n" +
+                        "        12:  Positioning mode\tLarger command value\n" +
+                        "             (specified position > 360 deg for rotary axis)\n" +
+                        "        13:  Positioning mode\tRPositioning point table not\n" +
+                        "             transmitted\n" +
+                        "        14:  Positioning mode\tNon-rotating axis\n" +
+                        "        15:  Positioning mode\tCommand format other than points\n" +
+                        "        16:  Positioning mode\tPositioning sub-mode error\n" +
+                        "        21:  Parameter change\tParameter number out of specifable\n" +
+                        "             range\n" +
+                        "        22:  Mode  Undefined mode\n" +
+                        "        23:  Mode  Positioning/tool path mode condition\n" +
+                        "        24:  Coordinate system  Coordinate system designation \n" +
+                        "             error\n" +
+                        "        30:  Unused bit is ON in the bit commands for controlling\n" +
+                        "             the S-link A buffer.\n" +
+                        "        31:  Unused bit is ON among the bit data in the S-link \n" +
+                        "             B buffer.\n" +
+                        "        40:  AT mode is selected without reception of time\n" +
+                        "             synchronization command.\n" +
+                        "       YYYY= Error data\n" +
+                        "         X in the range from 10 to 16 shows the positioning \n" +
+                        "         sub-mode.\n" +
+                        "         0:Program mode  1:Search mode  2:PH mode  3:Teach mode\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Invertor unit not compatible with NC software\n" +
+                        "       - Invertor unit control board\n" +
+                        "       - NC software");
+
+        ExampleItem MCS_CON_SPEED_OVER_B = new ExampleItem("2179  ALARM-B", "MCS CON SPEED OVER",
+                "Increments for positioning command (SRCOND) issued from\n" +
+                        "       the NC to the invertor unit exceed the allowable limit.\n" +
+                        "       If this alarm occurs in the axis to be positioned, the\n" +
+                        "       servo data file has wrong data. (This is because the\n" +
+                        "       invertor unit calculates the increments for the axis to\n" +
+                        "       be positioned.)\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Absolute value of increments processed for acceleration/\n" +
+                        "       deceleration [(pr/65536)/Tp]\n" +
+                        "       Where, pr= One turn of position encoder; Tp= Position\n" +
+                        "       control frequency\n" +
+                        "       The following codes, however, have specific meanings:\n" +
+                        "       1: The increments were so large that they were judged\n" +
+                        "          erroneous in preliminary check.\n" +
+                        "       2: The position command (SRCON) exceeds the absolute\n" +
+                        "          value of the encoder measuring range (linear axis only).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Servo data file\n" +
+                        "       - NC software");
+
+        ExampleItem MCS_SPEED_COMMAND_OVER_B = new ExampleItem("2180  ALARM-B", "MCS SPEED COMMAND OVER",
+                "Speed command value issued from the NC to the invertor\n" +
+                        "       unit exceeds the allowable limit.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Speed command [(rev/4294967269)/Tv]\n" +
+                        "       rev= One motor turn; Tv= Speed control frequency\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Servo data file\n" +
+                        "       - NC software");
+
+        ExampleItem MCS_DIFF_OVER = new ExampleItem("2181  ALARM-B", "MCS DIFF OVER",
+                "Axis movement caused a large positioning error.\n" +
+                        "       While the axis is in a target position or stopped, \n" +
+                        "       the target value and the calculated value are the same. \n" +
+                        "       With an axis movement command, the NC starts creating\n" +
+                        "       calculation values (RCON) until the target point is\n" +
+                        "       reached. At this time, the actual position follows the\n" +
+                        "       calculated value with a certain delay. \n" +
+                        "       This delay is called \"following error\" and calculated\n" +
+                        "       by ([calculation value] - [actual value]). \n" +
+                        "       If the \"following error\" exceeds the allowable limit,\n" +
+                        "       the above alarm occurs.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Absolute value of following error [pr/65536]\n" +
+                        "       pr = One turn of position encoder\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Overload due to faulty ball screw or bearing\n" +
+                        "       - Motor\n" +
+                        "       - Invertor unit\n" +
+                        "       - Servo data file");
+
+        ExampleItem MCS_APA_SPEED_OVER_B = new ExampleItem("2182  ALARM-B", "MCS APA SPEED OVER",
+                "The position encoder value (RAPA) changes as the motor\n" +
+                        "       rotates. The NC checks this change with preset frequency.\n" +
+                        "       This alarm occurs if the change per unit time exceeds\n" +
+                        "       the allowable range consecutively. For example, an axis\n" +
+                        "       feedrate is abnormally high compared with the normal\n" +
+                        "       rapid feedrate, or the encoder value changes irregularly\n" +
+                        "       due to malfunction of the position encoder.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       Absolute value of the change in encoder value per\n" +
+                        "       position control frequency\n" +
+                        "       [encoder's 1/65536 turn/position control frequency]\n" +
+                        "       The following codes, however, have specific meanings:\n" +
+                        "       1= Linear axis has exceeded its travel range.\n" +
+                        "       2= Rotary axis has exceeded its travel range (360) or\n" +
+                        "          limited axis has negative positional data.\n" +
+                        "       3= Limited axis has exceeded its travel range.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Motor encoder (BL motor)\n" +
+                        "       - Encoder link cables or connectors (BL motor)\n" +
+                        "       - PG or magnetic encoder (VAC motor)\n" +
+                        "       - PG or magnetic encoder cables or connectors (VAC motor)\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_FULL_CLOSED_APA_ERROR_B = new ExampleItem("2183  ALARM-B", "MCS FULL CLOSED APA ERROR",
+                "Difference between the full-closed loop encoder value\n" +
+                        "       and the motor encoder value exceeds the allowable range.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Number of times the error has been detected\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Synthetic offset data is not set at the full-closed\n" +
+                        "         loop encoder or wrong data is set.\n" +
+                        "       - ABSO SCALE or position encoder with shaft\n" +
+                        "       - Excessive lost motion in axis drive system (The motor\n" +
+                        "         is not rigidly connected with the movable part.)\n" +
+                        "       - Slippage or breakage of shaft belt\n" +
+                        "       - Loose coupling between motor and ball screw\n" +
+                        "       - Improper positional loop gain (too high)");
+
+        ExampleItem MCS_OVER_SPEED_B = new ExampleItem("2184  ALARM-B", "MCS OVER SPEED",
+                "Actual motor speed is too high.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] Motor speed detected when this alarm occurred\n" +
+                        "       \t\t    [(rev/4294967296)/Tv]\n" +
+                        "       Where, rev= One motor turn; Tv= Speed control frequency\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Motor encoder (BL motor)\n" +
+                        "       - Encoder link cables or connectors (VAC motor)\n" +
+                        "       - Resolver or magnetic encoder (VAC motor)\n" +
+                        "       - Resolver or magnetic encoder cables or connectors \n" +
+                        "         (VAC motor)\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_VELOCITY_DEVIATION_OVER_B = new ExampleItem("2185  ALARM-B", "MCS VELOCITY DEVIATION OVER",
+                "Actual motor speed excessively deviates from the speed\n" +
+                        "       command.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX: Detected torque (sum of the torque data collected\n" +
+                        "             for 3.2 ms)\n" +
+                        "          +-2^-12[MAXTRQ]\n" +
+                        "          If Tv = 0.4 ms, the momentary maximum torque is H'7FFF.\n" +
+                        "          If Tv = 0.8 ms, the momentary maximum torque is H'3FFF.\n" +
+                        "       YYYY: Detected acceleration (average value measured for 3.2 ms)\n" +
+                        "          +-2^-16[vr/3.2 ms/3.2 ms]\n" +
+                        "          = about 0.1 [1/min/ms]\n" +
+                        "       The code number 00000001 means that the error data is replaced\n" +
+                        "       by zero because of exponent underflow.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - The motor does not turn because of (mechanical lock or)\n" +
+                        "         application of large load.");
+
+        ExampleItem MCS_COLLISION_DETECTED_B = new ExampleItem("2186  ALARM-B", "MCS COLLISION DETECTED",
+                "The NC torque limiter has detected collision of axis by\n" +
+                        "       monitoring the relation between motor output torque and motor\n" +
+                        "       acceleration.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX: Detected torque (sum of torque data collected for 3.2 ms)\n" +
+                        "           +-2^-12[MAXTRQ]\n" +
+                        "           If Tv = 0.4 ms, the momentary maximum torque is H'7FFF.\n" +
+                        "           If Tv = 0.8 ms, the momentary maximum torque is H'3FFF.\n" +
+                        "       YYYY: Detected acceleration (average torque measured for\n" +
+                        "             3.2 ms)\n" +
+                        "           +-2^-16[vr/3.2 ms/3.2 ms]\n" +
+                        "           = about 0.1 [1/min/ms]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Collision\n" +
+                        "       - Motor encoder\n" +
+                        "       - NC torque limiter set value");
+
+        ExampleItem MCS_URGENT_STOP_TIME_OVER_B = new ExampleItem("2187  ALARM-B", "MCS URGENT-STOP TIME OVER",
+                "The axis cannot stop within a preset time after reception of\n" +
+                        "       emergency stop command.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXXXXX\n" +
+                        "       1: Emergency stop time over\n" +
+                        "       2: Deceleration time over at emergency stop\n" +
+                        "       3: Deceleration time over at alarm stop\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Invertor unit control board\n" +
+                        "       - NC software");
+
+        ExampleItem MCS_AXIS_CHANGE_CONTROL_ERROR_B = new ExampleItem("2189  ALARM-B", "MCS AXIS CHANGE CONTROL ERROR",
+                "Axis change wasü@not performed normally. (This is not an alarm\n" +
+                        "        caused in MCS.)\n" +
+                        "       [Object]Axis to be selected by axis change\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1 MCS was not reset within 10s.\n" +
+                        "       2 Parameter set numbers matching signal or control ready signal\n" +
+                        "          failed to come ON within 10s.\n" +
+                        "       3 MCS failed to receive the maximum APA value from the split\n" +
+                        "          encoder within 10s.\n" +
+                        "       6 MCS controller failed to change in-position amount or zero\n" +
+                        "          offset amount within 10s.\n" +
+                        "       A MCS controller failed to change in-position amount or zero\n" +
+                        "          offset amount within 10s after alarm occurrence.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Faulty MCS controller for PLC axis\n" +
+                        "       - Faulty software");
+
+        ExampleItem MCS_INDEPENDENT_ENCODER_INIT_B = new ExampleItem("2190  ALARM-B", "MCS INDEPENDENT ENCODER INIT",
+                "An error occurred during initialization of the MCS\n" +
+                        "       independent encoder.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       XX-> Encoder link sequence number\n" +
+                        "       0: Reset\n" +
+                        "       1: Net address setting\n" +
+                        "       2: Request to send the basic information for communication\n" +
+                        "       3: Change of communication software version\n" +
+                        "       4: Acquisition of device information\n" +
+                        "       5: Parameter change\n" +
+                        "       6: AT mode start\n" +
+                        "       YY-> Alarm content\n" +
+                        "       0: Communication error\n" +
+                        "       1: Transmission start time over\n" +
+                        "       2: Transmission end time over\n" +
+                        "       3: Reception end time over\n" +
+                        "       4: Wrong response address\n" +
+                        "       5: Wrong response code\n" +
+                        "       6: Parameter error\n" +
+                        "       ZZZZ-> Data\n" +
+                        "       YY = 0: Encoder link error status C2ERR established\n" +
+                        "       \ton detection of the error\n" +
+                        "       YY = 1, 2, or 3: Transmitted frame information QC2MTINF\n" +
+                        "       YY = 4: Net address of the corresponding device\n" +
+                        "       YY = 5: Received frame information QC2RXINF\n" +
+                        "       YY = 6: Parameter number at which the error is detected\n" +
+                        "       1 = Reception of insufficient number of parameters\n" +
+                        "       2 = Basic information for communication being incompatible\n" +
+                        "       3 = Multi-turn detection range over\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Independent position encoder\n" +
+                        "       - Encoder link cables and connectors\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_APA_ERROR_B = new ExampleItem("2191  ALARM-B", "MCS APA ERROR",
+                "An error occurred during calculation of APA value.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXXXXX\n" +
+                        "       1: Linear axis divided travel over\n" +
+                        "       2: Overflow during conversion of semi-position from\n" +
+                        "          [pr] to [pf].\n" +
+                        "       3: Underflow in synthesizing the axis data\n" +
+                        "       4: Overflow in synthesizing the axis data\n" +
+                        "       5: Overflow of input values used for hybrid control\n" +
+                        "       6: Overflow during initialization for hybrid control\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Motor encoder, encoder with shaft, or ABSO SCALE\n" +
+                        "       - Invertor unit control board\n" +
+                        "       - Servo data file\n" +
+                        "       If the alarm code is \"1\" or \"3\", the position encoder may not\n" +
+                        "       be properly offset to zero.\n" +
+                        "       If the alarm code is \"4\", the servo data file may be defective.\n" +
+                        "       If the alarm code is \"5\" or \"6\", the motor coupling, encoder\n" +
+                        "       with shaft, or ABSO SCALE may be loosely mounted.");
+
+        ExampleItem MCS_MOTOR_OVER_LOAD_B = new ExampleItem("2192  ALARM-B", "MCS MOTOR OVER LOAD",
+                "The motor load has exceeded the preset value,\n" +
+                        "       activating the overload protection function.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] YYYYZZZZ\n" +
+                        "       YYYY-> Gamma of the protection curve used to detect overload\n" +
+                        "       ZZZZ-> Internally calculated overload data\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Motor\n" +
+                        "       - Overload caused by machine operation\n" +
+                        "       - Servo data file");
+
+        ExampleItem MCS_ABSO_SCALE_SUB_SLIDER_ERROR_B = new ExampleItem("2194  ALARM-B", "MCS ABSO SCALE SUB SLIDER ERROR",
+                "ERROR occurred by sub-slider of absoscale for the\n" +
+                        "       transfer spec.\n" +
+                        "       [Index]Axis or None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]XXYYZZZZ\n" +
+                        "       XX E-link sequence number in detecting error\n" +
+                        "        0:Reset\n" +
+                        "        1:Net address setting\n" +
+                        "        2:Communucation basis information demand\n" +
+                        "        3:Change of communucation version.\n" +
+                        "        4:Device information acquisition.\n" +
+                        "        5:Change of parameter.\n" +
+                        "        6:AT mode start\n" +
+                        "       YY Error contents\n" +
+                        "        0:Communication error\n" +
+                        "        1:Transmission start timeover\n" +
+                        "        2:Transmission complete timeover\n" +
+                        "        3:Reception complete timeover\n" +
+                        "        4:Response address error\n" +
+                        "        5:Response code error\n" +
+                        "        6:Paremeter error\n" +
+                        "       ZZZZ Data\n" +
+                        "        YY=0:E-link error status in detecting error C2ERR\n" +
+                        "        YY=1,2,3:\n" +
+                        "             Transmitting frame information QC2MTINF\n" +
+                        "        YY=4:Net address of response-device\n" +
+                        "        YY=5:Receiving frame information QC2RXINF\n" +
+                        "        YY=6:The number of showing parameter which detected error\n" +
+                        "         1=Shortage of the number of receiving parameter\n" +
+                        "         2=Incongruousness of Communucation basis information\n" +
+                        "         3=Incongruousness of many rotation detection range");
+
+        ExampleItem MCS_TANDEM_COMMUNICATION_ERROR_B = new ExampleItem("2195  ALARM-B", "MCS TANDEM COMMUNICATION ERROR",
+                "Concerning tandem control of synchronism-axis,\n" +
+                        "       The communication data that slave-axis received in\n" +
+                        "       communication between slave-station was ERROR.\n" +
+                        "       [Object]Axis(Main-spindle) or None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]XXXXYYYY\n" +
+                        "       XXXX:\n" +
+                        "       XXXX=1 The communication data is not counted.\n" +
+                        "              YYYY is always \"0\".\n" +
+                        "       XXXX=2 Format cord of the communication data can not\n" +
+                        "              correspond.\n" +
+                        "              YYYY is Low-order 1byte of this cord.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       MCS unit,MCS soft");
+
+        ExampleItem MCS_FULL_ABSO_SCALE_LINK_ERROR_B = new ExampleItem("2196  ALARM-B", "MCS FULL ABSO SCALE LINK ERROR",
+                "An alarm occurred in full absolute scale communication.\n" +
+                        "       [Object] AXIS or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       XX=FF Fixed\n" +
+                        "       YY=00 Fixed\n" +
+                        "       ZZZZ= E-link error status at the time of error detection.\n" +
+                        "             Each bit shows the kind communication error.\n" +
+                        "        bit15\t1: Communication error generated by independent encoder\n" +
+                        "        bit14\t1: Communication error generated by ABSOSCALE 2\n" +
+                        "        bit13\t1: Communication error generated by ABSOSCALE or\n" +
+                        "       \t   axis-mount encoder.\n" +
+                        "        bit12\t1: Communication error generated by monitor encoder\n" +
+                        "        bit11\tNot defined\n" +
+                        "        bit10\t1:AT mode transmission loop error\n" +
+                        "        bit9\t1:Excessive number of data counts at the receiving\n" +
+                        "       \t  interface\n" +
+                        "        bit8\tNot defined\n" +
+                        "        bit7\tNot defined\n" +
+                        "        bit6\t1: Modulation code error\n" +
+                        "        bit5\t1: CRC error\n" +
+                        "        bit4\t1: Format error\n" +
+                        "        bit3\t1: Double transmission error\n" +
+                        "        bit2\t1: Double reception error\n" +
+                        "        bit1\t1: Parity error\n" +
+                        "        bit0\t1: Time-out error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Full ABSOSCALE\n" +
+                        "       - Encoder link cable or connector\n" +
+                        "       - Inverter unit control board");
+
+        ExampleItem MCS_FULL_ABSO_SCALE_ERROR_B = new ExampleItem("2197  ALARM-B", "MCS FULL ABSO SCALE ERROR",
+                "The full absolute scale has become unable to detect positional\n" +
+                        "        data.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       XX= Encoder error code depending on the encoder type\n" +
+                        "       YY= Detailed encoder status. The status varies with the\n" +
+                        "           encoder type.\n" +
+                        "       ZZZZ= Multi-turn position data. This data appears when the\n" +
+                        "           multi-turn position data has exceeded the rotating range.\n" +
+                        "       XX = 0 (fixed)\n" +
+                        "       YY = 1 (fixed)\n" +
+                        "       ZZZZ = Multi-turn position data\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Full absolute scale");
+
+        ExampleItem MCS_FULL_ABSO_SCALE_INITIAL_B = new ExampleItem("2198  ALARM-B", "MCS FULL ABSO SCALE INITIAL",
+                "An error occurred in initialization of the full absolute scale.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "        XX= Encoder link sequence number at the time of error\n" +
+                        "           detection\n" +
+                        "         0: Reset\n" +
+                        "         1: Network address setting\n" +
+                        "         2: Request of basic information on communication\n" +
+                        "         3: Change of communication version\n" +
+                        "         4: Acquisition of device information\n" +
+                        "         5: Parameter change\n" +
+                        "         6: AT (auto) mode start\n" +
+                        "        YY= Error content\n" +
+                        "         0: Communication error\n" +
+                        "         1: Transmission start time over\n" +
+                        "         2: Transmission finish time over\n" +
+                        "         3: Reception finish time over\n" +
+                        "         4: Abnormal response address\n" +
+                        "         5: Abnormal response code\n" +
+                        "         6: Parameter error\n" +
+                        "        ZZZZ= Additional data\n" +
+                        "         If YY=0, the encoder link error status C2ERR at the time\n" +
+                        "         of error detection appears.\n" +
+                        "         If YY=1, 2, or 3, the transferred frame information\n" +
+                        "         QC2MTINF appears.\n" +
+                        "         If YY=4, the network address of the responding device\n" +
+                        "         appears.\n" +
+                        "         If YY=5, the received frame information QC2RXINF appears.\n" +
+                        "         If YY=6, the number of parameter that caused the alarm\n" +
+                        "         appears.\n" +
+                        "         1= Not all the necessary parameters are received.\n" +
+                        "         2= Basic information on communication is incompatible.\n" +
+                        "         3= Multi-rotation detection range does not match.\n" +
+                        "       But,in the case that voltage of encoder-fuse is failed,\n" +
+                        "         XXXX: $FFFF (fix)\n" +
+                        "         ZZZZ: voltage of encoder-fuse\n" +
+                        "             (12[V] = $9980)\tNormal: from 10.6 to 13.8 [V]\n" +
+                        "       \t\t\tPermmssive: from $8800 to $B000\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       - Full absolute scale\n" +
+                        "       - Encoder link cables or connectors\n" +
+                        "       - Invertor unit control board");
+
+        ExampleItem MCS_AXIS_STOP_SIGNAL_ERROR_B = new ExampleItem("2199  ALARM-B", "MCS AXIS STOP SIGNAL ERROR",
+                "OSP detected that a PSRDY signal input into an MIV unit\n" +
+                        "       malfunctioned.\n" +
+                        "       [Object]Axis name or none(spindle)\n" +
+                        "       [Character string]None\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Defectiveness of a stroke end limit switch or the\n" +
+                        "       damage of the signal line.\n" +
+                        "       Damage of an OPR line connected to in a power supply \n" +
+                        "       unit or poor contact of a connector.\n" +
+                        "       Damage of a converter link cable of an MIV unit or\n" +
+                        "       poor contact of a connector.\n" +
+                        "       FUB-DR3 or malfunction of a POS unit.");
+
+        ExampleItem PROGRAM_DIRECT_G_CODE = new ExampleItem("2200  ALARM-B", "PROGRAM DIRECT G CODE",
+                "Illegal G code\n" +
+                        "       Numerical value greater than 199 or less than 0 is assigned to\n" +
+                        "       the address character G (0<=G<=199).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated numerical value\n" +
+                        "       [Probable Faulty Locations]G code\n" +
+                        "       Program Example:\n" +
+                        "       G300[Code]12C\n" +
+                        "       [Measures to Take]Designate a correct G code.\n" +
+                        "       Example: G01 X20 Z50");
 
-        ExampleItem PSCB_PG_OVER_PULSE = new ExampleItem("1493", "PSCBP.G. OVER PULSE", " ");
-
-        ExampleItem PSCB_MINUS_STROKE_END_OVER = new ExampleItem("1494", "PSCB MINUS STROKE END OVER", " ");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
 
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
@@ -6198,23 +8490,6 @@ public class AlarmList {
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
 
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
-        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
-
 
 
 // ------------------------------------------------------------------------------------------------------------------------------//
@@ -6331,6 +8606,7 @@ public class AlarmList {
         list.add(RS232C_DEVICE_READ);
         list.add(RS232C_TERMINAL_NOT_READY);
         list.add(RS232C_READY_STATUS_TIME_OUT);
+        list.add(RS232C_READY_INTERRUPT_TIME_OUT);
         list.add(RS232C_DEVICE_NAME);
         list.add(MEMORY_DISK_ACCESS_SECTOR_OVER_0324);
         list.add(MEMORY_DISK_ROM_ACCESS_SECTOR_OVER);
@@ -6375,10 +8651,375 @@ public class AlarmList {
         list.add(PATCH_SECTOR_ADDRESS_OVER);
         list.add(CONSOLE_LINE_SETTING);
         list.add(FILE_WRITE_PROTECT);
-        list.add(SYSTEM_GENERATE);
+        list.add(SYSTEM_GENERATE_410);
 
-        //---------------------------------
 
+        //-------------------1071_1950--------------
+        list.add(MEMORY_BOARD_BATTERY_HURRY_EXCHANGE);
+        list.add(PLC_ALARM_No_ILLEGAL);
+        list.add(PLC_ALARM_MESSAGE_FILE_NOT_LOAD);
+        list.add(PLC_BACKUP_DATA_FILE_LOAD);
+        list.add(PLC_BACKUP_DATA_FILE_NOT_LOAD);
+        list.add(PLC_BACKUP_DATA_FILE_READING);
+        list.add(SAFETY_SPEED_MONITOR_ERROR);
+        list.add(MCS_OPERATION_READY_OFF);
+        list.add(RESET_MACHINE_DATA);
+        list.add(BLUE_SCREEN);
+        list.add(P100_MENU_ERROR);
+        list.add(ALARM_SERVICE_INTENAL_ERROR);
+        list.add(DEVICE_NET_SLAVE_IDLE_MODE);
+        list.add(DTL_ERROR);
+        list.add(FL_NET_INITIAL_ERROR);
+        list.add(IMPORTANT_ILLEGAL);
+        list.add(NON_ANSWERED_SOFTWARE_WAS_DETECTED);
+        list.add(THE_ERROR_OCCURRED_WHILE_CAS_WORK);
+        list.add(PLC_CONTROL_ERROR);
+        list.add(SHUTTING_DOWN_TO_AVOID_DAMAGE);
+        list.add(A_NON_FUNCTIONING_INSTRUMENT_IS_DETECTED);
+        list.add(MCS_PARAMETER_LEARNING_ERROR);
+        list.add(MCS_INERTIA_IDENTIFICATION_ERROR);
+        list.add(OVERLOAD_DETECTED);
+        list.add(PSC_OPTICAL_SCALE_ENCODER_ERROR);
+        list.add(SAFETY_CONTROLLER_ERROR);
+        list.add(SAFETY_SPEED_MONITOR_ERROR_1123);
+        list.add(VDU_COMMUNICATION_ERROR);
+        list.add(VDU_ERROR);
+        list.add(VDU_INITIALIZE_FAILED);
+        list.add(MCS_DD_ENCODER_LINK_ERROR);
+        list.add(MCS_DD_ENCODER_ERROR);
+        list.add(MCS_DD_ENCODER_SLAVE_SENSOR_ERROR);
+        list.add(MCS_DD_ENCODER_INITIALIZE_FAILED);
+        list.add(MCS_DD_ENCODER_SLAVE_SENSOR_INITIALIZE_FAILED);
+        list.add(MCS_POWER_SUPPLY_UNIT_OVER_LOAD);
+        list.add(TAILSTOCK_TORQUE_OVER);
+        list.add(MCS_UNDEFINED_ALARM_NUMBER);
+        list.add(MCS_EXCEPTION_PROCESSING);
+        list.add(MCS_PROCESSING_TROUBLE);
+        list.add(MCS_CON_APA_DEVIATION);
+        list.add(MCS_POWER_SUPPLY_UNIT_ERROR);
+        list.add(MCS_CONVERTER_LINK_ERROR);
+        list.add(MCS_DC_BUS_VOLTAGE_ERROR);
+        list.add(MCS_MOTOR_OVER_CURRENT);
+        list.add(MCS_POWER_UNIT_OVER_HEAT);
+        list.add(MCS_POWER_UNIT_OVER_LOAD);
+        list.add(MCS_SUPPLY_VOLTAGE_FLUTTER);
+        list.add(MCS_POWER_UNIT_VERSION_ERROR);
+        list.add(MCS_WINDING_CHANGE_FAILED);
+        list.add(MCS_ENCODER_LINK_ERROR);
+        list.add(MCS_ENCODER_ERROR);
+        list.add(MCS_ENCODER_INITIALIZE_FAILED);
+        list.add(MCS_ENCODER_WITH_SHAFT_ERROR);
+        list.add(MCS_ENCODER_WITH_SHAFT_INITIAL);
+        list.add(MCS_ABSO_SCALE_ERROR);
+        list.add(MCS_ABSO_SCALE_INITIALIZE);
+        list.add(MCS_MAGNETIC_ENCODER_ALARM);
+        list.add(MCS_RESOLVER_ALARM);
+        list.add(MCS_PULSE_GENERATOR_ALARM);
+        list.add(MCS_MOTOR_OVER_HEAT);
+        list.add(MCS_SERVO_LINK_ERROR);
+        list.add(MCS_SERVO_LINK_DISCONNECT);
+        list.add(MCS_SERVO_LINK_PROTOCOL_ERROR);
+        list.add(MCS_SERVO_DATA_ERROR);
+        list.add(MCS_ILLEGAL_COMMAND);
+        list.add(MCS_CON_SPEED_OVER);
+        list.add(MCS_SPEED_COMMAND_OVER);
+        list.add(MCS_DIFF_COVER);
+        list.add(MCS_APA_SPEED_OVER);
+        list.add(MCS_FULL_CLOSED_APA_ERROR);
+        list.add(MCS_OVER_SPEED);
+        list.add(MCS_VELOCITY_DEVIATION_OVER);
+        list.add(MCS_COLLISION_DETECTED);
+        list.add(MCS_URGENT_STOP_TIME_OVER);
+        list.add(MCS_BELT_IS_BROKEN);
+        list.add(MCS_AXIS_CHANGE_CONTROL_ERROR);
+        list.add(MCS_INDEPENDENT_ENCODER_INIT);
+        list.add(MCS_APA_ERROR);
+        list.add(MCS_MOTOR_OVER_LOAD);
+        list.add(MCS_ABSO_SCALE_SUB_SLIDER_ERROR);
+        list.add(MCS_TANDEM_COMMUNICATION_ERROR);
+        list.add(MCS_FULL_ABSO_SCALE_LINK_ERROR);
+        list.add(MCS_FULL_ABSO_SCALE_ERROR);
+        list.add(MCS_FULL_ABSO_SCALE_INITIAL);
+        list.add(MCS_AXIS_STOP_SIGNAL_ERROR);
+        list.add(STROKE_END_OVER);
+        list.add(PLUS_VARIABLE_LIMIT_OVER);
+        list.add(MINUS_VARIABLE_LIMIT_OVER);
+        list.add(USER_RESERVE_CODE);
+        list.add(SM_COMMAND_ASYNCHRONOUS);
+        list.add(SYNCHRONOUS_P_CODE);
+        list.add(TORQUE_LIMITER);
+        list.add(TORQUE_LIMITER_CANCEL);
+        list.add(TORQUE_LIMITER_OVER);
+        list.add(TORQUE_SKIP_CONDITION_NO_SATISFY);
+        list.add(DUPLICATE_M_CODE);
+        list.add(INTERRUPT_RETURN_POINTER_UNMATCH);
+        list.add(THREAD_FEED);
+        list.add(CONTOUR_GENERATION_CALCULATION);
+        list.add(SPINDLE_MODE_ILLEGAL);
+        list.add(SPINDLE_MAX_REVOLUTION_DESIGNATION);
+        list.add(SPINDLE_INTERFERENCE_DISTANCE);
+        list.add(TURRET_ROTATION);
+        list.add(TOOL_INTERFERENCE_CHECK);
+        list.add(CHUCK_BARRIER_AREA);
+        list.add(TAILSTOCK_BARRIER_AREA);
+        list.add(TOW_ALONG_TAILSTOCK_CONNECT);
+        list.add(TOW_ALONG_TAILSTOCK_CONDITION);
+        list.add(W_AXIS_PLUS_VARIABLE_LIMIT_OVER);
+        list.add(W_AXIS_MINUS_VARIABLE_LIMIT_OVER);
+        list.add(PARTS_CATCHER_INTERLOCK);
+        list.add(LOAD_MONITOR_TOOL_BROKEN);
+        list.add(LOAD_MONITOR_COMMAND_EXECUTION);
+        list.add(LASER_MEASUREMENT_DATA_NG);
+        list.add(IND_CMP_DATA_VERIFY_NG);
+        list.add(HP9825A_SEND);
+        list.add(HP9825A_RECEIVE);
+        list.add(HP9825A_RECEIVE_DATA_FORMAT);
+        list.add(C_AXIS_COMMAND);
+        list.add(SUB_SPINDLE_INTERFERENCE_DISTANCE);
+        list.add(W_AXIS_MOVEMENT_CONDITION);
+        list.add(PICKOFF_INDEX_POSITION);
+        list.add(SENSOR_TOUCH_G00);
+        list.add(SENSOR_NO_TOUCH);
+        list.add(SENSOR_PROTECT);
+        list.add(ATC_MANUAL_OPERATION_MODE_IMPOSSIBLE);
+        list.add(Y_AXIS_PARAMETER_ILLEGAL);
+        list.add(YS_AXIS_POSITION);
+        list.add(ADAPTIVE_CONTROL_COMMUNICATION_ERROR);
+        list.add(SHIFT_AMOUNT_ERROR);
+        list.add(SPINDLE_BELT_SLIP);
+        list.add(APA_ILLEGAL);
+        list.add(LOAD_MONITOR_W_OVER_LOAD);
+        list.add(DOOR_INTERLOCK_RESET);
+        list.add(G21_IMPOSSIBLE);
+        list.add(STM_TIME_OVER);
+        list.add(CYCLE_TIME_OVER);
+        list.add(CONTOUR_GENERATION_IMPOSSIBLE);
+        list.add(MEASUREMENT_SYSTEM_ERROR);
+        list.add(TOW_ALONG_STEADY_REST_CONNECT);
+        list.add(STEADY_REST_TORQUE_OVER);
+        list.add(POSITIONING_UNCERTAIN);
+        list.add(NC_TAILSTOCK_ADVANCE_ERROR);
+        list.add(CUTTING_ERROR);
+        list.add(TOW_ALONG_STEADY_REST_INTERFERENCE_POSITION);
+        list.add(HOME_POSITION_MOVEMENT_INTERLOCK);
+        list.add(BARRIER_AREA);
+        list.add(SAFETY_SPEED_OVER);
+        list.add(SAFETY_MONITOR_ERROR_DETECTION);
+        list.add(TURRET_INTERFERANCE);
+        list.add(START_UP_APA_DEVIATION);
+        list.add(STEADY_REST_TAILSTOCK_INTERLOCK);
+        list.add(SAFETY_SPEED_CLAMP);
+        list.add(HEAVY_WORK_DATA_NOT_FOUND);
+        list.add(TEMP_RISE_LIMIT_OVER);
+        list.add(SPINDLE_WENT_INTO_TRANSPORTATION_BARRIER);
+        list.add(SPINDLE_LOW_ACCELERATION_MODE_CONDITION);
+        list.add(HOB_CUTTING_OVER_LOAD);
+        list.add(POSITION_SCALE_ABNORMAL_XS_AXIS);
+        list.add(SERVO_AMP_ABNORMAL_XS_AXIS);
+        list.add(APA_VEROCITY_XS_AXIS);
+        list.add(APA_RANGE_XS_AXIS);
+        list.add(CON_VEROSITY_XS_AXIS);
+        list.add(STROKE_END_OVER_XS_AXIS);
+        list.add(ACTUAL_POSITION_INITIALIZE_ERROR_XS_AXIS);
+        list.add(LEARNING_CONTROL_ERROR_XS_AXIS);
+        list.add(CAM_EXECUTE_DATA_NOT_SELECT_XS_AXIS);
+        list.add(LEARNING_CONTROL_COMMAND_XS_AXIS);
+        list.add(SYNCHRONOUS_MODE_COMMAND);
+        list.add(CHUCK_COORDINATES_UNMATCH);
+        list.add(PSCB_COMMAND_ERROR);
+        list.add(DIFF_OVER_XS_AXIS);
+        list.add(DRIFTCOMPENSATION_VALUE_OVER);
+        list.add(PSCB_REAL_TIME_TASK_ERROR);
+        list.add(PSCB_INT_TASK_LOOP_ERROR);
+        list.add(PSCB_EC_TASK_LOOP_ERROR);
+        list.add(PSCB_TIME_SHARING_TASK_ERROR);
+        list.add(PSCB_EXCEPTION_ERROR);
+        list.add(PSCB_MEMORY_TEST_ERROR);
+        list.add(PSCB_OVER_HEAT);
+        list.add(FIRST_TIME_DRIFT_COMPENSATION_VALUE_OVER);
+        list.add(SYNCHRONOUS_MODE_SPINDLE_SPEED_COMMAND);
+        list.add(HEAVY_TOOLING_DATA_NOT_FOUND);
+        list.add(PSCB_PG_UNDER_PULSE);
+        list.add(PSCB_PG_OVER_PULSE);
+        list.add(PSCB_MINUS_STROKE_END_OVER);
+        list.add(WORK_REST_INTERLOCK);
+        list.add(WORK_REST_TORQUE_OVER);
+        list.add(ALARM_A_IS_OCCURRING_IN_OTHER_SYSTEM);
+        list.add(CAN_NOT_ENTER_C_AXIS_SYNC_MODE);
+        list.add(THE_BETWEEN_THE_TURRET_INTERFERED);
+        list.add(HI_CUT_PRO_CONTROL_CANNOT_EXECUTE);
+        list.add(SPM_CONTOUR_CONTROL_CANNOT_EXECUTE);
+        list.add(SPM_CONTROL_ERROR);
+        list.add(DONT_CLAMP_WORK);
+        list.add(CLUTCH_A_SLIP_OVER_LIMIT);
+        list.add(DATA_WORD_X_Z);
+        list.add(NC_TAILSTOCK_SLIDE_RESISTANCE_OVER);
+        list.add(TURRET_OR_TOOL_NOT_INDEX_CUT_POSITION);
+        list.add(SPINDLE_PHASE_OVER_LIMIT);
+        list.add(SYNCHRONOUS_ERROR_LIMIT_OVER);
+        list.add(NC_TAILSTOCK_ERROR);
+        list.add(LINEAR_GUIDE_COVER_AREA);
+        list.add(WORK_WEIGHT_MCS_DATA_FILE_NOT_FOUND);
+        list.add(FEED_SPEED_OVER);
+        list.add(M_TOOL_SPINDLE_SPEED_OVER_IN_HOB_MODE);
+        list.add(TURRET_INDEX_ERROR_POSITION);
+        list.add(CANNOT_EXECUTE_IT_WHILE_MOUNTING_LBB);
+        list.add(THE_ATTACHMENT_STATUS_IS_NOT_THE_SAME);
+        list.add(M_AXIS_BELT_SLIP);
+        list.add(STEADY_RESTS_INTERFERENCE_POSITION);
+        list.add(TOOL_POSTURE_FLUCTUATION_REDUCTION_ERROR);
+        list.add(INTERFERENCE_DISTANCE_BETWEEN_THE_TURRETS);
+        list.add(CONDITION_OF_AXIS_MOVEMENT_IS_WRONG);
+        list.add(DETECTED_SPEED_ERROR_BY_MAGNETIC_ENCODER);
+        list.add(MCS_ROTARY_ENCODER_5_INITIALIZE_FAILED);
+        list.add(MCS_ROTARY_ENCODER_5_ERROR);
+        list.add(MCS_ROTARY_ENCODER_4_INITIALIZE_FAILED);
+        list.add(MCS_ROTARY_ENCODER_4_ERROR);
+        list.add(MCS_ROTARY_ENCODER_3_INITIALIZE_FAILED);
+        list.add(MCS_ROTARY_ENCODER_3_ERROR);
+        list.add(MCS_ROTARY_ENCODER_2_ERROR);
+        list.add(MCS_ROTARY_ENCODER_1_INITIALIZE_FAILED);
+        list.add(MCS_ROTARY_ENCODER_1_ERROR);
+        list.add(MCS_LINEAR_SCALE_4_INITIALIZE_FAILED);
+        list.add(MCS_LINEAR_SCALE_4_ERROR);
+        list.add(MCS_LINEAR_SCALE_3_INITIALIZE_FAILED);
+        list.add(MCS_LINEAR_SCALE_3_ERROR);
+        list.add(MCS_LINEAR_SCALE_2_INITIALIZE_FAILED);
+        list.add(MCS_LINEAR_SCALE_2_ERROR);
+        list.add(MCS_LINEAR_SCALE_1_INITIALIZE_FAILED);
+        list.add(MCS_LINEAR_SCALE_1_ERROR);
+        list.add(PLUS_VARIABLE_LIMIT_OVER_1900);
+        list.add(MINUS_VARIABLE_LIMIT_OVER_1901);
+        list.add(USER_RESERVE_CODE_1920);
+        list.add(TORQUE_LIMIT_OVER);
+        list.add(BARRIER_INVASION);
+        list.add(M_CODE_TIME_OVER);
+        list.add(CYCLE_TIME_OVER_1928);
+        list.add(HAND_OPEN_CLOSE_INTERLOCK);
+        list.add(LOADER_Z_AXIS_STOPPER_SET);
+        list.add(SAFETY_GUARD_INTERLOCK);
+        list.add(SAFETY_SPEED_OVER_1942);
+        list.add(SAFETY_SPEED_MONITOR_ERROR_1943);
+        list.add(SAFETY_SPEED_MONITOR_ERROR_DETECTION);
+        list.add(RUNNING_MODE_ILLEGAL);
+        list.add(ALARM_A_IS_OCCURRING_IN_OTHER_SYSTEM_1949);
+        list.add(SAFETY_SPEED_MONITOR_ERROR_1950);
+        list.add(SAFETY_CONTROLLER_ERROR_1951);
+
+        //-------------------------------------------2000-2999--------------------------
+
+        list.add(SVP_PROCESSING_TROUBLE);
+        list.add(PLC_AXIS_STROKE_END_OVER);
+        list.add(PLC_AXIS_COMMANAD);
+        list.add(PLC_AXIS_CONTINUOUS_POSITIONING_OVER);
+        list.add(BULE_SCREEN);
+        list.add(P100_MENU_ERROR_B);
+        list.add(UNUSABLE_COMMAND_WHILE_CAS_WORKS);
+        list.add(A_NON_FUNCTIONING_INSTRUMENT_IS_DETECTED_B);
+        list.add(FAN_MOTOR_ERROR_ON_PANEL_COMPUTER_UNIT);
+        list.add(THE_REMAINING_TIME_AFTER_RELOCATION_HAS_PASSED);
+        list.add(MCS_PARAMETER_LEARNING_ERROR_B);
+        list.add(MCS_INERTIA_IDENTIFICATION_ERROR_B);
+        list.add(OVERLOAD_DETECTED_B);
+        list.add(VDU_COMMUNICATION_ERROR_B);
+        list.add(VDU_ERROR_B);
+        list.add(VDU_INITIALIZE_FAILED_B);
+        list.add(MCS_DD_ENCODER_LiNK_ERROR_B);
+        list.add(MCS_DD_ENCODER_ERROR_B);
+        list.add(MCS_DD_ENCODER_SLAVE_SENSOR_ERROR_B);
+        list.add(MCS_DD_ENCODER_INITIALIZE_FAILED_B);
+        list.add(MCS_DD_ENCODER_SLAVE_SENSOR_INITIALIZE_FAILED_B);
+        list.add(MCS_POWER_SUPPLY_UNIT_OVER_LOAD_B);
+        list.add(MCS_UNDEFINED_ALARM_NUMBER_B);
+        list.add(MCS_EXCEPTION_PROCESSING_B);
+        list.add(MCS_PROCESSING_TROUBLE_B);
+        list.add(MCS_CON_APA_DEVIATION_B);
+        list.add(MCS_POWER_SUPPLY_UNIT_ERROR_B);
+        list.add(MCS_CONVERTER_LINK_ERROR_B);
+        list.add(MCS_DC_BUS_VOLTAGE_ALARM);
+        list.add(MCS_MOTOR_OVER_CURRENT_B);
+        list.add(MCS_POWER_UNIT_OVER_HEAT_B);
+        list.add(MCS_POWER_UNIT_OVER_LOAD_B);
+        list.add(MCS_SUPPLY_VOLTAGE_FLUTTER_BATE);
+        list.add(MCS_POWER_UNIT_VERSION_ERROR_B);
+        list.add(MCS_WINDING_CHANGE_FAILED_B);
+        list.add(MCS_ENCODER_LINK_ERROR_B);
+        list.add(MCS_ENCODER_ERROR_B);
+        list.add(MCS_ENCODER_INITIALIZE_FAILED_B);
+        list.add(MCS_ENCODER_WITH_SHAFT_ERROR_B);
+        list.add(MCS_ENCODER_WITH_SHAFT_INITIAL_B);
+        list.add(MCS_ABSO_SCALE_ERROR_B);
+        list.add(MCS_ABSO_SCALE_INITIALIZE_B);
+        list.add(MCS_MAGNETIC_ENCODER_ALARM_B);
+        list.add(MCS_RESOLVER_ALARM_B);
+        list.add(MCS_PULSE_GENERATOR_COUNT_OVER);
+        list.add(MCS_MOTOR_OVER_HEAT_B);
+        list.add(MCS_SERVO_LINK_ERROR_B);
+        list.add(MCS_SERVO_LINK_DISCONNECT_B);
+        list.add(MCS_SERVO_LINK_PROTOCOL_ERROR_B);
+        list.add(MCS_SERVO_DATA_ERROR_B);
+        list.add(MCS_ILLEGAL_COMMAND_B);
+        list.add(MCS_CON_SPEED_OVER_B);
+        list.add(MCS_SPEED_COMMAND_OVER_B);
+        list.add(MCS_DIFF_OVER);
+        list.add(MCS_APA_SPEED_OVER_B);
+        list.add(MCS_FULL_CLOSED_APA_ERROR_B);
+        list.add(MCS_OVER_SPEED_B);
+        list.add(MCS_VELOCITY_DEVIATION_OVER_B);
+        list.add(MCS_COLLISION_DETECTED_B);
+        list.add(MCS_URGENT_STOP_TIME_OVER_B);
+        list.add(MCS_AXIS_CHANGE_CONTROL_ERROR_B);
+        list.add(MCS_INDEPENDENT_ENCODER_INIT_B);
+        list.add(MCS_APA_ERROR_B);
+        list.add(MCS_MOTOR_OVER_LOAD_B);
+        list.add(MCS_ABSO_SCALE_SUB_SLIDER_ERROR_B);
+        list.add(MCS_TANDEM_COMMUNICATION_ERROR_B);
+        list.add(MCS_FULL_ABSO_SCALE_LINK_ERROR_B);
+        list.add(MCS_FULL_ABSO_SCALE_ERROR_B);
+        list.add(MCS_FULL_ABSO_SCALE_INITIAL_B);
+        list.add(MCS_AXIS_STOP_SIGNAL_ERROR_B);
+        list.add(PROGRAM_DIRECT_G_CODE);
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
+        list.add();
 
         return list;
     }
