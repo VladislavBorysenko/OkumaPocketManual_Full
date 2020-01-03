@@ -8307,6 +8307,10229 @@ public class AlarmList {
                         "       [Measures to Take]Designate a correct G code.\n" +
                         "       Example: G01 X20 Z50");
 
+        ExampleItem PROGRAM_DIRECT_M_CODE = new ExampleItem("2201", "PROGRAM DIRECT M CODE",
+                "Illegal M code\n" +
+                        "       Numerical value greater than 253 or less than 0 is assigned to\n" +
+                        "       the address character M (0<=M<=253).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated numerical value\n" +
+                        "       [Probable Faulty Locations]M code\n" +
+                        "       Program Example:M300->[Code]12C\n" +
+                        "       [Measures to Take]Designate a correct M code.\n" +
+                        "       Example: M02");
+
+        ExampleItem PROGRAM_DIRECT_COMMON_VARIABLE = new ExampleItem("2202", "PROGRAM DIRECT COMMON VARIABLE",
+                "An improper common variable is specified.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        None:Characters other than alphanumerics are designated\n" +
+                        "             following address character V, or V0 is programmed.\n" +
+                        "        Others:Specified variable number in hexadecimal\n" +
+                        "       [Probable Faulty Locations]Common variable\n" +
+                        "        Program Example:\n" +
+                        "          V0=13    -> Code None\n" +
+                        "          V450=20  -> Code 1C2 (Hexadecimal of 450)\n" +
+                        "       [Measures to Take]\n" +
+                        "        Correct designation of a common variable.");
+
+        ExampleItem PROGRAM_DIRECT_SYSTEM_VARIABLE = new ExampleItem("2203", "PROGRAM DIRECT SYSTEM VARIABLE",
+                "A system variable name not registered is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       Character-string:\n" +
+                        "       Unregistered variable or character-string, or none\n" +
+                        "       [Code]Hexadecimal number of ASCII code of up to four characters\n" +
+                        "       designated following V\n" +
+                        "       [Probable Faulty Locations]System variable\n" +
+                        "       Program Example:\n" +
+                        "       VZOFV=40    VZOFV is not  registered as a system variable\n" +
+                        "       [Measures to Take]Use only registered system variables.\n" +
+                        "       Example:VZOFZ=500\n" +
+                        "       VTOFX[12]=20");
+
+        ExampleItem PROGRAM_DIRECT_SEQUENCE_NAME = new ExampleItem("2204", "PROGRAM DIRECT SEQUENCE NAME",
+                "Sequence name contains characters other than alphanumerics or\n" +
+                        "       too many characters are used.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No character follows address character N, or characters\n" +
+                        "       other than alphanumerics follow it.\n" +
+                        "       2->The number of characters following address character N is\n" +
+                        "       more than four.\n" +
+                        "       3->The number of characters following address character N is\n" +
+                        "       moer than five.\n" +
+                        "       [Probable Faulty Locations]Sequence name\n" +
+                        "       Program Example:\n" +
+                        "       N G00 X10 Z0 -> [Code]1\n" +
+                        "       N10000 G1 X30 Z20 -> [Code]2\n" +
+                        "       [Measures to Take]Correct a sequence name.\n" +
+                        "       Example:\n" +
+                        "       N010 G00 X500\n" +
+                        "       N100 G01 X100 Z100");
+
+        ExampleItem PROGRAM_DIRECT_NUMERIC_DATA = new ExampleItem("2205", "PROGRAM DIRECT NUMERIC DATA",
+                "Too many digits are specified, or more than one decimal point\n" +
+                        "       is specified.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       9->The number of digits of the numeric data is more than 9.\n" +
+                        "       Others->More than one decimal point is specified.\n" +
+                        "       The number of digits left to the 2nd decimal point\n" +
+                        "       [Probable Faulty Locations]Numeric data\n" +
+                        "       Program Example:G00 X1000000000\n" +
+                        "       G00 X12.351.9\n" +
+                        "       [Measures to Take]Correct the numerical data.\n" +
+                        "       Example: G01 X3.512 Z1.04");
+
+        ExampleItem PROGRAM_DIRECT_USE_OF_CHARACTER = new ExampleItem("2206", "PROGRAM DIRECT USE OF CHARACTER",
+                "Illegal symbols are designated. Symbols which can be designatd\n" +
+                        "       are \"]\", \"[\", \"-\", \",\", DEL, BS, CR, HT and SP.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of ASCII code of the designated symbol\n" +
+                        "       Program ExampleG00 X50 Z?");
+
+        ExampleItem PROGRAM_DIRECT_PROGRAM_NAME = new ExampleItem("2207", "PROGRAM DIRECT PROGRAM NAME",
+                "Program name contains characters other than alphanumerics or\n" +
+                        "       it contains too many characters.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No character follows address character 0, or characters\n" +
+                        "       other than alphanumerics follow it.\n" +
+                        "       2->The number of characters following address character 0 is\n" +
+                        "       more than four.\n" +
+                        "       [Probable Faulty Locations]Program name\n" +
+                        "       Program Example\n" +
+                        "       O*123 -> [Code]1\n" +
+                        "       OABCDE -> [Code]2\n" +
+                        "       [Measures to Take]Correct the program name. Program name should\n" +
+                        "       consist of up to four alphanumeric characters.\n" +
+                        "       Example:OABCD\n" +
+                        "       OE123");
+
+        ExampleItem PROGRAM_DIRECT_CHARACTER_STRING = new ExampleItem("2208", "PROGRAM DIRECT CHARACTER STRING",
+                "Setting of character-string for the user reserved alarm comment\n" +
+                        "       system variable is wrong.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No character-string set\n" +
+                        "       2->Character-string:length is longer than 16 characters\n" +
+                        "       3->Character-string:does not end within a block\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       :\n" +
+                        "       VUACM[1]='ABCDEFGHIJKLMNOPQ'  <- Longer than 16 characters.\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the VUACM[*] command.\n" +
+                        "       :\n" +
+                        "       VUACM[1]='ABCDEFGHIJKLNMOP'\n" +
+                        "       :\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem PROGRAM_DIRECT_HEXADECIMAL_DATA = new ExampleItem("2209", "PROGRAM DIRECT HEXADECIMAL DATA",
+                "Setting of hexadecimal data for the user reserved alarm comment\n" +
+                        "       system variable is wrong.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No hexadecimal data following $ symbol\n" +
+                        "       2->Hexadecimal data exceeds 8 digits (4 bytes)\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       VUACM[1]=$XY  <- XY is not hexadecimal data.\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the VUACM[*] command.\n" +
+                        "       :\n" +
+                        "       VUACM[1]=$41\n" +
+                        "       :\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem PROGRAM_DIRECT_SPINDLE_MAX_REVOLUTION = new ExampleItem("2210", "PROGRAM DIRECT SPINDLE MAX REVOLUTION",
+                "Spindle max.[1/min] designating S command value is greater than\n" +
+                        "       the value set at the MC USER PARAMETER (SPINDLE) Allowable\n" +
+                        "       chuck rotation speed.\n" +
+                        "       Or the G50 S**** (spindle max.[1/min] designation) is\n" +
+                        "       designated in the program block which contains an axis command.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       Character-string:Coordinate system for G140, G141, or G142.\n" +
+                        "       [Code]\n" +
+                        "       1->Spindle max.[1/min] designating S command value is greater\n" +
+                        "       than the value set at the MC USER PARAMETER (SPINDLE) Allowable\n" +
+                        "       chuck rotation speed.\n" +
+                        "       2->The G50 S*** is designated in the block which contains an\n" +
+                        "       axis command.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem PROGRAM_DIRECT_X_COORDINATES = new ExampleItem("2212", "PROGRAM DIRECT X COORDINATES",
+                "The cylindrical face cannot be determined in the G132, G133\n" +
+                        "       side face contour generation mode because the X command values\n" +
+                        "       at the start and end point do not change. Or the cylindrical\n" +
+                        "       face cannot be determined because the X command value changes\n" +
+                        "       during the cutter radius compensation mode in the side face\n" +
+                        "       contour generation mode.\n" +
+                        "       [Code]\n" +
+                        "       None->During the G132, G133 side face contour generation mode\n" +
+                        "       1->During the cutter radius compensation mode\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       The X value in G132 or G133 command is different from the\n" +
+                        "       previously specified X value.\n" +
+                        "       Program Example:\n" +
+                        "       G00 X120\n" +
+                        "       G132 Z150 C45 X135 L20\n" +
+                        "       \t      ^^^^X is not 120\n" +
+                        "       [Measures to Take]Correct the program.\n" +
+                        "       Do not designate an X command in the G132, G133 block.");
+
+        ExampleItem PROGRAM_FACTOR_OVER = new ExampleItem("2213", "PROGRAM FACTOR OVER",
+                "The buffer register storing program factors is full.\n" +
+                        "       The number of commands in a single sequence is too large.\n" +
+                        "       Or a problem with processing the GET and PUT commands. For the\n" +
+                        "       program factors, refer to the factor classification code table.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->More than 127 factor classification codes and factor\n" +
+                        "       parameters are designated.\n" +
+                        "       2->More than 64 factor data are designated.\n" +
+                        "       3->Move range of factor classification code and/or factor\n" +
+                        "       parameter stack is wrong.(This alarm does not occur usually.)\n" +
+                        "       4->Move range of factor data stack is wrong.\n" +
+                        "       (This alarm does not occur usually.)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       [Code]1,2->Sequence in which an alarm has occurred\n" +
+                        "       [Code]3,4->Error in control software\n" +
+                        "       Program Example:\n" +
+                        "       N010 ABC = 1 BCD = 2 ...\n" +
+                        "       BCD = 1\n" +
+                        "       This expression has three factor classification codes and\n" +
+                        "       factor parameters.\n" +
+                        "       An alarm of code 1 occurs if the total number of factor\n" +
+                        "       classification codes and factor parameters counted in this\n" +
+                        "       manner exceeds 127.\n" +
+                        "       An alarm of code 2 occurs if the total number of factor\n" +
+                        "       classification codes and factor parameters c counted in this\n" +
+                        "       manner exceeds 64. (The factor data is not included in \"=\",\n" +
+                        "       the number of factors is 2.)\n" +
+                        "       [Measures to Take]\n" +
+                        "       In case the alarm of code 1 and code 2 occurs, the number of\n" +
+                        "       commands in the sequence causing the alarm is too much; the\n" +
+                        "       commands should be designated in two or more sequences. In\n" +
+                        "       case the alarm of code 3 and code 4 occurs, contact Okuma's\n" +
+                        "       software center.");
+
+        ExampleItem DIRECT_OF_SUBSCRIPT = new ExampleItem("2214", "DIRECT OF SUBSCRIPT",
+                "The subscript expression is incorrect.\n" +
+                        "       Numerical value of the subscript expression of the system\n" +
+                        "       variable is too large or too small.\n" +
+                        "       Tool offset and tool nose radius compensation\n" +
+                        "        1 through 32 (1 through 64 for 64-pair specification)\n" +
+                        "       Tool interference\n" +
+                        "        1 through 12\n" +
+                        "       Two subscript expressions are designated by system variable\n" +
+                        "       and I/O variable.\n" +
+                        "       Subscript expression: [*] in such a variable as V***[*]\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       2->Two subscript expressions using I/O variable\n" +
+                        "       None->Two subscript expressions using system variable\n" +
+                        "       Others->Hexadecimal number of the programmed subscription\n" +
+                        "       expressions\n" +
+                        "       [Probable Faulty Locations]Subscript expression\n" +
+                        "       Program Example:\n" +
+                        "       VTOFX [34] = 10 --- [Code]22 (Hexadecimal of 34)\n" +
+                        "              ^^Designate 1- 32.\n" +
+                        "       VNSRZ [-1] = 5 ---- [Code]FFFFFFFF (Hexadecimal of -1)\n" +
+                        "              ^^Designate 1- 32.\n" +
+                        "       V1 = VDIN [1,2][Code]2\n" +
+                        "       \t   ^^^Do not designate two subscript expressions.\n" +
+                        "       VDOUT [1,2] = 20 -- No code\n" +
+                        "              ^^^Do not designate two subscript expressions.");
+
+        ExampleItem LOCAL_VARIABLE_USE_OVER = new ExampleItem("2215", "LOCAL VARIABLE USE OVER",
+                "The number of local variable is over 127.\n" +
+                        "       Local variable: a variable that the user can use locally in the\n" +
+                        "       task program by assigning a name\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1\n" +
+                        "       [Measures to Take]Reduce the number of local variables used.");
+
+        ExampleItem SYSTEM_VARIABLE_SETTING_DATA = new ExampleItem("2216", "SYSTEM VARIABLE SETTING DATA",
+                "Setting value of the system variable has exceeded the\n" +
+                        "       allowable limit.\n" +
+                        "       Allowable setting range (ex.)\n" +
+                        "       Droop amount\n" +
+                        "         0 through 1.000\n" +
+                        "       Tool nose radius compensation value\n" +
+                        "         -999.999 through 999.999\n" +
+                        "       Tool offset value\n" +
+                        "         -99999.999 through 99999.999\n" +
+                        "       Plus variable limit <= Plus travel end limit\n" +
+                        "       Minus variable limit >= Minus travel end limit\n" +
+                        "       The plus (minus) travel end limit value is set at the system\n" +
+                        "       parameter.\n" +
+                        "       When the spec of TOOL LIFE MANAGEMENT was OFF,\n" +
+                        "       command of \"VOLPR=10,11,12\" was ordered.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of set value\n" +
+                        "       [Probable Faulty Locations]System variable\n" +
+                        "       Operation Example:\n" +
+                        "       In parameter setting mode, \"2\" is set as the droop amount at\n" +
+                        "       the user parameter.\n" +
+                        "       [Measures to Take]Set the system variable so that a tolerance\n" +
+                        "       will not be exceeded.");
+
+        ExampleItem OUTPUT_VARIABLE_SETTING_DATA = new ExampleItem("2217", "OUTPUT VARIABLE SETTING DATA",
+                "Data size of the data to be set for an output variable is\n" +
+                        "       wrong.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of wrong data\n" +
+                        "       2 - FF->Not specified in 1 Bit\n" +
+                        "       100->and overNot specified in 1 byte\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       :\n" +
+                        "       VDOUT[1]=2\n" +
+                        "       VDOUT[9]=256\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the VDOUT command.\n" +
+                        "       The output variables must be set within the data size specified\n" +
+                        "       for each variable.\n" +
+                        "       Since VDOUT[1] is 1-bit data, data should be set with 0 or 1.\n" +
+                        "       Since VDOUT[9] is byte data, data should be set within the\n" +
+                        "       range from 0 to 255.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem UNUSABLE_G_CODE = new ExampleItem("2218", "UNUSABLE G CODE",
+                "M code not available with the selected specification is\n" +
+                        "       designated.\n" +
+                        "       Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated M code\n" +
+                        "       [Probable Faulty Locations]M code\n" +
+                        "       If the code A (hexadecimal number of 10) appears, M10 has been\n" +
+                        "       specified.\n" +
+                        "       If the code 3C (hexadecimal number of 60) appears, M60 has been\n" +
+                        "       specified.\n" +
+                        "       [Measures to Take]Designate the M code in the specification.");
+
+        ExampleItem UNUSABLE_M_CODE = new ExampleItem("2219", "UNUSABLE M CODE",
+                "M code not available with the selected specification is\n" +
+                        "       designated.\n" +
+                        "       Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated M code\n" +
+                        "       [Probable Faulty Locations]M code\n" +
+                        "       If the code A (hexadecimal number of 10) appears, M10 has been\n" +
+                        "       specified.\n" +
+                        "       If the code 3C (hexadecimal number of 60) appears, M60 has been\n" +
+                        "       specified.\n" +
+                        "       [Measures to Take]Designate the M code in the specification.");
+
+        ExampleItem UNUSABLE_DIRECT_OF_LEFT = new ExampleItem("2220", "UNUSABLE DIRECT OF LEFT",
+                "Illegal command in the left part of the expression\n" +
+                        "       Schedule program -> In the VSET sequence, a command specified\n" +
+                        "       on the left side is not either common variable (V1 to V32) or\n" +
+                        "       output variable.\n" +
+                        "       Main program, sub program -> A command specified on the left\n" +
+                        "       side is not any of G, M, address character, extended address\n" +
+                        "       character, local variable, common variable, system variable, or\n" +
+                        "       output variable.\n" +
+                        "       Address character: NC-defined variable expressed in an\n" +
+                        "       alphabetic character except G, M, N, O, and V\n" +
+                        "       Extended address character: NC-defined variable expressed in\n" +
+                        "       two alphabetic characters\n" +
+                        "       Local variable: variable named and used by the user\n" +
+                        "       <2 alphabetic characters><2 alphanumeric characters>\n" +
+                        "       Common variable:variable commonly used in main and sub programs\n" +
+                        "       System variable:system-defined variable that the user cannot\n" +
+                        "       rename\n" +
+                        "       Output variable:variable effective in signal output to external\n" +
+                        "       equipment <VDOUT>[variable number]\n" +
+                        "       [Object]SYSTEM (None with schedule program)\n" +
+                        "       [Code]XXYY:Classification code of factor and parameter\n" +
+                        "        designated at left part\n" +
+                        "       XX:Factor classification code\n" +
+                        "       YY;Factor parameter\n" +
+                        "       [Probable Faulty Locations]Command designated in the left part\n" +
+                        "       Program Example:\n" +
+                        "       VDIN [35] = 5Input variables and numerical values control be\n" +
+                        "       designated in the left part\n" +
+                        "       20 = VTOFX [1]\n" +
+                        "       [Measures to Take]\n" +
+                        "       Do not designate a command for which the use is not allowed.");
+
+        ExampleItem UNUSABLE_OUTPUT_VARIABLE_NO = new ExampleItem("2221", "UNUSABLE OUTPUT VARIABLE NO.",
+                "The output variable number not available with the selected\n" +
+                        "       specification is designated.\n" +
+                        "       Or,It instructed in the output variable number used with\n" +
+                        "       CUSTOM-API.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       500000XX:CUSTOM-API.\n" +
+                        "       \tXX= Hexadecimal number of output variable number\n" +
+                        "       Others:Hexadecimal number of output variable number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program Example:VDOUT [****] = 10\n" +
+                        "        **** <- Output variable number\n" +
+                        "       [Measures to Take]\n" +
+                        "       500000XX:The output variable number used with CUSTOM-API is\n" +
+                        "       confirmed.\n" +
+                        "       Others:Designate the output variable in the specification.");
+
+        ExampleItem UNUSABLE_INPUT_VARIABLE_NO = new ExampleItem("2222", "UNUSABLE INPUT VARIABLE NO.",
+                "The input variable number not available with the selected\n" +
+                        "       specification is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal number of the designated input variable number\n" +
+                        "       [Probable Faulty Locations]Input variable number\n" +
+                        "       Program Example:\n" +
+                        "       VDIN [**] = 10\n" +
+                        "        ** <- Input variable number not included in the specifications\n" +
+                        "       [Measures to Take]Change the input variable number to a number\n" +
+                        "       allowed by the specification.");
+
+
+        ExampleItem UNUSABLE_TURRET_DIRECT_CODE = new ExampleItem("2223", "UNUSABLE TURRET DIRECT CODE",
+                "G13 and G14 commands are designated on machines having only\n" +
+                        "       one turret.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated G code\n" +
+                        "       [Probable Faulty Locations]G13, G14\n" +
+                        "       Program Example:\n" +
+                        "       N010  G13\n" +
+                        "       N020  G00  X50\n" +
+                        "       N030  G01  Z40\n" +
+                        "       [Measures to Take]\n" +
+                        "       1) Do not specify G13 or G14 on the machine without turret\n" +
+                        "       change function.");
+
+        ExampleItem UNUSABLE_CONTOUR_GENERATION_COMMAND = new ExampleItem("2224", "UNUSABLE CONTOUR GENERATION COMMAND",
+                "Profile generation command G101, G102 or G103 is designated\n" +
+                        "       with B turret selected.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated G code, or none\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G14\n" +
+                        "       G101  X176.00 C294.62 F100\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the G101, G102, G103, G132, G133 and G14 commands.\n" +
+                        "       :\n" +
+                        "       G13\n" +
+                        "       G101 X176.00 C294.62 F100\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Create process");
+
+        ExampleItem UNUSABLE_Y_Z_CIRCLE_COMMAND = new ExampleItem("2225", "UNUSABLE Y-Z CIRCLE COMMAND",
+                "A circular interpolation command is designated in Y-axis mode\n" +
+                        "       though the circular interpolation function in Y-Z plane is not\n" +
+                        "       provided.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated G code\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem UNUSABLE_THREAD_CUTTING_COMMAND = new ExampleItem("2226", "UNUSABLE THREAD CUTTING COMMAND",
+                "A thread cutting command (G31, G32, G33, G34 or G35) is\n" +
+                        "       designated with constant peripheral speed ON.\n" +
+                        "       (Thread cutting can not be performed correctly as the spindle\n" +
+                        "       speed changes according to the X-axis command designated.)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010G96\n" +
+                        "       N020G31\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the program. (Designate a thread cutting command after\n" +
+                        "       canceling the constant peripheral speed command.)");
+
+        ExampleItem MNEMONIC_OR_LOCAL_VARIABLE = new ExampleItem("2227", "MNEMONIC_OR_LOCAL_VARIABLE",
+                "The local variable name is longer than 4 characters or the\n" +
+                        "       reserved word (mnemonic) command of 5 or more characters is\n" +
+                        "       misspelled. The reserved word (mnemonic) is a character string\n" +
+                        "       (such as CALL, GOTO, MODIN, MODOUT) registered in the control\n" +
+                        "       software and used to perform fixed processing. The reserved\n" +
+                        "       word containing misspells of max 4 characters is accepted as\n" +
+                        "       a local variable.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Command in the sequence which causes an occurrence of the alarm\n" +
+                        "       Program Example:\n" +
+                        "       N100 MODNN -- Spelling error\n" +
+                        "       N200 ABCDE=1\n" +
+                        "            ^^^^^Local variable containing five or more characters\n" +
+                        "       [Measures to Take]Check the sequence which causes an alarm\n" +
+                        "       whether it contains the reserved word or local variable of five\n" +
+                        "       or more characters and containing spelling error. In the case\n" +
+                        "       of a reserved word, correct the spelling and in the case of a\n" +
+                        "       local variable, change the local variable name which consists\n" +
+                        "       of up to four characters.");
+
+        ExampleItem VSET_SEQUENCE_DIRECT_OF_LEFT = new ExampleItem("2228", "VSET SEQUENCE DIRECT OF LEFT",
+                "In a schedule program, other than common variables and I/O\n" +
+                        "       variables are used.\n" +
+                        "       [Code]Hexadecimal number of designated factor code\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       VSET RR=RR+1\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the VSET command.\n" +
+                        "       :\n" +
+                        "       VSET V1=V1+1\n" +
+                        "       :");
+
+        ExampleItem EXPRESSION_RIGHT_PART = new ExampleItem("2229", "EXPRESSION RIGHT PART",
+                "On the right side of equation, an unusable command was\n" +
+                        "       specified; a command other than numeral, input variable, system\n" +
+                        "       variable, common variable, local variable, or extended address\n" +
+                        "       character. Input variable: variable effective in signal input\n" +
+                        "       from external\n" +
+                        "       equipment <VDOUT>[variable number]\n" +
+                        "       System variable:system-defined variable that the user cannot\n" +
+                        "       rename\n" +
+                        "       Common variable:variable commonly used in main and sub programs\n" +
+                        "       <V><2 numerals>\n" +
+                        "       Local variable:variable named and used by the user\n" +
+                        "       <2 alphabetic characters><2 alphanumeric characters>\n" +
+                        "       Extended address character:NC-defined variable expressed in two\n" +
+                        "       alphabetic characters\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Specified factor classification code\n" +
+                        "       [Probable Faulty Locations]Right part of the expression\n" +
+                        "       Program Example:\n" +
+                        "       VDOUT [31] = VDOUT [31] + 1\n" +
+                        "       \t     ^^^^^^^^^^Output variable cannot be specified at\n" +
+                        "       \t\t       the right part.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the error at the right part of the expression.\n" +
+                        "       Example:VDOUT [31]=1");
+
+        ExampleItem EXPRESSION_CALCULATION = new ExampleItem("2230", "EXPRESSION CALCULATION",
+                "Calculation error of expression\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XXYY\n" +
+                        "       XX:\n" +
+                        "       Bit0->Overflow in addition\n" +
+                        "       Bit1->Overflow in converting ABS data into integer\n" +
+                        "       Bit2->Conversion form BCD to BIN\n" +
+                        "       Bit3->Conversion form BIN to BCD\n" +
+                        "       Bit4->DROUND, DFIX and DFUP command were designated in other\n" +
+                        "       than mm unit system.\n" +
+                        "       YY:Floating-point calculation error\n" +
+                        "       Bit0Overflow in converting into integer\n" +
+                        "       Bit1->Exponential underflow\n" +
+                        "       Bit2->Exponential overflow\n" +
+                        "       Bit3->Calculation of root of a negative number\n" +
+                        "       Bit4->Division by 0\n" +
+                        "       Bit5->Angle overflow");
+
+        ExampleItem EXPRESSION_SYNTAX = new ExampleItem("2231", "EXPRESSION SYNTAX",
+                "Syntax error of expression\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Calculation of subscript expression is intended within\n" +
+                        "       calculation of subscript expression.\n" +
+                        "       2->No left bracket \"[\" at the beginning of the subscript\n" +
+                        "       expression\n" +
+                        "       3->Three or more subscript expressions (four or more in the\n" +
+                        "       case of graphic system variable)\n" +
+                        "       4->The number of the left bracket \"[\" and that of the right\n" +
+                        "       bracket do not match.\n" +
+                        "       5->The number of operands and their handling elements do not\n" +
+                        "       match.\n" +
+                        "       6->The sequence terminates within the expression.\n" +
+                        "       7->There are more than one solution.\n" +
+                        "       8->The mistake is found in the specification of the file name of \n" +
+                        "          CASCME,CASCTL instruction.\n" +
+                        "       Subscript: [*] in such a variable as V***[*]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program sequence at which the alarm has occurred\n" +
+                        "       2)Program error\n" +
+                        "       Program Example\n" +
+                        "       [Code]1->VTOFX[VMDT[1]]=4.5\n" +
+                        "       [Code]2->VTOFX[5]=4.5\n" +
+                        "       [Code]3->VTOFX[1,2,3]=4.5\n" +
+                        "       In this case, alarm of code 5 occurs due to the relationship\n" +
+                        "       between the level and the number of operators.\n" +
+                        "       [Code]4->VTOFX[2]=4.5\n" +
+                        "       [Code]5->VTOFX[4]=4.5 (Mainly, code 5 is displayed when an\n" +
+                        "       alarm occurs.)\n" +
+                        "       [Code]6->Alarm of this code number does not occur. Since the\n" +
+                        "       end code is always specified at the end of the commands,\n" +
+                        "       processing is performed for the data preceding it. Thus the\n" +
+                        "       alarm code corresponding to such error to \"5\".\n" +
+                        "       [Code]7->VTOFX[1,2]=4.5\n" +
+                        "       [Code]8->Characters other than alphanumeric character and \"-\" are\n" +
+                        "             included in the file name. Or the file name has exceeded 16 \n" +
+                        "             characters.Or device or extension code is specified. \n" +
+                        "             Please specify neither device nor extension code \n" +
+                        "             in CASCME and CASCTL instruction.\n" +
+                        "       [Measures to Take]Change the programmed commands in accordance\n" +
+                        "       with the code number.");
+
+        ExampleItem EXPRESSION_SUBSCRIPT = new ExampleItem("2232", "EXPRESSION SUBSCRIPT",
+                "Subscript expression at right part is wrong.\n" +
+                        "       Remark: When the subscript expression at the right part is\n" +
+                        "       erroneous, alarm message \"Alarm B 2214 Direct of subscript\"\n" +
+                        "       is displayed.\n" +
+                        "       Subscript: [*] in such a variable as V***[*]\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]NoneMore than one subscript expressions.\n" +
+                        "       OthersResult of subscript expression exceeds the range of\n" +
+                        "       subscript.\n" +
+                        "       [Probable Faulty Locations]Subscript expression causing the\n" +
+                        "       alarm\n" +
+                        "       Program ExampleV1=VTOFX[0]Range of subscript of VTOFX is 1 to\n" +
+                        "       32 (1 to 64 for 64-pair tool offset specification).\n" +
+                        "       V1=VTOFX[1,2]Two subscripts are used.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Make correction so that the calculation result of the\n" +
+                        "       subscript expression is within the range of the subscript.");
+
+        ExampleItem EXPRESSION_BUFFER_OVER = new ExampleItem("2233", "EXPRESSION BUFFER OVER",
+                "The number of expressions too many, making calculation\n" +
+                        "       impossible.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Overflow of operand stack in calculation of subscript\n" +
+                        "       expressions and operation expressions (more than 16).\n" +
+                        "       2->Overflow of operator data stack in calculation of operation\n" +
+                        "       expressions (more than 8).\n" +
+                        "       Program Example\n" +
+                        "       V1=1+[1+[1+[1+[1+[1+[1+[1+[1+1]]]]]] -> [Code]1\n" +
+                        "       The number of operators to the left of the first right bracket\n" +
+                        "       is 18.\n" +
+                        "       V1=1+[1+[1+[1+[1+[1+[1+[1+1]]]]]]]]] -> [Code]2\n" +
+                        "       Since calculation is impossible until the ninth data is read,\n" +
+                        "       data stack overflow occurs.\n" +
+                        "       [Code]2V1=1+2*[3/[1+5*[2+[3-5*2]]]] -> [Code]2\n" +
+                        "       Same as above\n" +
+                        "       V1=1+2+3+4+5+6+7+8+9 -> [Code]2\n" +
+                        "       Although a total of nine data Bits are specified, calculation\n" +
+                        "       is possible from the left-most data in order. Therefore\n" +
+                        "       overflow of the data stack does not occur.\n" +
+                        "       [Measures to Take]\n" +
+                        "       The NC stores (up to 16 pieces of) operator data on the left\n" +
+                        "       side and (up to 8) operators according to the priority of\n" +
+                        "       operator. Change the operation expression by moving the\n" +
+                        "       higher-priority operation to the left side of the\n" +
+                        "       lower-priority operation.");
+
+        ExampleItem EXPRESSION_LOCAL_VARIABLE = new ExampleItem("2234", "EXPRESSION LOCAL VARIABLE",
+                "The local variable designated is not registered.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       Character-string:Local variable name designated\n" +
+                        "       Program Example:VTOFX[2]=BDIK\n" +
+                        "       \t\t\t ^^^^Unregistered local variable\n" +
+                        "       [Measures to Take]\n" +
+                        "       Do not designate a local variable which is not registered.\n" +
+                        "       The specified local variable has no value. Enter a value in the\n" +
+                        "       local variable before the relevant sequence.");
+
+        ExampleItem EQUAL_IS_NOT_EXIST = new ExampleItem("2235", "EQUAL IS NOT EXIST",
+                "A code other than \"=\" (equal) sign is designated at a place\n" +
+                        "       where the equal sign is to be designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XXYY:Classification code and parameter of the factor\n" +
+                        "       designated at a position where \"=\" should be designated\n" +
+                        "       XX:Factor classification code\n" +
+                        "       YY:Factor parameter\n" +
+                        "       Program ExampleVTOFX [8] 36VTOFX [8] = 36\n" +
+                        "       V13V5V13 = V5\n" +
+                        "       VZOFX*20VZOFX = 20\n" +
+                        "       [Measures to Take]Correct the expression.");
+
+        ExampleItem PROGRAM_END_CODE_NOT_FOUND = new ExampleItem("2236", "PROGRAM END CODE NOT FOUND",
+                "No end code is specified at the end of a block. The symbol '('\n" +
+                        "       is not concluded with ')'. The LAP end code (G80) is not\n" +
+                        "       specified.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No program end code\n" +
+                        "       2->'(' is not concluded with ')'.");
+
+        ExampleItem BRANCH_IF_GOTO_SEQUENCE_NAME = new ExampleItem("2237", "BRANCH (IF,GOTO) SEQUENCE NAME",
+                "IF or GOTO statement includes no jump sequence number or\n" +
+                        "       a wrong jump sequence number.\n" +
+                        "       [Object]SYSTEM (None for schedule program)\n" +
+                        "       [Code]\n" +
+                        "       1->Sequence name where branching is to be made is not\n" +
+                        "       designated.\n" +
+                        "       2->Designated sequence name is not found.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Designation of branching of IF and GOTO statement\n" +
+                        "       Program Example:\n" +
+                        "       N005 IF [VDIN [34] EQ1]\n" +
+                        "       -- Destination of branching is not designated.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Designate the destination sequence name for branching\n" +
+                        "       2)Do not designate a sequence name, not used in a program, as\n" +
+                        "       the destination sequence.\n" +
+                        "       Example:\n" +
+                        "       N010 IF [VDIN [34] EQ1] N050\n" +
+                        "       :\n" +
+                        "       N050 CALL OTFRD\n" +
+                        "       :\n" +
+                        "       [Related Specifications]User task");
+
+        ExampleItem BRANCH_IF_GOTO_CONDITION = new ExampleItem("2238", "BRANCH (IF,GOTO) CONDITION",
+                "IF statement or condition judging expression is erroneous.\n" +
+                        "       [Object]SYSTEM (None with schedule program)\n" +
+                        "       [Code]\n" +
+                        "       1->No \"[\" following IF\n" +
+                        "       2->A comparison expression is not given in [ ] following IF.\n" +
+                        "       Program Example:\n" +
+                        "       [Code]1\n" +
+                        "       N10 IF [V1+V2 EQ 3] N100\n" +
+                        "       N20 G00 X500 Z500\n" +
+                        "       N100 G00 X0 Z0\n" +
+                        "       [Code]2\n" +
+                        "       N10 IF [VTOFX [1]] N100\n" +
+                        "       N20 G00 X500 Z500\n" +
+                        "       N100 M03 S500\n" +
+                        "       [Related Specifications]User task");
+
+        ExampleItem DATA_WORD_F = new ExampleItem("2239", "DATA WORD 'F'",
+                "Numerical value of an F command in other than the G04 mode is\n" +
+                        "       either negative or zero.\n" +
+                        "       When the numerical value of an F command in the G04 mode is\n" +
+                        "       converted into \"0.01s.\" unit, it does not satisfy the\n" +
+                        "       following inequality: 0 < F<=99999999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->F value does not satisfy:-99999999<=F<=99999999\n" +
+                        "       2->F value is either negative or zero.\n" +
+                        "       [Probable Faulty Locations]F command\n" +
+                        "       Program Example:\n" +
+                        "       G01 X50 Z50 F-0.2 -- [Code]2\n" +
+                        "       G04 F1000000 -- [Code]1\n" +
+                        "            ^^^^^^^100000000 unit when converted\n" +
+                        "       \t\t\t       into a number of 0.01s.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Designate only a number within the specified range.");
+
+        ExampleItem DATA_WORD_F_OR_E = new ExampleItem("2240", "DATA WORD 'F' or 'E'",
+                "Illegal F or E command\n" +
+                        "       When F or E command is converted into\"microns/rev.\"\n" +
+                        "       or\"0.1 mm/min.\" unit, the result of conversion does not satisfy\n" +
+                        "       the following inequality -99999.999<=F (or E)<=99999.999\n" +
+                        "       Overflow in calculation of the number of feed pulse in the G34\n" +
+                        "       or the G35 mode.\n" +
+                        "       The feedrate became minus speed during G01 modes.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->F or E value does not satisfy:-99999.999<=F(or E)<=99999.999\n" +
+                        "       3->Overflow in calculation of feed pulse numbers\n" +
+                        "       4->F value of G265 block is outside the range.\n" +
+                        "       5->The feedrate became minus speed during G01 modes.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)F or E command value in the sequence which causes an alarm .\n" +
+                        "       In the case of G34 and G35 modes, the number of pulses is\n" +
+                        "       calculated until the end of function generation based on the\n" +
+                        "       distance and F and E commands. However, since the F and E\n" +
+                        "       commands are improper, overflow occurs during calculation and\n" +
+                        "       the number of pulses cannot be calculated.\n" +
+                        "       Program Example:\n" +
+                        "       G01 X100 F100000.000 -- [Code]1\n" +
+                        "       G34 Z100 F1 E-0.2 -- [Code]3\n" +
+                        "       G01 Z100 F1 E-10 -- [Code]5\n" +
+                        "       [Measures to Take]\n" +
+                        "       [Code]1->Change F or E command value so that it is within the\n" +
+                        "       following range: -99999.999 - 99999.999\n" +
+                        "       [Code]3->Check F or E command value and change into a proper\n" +
+                        "       value which will not cause overflow.\n" +
+                        "       [Code]5->Check F or E command and change to a correct value\n" +
+                        "       which will not cause that the feedrate is minus speed during\n" +
+                        "       G01 modes.");
+
+        ExampleItem DATA_WORD_I = new ExampleItem("2241", "DATA WORD I",
+                "Illegal I command\n" +
+                        "       Numerical value of I command is not: -99999.999<=I<=99999.999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->I command in circular arc commands\n" +
+                        "       Others->Hexadecimal number of I command in thread cutting\n" +
+                        "       \tfixed cycle\n" +
+                        "       \tHexadecimal number of I command in other than circular\n" +
+                        "       arc commands or thread cutting fixed cycle\n" +
+                        "       [Probable Faulty Locations]I command\n" +
+                        "       Program Example:\n" +
+                        "       G02 X50 Z70 I100000 K10 -- [Code]1\n" +
+                        "       [Measures to Take]Change I command value so that it is within\n" +
+                        "       the allowable range.\n" +
+                        "       Example:G02 X50 Z70 I10 K10");
+
+        ExampleItem DATA_WORD_J = new ExampleItem("2242", "DATA WORD J",
+                "Illegal J command\n" +
+                        "       Numerical value of J command is not: 0 < J<=99999.999.\n" +
+                        "       Or, J command is not designated with G36 or G37.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->J value is negative\n" +
+                        "       2->J value does not satisfy: 0 < J<=99999.999\n" +
+                        "       4->J value of G265 block is outside the range.\n" +
+                        "       [Probable Faulty Locations]J command\n" +
+                        "       Program ExampleG33 X50 Z20 F0.2 J-5[Code]1\n" +
+                        "       [Measures to Take]Change J command value so that it is within\n" +
+                        "       the allowable range.\n" +
+                        "       Example: G33 X50 Z20 F0.2 J5");
+
+        ExampleItem DATA_WORD_K = new ExampleItem("2243", "DATA WORD K",
+                "Illegal K command\n" +
+                        "       Numerical value of K command is not:-99999.999<=K<=99999.999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->K command in circular arc commands\n" +
+                        "       Others->Hexadecimal number of K command in thread cutting\n" +
+                        "       fixed cycle. Hexadecimal number of K command in other than\n" +
+                        "       circular arc commands or thread cutting fixed cycle\n" +
+                        "       [Probable Faulty Locations]K command\n" +
+                        "       Program Example:\n" +
+                        "       G02 X30 Z30 I20 K100000 -- [Code]1\n" +
+                        "       [Measures to Take]Change K command value so that it is within\n" +
+                        "       the allowable range.\n" +
+                        "       Example: G02 X30 Z30 I20 K-10");
+
+        ExampleItem DATA_WORD_L = new ExampleItem("2244", "DATA WORD L",
+                "Illegal L command\n" +
+                        "       Numerical value of L command in circular interpolation mode is\n" +
+                        "       not: 0 < L<=99999.999\n" +
+                        "       The chamfering amount in thread cutting fixed cycle calculated\n" +
+                        "       from L and K (or I) commands is not 0 through 99999.999.\n" +
+                        "       Numerical value of L word in a gauging cycle is not 0 through\n" +
+                        "       99999.999.\n" +
+                        "       In other modes, numerical value of L command is not:\n" +
+                        "       -99999.999<=L<=99999.999\n" +
+                        "       Or with cam turning specification models, when values are set\n" +
+                        "       for D (major axis of an oval) and L (lift amount of an oval)\n" +
+                        "       in the shape definition file (LSF), the D value is not proper.\n" +
+                        "       [Code]\n" +
+                        "       None->The D value is not proper.\n" +
+                        "       1->In the circular interpolation mode, L command does not\n" +
+                        "       satisfy: -99999.999<=L<=99999.999\n" +
+                        "       2->L value is negative in the circular interpolation mode.\n" +
+                        "       Others->Hexadecimal number of L value in other than the\n" +
+                        "       circular interpolation mode\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       L command value (for cam turning specification models)\n" +
+                        "       Program Example:G33 Z100 F1 L5 K-6\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the L command value to one which is permissible for the\n" +
+                        "       command having been designated when the alarm occurs.\n" +
+                        "       Correct the D value.");
+
+        ExampleItem DATA_WORD_P = new ExampleItem("2245", "DATA WORD P",
+                "Illegal P command\n" +
+                        "       Numerical value of P command is not: -9999<=P<=9999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of programmed P command\n" +
+                        "       [Probable Faulty Locations]P command\n" +
+                        "       Program Example:\n" +
+                        "       N010 G13\n" +
+                        "       N020 G00 X500 Z500 P10000\n" +
+                        "       [Measures to Take]Change P command value so that it is within\n" +
+                        "       the allowable range.\n" +
+                        "       Example:\n" +
+                        "       N010 G13\n" +
+                        "       N020 G00 X500 Z500 M03 S1000 P10\n" +
+                        "       :\n" +
+                        "       N010 G14\n" +
+                        "       N020 G00 X500 Z500 M03 S1000 P10");
+
+        ExampleItem DATA_WORD_S = new ExampleItem("2246", "DATA WORD S",
+                "Illegal S command\n" +
+                        "       Numerical value of S command is not: 0<=S<=9999\n" +
+                        "       Or, there was not S=0 or S instruction at the time of a Main\n" +
+                        "       spindle synchronization tap cycle instruction.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of programmed S command or $FFFFFFFF\n" +
+                        "       Hexadecimal number of programmed S command : S instruction of\n" +
+                        "       S instruction is not 0\n" +
+                        "       $FFFFFFFF : When Main spindle synchronization tap cycle\n" +
+                        "       instruction, there was not S=0 or S instruction.\n" +
+                        "       [Probable Faulty Locations]S command\n" +
+                        "       Program ExampleN010 G00 X500 Z500 M42 S10000 T0101\n" +
+                        "       [Measures to Take]Change S command value so that it is within\n" +
+                        "       the allowable range.\n" +
+                        "       Example: N010 G00 X500 Z500 M42 S3000 T0101");
+
+        ExampleItem DATA_WORD_NO_S = new ExampleItem("2247", "DATA WORD NO S",
+                "The G96 or G97 sequence has no S command.\n" +
+                        "       G96: Constant speed cutting ON\n" +
+                        "       G97: Cancel of G96\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       Character-string:Coordinate systemG140, G141, G142\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]G96, G97\n" +
+                        "       Program Example:N010 G96\n" +
+                        "       [Measures to Take]Designate an S command.\n" +
+                        "       Example:\n" +
+                        "       N010 G96 S100\n" +
+                        "       :\n" +
+                        "       N200 G97 S500");
+
+        ExampleItem DATA_WORD_T = new ExampleItem("2248", "DATA WORD T",
+                "Illegal T command\n" +
+                        "        In T******, respective two-digit numbers expressing tool\n" +
+                        "       number, tool offset number and tool nose radius compensation\n" +
+                        "       number are larger than 32. (96 for 96-pair specification)\n" +
+                        "        Or, the order of edge-number was larger than the number of\n" +
+                        "       tool-edges. (for the spec of \"Many chips tool\")\n" +
+                        "       The spec.of \"Tool offset over-200\":\n" +
+                        "         If command was \"Tooo***\", \"***\" was wrong.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated T command when it is\n" +
+                        "       not:0<T<= 99999999\n" +
+                        "       When tool offset number, tool number or tool nose radius\n" +
+                        "       compensation number is greater than 32, hexadecimal number of\n" +
+                        "       that number is in the right four digits.\n" +
+                        "       When the edge-number was ordered, code was \"edge & \n" +
+                        "       holder-number(HEX)\". \n" +
+                        "       [Probable Faulty Locations]T command\n" +
+                        "       Program Example\n" +
+                        "       T011156->[Code]B0038\n" +
+                        "       T243512->[Code]C0023\n" +
+                        "       T1120101->[Code]650070\n" +
+                        "       T-1->[Code]FFFFFFFF\n" +
+                        "       T100000000->[Code]5F5E100\n" +
+                        "       [Measures to Take]Specify T commands in four or six digits;\n" +
+                        "       each two digits of command must be 32 (96 in the case of\n" +
+                        "       96-pair specification) or smaller.");
+
+        ExampleItem DATA_WORD_X = new ExampleItem("2249", "DATA WORD X",
+                "Illegal X command\n" +
+                        "       Numerical value of X command is not: -99999.999<=X<=99999.999\n" +
+                        "       Or the X command designated in incremental word is not\n" +
+                        "       -99999.999<=X<=99999.999when converted into the absolute value.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the programmed X command\n" +
+                        "       [Probable Faulty Locations]X command\n" +
+                        "       Program Example:N010 G00 X100000 Z200\n" +
+                        "       [Measures to Take]Change X command value so that it is within\n" +
+                        "       the allowable range.");
+
+        ExampleItem DATA_WORD_X_Z_B = new ExampleItem("2250", "DATA WORD X Z",
+                "The first block of the G31, G32 and G33 mode (thread cutting\n" +
+                        "       fixed cycle) has only either of X and Z commands, or it has\n" +
+                        "       neither X nor Z command.\n" +
+                        "       In the G30 gauging cycle mode, both X and Z commands are\n" +
+                        "       programmed.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The first block of the G31, G32 and G33 mode has only\n" +
+                        "       either of X and Z commands, or it has neither X nor Z command.\n" +
+                        "       2->In the G30 gauging cycle mode, both X and Z commands are\n" +
+                        "       programmed.\n" +
+                        "       3->In contour generation, X coordinate value of either the\n" +
+                        "       start or end point in the G101 mode is \"0\", (in the X-C\n" +
+                        "       coordinate system) or both X and Y coordinate values are \"0\"\n" +
+                        "       (in the X-Y coordinate system).\n" +
+                        "       4->First block of LAP shape designation ,it has only either of\n" +
+                        "       X and Z commands.\n" +
+                        "       Program Example:\n" +
+                        "       [Code]1\n" +
+                        "       G00 X100 Z100 S100 M03\n" +
+                        "       G33 X80       F3\n" +
+                        "       \t ^^^^Always specify both X and Z commands.\n" +
+                        "       [Code]2\n" +
+                        "       G30 X30 Z50 D10 L10\n" +
+                        "           ^^^^^^^Delete either of X and Z commands.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)In the thread cutting fixed cycle called by G31, G32 and G33,\n" +
+                        "       both X and Z commands must be specified.\n" +
+                        "       2)In the gauging cycle called by G30, either of X and Z\n" +
+                        "       commands must be specified.");
+
+        ExampleItem DATA_WORD_Z = new ExampleItem("2251", "DATA WORD Z",
+                "Illegal Z command\n" +
+                        "       Numerical value of Z command is not: -99999.999<=Z<=99999.999\n" +
+                        "       Or the Z command designated in incremental word is not\n" +
+                        "       -99999.999<=Z<=99999.999when converted into the absolute value.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the programmed Z command\n" +
+                        "       [Probable Faulty Locations]Z command\n" +
+                        "       Program Example:N010 G00 X500 Z100000\n" +
+                        "       [Measures to Take]Change Z command value so that it is within\n" +
+                        "       the allowable range.");
+
+
+        ExampleItem DATA_WORD_CIRCLE_COLCULATION_ = new ExampleItem("2252", "DATA WORD CIRCLE COLCULATION_",
+                "In direct arc radius command, the coordinates of the arc center\n" +
+                        "       can not be calculated from the L command and X and Z commands.\n" +
+                        "       The command error between I and K commands and X and Z commands\n" +
+                        "       in circular interpolation exceeds the tolerance(std.:20 um).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->L value is smaller than 1/2 of the distance up to the\n" +
+                        "       target value.\n" +
+                        "       2->Overflow in calculation of arc center or error\n" +
+                        "       3->Error between the radius which is calculated from I and K\n" +
+                        "       commands and the distance between the end point and the center\n" +
+                        "       is greater than tolerance.\n" +
+                        "       4->I and K commands are zero.\n" +
+                        "       10->End point of the arc command after calculation of LAP, tool\n" +
+                        "       nose radius compensation, or tool offset is offset from the\n" +
+                        "       programmed arc more than the specified tolerance.\n" +
+                        "       [Probable Faulty Locations]I, K, and L commands and X, Z\n" +
+                        "       commands in the block containing the G02/G03 code.\n" +
+                        "       Program Example:\n" +
+                        "       [Code]1\n" +
+                        "       G00X50Z50\n" +
+                        "       G02X50Z0L20F0.1\n" +
+                        "       M02\n" +
+                        "       [Code]3\n" +
+                        "       G00X0Z100\n" +
+                        "       G02X105Z20K-100F0.1\n" +
+                        "       M02\n" +
+                        "       [Code]3\n" +
+                        "       G00X0Z50\n" +
+                        "       G03X95I-1K-20F0.1\n" +
+                        "       M02\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the command value so that an arc can be generated.");
+
+        ExampleItem DATA_WORD_ANGLE = new ExampleItem("2253", "DATA WORD ANGLE",
+                "In the G00, G01, G02, G03, G34 or G35 sequence, an A command is\n" +
+                        "       designated both with X and Z commands.\n" +
+                        "       The target point calculated from the angle does not fall within\n" +
+                        "       a range of -99999.999 and 99999.999.\n" +
+                        "       In the G31 or G33 sequence, both A and I commands are\n" +
+                        "       designated.\n" +
+                        "       In the G32 sequence, both A and K commands are designated.\n" +
+                        "       The target point in the thread cutting fixed cycle calculated\n" +
+                        "       from the angle command does not fall within a range of\n" +
+                        "       -99999.999 and 99999.999.\n" +
+                        "       A command of G11/COPYE is not -359.999<=A<=359.999.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Both X and Z commands are designated. Or, an A command is\n" +
+                        "       designated with I or K command.\n" +
+                        "       2->Neither X nor Z command is designated.\n" +
+                        "       3->The target point calculated from the angle command does not\n" +
+                        "       fall within a range of -99999.999 and 99999.999.\n" +
+                        "       Others->Hexadecimal number of the target point calculated from\n" +
+                        "       angle command A in thread cutting fixed cycle\n" +
+                        "       Or Hexadecimal number of the A command of G11/COPYE.\n" +
+                        "       Program Example\n" +
+                        "       [Code]1\n" +
+                        "       G00 X100 Z100\n" +
+                        "       X120 Z50 A160\n" +
+                        "       ^^^^^^^Delete either X or Z command.\n" +
+                        "       [Code]1\n" +
+                        "       G00X100Z100 M03S100\n" +
+                        "       G34X120Z50A170 F3 E0.1\n" +
+                        "          ^^^^^^^Delete either X or Z command.\n" +
+                        "       [Code]3\n" +
+                        "       G00X100Z100\n" +
+                        "       X120A179.999\n" +
+                        "       Target value of Z is 5729477.95.\n" +
+                        "       Change X or A value to a smaller one.\n" +
+                        "       [Code]2\n" +
+                        "       G00X100Z100M03S500\n" +
+                        "       G03\t     A150  L30 F0.2\n" +
+                        "          ^^^^^^^^Designate X or Z command.\n" +
+                        "       [Code]1\n" +
+                        "       G00X100Z100M03S100\n" +
+                        "       G33X80Z50I10 A170  F3\n" +
+                        "       Designate only either of I and K commands.");
+
+        ExampleItem DATA_WORD_THREAD_CUTTING_CYCLE = new ExampleItem("2254", "DATA WORD THREAD CUTTING CYCLE",
+                "In thread cutting fixed cycle, shift amount is so large as to\n" +
+                        "       reverse the cutting direction or taper amount is so large as to\n" +
+                        "       retract the tool exceeding the thread cutting starting point.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Taper amount is too large and the starting point of the\n" +
+                        "       taper exceeds the end point.\n" +
+                        "       2->Shift amount designated by K and I command (K in G33 and\n" +
+                        "       I in G32 mode) is too large and the starting point of thread\n" +
+                        "       cutting cycle exceeds the end point.\n" +
+                        "       3->Overflow took place in calculating the points for thread\n" +
+                        "       cutting fixed cycle.\n" +
+                        "       Program Example:\n" +
+                        "       [Code]1\n" +
+                        "       G00 X100 Z100 M03 S100\n" +
+                        "       G33 X80  Z50 I20 F3\n" +
+                        "       M02\t     ^^^I command too large\n" +
+                        "       [Code]1\n" +
+                        "       G00 X100 Z100 M03  S100\n" +
+                        "       G33  X80  Z50 A120 F3\n" +
+                        "       M02\t      ^^^^Taper amount too large (A command too small)\n" +
+                        "       [Code]2\n" +
+                        "       G00 X100 Z100 M03 S100\n" +
+                        "       M23\n" +
+                        "       G33 X80  Z50  F3  A170 L55 K-55\n" +
+                        "       M22\t\t\t   ^^^^Shift amount too large\n" +
+                        "       M02");
+
+        ExampleItem DATA_WORD_RADIUS = new ExampleItem("2255", "DATA WORD RADIUS",
+                "1)The sequence of G02 or G03 (circular interpolation) has\n" +
+                        "       both L and I, K commands.\n" +
+                        "       2)The sequence of G02 or G03 block which contains an L command\n" +
+                        "       has neither X command nor Z command.\n" +
+                        "       3)The sequence of G102 or G103 (circular interpolation in\n" +
+                        "       contour generation) has no L command.\n" +
+                        "       4)The sequence of G132 or G133 (circular interpolation in side\n" +
+                        "       contour generation) has no L command.\n" +
+                        "       5)The sequence of G132 or G133 has neither Z command nor C\n" +
+                        "       command.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->In the G02 or G03 block, an L command and an I or K command\n" +
+                        "       are designated.\n" +
+                        "       2->In the G02 or G03 block which contains an L command, neither\n" +
+                        "       X command nor Z command is designated.\n" +
+                        "       3->In the G102 or G103 block, an L command is not designated.\n" +
+                        "       4->In the G132 or G133 block, an L command is not designated.\n" +
+                        "       5->In the G132 or G133 block, neither Z command nor C command\n" +
+                        "       is designated.\n" +
+                        "       [Probable Faulty Locations]Sequence containing G02, G03, G102,\n" +
+                        "       G103, G132, or G133\n" +
+                        "       Program Example:\n" +
+                        "       [Code]1\n" +
+                        "       G00 X100 Z100\n" +
+                        "       G03 X110 Z95 L5 K-5\n" +
+                        "       [Measures to Take]\n" +
+                        "       For radius command containing an L command, designate both X\n" +
+                        "       and Z commands, do not designate I and K commands.");
+
+        ExampleItem DATA_WORD_D = new ExampleItem("2256", "DATA WORD D",
+                "Illegal D command\n" +
+                        "       In a gauging cycle, D value is not within a range of 0 and\n" +
+                        "       99999.999.\n" +
+                        "       Or with cam turning specification models, when setting value\n" +
+                        "       for D (major axis of an oval) and L (lift amount of an oval)\n" +
+                        "       in the shape definition file (LSF), the D command value is not\n" +
+                        "       proper.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated D command\n" +
+                        "       [Probable Faulty Locations]D command\n" +
+                        "       Program Example:G30 Z50 D-10 L10\n" +
+                        "       [Measures to Take]Change D command; 0<=D<=99999.999.\n" +
+                        "       Example:G30 Z50 D10 L10\n" +
+                        "       Check the D command value.\n" +
+                        "       [Related Specifications]\n" +
+                        "       1)In-process gauging\n" +
+                        "       2)Cam turning specification");
+
+        ExampleItem DATA_WORD_GAUGING_CYCLE = new ExampleItem("2257", "DATA WORD GAUGING CYCLE",
+                "In G30 gauging cycle, the D command value is larger than the\n" +
+                        "       distance between the starting point and the point to be\n" +
+                        "       measured.\n" +
+                        "       Or, the CD command value is larger than the relative distance\n" +
+                        "       from the cycle start point to the target point.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]X\n" +
+                        "       X=1 ->A value of D instruction is bigger than a distance during\n" +
+                        "             start point and measure point in G30 measure cycles.\n" +
+                        "       X=2 ->In G30 measure cycles of C axis, a distance to the\n" +
+                        "             virtual target point which added a value of CL\n" +
+                        "             instruction to target point from start point amounted to\n" +
+                        "             360 times more than.\n" +
+                        "       X=3->In G30 measure cycles of C axis, a value of CD instruction\n" +
+                        "            is bigger than a distance during start point and measure\n" +
+                        "            point.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)D instruction program example of G30 measure cycles\n" +
+                        "         G00 X50 Z100 G30 Z90 D20 L20\n" +
+                        "       2)CL instruction program example of G30 measure cycles\n" +
+                        "         G00 C0 G30 C270 CD=5 CL=120\n" +
+                        "       3)CD instruction program example of G30 measure cycles\n" +
+                        "         G00 C0 G30 C90 CD=95 CL=10\n" +
+                        "       [Measures to take]\n" +
+                        "       1)They make D instruction smaller than a distance during start\n" +
+                        "         point and measure point.\n" +
+                        "         Or, start point is turned into a this side more.\n" +
+                        "       2)The target point which makes CL instruction small is\n" +
+                        "         neighborhood on start point more.\n" +
+                        "         Usual G00 C0 G30 C270 CD=5 CL=80\n" +
+                        "       3)They make CD instruction smaller than a distance during start\n" +
+                        "         point and measure point.\n" +
+                        "         Or, start point is turned into a this side more.\n" +
+                        "         Usual G00 C0 G30 C90 CD=80 CL=10\n" +
+                        "       [Related Specifications]In-process gauging");
+
+        ExampleItem DATA_WORD_C_COMMAND = new ExampleItem("2258", "DATA WORD C COMMAND",
+                "Alarm of C command\n" +
+                        "       Numerical value of designated C command calling for spindle\n" +
+                        "       orientation is either C < 0-deg, or C >= 360-deg.\n" +
+                        "       C command is designated at B-turret side on a multi-machining\n" +
+                        "       model. Or, C command is designated during coordinate change by\n" +
+                        "       G137.\n" +
+                        "       C command is designated in other than G00, G01, G50, G101,\n" +
+                        "       G102, G103 mode, or G181 - G190 (compound fixed cycle for\n" +
+                        "       M-tool spindle) mode.\n" +
+                        "       C command value is outside of -360 < C < 360-deg.\n" +
+                        "       C command calling for zero movement in the G101 mode.\n" +
+                        "       C command calling with G11/COPYE when it was not Multiple machining\n" +
+                        "       no spec.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The C command at B-turret side on a multi-machining model\n" +
+                        "       2->The C command is designated in other than G00, G01, G50,\n" +
+                        "       G101, G102,20G103 mode, or G181 - G190 (compound fixed cycle\n" +
+                        "       for M-tool spindle) mode.\n" +
+                        "       3->The C command calling for zero movement in the G101 mode\n" +
+                        "       4->C command calling with G11/COPYE when it was not Multiple\n" +
+                        "       machining no spec\n" +
+                        "       Others:Hexadecimal number of designated C value\n" +
+                        "       Program Example:\n" +
+                        "       M19 C-50->FFFF3CB0 (Hexadecimal of -50000)\n" +
+                        "       M19 C370->5A550 (Hexadecimal of 370000)\n" +
+                        "       [Code]1\n" +
+                        "       G14 <-Command cannot be designated at B-turret side.\n" +
+                        "       M110\n" +
+                        "       G00 X100 C90 M146 M15\n" +
+                        "       M147\n" +
+                        "       M02\n" +
+                        "       [Code]2\n" +
+                        "       M110\n" +
+                        "       M03 S500\n" +
+                        "       G94 G02 X100 C90 M146 M15 F130\n" +
+                        "           ^^^C command not allowed\n" +
+                        "       M147\n" +
+                        "       M02\n" +
+                        "       [Code]3\n" +
+                        "       M110\n" +
+                        "       M146 M16\n" +
+                        "       G00 X100 C30 T0101 SB=250 M241\n" +
+                        "       G94 Z120 M13\n" +
+                        "       G101 C30 F30\n" +
+                        "       M02  ^^^C-axis movement amount is \"0\".\n" +
+                        "       [Code]FFFA5AB0 (Hexadecimal of -370000)\n" +
+                        "       M110\n" +
+                        "       G00 X100 C-370 M146 M15\n" +
+                        "       M147\t ^^^^^Command must not be -360-deg<C<360-deg\n" +
+                        "       M02\n" +
+                        "       [Related Specifications]\n" +
+                        "       1)Spindle orientation\n" +
+                        "       2)Multi-machining model");
+
+        ExampleItem DATA_WORD_SB_COMMAND = new ExampleItem("2259", "DATA WORD SB COMMAND",
+                "Designated SB command is not: 0<=SB<=60000\n" +
+                        "       SB command is designated for B-turret.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->SB command is designated for B-turret.\n" +
+                        "       Others->Hexadecimal number of commanded SB value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 M13 SB=65000\n" +
+                        "       [Measures to Take]Check the SB command; check whether the SB\n" +
+                        "       command is designated at the B-turret side.\n" +
+                        "       In the example program above, the SB command value is greater\n" +
+                        "       than 60000; correct the program.\n" +
+                        "       N010 M13 SB=60000");
+
+        ExampleItem DATA_WORD_QA_COMMAND = new ExampleItem("2260", "DATA WORD QA COMMAND",
+                "QA command(the number of C-axis revolutions for positioning) is\n" +
+                        "       designated for B-turret.\n" +
+                        "       QA command is designated in other than the G00 and G01 mode.\n" +
+                        "       Programmed QA value is not:0<=QA<=1999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->QA command is designated for B-turret.\n" +
+                        "       2->QA command is designated in other than G00 and G01 mode.\n" +
+                        "       4->QA command is designated in G121 mode.\n" +
+                        "       Others->Hexadecimal number of QA value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (block including QA command)\n" +
+                        "       Program ExampleG01 X100 QA=2000\n" +
+                        "       [Measures to Take]Check the QA command.\n" +
+                        "       G01 X110 QA=1900\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem DATA_WORD_X_Y_COMMAND = new ExampleItem("2261", "DATA WORD X Y COMMAND",
+                "For coordinate system conversion, both X and Y are assigned\n" +
+                        "       with \"zero\".\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G137 C20\n" +
+                        "       G00 X0 Y0\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the X and Y commands.\n" +
+                        "       :\n" +
+                        "       G137 C20\n" +
+                        "       G00 X0 Y50\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Coordinate system conversion");
+        ExampleItem DATA_WORD_INCREMENTAL_COMMAND = new ExampleItem("2262", "DATA WORD INCREMENTAL COMMAND",
+                "In the coordinate system conversion, the G code (G91) calling\n" +
+                        "       incremental mode is designated.\n" +
+                        "       In the composite fixed cycle execution, the incremental mode\n" +
+                        "       is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of commanded code\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G91\n" +
+                        "       :\n" +
+                        "       G137 C10\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Designate the G90 command (calling absolute programming mode)\n" +
+                        "       in a block preceding the G137 command block or the composite\n" +
+                        "       fixed cycle command block.\n" +
+                        "        :\n" +
+                        "       G91\n" +
+                        "        :\n" +
+                        "       G90\n" +
+                        "       G137 C10\n" +
+                        "        :\n" +
+                        "       [Related Specifications]Coordinate system conversion");
+        ExampleItem DATA_WORD_X_Y_BOTH_AXIS_NO_COMMAND = new ExampleItem("2263", "DATA WORD X,Y BOTH AXIS NO COMMAND",
+                "For coordinate system conversion, only one of X and Y is\n" +
+                        "       designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G137 C10\n" +
+                        "       G00  X10\n" +
+                        "       :\n" +
+                        "       [Measures to Take]In the coordinate system conversion mode,\n" +
+                        "       both of X and Y commands must always be designated.\n" +
+                        "       :\n" +
+                        "       G137 C10\n" +
+                        "       G00 X10 Y10\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Coordinate system conversion");
+
+        ExampleItem DATA_WORD_Y = new ExampleItem("2264", "DATA WORD Y",
+                "For coordinate system conversion, the numerical value of \"Y\"\n" +
+                        "       is not within the following range: -99999.999<=Y<=99999.999\n" +
+                        "       If this alarm occurs in a case other than coordinate\n" +
+                        "       conversion, see the following codes.\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal number of the Y command value specified for\n" +
+                        "       coordinate conversion\n" +
+                        "       1->Y command is issued without specifying G00,G01,G02,\n" +
+                        "          G03,G30,G18?, or G50.\n" +
+                        "       3->Y command value is not in the range\n" +
+                        "            -99999.999 =< Y =< 99999.999.\n" +
+                        "       7->Y-axis command was issued in a mode other than Y-axis\n" +
+                        "          control mode or coordinate conversion mode.\n" +
+                        "          Or Y-axis command was issued without the positioning G code\n" +
+                        "          when Y-axis CENTER COMP. function was effective.");
+
+        ExampleItem DATA_WORD_DISTANCE_CALCULATION = new ExampleItem("2265", "DATA WORD DISTANCE CALCULATION",
+                "In coordinate system conversion, the value after the conversion\n" +
+                        "       is larger than 99999.999.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G137 C20\n" +
+                        "       G00 X99999.999 Y99999.999\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the X and Y commands;\n" +
+                        "       (SQR(X*X + Y*Y)<=999999.999 must be satisfied.)\n" +
+                        "       :\n" +
+                        "       G137 C20\n" +
+                        "       G00 X100  Y100\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Coordinate system conversion");
+
+        ExampleItem DATA_WORD_R = new ExampleItem("2266", "DATA WORD R",
+                "In a block containing G181 through G184 or G189, either R=0\n" +
+                        "       command is designated or an R command is designated with X and\n" +
+                        "       Z commands. Or the numerical value of X, Z or R does not fall\n" +
+                        "       within the following range: -99999.999<= X,(Z or R)<=99999.999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->In the cutting target point command of R command, simultaneous\n" +
+                        "       designation of R with X and/or Z\n" +
+                        "       2->In the cutting start point command of R command, simultaneous\n" +
+                        "       designation of R with I,J and/or K\n" +
+                        "       3->In the cutting start point command or R command, R command\n" +
+                        "       exceeds the cutting target point\n" +
+                        "       4->In the cutting start point command of R command, the cutting\n" +
+                        "       start point is away from the previous cutting target point\n" +
+                        "       5->In the cutting target point command of R command and the G297\n" +
+                        "       command, R command exceeds I,K command\n" +
+                        "       6->In the cutting start point command of R command and the G297\n" +
+                        "       command, R command has not exceeded the cutting target point\n" +
+                        "       FFFFFFFF->No X, Z or R command\n" +
+                        "       Others->Hexadecimal number of numerical value of designated X,\n" +
+                        "       Z or R\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G181 X60 R0 C0 K48 F40\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the X, Z, I, K, and R commands.\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem DATA_WORD_DRILLING_CYCLE = new ExampleItem("2267", "DATA WORD DRILLING CYCLE",
+                "In a block containing G181 through G184 or G189, following\n" +
+                        "       three commands are designated simultaneously:\n" +
+                        "       X, R and I, or Z, R and K\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1->Simultaneous designation of X, R and I, or Z, R and K\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:G181 X60 R-27 I48 F40\n" +
+                        "       [Measures to Take]Check the X, Z, R, I and K commands.\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem DATA_WORD_ANY_ANGLE = new ExampleItem("2268", "DATA WORD ANY ANGLE",
+                "For the sequence calling automatic chamfering with an arbitrary\n" +
+                        "       angle or the one calling axis movement with only an A command,\n" +
+                        "       the command in that sequence or those in the next sequence are\n" +
+                        "       designated erroneously.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The first line cannot be obtained since the commanded point\n" +
+                        "       and the one commanded in a previous sequence are the same.\n" +
+                        "       2->All of A, X and Z have been designated.\n" +
+                        "       3->The sequence to be executed next is in other than G00, G01,\n" +
+                        "       G34 and G35 mode, or it contains improper commands.\n" +
+                        "       4->For the sequence containing only A command, the sequence to\n" +
+                        "       be executed next does not contain any of A, X and Z commands\n" +
+                        "       (all of these three commands must be designated.)\n" +
+                        "       5->For the sequence containing only A command, the sequence to\n" +
+                        "       be executed next is other than G91 mode.\n" +
+                        "       6->The second line cannot be obtained since the point commanded\n" +
+                        "       in the present sequence and the point commanded in the sequence\n" +
+                        "       to be executed next are the same.\n" +
+                        "       7->In the sequence to be executed next contains all of A, X and\n" +
+                        "       Z commands.\n" +
+                        "       8->No point of intersection between the first and the second\n" +
+                        "       lines is obtained when only A command is given.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G75 G01 X60 Z90 A120 L5 F10\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the contents of error in the program\n" +
+                        "        \n" +
+                        "       from the alarm code number; remove the cause which intervenes\n" +
+                        "       the execution of arbitrary angle chamfering command.\n" +
+                        "       :\n" +
+                        "       G75 G01 X60 L5 F10\n" +
+                        "       [Related Specifications]Automatic any-angle chamfering");
+
+        ExampleItem DATA_WORD_ANY_ANGLE_CALCULATION = new ExampleItem("2269", "DATA WORD ANY ANGLE CALCULATION",
+                "Calculation error during the processing of the geometry\n" +
+                        "       definition containing arbitrary angle commands.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XYY\n" +
+                        "       YY:\n" +
+                        "       bit0->Overflow in converting into integer\n" +
+                        "       bit1->Exponential underflow\n" +
+                        "       bit2->Exponential overflow\n" +
+                        "       bit3->Calculation of root of a negative number\n" +
+                        "       bit5->Angle overflow for SIN, COS, TAN and COT\n" +
+                        "       X:\n" +
+                        "       1->Calculation of coefficient of the line (first line) which\n" +
+                        "       passes the point commanded in the previous sequence and makes\n" +
+                        "       an angle of \"A\" deg. to Z-axis\n" +
+                        "       2->Calculation of coefficient of the line (first line) which\n" +
+                        "       passes the point commanded in the present sequence and the one\n" +
+                        "       commanded in the previous sequence\n" +
+                        "       3->Calculation of coefficient of the line (second line) which\n" +
+                        "       passes the point commanded in the present sequence and the one\n" +
+                        "       commanded in the sequence to be executed next\n" +
+                        "       4->Calculation of coefficient of the line (second line) passing\n" +
+                        "       the point commanded in the sequence to be executed next and\n" +
+                        "       makes an angle of \"A\" deg. to Z-axis.\n" +
+                        "       5->Calculation of coefficient of the line (second line) which\n" +
+                        "       passes the point commanded in the present sequence and makes an\n" +
+                        "       angle of \"A\" deg. to Z-axis.\n" +
+                        "       6->Calculation of the commanded point (the point of\n" +
+                        "       intersection of the first and the second lines) for the\n" +
+                        "       sequence containing only A command.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Check the contents of error in the program\n" +
+                        "       from the alarm code number; remove the cause which intervenes\n" +
+                        "       the execution of arbitrary angle chamfering command.\n" +
+                        "       [Related Specifications]Automatic any-angle chamfering");
+
+        ExampleItem DATA_WORD_CD_COMMAND = new ExampleItem("2270", "DATA WORD CD COMMAND",
+                "The CD (D for C-axis) command value has exceeded the relative\n" +
+                        "       distance from cycle start point to cycle target point.\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]0<=CD<=360.000");
+
+        ExampleItem DATA_WORD_CL_COMMAND = new ExampleItem("2271", "DATA WORD CL COMMAND",
+                "The CL (L for C-axis) command value has exceeded the relative\n" +
+                        "       distance from cycle start point to cycle target point.\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]0<=CL<=360.000");
+
+        ExampleItem DATA_WORD_TM = new ExampleItem("2272", "DATA WORD TM",
+                "Illegal TM command\n" +
+                        "       A number greater than the number of turret tools set at the\n" +
+                        "       parameter is designated for \"oo\" in the \"TM = oo**\" command.\n" +
+                        "        Or no value is set for the parameter.\n" +
+                        "        Or, a number greater than \"32\" is designated for \"**\".\n" +
+                        "       The spec.of \"Tool offset over-200\":\n" +
+                        "         If command was \"TM=ooo***\", \"***\" was wrong.\n" +
+                        "       [Parameter] MC SYSTEM PARAMETER (TURRET/DOOR)\n" +
+                        "       \t     Number of tools on turret A-side\n" +
+                        "       \t     Number of tools on turret B-side\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       If a TM command is outside 0 < TM < 99999999, the hexadecimal\n" +
+                        "       number of the commanded TM value.\n" +
+                        "       If the tool number is greater than the number of turret tools\n" +
+                        "       or the tool offset number is greater than the \"32\", the\n" +
+                        "       hexadecimal number of the designated number in the lower\n" +
+                        "       four digits.\n" +
+                        "       [Probable Faulty Locations]TM command value\n" +
+                        "       Program Example:\n" +
+                        "       G14\n" +
+                        "       TM =0233\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the TM command value.\n" +
+                        "       G14\n" +
+                        "       TM =0232\n" +
+                        "       :");
+
+        ExampleItem DATA_WORD_W = new ExampleItem("2273", "DATA WORD W",
+                "The sub-spindle axis motion command (W) is wrong.\n" +
+                        "       1)A W-axis motion command is designated at the B-turret side.\n" +
+                        "       2)A W-axis motion command is designated in other than the G00,\n" +
+                        "         G01 or G50 mode.\n" +
+                        "       3)The W-axis motion command numerical value is not within the\n" +
+                        "         following range: -99999.999<=W<=99999.999\n" +
+                        "       4)A W-axis motion command is designated in the sub-spindle mode\n" +
+                        "         (G141 mode).\n" +
+                        "       5)A W-axis motion command is designated at the A-turret side in\n" +
+                        "         the G123 mode.\n" +
+                        "       6)A W-axis motion command is designated when the zero offset\n" +
+                        "         value of the WA-axis and the WB-axis are different. \n" +
+                        "       7)Concerning Sub spindle-tailstock Control specification, \n" +
+                        "         it instructed in W-axis as follows during 'Sub spindle mode'.\n" +
+                        "         Concerning W axis Cut-tailstock Control specification, \n" +
+                        "         it instructed in W-axis as follows during ' W axis Cut mode'.\n" +
+                        "         -A W-axis motion command was designated at 'work position state'.\n" +
+                        "         -After 'Sub spindle mode'/'W axis Cut' had been changed,\n" +
+                        "         it had instructed in W-axis incremental instruction  before \n" +
+                        "         W-axis absolute instruction.\n" +
+                        "       8)Concerning Sub spindle-tailstock Control specification,\n" +
+                        "         a W-axis motion command was designated at 'tailstock mode'.\n" +
+                        "         Concerning W axis Cut-tailstock Control specification, \n" +
+                        "         a W-axis motion command was designated at 'tailstock mode'.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1 ->A W-axis motion command is designated at the B-turret side.\n" +
+                        "        2 ->A W-axis motion command is designated in other than the G00,\n" +
+                        "            G01 or G50 mode.\n" +
+                        "        3 ->A W-axis motion command is designated in the sub-spindle\n" +
+                        "            mode (G141 mode).\n" +
+                        "        4 ->A W-axis motion command is designated at the A-turret side\n" +
+                        "            in the G123 mode.';\n" +
+                        "        5 ->The movement command of W axis to the range of interference\n" +
+                        "           was done when the work rest was not a down position.\n" +
+                        "        6 ->A W-axis motion command is designated when the zero offset\n" +
+                        "            value of the WA-axis and the WB-axis are different. \n" +
+                        "        7 ->Concerning Sub spindle-tailstock Control specification, \n" +
+                        "            it instructed in W-axis as follows during 'Sub spindle mode'.\n" +
+                        "        (1)A W-axis motion command was designated at \n" +
+                        "           'work position state'.\n" +
+                        "        (2)After 'Sub spindle mode' had been changed,\n" +
+                        "           it had instructed in W-axis incremental instruction \n" +
+                        "           before W-axis absolute instruction.\n" +
+                        "        8 ->Concerning Sub spindle-tailstock Control specification,\n" +
+                        "            a W-axis motion command was designated at 'tailstock mode'.\n" +
+                        "        9->It was ordered in both W-axis and XYZ-axis.\n" +
+                        "        Others -> Hexadecimal of W-axis command\n" +
+                        "       [Probable Faulty Locations] \n" +
+                        "        The W-axis command in a program.\n" +
+                        "         Program Example:\n" +
+                        "           :\n" +
+                        "          G14\n" +
+                        "          G01 W100.5 F100 G94\n" +
+                        "           :\n" +
+                        "       [Measures to Take] \n" +
+                        "        Check the W-axis command in the program.\n" +
+                        "           :\n" +
+                        "          G13\n" +
+                        "          G01 W100.5 F100 G94\n" +
+                        "           :\n" +
+                        "       [Related Specifications] \n" +
+                        "        Sub-spindle");
+
+        ExampleItem DATA_WORD_CB = new ExampleItem("2274", "DATA WORD CB",
+                "The M-axis orientation angle command has a value smaller than\n" +
+                        "       0 or larger than 360.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated CB command value\n" +
+                        "       [Probable Faulty Locations]Program\n" +
+                        "       Program Example:M229 CB=360\n" +
+                        "       [Measures to Take]Correct the CB command value in the program.");
+
+        ExampleItem DATA_WORD_HP = new ExampleItem("2275", "DATA WORD HP",
+                "The data word HP command value designated with G20 home\n" +
+                        "       position command is outside of range, or the G20 block\n" +
+                        "       does not contain HP command. Or, G20 command is designated\n" +
+                        "       though the home position specification is not provided.\n" +
+                        "       The G21 tool change position shift command was designated in\n" +
+                        "       a wrong format. (G21 command is also given in G171 or M321 of\n" +
+                        "       ATC macro command.)\n" +
+                        "       [Code]\n" +
+                        "       1->HP command value is outside of range.\n" +
+                        "       \tStandard       : 1 to 8\n" +
+                        "       \tHomeposition C : 1 to 24\n" +
+                        "       2->G20 block does not contain HP command.\n" +
+                        "       3->G20 command is designated without home position\n" +
+                        "       4->No HP command is given in the G21 block.\n" +
+                        "       5->G21 command was issued though home position function\n" +
+                        "       was not provided.\n" +
+                        "       6->G21 command was issued though ATC function was not provided.\n" +
+                        "       7->A number other than 1 to 5 is specified as HP command.\n" +
+                        "       8->G21 command was issued to B-turret.\n" +
+                        "       9->HP Preferred number is other than 0 to 3.\n" +
+                        "       A->G21 command was issued though \"Auto tow-along steady rest\n" +
+                        "          type-B specification\" or \"Auto tow-along tailstock type-B\n" +
+                        "          specification\".\n" +
+                        "       B->G25 block does not contain HP command.\n" +
+                        "       C->G25 HP2 was issued though \"Auto tow-along steady rest\n" +
+                        "          type-B specification\".\n" +
+                        "       D->G25 HP3 was issued though \"Auto tow-along tailstock type-B\n" +
+                        "          specification\".\n" +
+                        "       E->G25 command was issued to B-turret.\n" +
+                        "       F->HP command value is other than 1 to 3.\n" +
+                        "       10->HP command is not:-99999.999 - 99999.999.\n" +
+                        "       11->G21 command was issued in Y-axis mode.\n" +
+                        "       12->G24 command was issued.\n" +
+                        "       13->Home Position or the actual position is greater than\n" +
+                        "           range of movement.\n" +
+                        "       14->G21 or G24 command was issued though ATC in external HP\n" +
+                        "           operation specification.\n" +
+                        "       Program Example:\n" +
+                        "       G20 HP9\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Home position function");
+
+        ExampleItem DATA_WORD_CC = new ExampleItem("2276", "DATA WORD CC",
+                "The sub-spindle angle position designated using a CC command is\n" +
+                        "       greater than \"359.999\", or it is a negative value.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated CC command\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       M239 CC=365\n" +
+                        "       [Measures to Take]Correct the angle command.\n" +
+                        "       [Related Specifications]Sub-spindle");
+
+        ExampleItem DATA_WORD_TORQUE_LIMIT = new ExampleItem("2277", "DATA WORD TORQUE LIMIT",
+                "The torque limit command (G29), torque skip (G22) command or\n" +
+                        "       torque limit check(G23) includes no torque command (PX, PZ) or\n" +
+                        "       has torque commands for two axes.\n" +
+                        "       The torque command value exceeds the setting range.\n" +
+                        "       Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited.\n" +
+                        "       Concerning W axis Cut-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited. \n" +
+                        "       [Object]None\n" +
+                        "       [Code]X\n" +
+                        "       1->The torque limit (G29) torque skip (G22) torque limit check(G23)\n" +
+                        "       command has no torque command (PX or PZ), or the torque command\n" +
+                        "       is designated in a command other than G29, G22 or G23.\n" +
+                        "       2->G22, G23 or G29 command has torque commands for two axes\n" +
+                        "       (PX, PZ) at a time.\n" +
+                        "       3->The torque command (PX, PZ) exceeds the following ranges:\n" +
+                        "       For G29, 0<=PX, PZ<=Parameter word No. 71\n" +
+                        "       For G22/G23, 0<=PX, PZ<=A torque limit value set by G29';\n" +
+                        "       4->In G22 or G23 command, the axis command does not correspond\n" +
+                        "       to the torque set axis.\n" +
+                        "       5->An axis movement command is given in the same block with\n" +
+                        "       G22/G23, G28/G29.\n" +
+                        "       6->When it was not W-axis specification,\n" +
+                        "       PW instruction was done by G22/G23/G29.\n" +
+                        "       [Probable Faulty Locations]Format error of G22, G28/G29 command");
+
+
+        ExampleItem SUB_PROGRAM_REPETITION = new ExampleItem("2278", "SUB PROGRAM REPETITION",
+                "A sub program repetition number other than 1 through 9999 is\n" +
+                        "       designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated repetition number\n" +
+                        "       [Probable Faulty Locations]Subprogram call command\n" +
+                        "       Program Example:\n" +
+                        "       CALL OAAA Q10000[Code]2710 (Hexadecimal number of 10000)\n" +
+                        "       [Measures to Take]As a Q command, numerical value should be\n" +
+                        "       within a range of 1 to 9999.");
+
+        ExampleItem SUB_PROGRAM_STACK = new ExampleItem("2279", "SUB PROGRAM STACK",
+                "Subprogram nesting level is higher than eight.\n" +
+                        "       Or the number of RTS statements used to return to the program\n" +
+                        "       where the subprogram was called has exceeded the number of CALL\n" +
+                        "       statements calling for a subprogram.\n" +
+                        "       Or the number of MODOUT statements canceling MODIN mode is\n" +
+                        "       larger than the number of MODIN statements.\n" +
+                        "       Nesting level of call after axis movement command exceeds 8.\n" +
+                        "       Cancel of the call after axis movement command does not\n" +
+                        "       correspond to the level of the call after axis movement\n" +
+                        "       command.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The number of RTS statements is too much.\n" +
+                        "       2->Nesting level of subprograms is higher than eight.\n" +
+                        "       3->The number of MODOUT statements is too much.\n" +
+                        "       4->Nesting level of MODIN mode is higher than eight.\n" +
+                        "       5->Mismatch in levels where MODIN mode is called and canceled.\n" +
+                        "       [Probable Faulty Locations]The number of CALL, RTS, MODIN, and\n" +
+                        "       MODOUT statements in a part program\n" +
+                        "       Program error\n" +
+                        "       Program Example:\n" +
+                        "       [Code]3\n" +
+                        "       N100MODIN O100\n" +
+                        "       N110G00X100Z100\n" +
+                        "       N120X50Z50\n" +
+                        "       N130MODOUT\n" +
+                        "       N140MODOUT\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the nesting level and the number of CALL, RTS, MODIN and\n" +
+                        "       MODOUT statements in a part program referring to the code\n" +
+                        "       number. Then correct as needed.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem SUB_PROGRAM_PROGRAM_NAME = new ExampleItem("2280", "SUB PROGRAM PROGRAM NAME",
+                "No subprogram name is designated in the sequence containing\n" +
+                        "       CALL or MODIN statement.\n" +
+                        "       Or the subprogram name designated in such a sequence is not\n" +
+                        "       registered in the program name registering stack.\n" +
+                        "       After power supply use, it is not changed to automatic\n" +
+                        "       operation mode, and ATC macro instruction ( G171, M321) command\n" +
+                        "       is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No subprogram name is designated.\n" +
+                        "       2->It was not registered with a program registered stack.\n" +
+                        "          Or, it is not changed to automatic operation mode after\n" +
+                        "          power supply use, and ATC macro instruction (G171, M321)\n" +
+                        "          command is designated. The subprogram given name which is\n" +
+                        "          called by G code macro instruction-M code macro instruction\n" +
+                        "          was modified after program selection performance of\n" +
+                        "          automatic operation mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)CALL, MODIN sequence\n" +
+                        "       Program Example:\n" +
+                        "       CALL ->[Code]1\n" +
+                        "       CALL O\t ->[Code]2\n" +
+                        "            ^^^^Unregistered subprogram\n" +
+                        "       2)Unless there is macro subprogram on running baffer, ATC macro\n" +
+                        "       instruction (G171, M321) can not be performance.\n" +
+                        "       When it is changed to automatic-running mode after power supply\n" +
+                        "       use, running baffer registration of macro subprogram has\n" +
+                        "       carried out.\n" +
+                        "       After program selection in automatic mode, a subprogram to be\n" +
+                        "       called by G code macro or M code macro command specified in the\n" +
+                        "       program was renamed. To call the renamed subprogram,\n" +
+                        "       the program must be re-selected in automatic mode.\n" +
+                        "       [Measures to Take]\n" +
+                        "       In the CALL and MODIN sequence, designate only the subprogram\n" +
+                        "       name registered in the program name registration stack.\n" +
+                        "       [Related Specifications]\n" +
+                        "       User task 2 / ATC");
+
+        ExampleItem SUB_PROGRAM_DATA_PRINT = new ExampleItem("2281", "SUB PROGRAM DATA PRINT",
+                "The command for printing out gauging data is not designated\n" +
+                        "       correctly.\n" +
+                        "       [Code]\n" +
+                        "       1->A command of a measure print does not have instructed\n" +
+                        "          rightly.\n" +
+                        "       2->FD output file name does not have instructed rightly.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       Code 1 -> PRNT @\n" +
+                        "       \t  PRNT *\n" +
+                        "       Code 2 -> PRNT A12345950\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)The character which continues measure print command (PRNT)\n" +
+                        "         is modified in a numeral.\n" +
+                        "         :\n" +
+                        "         PRNT 10\n" +
+                        "         :\n" +
+                        "       2)As for a head of a file name, an English character alone\n" +
+                        "         modifies continuing letter a numeral, an English character,\n" +
+                        "         only \"-\".\n" +
+                        "         :\n" +
+                        "         PRNT A1234\n" +
+                        "         :\n" +
+                        "       [Related Specifications]Gauging data print out");
+
+        ExampleItem SCHEDULE_PROGRAM_Q = new ExampleItem("2282", "SCHEDULE PROGRAM Q",
+                "The schedule program includes an improper Q command (the number\n" +
+                        "       of repetitions).\n" +
+                        "       [Code]\n" +
+                        "       1->Data other than address character is designated where Q\n" +
+                        "       command must be designated.\n" +
+                        "       4->Address character other than Q is designated where Q\n" +
+                        "       command must be designated.\n" +
+                        "       Others->Numerical value of Q is not 0<Q<=9999.\n" +
+                        "       \tHexadecimal number of Q value\n" +
+                        "       [Probable Faulty Locations]Schedule program\n" +
+                        "       Program Example\n" +
+                        "       PSELECT A.MIN ,, 20 --[Code]1\n" +
+                        "       PSELECT B.MIN ,, P 10 --[Code]4\n" +
+                        "       PSELECT C.MIN ,, Q 20000 --[Code]D020(Hexadecimal of 20000)\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the Q command in the schedule program.\n" +
+                        "       Example: PSELECT A.MIN ,, Q 20");
+
+        ExampleItem SCHEDULE_PROGRAM_MNEMONIC_CODE = new ExampleItem("2283", "SCHEDULE PROGRAM MNEMONIC CODE",
+                "Illegal schedule program command\n" +
+                        "       Instructions other than PSELECT, IF, GOTO, VSET and END are\n" +
+                        "       designated.\n" +
+                        "       [Code]Hexadecimal number of ASCII code of the first four\n" +
+                        "       characters of the instruction\n" +
+                        "       [Probable Faulty Locations]Schedule program\n" +
+                        "       Program ExampleN100 PSELECT A.MIN ,, Q10\n" +
+                        "       N200 G00 X100 Z200\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete wrong command (s) in the schedule program.");
+
+        ExampleItem SCHEDULE_PROGRAM_PROGRAM_END = new ExampleItem("2284", "SCHEDULE PROGRAM PROGRAM END",
+                "No program end command is designated in the schedule program.\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]Schedule program\n" +
+                        "       Program Example:\n" +
+                        "       N010 VSET V1=1\n" +
+                        "       N020 PSELECT LOADER.MIN\n" +
+                        "       N030 PSELECT SHAFT.MIN\n" +
+                        "       N040 VSET V1=V1+1\n" +
+                        "       N050 IF [V3 LE 10] N020\n" +
+                        "       [Measures to Take]\n" +
+                        "       Designate the END command at the end of the schedule.\n" +
+                        "       Example:\n" +
+                        "       N010 VSET V1=1\n" +
+                        "       :\n" +
+                        "       N050 IF [V3 LE 10] N020\n" +
+                        "       N060 END");
+
+        ExampleItem SCHEDULE_PROGRAM_MAIN_PROGRAM_LOAD = new ExampleItem("2285", "SCHEDULE PROGRAM MAIN PROGRAM LOAD",
+                "Error during loading the main program designated in the\n" +
+                        "       schedule program\n" +
+                        "       Main program no file error, program end code error, etc.\n" +
+                        "       [Code]3->Error occurs when a main program is read in PDO task.\n" +
+                        "       [Probable Faulty Locations]Main program no file error\n" +
+                        "       Program end code error, etc.");
+
+        ExampleItem PLUS_VARIABLE_LIMIT_OVER_B = new ExampleItem("2286", "PLUS VARIABLE LIMIT OVER",
+                "The target point of the designated axis movement command is\n" +
+                        "       greater than the variable limit position in the positive\n" +
+                        "       direction.\n" +
+                        "       [Object]AXIS\n" +
+                        "       [Code]\n" +
+                        "       1->Z axis by the state which selection Sub spindle mode.\n" +
+                        "          However, do not be an alarm even though ZA axis in a LT +\n" +
+                        "          sub spindle specification and ZB axis in LT specification\n" +
+                        "          (sub spindle specification unselection) are the states\n" +
+                        "          which selection Sub spindle mode.\n" +
+                        "       2->Axis feed other than rapid traverse\n" +
+                        "       3->Nose radius compensation mode in G00\n" +
+                        "       4->LAP mode in G00\n" +
+                        "       5->X-axis on two-turret models\n" +
+                        "       6->A fixed cycle command was issued while the actual\n" +
+                        "          position is over the positive variable limit on the\n" +
+                        "          machine.\n" +
+                        "       7->The designated return point of the multi-machining cycle\n" +
+                        "       8->It was commanded over movable range plus limit for X/Y/Z axis\n" +
+                        "          in executing G00/G01/G30, when \"the touch setter measurement\n" +
+                        "          function\" was effective and \"the stroke end limit\"was not\n" +
+                        "          effective.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Change the command to a value smaller than the variable\n" +
+                        "         limit value in the positive direction.\n" +
+                        "       2)Check the zero offset value.\n" +
+                        "       3)Check the tool offset value.");
+
+        ExampleItem MINUS_VARIABLE_LIMIT_OVER_B = new ExampleItem("2287", "MINUS VARIABLE LIMIT OVER",
+                "The target point of the designated axis movement command is\n" +
+                        "       smaller than the variable limit position in the negative\n" +
+                        "       direction.\n" +
+                        "       [Object]AXIS\n" +
+                        "       [Code]\n" +
+                        "       1->The target point of the designated axis movement command\n" +
+                        "       2->The designated return point of the multi-machining cycle\n" +
+                        "       8->It was commanded over movable range minus limit for X/Y/Z axis\n" +
+                        "          in executing G00/G01/G30, when \"the touch setter measurement\n" +
+                        "          function\" was effective and \"the stroke end limit\"was not\n" +
+                        "          effective.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Change the command to a value greater than the variable\n" +
+                        "         limit value in the negative direction.\n" +
+                        "       2)Check the zero offset value.\n" +
+                        "       3)Check the tool offset value.");
+
+        ExampleItem USER_RESERVE_CODE_B = new ExampleItem("2288", "USER RESERVE CODE",
+                "Alarm designated by output variable #992\n" +
+                        "       When the ATC macro command G171 or M321 was issued, the\n" +
+                        "       interlock function was activated, causing this alarm.\n" +
+                        "       The instruction for groove width offset gauging under Y-axis\n" +
+                        "       control includes a command related to the tool life management\n" +
+                        "       function.\n" +
+                        "       [Code]The numerical value substituted to the output variable\n" +
+                        "       MT->MT command was not issued before M321.\n" +
+                        "       M321->When M321 was specified, the turret was not located at\n" +
+                        "       the X-axis (XA-axis for 2-saddle model) plus variable limit\n" +
+                        "       position.\n" +
+                        "       ATP->Neither ATP nor AHP was specified before G171. A number\n" +
+                        "       other than the machine turret numbers is specified as a ATP\n" +
+                        "       value. ATC is impossible at the turret number specified by ATP.\n" +
+                        "        AHP ... With G171 command, a value other than 1 to 5 is\n" +
+                        "       \t specified as an AHP value.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       If the code MT appears, M312 was specified without MT command.\n" +
+                        "       Though MT command was specified, reset, selection of manual\n" +
+                        "       operation mode, machine lock or the other operation was\n" +
+                        "       conducted before specifying M321.");
+
+        ExampleItem BACKUP_DATA_FILE_WRITE = new ExampleItem("2289", "BACKUP DATA FILE WRITE",
+                "Failure in writing the backup data into the memory\n" +
+                        "       [Code]Hexadecimal number of the sector number of the bubble\n" +
+                        "       memory in which failure occurred.\n" +
+                        "       [Probable Faulty Locations]memory board\n" +
+                        "       Operation Example:Since backup to the memory is executed\n" +
+                        "       automatically, operation is not related with this alarm.");
+
+        ExampleItem PROGRAM_NAME_IS_NOT_SELECT = new ExampleItem("2290", "PROGRAM NAME IS NOT SELECT",
+                "Program name is incorrectly designated. The program name*\n" +
+                        "       differing from the one presently executed is designated.\n" +
+                        "       * Command O**** is executed.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the ASCII code of four characters\n" +
+                        "       of the program name following address character O.\n" +
+                        "       [Probable Faulty Locations]Program sequence causing alarm\n" +
+                        "       (Refer to program example on the following page.)\n" +
+                        "       Program Example:\n" +
+                        "       1)When calling a subprogram, designation of CALL is not made\n" +
+                        "       (same as in the case of MODIN).\n" +
+                        "       N100 G00    N100 G00\n" +
+                        "       N110 G01    N110 G01\n" +
+                        "       N120 G00    N120 G00\n" +
+                        "       CALL O100   O100\n" +
+                        "       N130 G00    N130 G00\n" +
+                        "       Normal\t    Alarm\n" +
+                        "       If a sequence No. is designated prior to O100, other type of\n" +
+                        "       alarm occurs.(Alarm B 429 Unusable: direct of left)\n" +
+                        "       2)For the program which has two beginning sequences, the\n" +
+                        "       command used for skipping the second program name is not\n" +
+                        "       designated. GOTO statement is not designated.\n" +
+                        "       O100\t  O100\n" +
+                        "       G00\t  G00\n" +
+                        "       G00\t  G00\n" +
+                        "       GOTO N1   O200<-An alarm occurs when this sequence is executed.\n" +
+                        "       O200\t  G00\n" +
+                        "       G00\t  G00\n" +
+                        "       G00\t  N1 G01\n" +
+                        "       N1 G01\t  G01\n" +
+                        "       G01\t  :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Do not execute the sequence which contains only a program name.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem MAIN_SEQUENCE = new ExampleItem("2291", "MAIN SEQUENCE",
+                "Error (TRAP #4) in main sequence. Usually, an error does not\n" +
+                        "       occur within a main sequence.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1");
+
+        ExampleItem RESTART = new ExampleItem("2292", "RESTART",
+                "[Probable Faulty Locations]\n" +
+                        "       Improper Restart Command: Most likely; Start Key is pressed,\n" +
+                        "       before Sequence Return is completed.\n" +
+                        "       [Code]\n" +
+                        "       1->2-Saddle Lathe: Start Key is pressed; after only one of\n" +
+                        "          Programmed Turret A/B Restart Commands is issued.\n" +
+                        "          Example, 2-Saddle Lathe:\n" +
+                        "          Key in [A] RE N100, and press Enter Key. Press Start Key.\n" +
+                        "       2->Start Key is pressed; after Restart Command is executed.\n" +
+                        "          Example, 2-Saddle Lathe:\n" +
+                        "          Key in [A] RE N100, and press Enter Key.\n" +
+                        "          Key in [B] RE N150, and press Enter Key.\n" +
+                        "          Press Start Key.\n" +
+                        "          Example, 1-Saddle Lathe:\n" +
+                        "          Key in RE N100, and press Enter Key.\n" +
+                        "       3->Turret B Restart Command is issued;\n" +
+                        "          during Turret A Independent Operation.\n" +
+                        "          Example, during Turret A Independent Operation:\n" +
+                        "          Key in [B] RE N200, and press Enter Key. Press Start Key.\n" +
+                        "          Turret A Restart Command is issued;\n" +
+                        "          during Turret B Independent Operation.\n" +
+                        "          M02 or M30 Command is issued; before Traverse is completed.\n" +
+                        "          Restart is commanded; with No Program, selected.\n" +
+                        "       4->2-Saddle Lathe: Turret A/B cannot return to a Specified\n" +
+                        "          Position (Synchronizing is Not completed).\n" +
+                        "          Sample Program:\n" +
+                        "          In case Returning Position is as underlined, below;\n" +
+                        "          Turret A comes to stop on P20, and wait for Synchronization,\n" +
+                        "          and comes out of Waiting on P30, while Turret B returns to\n" +
+                        "          Returning Position before P30. Consequently, Turret A\n" +
+                        "          Sequence Return cannot be completed.\n" +
+                        "          Turret A  Turret B\n" +
+                        "          G13\t     G14\n" +
+                        "          G140      G141\n" +
+                        "          G0 X100   G0 X200\n" +
+                        "          ...\t     ...\n" +
+                        "          ...\t     P10\n" +
+                        "          P20\t     ...\n" +
+                        "          ...\t     ...\n" +
+                        "          G0 Z100   G0 Z200\n" +
+                        "          ...\t     ...\n" +
+                        "          ...\t     P30\n" +
+                        "          P40\t     ...\n" +
+                        "       5->with Y-Axis: Restart to Y-Mode is commanded; when Mode is\n" +
+                        "          Not Y-Axis Mode.\n" +
+                        "       6->with Y-Axis: Restart to Mode, which is Not Y-Axis Mode,\n" +
+                        "          is commanded; when Mode is Y-Axis Mode.\n" +
+                        "       7->Concerning LAW-F machine, when Z axis is not plus variable\n" +
+                        "          limit, at restart command is designated.\n" +
+                        "       8->When it is not a single block, at restart command is\n" +
+                        "          designated.\n" +
+                        "       9->It instructed in the block where an attachment\n" +
+                        "          different from a present attachment was used.\n" +
+                        "       10->It instructed in the block that became an actual directio\n" +
+                        "           of attachment and a different direction of attachment. \n" +
+                        "       11->Restart command was executed in block between M1138 command\n" +
+                        "           line and M1137 command line or program end command line when\n" +
+                        "           \"the touch setter measurement function\" was effective.");
+
+        ExampleItem MDI_SPECIAL_G_CODE = new ExampleItem("2293", "MDI SPECIAL G-CODE",
+                "G code not executable in the MDI mode is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->G223 MODIN and/or G224 MODOUT statement is designated.\n" +
+                        "       80->G80, G81, or G82 is designated.\n" +
+                        "       85->G85 or G86 is designated.\n" +
+                        "       330->G330(WHILE) or G331(DO) or G332(END) is designated.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Do not input the G codes indicated above in the MDI mode.");
+
+        ExampleItem SPECIAL_G_CODE_TABLE = new ExampleItem("2294", "SPECIAL G-CODE TABLE",
+                "The internal constant table determined by the special G code is\n" +
+                        "       incorrect. (This alarm does not occur usually.)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated G code\n" +
+                        "       [Probable Faulty Locations]Special G code table");
+
+        ExampleItem STM_TIME_OVER_B = new ExampleItem("2295", "STM TIME OVER",
+                "The S, T, or M function execution cycle time exceeds the time\n" +
+                        "       preset with a parameter.\n" +
+                        "       [Parameter]\n" +
+                        "       OPTIONAL PARAMETER (CYCLE TIME OVER CHECK)\n" +
+                        "        STM time over timer (0.1s)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal code of preset time\n" +
+                        "       [Probable Faulty Locations]No answer signal for the S, T, or M\n" +
+                        "       code command having been executed when the alarm occurred.\n" +
+                        "       Program Example\n" +
+                        "       :\n" +
+                        "       M03 M42 S1000 T0303\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Display the check screen to see if the input signal is sent\n" +
+                        "       in answer to the STM command executed on occurrence of the\n" +
+                        "       alarm. If two or more commands are given, give the commands one\n" +
+                        "       by one in MDI operation to find out which STM command causes\n" +
+                        "       the alarm.\n" +
+                        "       2)S->Spindle constant rotation signal\n" +
+                        "       3)T->Turret clamp signal\n" +
+                        "       4)M->Spindle rotation completion signal");
+
+        ExampleItem UGC_PROGRAM_END_CODE_NONE = new ExampleItem("2296", "UGC PROGRAM END CODE NONE",
+                "End of program code is read in the conversion process of the\n" +
+                        "       user graphic command characters.\n" +
+                        "       [Code]\n" +
+                        "       1->When converting user graphic command execution statement\n" +
+                        "       2->When skipping user graphic command comment lines\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       An error in the UGC command string in the part program\n" +
+                        "       Program Example:\n" +
+                        "       DEF WORK (UGC WORK)\n" +
+                        "       PS LL, [0, 0], [100, 100], 4\n" +
+                        "       :\n" +
+                        "       END\n" +
+                        "       [Measures to Take]Check the UGC program.\n" +
+                        "       In the example program, there is an error in the comment line.\n" +
+                        "       Correct Program:\n" +
+                        "       DEF WORK (UGC WORK)\n" +
+                        "       PS LL, [0, 0] [100, 100], 4\n" +
+                        "       :\n" +
+                        "       END");
+
+        ExampleItem UGC_DELETE_SYNTAX = new ExampleItem("2297", "UGC DELETE SYNTAX",
+                "Illegal delete command designated\n" +
+                        "       [Code]User graphic internal code\n" +
+                        "       [Probable Faulty Locations]Character-string:designated in the\n" +
+                        "       DELETE statement in the user graphic command.\n" +
+                        "       Program Example:DELETE PAINT\n" +
+                        "       [Measures to Take]Check the character-string following the\n" +
+                        "       DELETE statement; correct it.\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_DEF_SYNTAX = new ExampleItem("2298", "UGC DEF SYNTAX",
+                "Illegal registration declare command designated\n" +
+                        "       [Code]User graphic internal code\n" +
+                        "       [Probable Faulty Locations]Character-string:designated in the\n" +
+                        "       DEF statement in the user graphic command.\n" +
+                        "       Program Example:DEF PAINT\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the character-string following the DEF\n" +
+                        "       statement; correct it.\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_TIP_SYNTAX = new ExampleItem("2299", "UGC TIP SYNTAX",
+                "Illegal standard procedure statement (TIP statement) designated\n" +
+                        "       TIP: Procedure statement for registering the tip shape\n" +
+                        "       [Code]User graphic internal code\n" +
+                        "       [Probable Faulty Locations]TIP statement in the user graphic\n" +
+                        "       command string of registered tool shape\n" +
+                        "       Program Example:\n" +
+                        "       DEF TOOL [1,L]\n" +
+                        "       TIP [[0, 0],[1,0],[1,0]]]\n" +
+                        "       :\n" +
+                        "       END\n" +
+                        "       [Measures to Take]\n" +
+                        "       If there is no TIP statement, add TIP statement.\n" +
+                        "       If there is TIP statement, check it; correct the TIP statement.\n" +
+                        "       Correct program:\n" +
+                        "       DEF TOOL [1,L]\n" +
+                        "       TIP [[0,0],[1,0],[1,0]]\n" +
+                        "       :\n" +
+                        "       END\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_TIF_SYNTAX = new ExampleItem("2300", "UGC TIF SYNTAX",
+                "Illegal standard procedure statement (TIF statement) designated\n" +
+                        "       TIF: Automatically generates tool interference check data based\n" +
+                        "       on the tool shape.\n" +
+                        "       TIF [designation of tool interference check pattern, FZN, FZP,\n" +
+                        "            FXN, FXP]\n" +
+                        "       Designation of tool interference check pattern: Specified by I\n" +
+                        "       for ID turning and by O for OD turning.\n" +
+                        "       FZN, FZP, FXN, FXP: Used to specify the interference check\n" +
+                        "       range from the cutting edge datum point.\n" +
+                        "       [Code]User graphic internal code\n" +
+                        "       [Probable Faulty Locations]TIF statement in the user graphic\n" +
+                        "       command string of registered tool shape.\n" +
+                        "       Program ExampleDEF TOOL [1,L]\n" +
+                        "       TIP [[0, 0],[1,0],[0,1]]\n" +
+                        "       TIF [M,5,5,0,]\n" +
+                        "       :\n" +
+                        "       END\n" +
+                        "       [Measures to Take]\n" +
+                        "       If there is no TIF statement, add TIF statement.\n" +
+                        "       If there is TIF statement, check it; correct the TIF statement.\n" +
+                        "       Correct program:\n" +
+                        "       DEF TOOL [1,L]\n" +
+                        "       TIP [[0,0],[1,0],[0,1]]\n" +
+                        "       TIF [0,5,5,0,]\n" +
+                        "       :\n" +
+                        "       END\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_FIGURE_NO_ENTRY = new ExampleItem("2301", "UGC FIGURE NO ENTRY",
+                "No user graphic command to be registered.\n" +
+                        "       [Code]\n" +
+                        "       1->There is no user graphic command between the registration\n" +
+                        "       declaration statement and the end declaration statement\n" +
+                        "       (excluding standard procedure statement).\n" +
+                        "       [Probable Faulty Locations]User graphic command string\n" +
+                        "       Program Example:\n" +
+                        "       DEF WORK\n" +
+                        "       END\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Add the user graphic command for which the\n" +
+                        "       shape is to be defined.\n" +
+                        "       :\n" +
+                        "       DEF WORK\n" +
+                        "       PS LL,[0,0] [100,150],4\n" +
+                        "       END\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_ILLEGAL_NUMERICAL = new ExampleItem("2302", "UGC ILLEGAL NUMERICAL",
+                "Illegal numerical data input\n" +
+                        "       [Code]5Number of digits overflow\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Numerical data in the user graphic command\n" +
+                        "       Program Example:DEF WORK\n" +
+                        "       PS LL, [0, 0], [1000000, 100], 4\n" +
+                        "       END\n" +
+                        "       [Measures to Take]Check the numerical data and correct it.\n" +
+                        "       DEF WORK\n" +
+                        "       PS LL,[0, 0],[100,100],4\n" +
+                        "       END\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_ILLEGAL_CHARACTER = new ExampleItem("2303", "UGC ILLEGAL CHARACTER",
+                "Illegal code not applicable to operator code designated\n" +
+                        "       [Code]1->Hexadecimal number of ASCII\n" +
+                        "       [Probable Faulty Locations]User graphic command string\n" +
+                        "       Program Example:DEF WORK\n" +
+                        "       PS LL,[0, 0],[100&100],4\n" +
+                        "       :\n" +
+                        "       END\n" +
+                        "       [Measures to Take]Change characters other than those listed\n" +
+                        "       below into the corresponding character or function operator.\n" +
+                        "       0 - 9, A - Z,], ,, +, -, *, /, [, =\n" +
+                        "       DEF WORK\n" +
+                        "       PS LL,[0,0],[100,100],4\n" +
+                        "       :\n" +
+                        "       END\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_USER_VARIABLE = new ExampleItem("2304", "UGC USER VARIABLE",
+                "Illegal user variable designated\n" +
+                        "       [Code]\n" +
+                        "       0->No user variable number entry\n" +
+                        "       1->Entry of a number following user variable number 0\n" +
+                        "       2->Number of digits overflow in designating user variable\n" +
+                        "       number\n" +
+                        "       [Probable Faulty Locations]Character-string which begins with\n" +
+                        "       \"D\" in the user graphic command string.\n" +
+                        "       Program Example:DEF WORK\n" +
+                        "       PS LL,[0, 0],[D100,100],4\n" +
+                        "       END\n" +
+                        "       [Measures to Take]Correct in the correct user time variables\n" +
+                        "       (D0 - D99) or character-string.\n" +
+                        "       DEF WORK\n" +
+                        "       PS LL,[0,0],[D10,100],4\n" +
+                        "       END\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_SYSTEM_VARIABLE = new ExampleItem("2305", "UGC SYSTEM VARIABLE",
+                "Illegal system variable designated\n" +
+                        "       [Code]\n" +
+                        "       0->No system variable number entry\n" +
+                        "       1->Entry of a number following system variable number\n" +
+                        "       2->Number of digits overflow in designating system variable\n" +
+                        "       number\n" +
+                        "       [Probable Faulty Locations]Character-string which begins with\n" +
+                        "       \"S\" in the user graphic/ command string.\n" +
+                        "       Program Example:\n" +
+                        "       DEF WORK\n" +
+                        "       PS LL,[0, 0],[S100,100],4\n" +
+                        "       END\n" +
+                        "       [Measures to Take]Correct in the correct user time variables\n" +
+                        "       (S0 - S99) or character-string.\n" +
+                        "       DEF WORK\n" +
+                        "       PS LL,[0,0],[S10,100],4\n" +
+                        "       END\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGS_ILLEGAL_COMMAND = new ExampleItem("2306", "UGS ILLEGAL COMMAND",
+                "Illegal character-string designated\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal number of ASCII, or user graphic internal code\n" +
+                        "       [Probable Faulty Locations]User graphic command string\n" +
+                        "       Program Example:\n" +
+                        "       DEF WORK\n" +
+                        "       PS LZ,[0, 0],[100,100],4\n" +
+                        "       END\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check and correct the user graphic command string.\n" +
+                        "       DEF WORK\n" +
+                        "       PS LL,[0, 0],[100,100],4\n" +
+                        "       END\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_PROGRAM_FACTOR_OVER = new ExampleItem("2307", "UGC PROGRAM FACTOR OVER",
+                "Overflow of factor code stack or factor data stack\n" +
+                        "       [Code]\n" +
+                        "       1->Factor code stack overflow at character-string conversion\n" +
+                        "       2->Factor data stack overflow at character-string conversion\n" +
+                        "       3->Factor code stack overflow at command creation\n" +
+                        "       4->Factor data stack overflow at command creation\n" +
+                        "       [Probable Faulty Locations]User graphic command string\n" +
+                        "       Program Example:\n" +
+                        "       D1=D1+1+1+1 ... +1\n" +
+                        "          ^^^^^^^^^^^^^^^125 or more\n" +
+                        "       [Measures to Take]User graphic command string\n" +
+                        "       Reduce the number of the factor codes and factor data sets, or\n" +
+                        "       divide the expression using the substitute statement.\n" +
+                        "       D1=D1+1+1 ... +1\n" +
+                        "          ^^^^^^^^^^^^^Within 124\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_COORDINATE_DATA = new ExampleItem("2308", "UGC COORDINATE DATA",
+                "Mismatch of the numbers of the left and right brackets, illegal\n" +
+                        "       factor code, inconsistency of the number of command coordinates\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Mismatch of the numbers of left and right brackets, illegal\n" +
+                        "       factor code, excess number of brackets with the commands\n" +
+                        "       excluding substitute statement\n" +
+                        "       2->Mismatch of the number of left and right brackets, or\n" +
+                        "       inconsistency of the number of command coordinates with the\n" +
+                        "       commands excluding the substitute statement\n" +
+                        "       3->Mismatch of the number of left and right brackets, illegal\n" +
+                        "       factor code, inconsistency of the number of command coordinates\n" +
+                        "       or excess number of brackets with the commands excluding\n" +
+                        "       substitute statement\n" +
+                        "       [Probable Faulty Locations]User graphic command\n" +
+                        "       Program Example:\n" +
+                        "       PF 3,[0,0],[10,0],[0,10],[7,8],4\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check and correct the user graphic command format.\n" +
+                        "       :\n" +
+                        "       PF 3,[0,0],[10,0],[0,10],4\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_END_SYNTAX = new ExampleItem("2309", "UGC END SYNTAX",
+                "Illegal end declaration statement\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1->LF for declaring END is not specified.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       END statement in the user graphic command string\n" +
+                        "       Program Example:\n" +
+                        "       DEF WORK\n" +
+                        "       :\n" +
+                        "       END X\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the character string just after the END statement.\n" +
+                        "       :\n" +
+                        "       DEF WORK\n" +
+                        "       :\n" +
+                        "       END\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_COMMAND_OVER = new ExampleItem("2310", "UGC COMMAND OVER",
+                "Overflow of user graphic command stack area\n" +
+                        "       [Code]1->An overflow occurs in the temporary storage area for\n" +
+                        "       user graphic command string.\n" +
+                        "       [Probable Faulty Locations]User graphic command string\n" +
+                        "       Program Example:\n" +
+                        "        :\n" +
+                        "       *DEF\n" +
+                        "        :\n" +
+                        "       *END\n" +
+                        "       *-*More than 600 bytes\n" +
+                        "       [Measures to Take]\n" +
+                        "       Reduce the number of the commands in the command-string, or\n" +
+                        "       reduce the necessary memory space using the macro.\n" +
+                        "        :\n" +
+                        "       *DEF\n" +
+                        "        :\n" +
+                        "       *END\n" +
+                        "       *-*Reduce to less than 600 bytes\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_COMMAND_FORMAT = new ExampleItem("2311", "UGC COMMAND FORMAT",
+                "Syntax error with:  POINT statement, VIEW statement, WINDOW\n" +
+                        "       statement, LINE statement, CIRCLE statement, PAINT statement,\n" +
+                        "       PAINTI statement, PAINTS statement, PAINTP statement, CALL\n" +
+                        "       statement, PLAIN statement, and substitute statement\n" +
+                        "       [Code]User graphic internal code\n" +
+                        "       [Probable Faulty Locations]User graphic command\n" +
+                        "       Program Example:\n" +
+                        "       :\n" +
+                        "       PS L,[0,0],[100,100],4\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the syntax of the user graphic\n" +
+                        "       commands; make correction as needed.\n" +
+                        "       :\n" +
+                        "       PS LL,[0,0],[100,100],4\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_ADDITIONAL_PARAMETER = new ExampleItem("2312", "UGC ADDITIONAL PARAMETER",
+                "Illegal additional parameter programmed\n" +
+                        "       [Code]\n" +
+                        "       1->Illegal circle rotation direction (other than omission,\n" +
+                        "       L and R)\n" +
+                        "       Illegal triangle angle (other than omission, 0, 1 and 2)\n" +
+                        "       Illegal line style, tile pattern and color designation (other\n" +
+                        "       than omission and 0-7)';\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Additional parameter of the user graphic command\n" +
+                        "       Program Example:\n" +
+                        "       LI [100,100],9\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the user graphic command additional\n" +
+                        "       parameter; correct as needed.\n" +
+                        "       :\n" +
+                        "       LI [100,100],6\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_EXPRESSION = new ExampleItem("2313", "UGC EXPRESSION",
+                "Expression syntax error\n" +
+                        "       [Code]\n" +
+                        "       1->More than one solution\n" +
+                        "       2->Program end code in expression\n" +
+                        "       3->Operand stack area over\n" +
+                        "       4->Mismatch between the numbers of operands\n" +
+                        "       5->Operand classification code stack area over:Mismatch between\n" +
+                        "       the numbers of left brackets \"[\" and right brackets \"]\".\n" +
+                        "       6->More than two subscript expressions\n" +
+                        "       [Probable Faulty Locations]Substitute statement and quadratic\n" +
+                        "       expression in the user graphic command\n" +
+                        "       Program Example:\n" +
+                        "       PS LL,[0,0],[100,100,100],4\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check and correct the syntax of substitute\n" +
+                        "       statement and quadratic expression.\n" +
+                        "       :\n" +
+                        "       PS LL,[0,0],[100,100,100],4\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_FIGURE_ENTRY_AREA_OVER = new ExampleItem("2314", "UGC FIGURE ENTRY AREA OVER",
+                "The total of previously registered area and the area registered\n" +
+                        "       presently exceeds the allowable value of the shape registration\n" +
+                        "       area.\n" +
+                        "       [Code]1->No free area is left in the shape registration area.\n" +
+                        "       [Probable Faulty Locations]User graphic bank area\n" +
+                        "       [Measures to Take]Delete the current user graphic command\n" +
+                        "       string, or delete unnecessary user graphic command string which\n" +
+                        "       is already registered before registering the current data.\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem UGC_DELETE_UNABLE = new ExampleItem("2315", "UGC DELETE UNABLE",
+                "No user graphic command string to be deleted.\n" +
+                        "       [Code]1User graphic command to be deleted is not registered.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       DELETE statement of the user graphic command\n" +
+                        "       Program Example:\n" +
+                        "       :\n" +
+                        "       DELETE\tMACRO[8]\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check and correct the command string to be deleted.\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem READ_WRITE_NO_SPEC = new ExampleItem("2316", "READ/WRITE NO SPEC.",
+                "An attempt to execute the READ/WRITE command although the\n" +
+                        "       READ/WRITE specification is not available.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Delete the READ/WRITE statement.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem READ_WRITE_BUFFER_OVER = new ExampleItem("2317", "READ/WRITE BUFFER OVER",
+                "Data size exceeds 160 bytes when READ/WRITE command is\n" +
+                        "       executed.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Alarm during execution of READ command\n" +
+                        "       2->Alarm during execution of WRITE command\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       PUT 'AB'\n" +
+                        "       PUT 'AB'\n" +
+                        "       :\t80 lines\n" +
+                        "       PUT 'AB'\n" +
+                        "       PUT 'AB'\n" +
+                        "       :\n" +
+                        "       WRITE 1\n" +
+                        "       One character is expressed in a code consisting of 7 bits.\n" +
+                        "       To distinguish roman characters from katakana, SI (shift in)\n" +
+                        "       code is put in front of a roman character while SO (shift out)\n" +
+                        "       code in front of katakana. If, however, roman characters\n" +
+                        "       (or katakana) come in succession, SI (or SO) code is not\n" +
+                        "       attached to each of the characters. In the above program, SI\n" +
+                        "       code is put at the head of the data, and so the data size\n" +
+                        "       exceeded 161 bytes, resulting in this alarm.\n" +
+                        "       [Measures to Take]Check the GET/PUT command.\n" +
+                        "       :\n" +
+                        "       PUT 'AB'\n" +
+                        "       PUT 'AB'\n" +
+                        "       PUT 'AB'79 lines\n" +
+                        "       PUT 'AB'\n" +
+                        "       :\n" +
+                        "       WRITE 1\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem READ_WRITE_DEVICE_NO = new ExampleItem("2318", "READ/WRITE DEVICE NO.",
+                "Device number in a READ/WRITE command is wrong.\n" +
+                        "       [Object]\n" +
+                        "        SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1->Device is specified by other than a number.\n" +
+                        "        2->Device number is other than 0 through 4.\n" +
+                        "        3->File I/O name is neither A, B nor C. \n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "        Program Example\n" +
+                        "          :\n" +
+                        "        WRITE 5\n" +
+                        "          :\n" +
+                        "       [Measures to Take]\n" +
+                        "        Check the READ/WRITE command.\n" +
+                        "          :\n" +
+                        "        WRITE 4\n" +
+                        "          :\n" +
+                        "       [Related Specifications]\n" +
+                        "        User task 2");
+
+        ExampleItem READ_WRITE_DATA = new ExampleItem("2319", "READ/WRITE DATA",
+                "Data in a READ/WRITE command is wrong.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Parity error in READ operation\n" +
+                        "       2->Transmission end code in WRITE data\n" +
+                        "       [Probable Faulty Locations]Hardware\n" +
+                        "       Parameter setting error\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Replace the RS232C interface.\n" +
+                        "       2)Check the parameter setting.\n" +
+                        "       The transfer end code can be chosen between % (1) and NULL (0)\n" +
+                        "       by setting data at the OPTIONAL PARAMETER (EXTERNAL I/O) \n" +
+                        "       Program end code.\n" +
+                        "       3)Check the program.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem READ_COMMUNICATION_ERROR = new ExampleItem("2320", "READ COMMUNICATION ERROR",
+                "An error during communications\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Character-string]Data number involved in error\n" +
+                        "       [Code]Status code at an occurrence of error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Varies depending on the error number.\n" +
+                        "       [Measures to Take]Refer to the error message explanation in\n" +
+                        "       accordance with the error number.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem WRITE_COMMUNICATION_ERROR = new ExampleItem("2321", "WRITE COMMUNICATION ERROR",
+                "An error during communications\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Character-string]Data number involved in error\n" +
+                        "       [Code]Status code at an occurrence of error\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Varies depending on the error number.\n" +
+                        "       [Measures to Take]Refer to the error message explanation in\n" +
+                        "       accordance with the error number.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem GET_PUT_NO_SPEC = new ExampleItem("2322", "GET/PUT NO SPEC",
+                "An attempt to execute the GET/PUT command although the GET/PUT\n" +
+                        "       specification is not supported.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Delete the GET/PUT command.");
+
+        ExampleItem GET_PUT_BUFFER_OVER = new ExampleItem("2323", "GET/PUT BUFFER OVER",
+                "The number of data sets is too much or too less for executing\n" +
+                        "       the data.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->With the GET command, the number of received data sets is\n" +
+                        "       larger than read pointer value.\n" +
+                        "       2->With the PUT command, the data size exceeds 160 bytes.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example16CH\n" +
+                        "        :   -- 16CH--\n" +
+                        "       *PUT 'ABC...P'\n" +
+                        "        :\n" +
+                        "       *PUT 'ABC...P'\n" +
+                        "        PUT 'Q' <-160th character\n" +
+                        "        WRITE 1\n" +
+                        "        :\n" +
+                        "       *-*10 lines\n" +
+                        "       [Measures to Take]Check the GET/PUT command.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem GET_PUT_NUMBER_OF_FIGURE = new ExampleItem("2324", "GET/PUT NUMBER OF FIGURE",
+                "Specification of the number of figures is wrong when a command\n" +
+                        "       is executed.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->During GET command execution\n" +
+                        "       2->During PUT command execution\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       With the GET or PUT command, up to only 10 characters (digits)\n" +
+                        "       (11 in the program example) can be specified following the\n" +
+                        "       variable (V1 in the program example). If no variable is\n" +
+                        "       specified, up to 160 characters can be specified as the number\n" +
+                        "       of characters to be skipped.\n" +
+                        "       Program Example:\n" +
+                        "       :\n" +
+                        "       PUT V1, 11 <-The specified number of digits exceeds the limit.\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the GET/PUT command.\n" +
+                        "       :\n" +
+                        "       PUT V1, 10\n" +
+                        "       :\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem GET_PUT_VARIABLE_DESIGNATION = new ExampleItem("2325", "GET/PUT VARIABLE DESIGNATION",
+                "Improper element in the data when a command is executed.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XYY\n" +
+                        "       X:\n" +
+                        "       1->During GET command execution\n" +
+                        "       2->During PUT command execution\n" +
+                        "       YY:Hexadecimal of ASCII code of improper data\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example\n" +
+                        "       :\n" +
+                        "       PUT VDOUT[1],1 <-Being an output variable, VDOUT cannot\n" +
+                        "       :\t\t be used with the PUT command.\n" +
+                        "       [Measures to Take]Check the GET/PUT command.\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem GET_NUMERIC_DATA = new ExampleItem("2326", "GET NUMERIC DATA",
+                "Wrong numerical data during the execution of the GET command\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Characters other than numbers and space are contained.\n" +
+                        "       2->More than one decimal point\n" +
+                        "       3->More than 9 digit number\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       If the data is A1234 ...\n" +
+                        "       :\n" +
+                        "       GET V1, 5\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the GET command.\n" +
+                        "       :\n" +
+                        "       GET 1\t  <-One character is skipped.\n" +
+                        "       GET V1, 4\n" +
+                        "       :\n" +
+                        "       [Related Specifications]User task 2");
+
+        ExampleItem CALCULATION_FUNCTION_NO_SPEC = new ExampleItem("2327", "CALCULATION FUNCTION NO SPEC",
+                " A command calling for calculation is designated although the\n" +
+                        "       control has no calculation specification (user task 2).\n" +
+                        "       The following command is designated:\n" +
+                        "       EOR, OR, AND, NOT, SIN, COS, TAN, ATAN, SQRT, ABS, BIN, BCD,\n" +
+                        "       ROUN, FIX, FUP, DROUND, DFIX, DFUP, ATAN2, and MOD\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010  Z = 60 * SIN [30]\n" +
+                        "       [Measures to Take]Eliminate math calculation function commands\n" +
+                        "       from the program. (Math calculation function can be used only\n" +
+                        "       with the user task 2 specification.)");
+
+        ExampleItem SUB_PROGRAM_NO_SPEC = new ExampleItem("2328", "SUB-PROGRAM NO SPEC.",
+                "Subprogram is programmed although the control has no subprogram\n" +
+                        "       specification (user task 2).\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:CALL  OSUB\n" +
+                        "       [Measures to Take]Eliminate the subprogram call command from\n" +
+                        "       the program.  (Use of subprogram is allowed only with the\n" +
+                        "       the control which has the user task 2 specification.)");
+
+        ExampleItem SUB_SPINDLE_INTERFERENCE_DISTANCE_B = new ExampleItem("2329", "SUB-SPINDLE INTERFERENCE DISTANCE B",
+                "The issued command requires the sub spindle headstock \n" +
+                        "       (W-axis) and B-turret (ZA-axis) to come closer beyond the \n" +
+                        "       interference distance specified by the parameter.\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Parameter set value");
+
+        ExampleItem INPUT_OUTPUT_VARIABLE_NO_SPEC = new ExampleItem("2330", "INPUT/OUTPUT VARIABLE NO SPEC.",
+                "I/O variables are designated although the control has no I/O\n" +
+                        "       variable specification (user task 2).\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  VDOUT[1] = VDIN[1]\n" +
+                        "       [Measures to Take]Eliminate I/O variables from the program.\n" +
+                        "       (Use of I/O variables is allowed only with the control which\n" +
+                        "       has the user task 2 specification.)");
+
+        ExampleItem MULTIPLE_MACHINING_NO_SPEC = new ExampleItem("2331", "MULTIPLE MACHINING NO SPEC.",
+                "A multi-machining M code (C-axis, M-tool) is designated for\n" +
+                        "       other than multi-machining models.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XX:Hexadecimal number of designated M code\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       The following M codes can not be designated for other than\n" +
+                        "       multi-machining models:\n" +
+                        "       M12 - M16, M109, M110, M146, M147, M162, M163, M229, M241, M242");
+
+        ExampleItem IN_PROCESS_GAUGING_NO_SPEC = new ExampleItem("2334", "IN PROCESS GAUGING NO SPEC.",
+                "In-process work gauging variables are designated or the gauging\n" +
+                        "       cycle is programmed although the control has no in-process\n" +
+                        "       gauging specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->In-process gauging variables are programmed in left part.\n" +
+                        "       2->In-process gauging variables are programmed in right part.\n" +
+                        "       3->Gauging cycle is programmed.\n" +
+                        "       4->Though there is not a Y-axis measure specification, in\n" +
+                        "          Y-axis measure cycle command is designated.\n" +
+                        "       5->Though there is not a measure within a machine specification\n" +
+                        "          or a touch setter specification, in measure cycle command\n" +
+                        "          is designated.\n" +
+                        "       6->In the spindle mode that cannot be measured, measurement\n" +
+                        "          cycle command is specified.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 VRNGZ = 100.000(VRNGZ is the in-process gauging variable.)\n" +
+                        "       [Measures to Take]Eliminate the in-process gauging variable or\n" +
+                        "       gauging cycle command from the program.");
+
+        ExampleItem POST_PROCESS_GAUGING_NO_SPEC = new ExampleItem("2335", "POST-PROCESS GAUGING NO SPEC.",
+                "Post-process work gauging variables are designated although the\n" +
+                        "       control has no post-process gauging specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Post-process gauging variables are designated in left part.\n" +
+                        "       2->Post-process gauging variables are designated in right part.\n" +
+                        "       3->Variable common to the turrets are designated in right part.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 VXMPO[1]=2(VXMPO[1] is the post-process gauging variable.)\n" +
+                        "       [Measures to Take]Eliminate the post-process gauging variable.");
+
+        ExampleItem ANIMATION_NO_SPEC = new ExampleItem("2336", "ANIMATION NO SPEC.",
+                "An attempt to execute graphic command is made although the\n" +
+                        "       graphic specification is not supported.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       DEF WORK\n" +
+                        "       PS LL, [0,0], [100, 100], 4\n" +
+                        "       END\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Delete the graphic command.\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem GRAPHIC_BACKUP_DATA_FILE_WRITE = new ExampleItem("2337", "GRAPHIC BACKUP DATA FILE WRITE",
+                "Failure in writing of the graphic PBU file by the SAVE command.\n" +
+                        "       [Probable Faulty Locations]Memory\n" +
+                        "       [Measures to Take]Replace memory board.\n" +
+                        "       [Related Specifications]Graphic");
+
+        ExampleItem SPINDLE_ORIENTATION_NO_SPEC = new ExampleItem("2338", "SPINDLE ORIENTATION NO SPEC.",
+                "Spindle orientation M code (M19) is designated although the\n" +
+                        "       control has no spindle orientation specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  M19\n" +
+                        "       [Measures to Take]Eliminate M19 from the program.");
+
+        ExampleItem LOAD_MONITOR_NO_SPEC = new ExampleItem("2339", "LOAD MONITOR NO SPEC.",
+                "When the load monitor specification is not selected,\n" +
+                        "       System-variable of Load monitor or CLEAR command is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        None\n" +
+                        "         ->On the machine without load monitor function, the load\n" +
+                        "           monitor command \"VLMON\" or \"CLEAR\" was issued.\n" +
+                        "           System-variable of Load monitor data \"VLM?B\",\"VLM?1\",\n" +
+                        "           \"VLM?2\" was issued. ( ? = Z,X,C,S,M,W,B,Y )\n" +
+                        "           System-variable \"VOLPR\" was ordered.\n" +
+                        "        1->On the machine without load-monitor-W function,\n" +
+                        "           the load-monitor-W command \"VWMON\" was issued.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)\"VLMON\" or \"CLEAR\",\"VLM?B\",\"VLM?1\",\"VLM?2\" is specified in\n" +
+                        "         a program for the control which does not support the monitor\n" +
+                        "         specification. ( ? = Z,X,C,S,M,W,B,Y )\n" +
+                        "         The commands above are input in the MDI mode.\n" +
+                        "       2)On the machine without load-monitor-W function,\n" +
+                        "         the load-monitor-W command \"VWMON\" was specified in the\n" +
+                        "         program or issued in MDI mode.\n" +
+                        "       [Measures to Take]\n" +
+                        "        1)Correct the program;delete \"VLMON\" or \"CLEAR\",\"VLM?B\",\n" +
+                        "          \"VLM?1\",\"VLM?2\" command from the program.\n" +
+                        "        2)Correct the program;delete VWMON command from the program.\n" +
+                        "        3)Correct the program;delete VOLPR command from the program.");
+
+        ExampleItem THREAD_PHASE_MATCHING_NO_SPEC = new ExampleItem("2340", "THREAD PHASE MATCHING NO SPEC.",
+                "System variable for thread phase correction (VTHRX or VTHRZ) is\n" +
+                        "       designated although the thread phase correction specification\n" +
+                        "       is not supported. Or,it instructed in M code for thread phase\n" +
+                        "       correction specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->An attempt to write has taken place.\n" +
+                        "       2->An attempt to read has taken place.\n" +
+                        "       3->it instructed in M code for thread phase correction\n" +
+                        "          specification.\n" +
+                        "       [Probable Faulty Locations]VTHRX or VTHRZ command is specified\n" +
+                        "       in a program for the control which does not support the thread\n" +
+                        "       phase compensation specification.\n" +
+                        "       The commands above are input in the MDI mode.\n" +
+                        "       It instructed there was no thread phase correction\n" +
+                        "       specification in either M193,M194,M195,M196 or M197.\n" +
+                        "       [Measures to Take]Correct the program.");
+
+        ExampleItem CIRCULAR_CUTTING_NO_SPEC = new ExampleItem("2341", "CIRCULAR CUTTING NO SPEC.",
+                "The arc thread cutting command (G112, G113) is designated while\n" +
+                        "       the arc thread cutting specification is not supported.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:G112  X100  Z100  I50  K0  F0.2\n" +
+                        "       [Measures to Take]Eliminate the arc thread cutting command\n" +
+                        "       (G112, G113) from the program.");
+
+        ExampleItem CIRCULAR_THREAD_CUTTING_COMMAND = new ExampleItem("2342", "CIRCULAR THREAD CUTTING COMMAND",
+                "In the arc thread cutting commands, the designated arc either\n" +
+                        "       is in contact with or intersects the line (called the center\n" +
+                        "       line) passing the center of the arc and in parallel with the\n" +
+                        "       thread pitch axis.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The start point of the arc thread cutting is on the center\n" +
+                        "       line.\n" +
+                        "       2->The end point of the arc thread cutting is on the center\n" +
+                        "       line.\n" +
+                        "       3->The end and the start points lie in the opposite side in\n" +
+                        "       reference with the center line.\n" +
+                        "       4->The tool advancing direction is different from the commanded\n" +
+                        "       thread cutting direction (for the arc having shorter arc length\n" +
+                        "       between the start and end points.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Even when the programmed commands are correct, this alarm might\n" +
+                        "       occur if compensation is activated for the commands due to the\n" +
+                        "       nose R compensation function.\n" +
+                        "       Program Example:G01  X100  Z100\n" +
+                        "       G112  X120  Z110  I10  K0  M26End point is on the center line.");
+
+        ExampleItem TOOL_RETRACT_NO_SPEC = new ExampleItem("2343", "TOOL RETRACT NO SPEC",
+                "The tool retraction command is designated although the control\n" +
+                        "       does not support the tool retraction specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The EIN, DIN, or RTI command is designated.\n" +
+                        "       2->The system variable VEINT is used.\n" +
+                        "       [Measures to Take]Check the specification code.\n" +
+                        "       [Related Specifications]Tool retraction cycle");
+
+        ExampleItem TOOL_RETRACT_INTERRUPT_ENABLE_COM = new ExampleItem("2344", "TOOL RETRACT INTERRUPT ENABLE COM.",
+                "A wrong command is contained in the tool retraction\n" +
+                        "       interruption enabling command (EIN).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The EIN command is already designated.\n" +
+                        "       2->The subprogram call count command Q is contained in the EIN\n" +
+                        "       command.\n" +
+                        "       [Probable Faulty Locations]Incorrect program\n" +
+                        "       Program Example:\n" +
+                        "       EIN  OABC\n" +
+                        "       EIN  ODEF ->An alarm occurs here.\n" +
+                        "       :\n" +
+                        "       EIN  OABC  Q5\n" +
+                        "       \t   ^^Not necessary\n" +
+                        "       [Related Specifications]Tool retraction cycle");
+
+        ExampleItem TOOL_RETRACT_INTERRUPT_DISABLE_COM = new ExampleItem("2345", "TOOL RETRACT INTERRUPT DISABLE COM.",
+                "A wrong command is contained in the tool retraction\n" +
+                        "       interruption disabling command (DIN).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1->DIN command was specified before EIN command.\n" +
+                        "       EIN: command that permits interruption\n" +
+                        "       [Probable Faulty Locations]Incorrect program\n" +
+                        "       Program Example:\n" +
+                        "       :\t    EIN  OABC\n" +
+                        "       DIN  OABC ->:\n" +
+                        "       :\t    DIN\n" +
+                        "       [Related Specifications]Tool retraction cycle");
+
+        ExampleItem TOOL_RETRACT_INTERRUPT_RETURN_COM = new ExampleItem("2346", "TOOL RETRACT INTERRUPT RETURN COM.",
+                "The interruption return command (RTI) was issued\n" +
+                        "       when the tool retract interruption was not activated.\n" +
+                        "       Or, when it is under-cases, RTI-command was performed.\n" +
+                        "        1)Exciting of the tool retract cycle.\n" +
+                        "        2)The tool retract cycle for hob-cutting.\n" +
+                        "        3)The tool retract cycle on G127-mode.\n" +
+                        "        4)The mode differs \"the tool retract interruption\"\n" +
+                        "          and \"the interruption return command\".\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1->The RTI command is designated in other than tool\n" +
+                        "           retraction interruption mode.\n" +
+                        "        2->The RTI command is designated after the tool\n" +
+                        "           interruption during the thread cutting cycle.\n" +
+                        "        3->Tool retract cycle was executed during HOB cutting.\n" +
+                        "        4->The tool retract cycle was ordered on G127-mode.\n" +
+                        "        5->The mode differs \"the tool retract interruption\"\n" +
+                        "           and \"the interruption return command\".\n" +
+                        "           (G136/G138, G126/G127, G140/G141)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1,2,4,5->Incorrect program\n" +
+                        "        3->Push the button of retract cycle during\n" +
+                        "           HOB cutting.\n" +
+                        "       [Related Specifications]\n" +
+                        "        Tool retraction cycle");
+
+        ExampleItem ROBOT_NO_SPEC = new ExampleItem("2347", "ROBOT NO SPEC.",
+                "G227 (robot request command) is designated although the control\n" +
+                        "       has no robot specification.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:ROBOT  O100\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the ROBOT instruction from the program.");
+
+        ExampleItem ROBOT_PROGRAM_NAME = new ExampleItem("2348", "ROBOT PROGRAM NAME",
+                "No robot program name is designated following G227.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:ROBOT\n" +
+                        "       [Measures to Take]\n" +
+                        "       Designate the program name following the ROBOT instruction.\n" +
+                        "       ROBOT  O100");
+
+        ExampleItem LOADER_NO_SPEC = new ExampleItem("2349", "LOADER NO SPEC.",
+                "A loader program is called for the machine not equipped with a\n" +
+                        "       loader.\n" +
+                        "       [Code]\n" +
+                        "       1->Loader program was called by a Loader good for nothing\n" +
+                        "          machine type.\n" +
+                        "       2->Loader program was called by a machine type of Loader TYPE-C\n" +
+                        "          specification.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Loader no spec.\n" +
+                        "       2)It is Loader TYPE-C specification.\n" +
+                        "       Program Example:\n" +
+                        "       LOADER O1000\n" +
+                        "       :");
+
+        ExampleItem LOADER_PROGRAM_NAME = new ExampleItem("2350", "LOADER PROGRAM NAME",
+                "No loader program name is designated when loading command is\n" +
+                        "       provided.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  LOADER\n" +
+                        "       [Measures to Take]\n" +
+                        "       Designate the program name following the LOADER instruction.\n" +
+                        "       N010  LOADER  O100");
+
+        ExampleItem COUPLING_DEVISE_PROGRAM_SELECT_NO_SPEC = new ExampleItem("2351", "COUPLING DEVISE PROGRAM SELECT NO SPEC.",
+                "An attempt was made to select (MHPS) the program for an\n" +
+                        "       external device although the coupled device program selection\n" +
+                        "       specification is not supported.\n" +
+                        "       [Object]SYSTEM  ");
+
+        ExampleItem CHAMFERING_G01_MODE = new ExampleItem("2353", "CHAMFERING G01 MODE",
+                "Chamfering commands are designated in other than G01 mode.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       None->No G code programmed\n" +
+                        "       2->G02\n" +
+                        "       3->G03\n" +
+                        "       1F->G31\n" +
+                        "       20->G32\n" +
+                        "       21->G33\n" +
+                        "       22->G34\n" +
+                        "       23->G35\n" +
+                        "       FE->G00\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N009  G00  X50\tZ100\n" +
+                        "       N010  G75  X100  L-5  F0.5\n" +
+                        "       N011  Z50\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the G codes designated in the G75 block.\n" +
+                        "       For the example program, add an G01 command to the program.\n" +
+                        "       N010  G75  G01\tX100  L-5  F0.5");
+
+        ExampleItem CHAMFERING_L_OVER = new ExampleItem("2354", "CHAMFERING L OVER",
+                "In chamfering commands, designated L value is larger than the\n" +
+                        "       axis movement distance.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of axis movement distance\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N009  G01  X97\tZ100\n" +
+                        "       N010  G75  X100  L-5  F0.5\n" +
+                        "       N011  Z50\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the chamfer size and the axis movement amount.\n" +
+                        "       In the example program above, axis movement amount is \"3\" which\n" +
+                        "       is smaller than the chamfer amount \"5\".");
+
+        ExampleItem CHAMFERING_L_ILLEGAL_ORDER = new ExampleItem("2355", "CHAMFERING L ILLEGAL ORDER",
+                "In chamfering commands, no L command is designated, or\n" +
+                        "       designated L value is not:-99999.999 <= L <= 99999.999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of L value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G75 G01 X100 F0.5\n" +
+                        "       [Measures to Take]Check the L command.\n" +
+                        "       In the example program above, since an L command is not\n" +
+                        "       designated, designate one.\n" +
+                        "       N010 G75 G01 X100 L-5 F0.5");
+
+        ExampleItem CHAMFERING_X_Z_ILLEGAL_ORDER = new ExampleItem("2356", "CHAMFERING X,Z ILLEGAL ORDER",
+                "In chamfering commands, either both X and Z commands are\n" +
+                        "       designated, or neither X nor Z command is designated.\n" +
+                        "       Designated X or Z value is not:-99999.999<=X(Z)<=99999.999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->Either both X and Z are designated, or neither X nor\n" +
+                        "       Z is designated.\n" +
+                        "       Others:Hexadecimal number of X or Z value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N009 G01 X50 Z100\n" +
+                        "       N010 G75 X100 Z98 L-5 F0.5\n" +
+                        "       [Measures to Take]Check the X and Z commands. In the example\n" +
+                        "       program, both X and Z commands are designated in the G75 block.");
+
+        ExampleItem CHAMFERING_ANY_ANGLE_CALCULATION = new ExampleItem("2357", "CHAMFERING ANY ANGLE CALCULATION",
+                "Calculation error during the calculation of automatic\n" +
+                        "       chamfering with an arbitrary angle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XYY\n" +
+                        "       YY:\n" +
+                        "       bit0->Overflow in converting into integer\n" +
+                        "       bit1->Exponential underflow\n" +
+                        "       bit2->Exponential overflow\n" +
+                        "       bit3->Calculation of root of a negative number\n" +
+                        "       bit4->Division by 0\n" +
+                        "       bit5->Angle overflow for SIN, COS, TAN and COT\n" +
+                        "       X:\n" +
+                        "       1->Calculation of the starting point of chamfering\n" +
+                        "       2->Calculation of the end point of chamfering\n" +
+                        "       3->Calculation of the center of the arc for rounding\n" +
+                        "       4->Calculation of the starting and end points for rounding\n" +
+                        "       5->Calculation for obtaining the chamfering direction\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Check the contents of error in the program\n" +
+                        "       from the alarm code number; remove the cause which intervenes\n" +
+                        "       the execution of arbitrary angle chamfering command.\n" +
+                        "       [Related Specifications]Automatic any-angle chamfering");
+
+        ExampleItem CHAMFERING_ANY_ANGLE = new ExampleItem("2358", "CHAMFERING ANY ANGLE",
+                "No chamfering is possible since the corner angle of the edge to\n" +
+                        "       be chamfered is 180 deg.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G00 X20 Z120\n" +
+                        "       G75 G01 X60 L6 F0.1\n" +
+                        "       X90\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the G75 and G76 commands.\n" +
+                        "       :\n" +
+                        "       G00 X20 Z120\n" +
+                        "       G75 G01 X60 L6 F0.1\n" +
+                        "       Z90\n" +
+                        "       :\n" +
+                        "       [Related Specifications]Automatic any-angle chamfering");
+
+        ExampleItem NOSE_R_COMP_NO_SPEC = new ExampleItem("2359", "NOSE-R_ COMP. NO. SPEC.",
+                "G41 and G42 calling for tool nose radius compensation mode is\n" +
+                        "       designated although the control has no nose radius compensation\n" +
+                        "       specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G40 X-- Z--\n" +
+                        "       [Measures to Take]Delete the G commands related with the nose R\n" +
+                        "       compensation function, G41, G42 and G40, from the program.");
+
+        ExampleItem NOSE_R_COMP_NOSE_R_LT_CIRCLE_R = new ExampleItem("2360", "NOSE-R COMP. NOSE-R>CIRCLE-R",
+                "Point of intersection cannot be calculated since the radius of\n" +
+                        "       the designated arc is smaller than nose radius.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->When obtaining the point of intersection - straight line to\n" +
+                        "       arc\n" +
+                        "       2->When obtaining the point of intersection - arc to straight\n" +
+                        "       line\n" +
+                        "       3->When obtaining the point of intersection - arc to arc\n" +
+                        "       4->The arc radius in the sequence following the G41/G42\n" +
+                        "       sequence is smaller than nose radius.\n" +
+                        "       [Probable Faulty Locations]Faulty program, or error in setting\n" +
+                        "       the nose R compensation value\n" +
+                        "       Program Example:\n" +
+                        "       N010 G42 X-- Z-- T010101 (nose R: 0.5)\n" +
+                        "       :\n" +
+                        "       N015 G02 X-- Z-- I1\n" +
+                        "       Nose R compensation value (tool data set)\n" +
+                        "       N01 X5.000 Z5.000\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the arc radius command in nose R compensation mode ON\n" +
+                        "       program and also the nose R compensation value.\n" +
+                        "       The nose R compensation data is set at the nose R compensation\n" +
+                        "       field on the tool data setting screen. The set value is called\n" +
+                        "       by the number of field where \"**\" of \"T** ...\" is set.\n" +
+                        "       In the example program above, nose R compensation value is set\n" +
+                        "       as 5 mm although correct value is 0.5 mm; correct the setting.\n" +
+                        "       N01 20X0.500  Z0.500");
+
+        ExampleItem NOSE_R_COMP_CALCULATION = new ExampleItem("2361", "NOSE-R COMP. CALCULATION",
+                "Error in floating-point calculation for nose radius\n" +
+                        "       compensation.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XYY\n" +
+                        "       YY:\n" +
+                        "       bit0->Overflow in converting into integer\n" +
+                        "       bit1->Exponential underflow\n" +
+                        "       bit2->Exponential overflow\n" +
+                        "       bit3->Calculation of root of a negative number\n" +
+                        "       bit4->Division by 0\n" +
+                        "       bit5->Angle overflow for SIN, COS, TAN and COT\n" +
+                        "       X:\n" +
+                        "       1->Calculation of graphic factor of straight line\n" +
+                        "       2->Calculation of graphic factor of arc\n" +
+                        "       3->Offset calculation of graphic factor of nose radius\n" +
+                        "       compensation amount\n" +
+                        "       4->Vertical vector calculation of straight lines and arcs\n" +
+                        "       6->Calculation of point of intersection:  straight line and\n" +
+                        "       straight line\n" +
+                        "       7->Calculation of point of intersection:  straight line and arc\n" +
+                        "       8->Calculation of point of intersection:  arc and arc\n" +
+                        "       9->Calculation to select the target point from possible two\n" +
+                        "       points of intersection with an arc\n" +
+                        "       A->Recalculation of graphic factor of arc\n" +
+                        "       B->Calculation of I and K from nose radius compensation point\n" +
+                        "       C->Calculation of commands X, Z , I and K\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the program in reference to the code number.");
+
+        ExampleItem NOSE_R_COMP_CANCEL_G00_G01 = new ExampleItem("2362", "NOSE-R COMP. CANCEL G00 G01",
+                "Code G40 canceling tool nose radius compensation mode is\n" +
+                        "       designated in other than the G00 or G01 mode.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G40 G02 X-- Z-- I--\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the position of the G40 command; nose R compensation\n" +
+                        "       should be canceled only in the G00 or G01 mode.\n" +
+                        "       In the example program above, the nose R compensation mode is\n" +
+                        "       canceled in the G02 mode; correct the program so that the\n" +
+                        "       cancel is made in the specified interpolation mode.\n" +
+                        "       N010 G02 X-- Z-- I--\n" +
+                        "       N011  G40G00  X--");
+
+        ExampleItem NOSE_R_COMP_NO_CROSS_POINT = new ExampleItem("2363", "NOSE-R COMP. NO CROSS POINT",
+                "Point of intersection cannot be calculated in line to arc or\n" +
+                        "       arc to arc intersection.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Straight line to arc\n" +
+                        "       2->Arc to straight line\n" +
+                        "       3->Arc to arc");
+
+        ExampleItem NOSE_R_COMP_START_UP_IMPOSSIBLE = new ExampleItem("2364", "NOSE-R COMP. START UP IMPOSSIBLE",
+                "Tool nose radius compensation mode entry is intended in other\n" +
+                        "       than permissible manner, and compensated point cannot be\n" +
+                        "       calculated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       None->G41 or G42 is designated in other than G00 or G01 mode.\n" +
+                        "       10->The value commanded in the G41 or G42 block and the value\n" +
+                        "       commanded in the following block are the same.\n" +
+                        "       11->X or Z command is not designated in the block following\n" +
+                        "       G41 or G42 block.\n" +
+                        "       40->G40 is designated in the block following G41 or G42 block.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 G42 X50 Z55\n" +
+                        "       N011 X50 Z55\n" +
+                        "       [Measures to Take]Check the G42 block and the following block.\n" +
+                        "       In the example program above, X and Z commands in the G42 block\n" +
+                        "       and the following block are identical; correct the program.\n" +
+                        "       In this case, delete the N011 block since it is not necessary.");
+
+        ExampleItem NOSE_R_COMP_THREAD_CUTTING_CYCLE = new ExampleItem("2365", "NOSE-R COMP. THREAD CUTTING CYCLE",
+                "G31, G32 or G33 calling for thread cutting cycle is designated\n" +
+                        "       during the tool nose radius compensation mode.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1F->G31 was designated\n" +
+                        "       20->G32 was designated\n" +
+                        "       21->G33 was designated\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 G42\n" +
+                        "       N020 G33 X-- Z--\n" +
+                        "       N030 G40\n" +
+                        "       [Measures to Take]In the nose R compensation mode, thread\n" +
+                        "       cutting cycle cannot be designated.  Before calling out the\n" +
+                        "       thread cutting cycle, cancel the nose R compensation mode.");
+
+        ExampleItem TOOL_RADIUS_COMP_NO_SPEC = new ExampleItem("2366", "TOOL RADIUS COMP. NO SPEC.",
+                "The cutter radius compensation ON command* is designated for\n" +
+                        "       the control not equipped with the cutter radius compensation\n" +
+                        "       function.\n" +
+                        "       * Compensation ON command (G41 or G42) following the\n" +
+                        "       designation of compensation plane (G17 XY plane).\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Correct the program (Delete the G17, G41\n" +
+                        "       and/or G42 command for the program).");
+
+        ExampleItem TOOL_RADIUS_COMP_NOSE_R_COMP_CHANGE_SURFACE = new ExampleItem("2367", "TOOL RADIUS COMP. NOSE-R COMP. CHANGE SURFACE",
+                "The designated plane for the cutter radius compensation or nose\n" +
+                        "       R compensation is changed during the compensation mode is\n" +
+                        "       active.Before designating a new plane for the activation of the\n" +
+                        "       compensation function, it is necessary to cancel the\n" +
+                        "       compensation mode by designating the G40 code.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       G17, G18: tool radius compensation plan selection\n" +
+                        "       Program Example:\n" +
+                        "       G17\n" +
+                        "       G41\n" +
+                        "       :\n" +
+                        "       G18\n" +
+                        "       [Measures to Take]Correct the program.\n" +
+                        "       G17\n" +
+                        "       G41\n" +
+                        "       :\n" +
+                        "       G40 <-Cancel the compensation mode.\n" +
+                        "       G18");
+
+        ExampleItem TOOL_RADIUS_COMP_C_AXIS_SEPARATION = new ExampleItem("2368", "TOOL RADIUS COMP. C-AXIS SEPARATION",
+                "The cutter radius compensation ON command is designated while\n" +
+                        "       the C-axis joint command (M110) is not designated.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       M109 ->C-axis disconnection command\n" +
+                        "       G17\n" +
+                        "       G41 ->An alarm occurs\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Correct the program.\n" +
+                        "       M110 ->C-axis joint command\n" +
+                        "       G17\n" +
+                        "       G41\n" +
+                        "       :");
+        ExampleItem TOOL_RADIUS_COMP_QA_COMMAND = new ExampleItem("2369", "TOOL RADIUS COMP. QA COMMAND",
+                "QA command (the number of C-axis revolutions for positioning)\n" +
+                        "       was issued during tool radius compensation.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G17\n" +
+                        "       G41\n" +
+                        "       G00  X100  C0  QA=2An alarm occurs';\n" +
+                        "       [Measures to Take]\n" +
+                        "       To rotate the C-axis several turns, specify the C-axis commands\n" +
+                        "       in succession.\n" +
+                        "       Example:\n" +
+                        "       G17\n" +
+                        "       G41\n" +
+                        "       G00 X100 C0\n" +
+                        "       C180\n" +
+                        "       C0\n" +
+                        "       C180\n" +
+                        "       C0");
+        ExampleItem TOW_ALONG_TAILSTOCK_MOVEMEN_NO_SPEC = new ExampleItem("2370", "TOW-ALONG TAILSTOCK MOVEMEN NO SPEC.",
+                "152 is designated although the control has no tow-along\n" +
+                        "       tailstock specification.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G152 W100\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the tow-along tailstock command G152 from the program.");
+        ExampleItem TOW_ALONG_TAILSTOCK_MOVEMEN_CONDITION = new ExampleItem("2371", "TOW-ALONG TAILSTOCK MOVEMEN CONDITION",
+                "G152 (tow-along tailstock positioning cycle) is designated in\n" +
+                        "       other than G13 (A saddle) mode.\n" +
+                        "       G152 is designated without a W command.\n" +
+                        "       G152 is designated during the tool nose radius compensation or\n" +
+                        "       LAP mode.\n" +
+                        "       G152 instruction (tailstook translocation cycle instruction) of\n" +
+                        "       NC tailstook specification and G153 instruction (tow-along\n" +
+                        "       steady rest translocation cycle instruction) of a NC tailstook\n" +
+                        "       travelling-type tow-along steady rest specification except for\n" +
+                        "       A saddle command is designated.\n" +
+                        "       Or without W instruction command is designated.\n" +
+                        "       Or in nose-R compensation command is designated.\n" +
+                        "       Or in LAP command is designated.\n" +
+                        "       Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited.\n" +
+                        "       Concerning W axis Cut-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited. \n" +
+                        "       [Code]\n" +
+                        "       1->G152,G153 designated in other than A saddle.\n" +
+                        "       2->G152,G153 designated without a W command.\n" +
+                        "       3->G152,G153 designated during the tool nose radius\n" +
+                        "          compensation mode.\n" +
+                        "       4->G152,G153 designated during the LAP mode.\n" +
+                        "       5->G152,G153 command was issued in the Y-axis control mode.\n" +
+                        "       6->G152 instructions were done by the state that X axis is not\n" +
+                        "          plus variable limit position.\n" +
+                        "       7->When restart-order was performed, real-position of tailstock\n" +
+                        "          differ from movement-target-position of one.\n" +
+                        "       8->The setting value of the set selected with the multiple\n" +
+                        "          sizing position commmand is unmatched.\n" +
+                        "       9->The sizing position command is executed while the brake is\n" +
+                        "          not released in the sizing position area.\n" +
+                        "       10->The following are the disagreements before and after\n" +
+                        "          sequence restart.\n" +
+                        "           The multiple sizing position\n" +
+                        "           M55/M56/M847\n" +
+                        "       11->There is an error in the multiple sizing position command.\n" +
+                        "       12->The NC tailstock no load torque teaching cycle command is\n" +
+                        "          issued at the -side viewed from the approach position.\n" +
+                        "       13->A system variable(VTSWP and VTSAP and VTSRT) was ordered \n" +
+                        "          during movement.\n" +
+                        "       14->The set number of the mode exclusive use which isn't chosen\n" +
+                        "           in the low thrust spec was ordered.\n" +
+                        "       15->When it was the number of the mode which isn't chosen \n" +
+                        "           in the low thrust spec, a movement order was performed.\n" +
+                        "       16->An order of thrust change was performde during in low thrust\n" +
+                        "           mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Program error\n" +
+                        "          Program Example:N010 G152\n" +
+                        "       [Measures to Take]\n" +
+                        "       1) Check the commands in the G152 block.\n" +
+                        "          In the example program above, no W command is designated.\n" +
+                        "          Designate one:\n" +
+                        "       \t\t   N010 G152 W100");
+
+        ExampleItem LASER_MEASUREMENT_NO_SPEC = new ExampleItem("2372", "LASER MEASUREMENT NO SPEC.",
+                "An attempt is made to execute the LMW and LMV commands although\n" +
+                        "       the Inductosyn pitch error compensation specification is not\n" +
+                        "       supported (excluding LR15).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       LMW  Z100\n" +
+                        "       :\n" +
+                        "       LMV  Z100\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the LMN and LMV commands from the program.");
+
+        ExampleItem LASER_MEASUREMENT_CONDITION = new ExampleItem("2373", "LASER_MEASUREMENT_CONDITION",
+                "Conditions in which the laser measurement commands LMW and LMV\n" +
+                        "       have been executed are not correct.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The command is designated for A and B\n" +
+                        "       2->Both X and Z commands are designated in the same block.\n" +
+                        "       3->The command is designated in the nose R compensation mode.\n" +
+                        "       4->The command is designated in the LAP mode.\n" +
+                        "       5->Q command is designated with the LMW command.\n" +
+                        "       6->The measuring range includes the limit.\n" +
+                        "       7->The identical point is designated as the start and end\n" +
+                        "       points of measurement.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       :\n" +
+                        "       LMW  Z100  X100\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the contents of error in the program\n" +
+                        "       from the alarm code number; remove the cause which intervenes\n" +
+                        "       the execution of the laser measurement command.\n" +
+                        "       LMW Z100\n" +
+                        "       LMW X100\n" +
+                        "       [Related Specifications]Inductosyn pitch error compensation");
+
+        ExampleItem LAP_NO_SPEC = new ExampleItem("2374", "LAP NO SPEC.",
+                "G85, G86, G87 or G88 calling for LAP mode is designated\n" +
+                        "       although the control has no LAP specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Delete the LAP command if the control does\n" +
+                        "       not support the LAP function.");
+
+        ExampleItem LAP_B_ILLEGAL_ORDER = new ExampleItem("2375", "LAP B ILLEGAL ORDER",
+                "B command specifying the tool tip angle in G88 LAP mode is\n" +
+                        "       either B < 0-deg or B >= 180-deg.\n" +
+                        "       G88: Calls continuous thread cutting cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G88 NLAP1 M32 M73 B-60 H10 D2 U0.2\n" +
+                        "       [Measures to Take]Check the B command.\n" +
+                        "       In the example program, the B command has a negative value,\n" +
+                        "       which must be designated in a positive value.\n" +
+                        "       N010 G88 NLAP1 M32 M73 B60 H10 D2 U0.2\n" +
+                        "       [Related Specifications]LAP");
+
+        ExampleItem LAP_D_ILLEGAL_ORDER = new ExampleItem("2376", "LAP D ILLEGAL ORDER",
+                "In G85, G86 and G88 LAP mode, either no D command is\n" +
+                        "       designated, or the designated D value is either negative or\n" +
+                        "       there are too many digits.\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       G86: Calls rough copy turning cycle.\n" +
+                        "       G88: Calls continuous thread cutting cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Designated D value is not:-99999.999<=D<=99999.999\n" +
+                        "       2->Either negative or zero\n" +
+                        "       3->No D command designated\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G88 NLAP1 M32 M73 B60 H10 D-2 U0.2\n" +
+                        "       [Measures to Take]Check the D command.\n" +
+                        "       In the example program, the D command has a negative value,\n" +
+                        "       which must be designated in a positive value.\n" +
+                        "       N010 G88 NLAP1 M32 M73 B60 H10 D2 U0.2");
+
+        ExampleItem LAP_DA_DB_ILLEGAL_ORDER = new ExampleItem("2377", "LAP DA(DB) ILLEGAL ORDER",
+                "When G84 and XA (ZA) or XB (ZB) are designated in G85 LAP mode,\n" +
+                        "       the DA or DB command value is negative or has too many digits.\n" +
+                        "       G84: Changes cutting conditions of rough bar turning cycle.\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       DA: Depth of cut after cutting condition change point A\n" +
+                        "       DB: Depth of cut after cutting condition change point B\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Designated DA(DB) value is not:-99999.999<=DA(DB)<=9999.999\n" +
+                        "       2->Either negative or zero\n" +
+                        "       [Probable Faulty Locations]Program\n" +
+                        "       Program Example:\n" +
+                        "       N010 G85 NLAP1 D4 F0.5 U0.2 W0.1 CR\n" +
+                        "       $ G84 XA=70 DA=-2 FA=0.3 CR\n" +
+                        "        $:Specifying $ at the head of command line permits the line to\n" +
+                        "          be included in the same block with the previous line.\n" +
+                        "       [Measures to Take]Check the DA or DB value. In the above\n" +
+                        "       example, correct the negative DA value.\n" +
+                        "       N010 G85 NLAP1 D4 F0.5 U0.2 W0.1 CR\n" +
+                        "       $ G84 XA=70 DA=2 FA=0.3 CR\n" +
+                        "       Related Specification LAP");
+
+        ExampleItem LAP_H_ILLEGAL_ORDER = new ExampleItem("2378", "LAP H ILLEGAL ORDER",
+                "In G88 LAP mode, no H command is designated, or designated H\n" +
+                        "       value is negative or there are too many digits.\n" +
+                        "       G88: Calls continuous thread cutting cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Designated H value is not:-99999.999<=H<=99999.999\n" +
+                        "       2->Either negative or zero\n" +
+                        "       3->No H command designated\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program ExampleN010 G88 NLAP1 M32 M73 B60 H-10 D2 U0.2\n" +
+                        "       [Measures to Take]Check the H command.\n" +
+                        "       In the example program, the H command has a negative value,\n" +
+                        "       which must be designated in a positive value.\n" +
+                        "       N010 G88 NLAP1 M32 M73 B60 H10 D2 U0.2");
+
+        ExampleItem LAP_H_U_W_LESS_THAN_D_M73 = new ExampleItem("2379", "LAP H-U(W) LESS THAN D(M73)",
+                "In M73 of G88 LAP mode, the value\n" +
+                        "       \"thread height H - finish allowance U (W)\"\n" +
+                        "       is smaller than D, and finish cut cycle is impossible.\n" +
+                        "       G88: Calls continuous thread cutting cycle.\n" +
+                        "       M73: Thread cutting pattern 1\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  G88  NLAP1  M32  M73  B60  H5  D3  U3\n" +
+                        "       [Measures to Take]Check the D, U and H commands.\n" +
+                        "       For the example program, correct the value since \"H - U >= D\"\n" +
+                        "       is not satisfied.\n" +
+                        "       N010  G88  NLAP1  M32  M73  B60  H5  D3 U0.3");
+
+        ExampleItem LAP_U_W_ILLEGAL_ORDER = new ExampleItem("2380", "LAP U(W) ILLEGAL_ORDER",
+                "LAP command G85, G86, G87, or G88 has a U value (finish\n" +
+                        "       allowance of X-axis component) or a W value (finish allowance\n" +
+                        "       of Z-axis component) which is negative or larger than the\n" +
+                        "       allowable maximum value.\n" +
+                        "       Numerical value of U and W commands must be:0<=U(W)<=99999.999\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       G86: Calls rough copy turning cycle.\n" +
+                        "       G87: Calls finish turning cycle.\n" +
+                        "       G88: Calls continuous thread cutting cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Designated U value is not: 0 <= U <= 99999.999\n" +
+                        "       2->Designated U or W command value is negative.\n" +
+                        "       3->Infeeding direction is reversed by finish allowance.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  G85  NLAP1  D4  F0.5  U0.2  W-0.1\n" +
+                        "       [Measures to Take]Check the U (W) command.\n" +
+                        "       In the example program, the U (W) command has a negative value,\n" +
+                        "       which must be designated in a positive value.\n" +
+                        "       N010  G85 NLAP1  D4  F0.5  U0.2  W0.1\n" +
+                        "       [Related Specifications]LAP");
+
+        ExampleItem LAP_U_W_GREATER_THAN_H = new ExampleItem("2381", "LAP U(W) GREATER THAN H",
+                "In G88 LAP mode, designated finish allowance U or W is larger\n" +
+                        "       than the thread height H.\n" +
+                        "       G88: Calls continuous thread cutting cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G88 NLAP1 M32 M73 B60 H10 D2 U20\n" +
+                        "       [Measures to Take]Check the U and H commands.\n" +
+                        "       In the example program, U command value is greater than H\n" +
+                        "       command value (U  H); correct either or both of these command\n" +
+                        "       values.\n" +
+                        "       N010 G88 NLAP1 M32 M73 B60 H10 D2 U0.2\n" +
+                        "       [Related Specifications]LAP");
+
+        ExampleItem LAP_XA_ZA_XB_ZB_ILLEGAL_ORDER = new ExampleItem("2382", "LAP XA(ZA),XB(ZB) illegal order",
+                "In G85 LAP mode, the number of digits of the designated XA (ZA)\n" +
+                        "       or XB (ZB) command is larger than the allowable number when\n" +
+                        "       G84 is specified.\n" +
+                        "       G84: Changes cutting conditions of rough bar turning cycle.\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->In longitudinal turning, the command value exceeds the\n" +
+                        "       following range:-99999.999 <=  XA (XB) <= 99999.999.\n" +
+                        "       2->In end face turning, the command value exceeds the\n" +
+                        "       following range:-99999.999 <= ZA (ZB) <= 99999.999.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  G85  NLAP1  D4  F0.5  U0.2  W0.1\n" +
+                        "       $G84  XA=100000  DA=2  FA=0.3\n" +
+                        "        $:Specifying $ at the head of command line permits the line to\n" +
+                        "          be included in the same block with the previous line.\n" +
+                        "       [Measures to Take]Check the XA (ZA) and XB (ZB) commands.\n" +
+                        "       In the example program above, XA command value is greater than\n" +
+                        "       99999.999; correct the command value.\n" +
+                        "       N010  G85  NLAP1  D4  F0.5  U0.2  W0.1\n" +
+                        "       $G84  XA=70  DA=2  FA0.3\n" +
+                        "       [Related Specifications]LAP");
+
+        ExampleItem LAP_calculation = new ExampleItem("2383", "LAP CALCULATION",
+                "Calculation alarm during LAP processing.\n" +
+                        "       (When calculating arc center and radius in G85)\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XX:\n" +
+                        "       bit0->Overflow in converting into integer\n" +
+                        "       bit1->Exponential underflow\n" +
+                        "       bit2->Exponential overflow\n" +
+                        "       bit3->Calculation of root of a negative number\n" +
+                        "       bit4->Division by 0\n" +
+                        "       bit5->Angle overflow for SIN, COS, TAN and COT\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the circular interpolation command in the LAP.\n" +
+                        "       [Related Specifications]LAP");
+
+        ExampleItem LAP_NUMBER_OF_DOWN_STAIR_OVER = new ExampleItem("2384", "LAP NUMBER OF DOWN STAIR OVER",
+                "In G85 LAP mode, the number of descending steps exceeds ten.\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the number of descending slopes within LAP program.\n" +
+                        "       In the LAP program, up to ten (10) descending slopes may be\n" +
+                        "       designated.  If the number exceeds this limit, correct the\n" +
+                        "       program->divide the shape definition, etc.\n" +
+                        "       [Related Specifications]LAP");
+
+        ExampleItem LAP_ENTRY_IN_LAP = new ExampleItem("2385", "LAP ENTRY IN LAP",
+                "During LAP control, LAP command (G85, G86, G87 and G88) is\n" +
+                        "       designated.\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       G86: Calls rough copy turning cycle.\n" +
+                        "       G87: Calls finish turning cycle.\n" +
+                        "       G88: Calls continuous thread cutting cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       NLAP1 G81\n" +
+                        "       :\n" +
+                        "       G85 NLAP2\n" +
+                        "       :\n" +
+                        "       G80\n" +
+                        "       [Measures to Take]Check the G85, G86, G87 and G88 commands.\n" +
+                        "       In the example program above, the G85 command is designated\n" +
+                        "       within the LAP mode; delete the G85 block.");
+
+        ExampleItem LAP_SEQUENCE_NAME = new ExampleItem("2386", "LAP SEQUENCE NAME",
+                "In the block containing G85 or G86 calling for LAP mode, no\n" +
+                        "       sequence name is designated, or the designated sequence name\n" +
+                        "       is not found in the program.\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       G86: Calls rough copy turning cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No sequence name is designated in G85 or G86 block.\n" +
+                        "       2->The block assigned with the sequence name specified is not\n" +
+                        "       found.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 G85 D8 F1 U0.5 W0.2\n" +
+                        "       NLAP1 G81\n" +
+                        "       :\n" +
+                        "       G80\n" +
+                        "       [Measures to Take]Check the LAP sequence name.\n" +
+                        "       In the example program above, sequence name is not designated;\n" +
+                        "       designate the sequence name in this block.\n" +
+                        "       N010  G85  NLAP1  D8  F1  U0.5\tW0.2");
+
+        ExampleItem LAP_CONTROL = new ExampleItem("2387", "LAP CONTROL",
+                "LAP control is impossible.  (Overflow of control counter for\n" +
+                        "       LAP control)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The LAP control software has been destroyed.\n" +
+                        "       Operation Example:This alarm is never caused by program\n" +
+                        "       error or erroneous operation.\n" +
+                        "       [Measures to Take]Load the control software again.");
+
+        ExampleItem LAP_G_CODE = new ExampleItem("2388", "LAP G-CODE",
+                "No G80 command up to the end of the program after G81 or G82 is\n" +
+                        "       designated. G81 or G82 is not designated in the sequence\n" +
+                        "       assigned with the sequence name designated in the sequence\n" +
+                        "       containing G85 or G86.\n" +
+                        "       G80: Ends shape definition.\n" +
+                        "       G81: Starts longitudinal shape definition.\n" +
+                        "       G82: Starts end face shape designation.\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       G86: Calls rough copy turning cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No G80 designated.\n" +
+                        "       2->G81 or G82 is not designated in the sequence assigned with\n" +
+                        "       the sequence name designated in the sequence containing G85 or\n" +
+                        "       G86.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       NLAP1\n" +
+                        "       :\n" +
+                        "       N010  C80\n" +
+                        "       N011  G85  NLAP1\n" +
+                        "       [Measures to Take]Check the G81, G82 and G83 commands.\n" +
+                        "       In the example program above, G81 or G82 command is not\n" +
+                        "       designated in the NLAP1 sequence; designate G81 or G82 command.\n" +
+                        "       NLAP1  G81");
+
+        ExampleItem LAP_NOSE_CORP_CANCEL = new ExampleItem("2389", "LAP NOSE CORP CANCEL",
+                "Nose radius compensation mode is not canceled at the end of\n" +
+                        "       LAP (sequence containing G80).\n" +
+                        "       G80: Ends shape definition.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       NLAP1 G81\n" +
+                        "       :\n" +
+                        "       N010 G41 G00 X-- Z--\n" +
+                        "       :No G40 command designated within these blocks\n" +
+                        "       N020  G80\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the G41, G42 and G40 commands in LAP program.\n" +
+                        "       In the example program above, it is necessary to cancel the\n" +
+                        "       nose R compensation mode before the G80 command is designated.\n" +
+                        "       N010 G41 G00 X-- Z--\n" +
+                        "       :\n" +
+                        "       N019  G40  X-- Z--\n" +
+                        "       N020  G80");
+
+        ExampleItem LAP_ENTRY_IN_NOSE_R_COMP = new ExampleItem("2390", "LAP ENTRY IN NOSE-R COMP.",
+                "While nose radius compensation mode is active, G code calling\n" +
+                        "       for LAP mode (G85, G86, G87 and G88) is designated.\n" +
+                        "       G85: Calls rough bar turning cycle.\n" +
+                        "       G86: Calls rough copy turning cycle.\n" +
+                        "       G87: Calls finish turning cycle.\n" +
+                        "       G88: Calls continuous thread cutting cycle.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 G41 X-- Z--\n" +
+                        "       :    <- G40 is not specified here.\n" +
+                        "       N020 G85 NLAP1...No G40 command designated within these blocks.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the LAP commands (G85, G86, G87 and G88)\n" +
+                        "       in the blocks where the nose R compensation mode is active.\n" +
+                        "       In the example program above, it is necessary to cancel the\n" +
+                        "       nose R compensation function before the G85 command.\n" +
+                        "       N010 G41 G00 X-- Z--\n" +
+                        "       :\n" +
+                        "       N019 G40 X-- Z--\n" +
+                        "       N020 G85 NLAP1 ...");
+
+        ExampleItem LAP_SHAPE_DESIGNATION = new ExampleItem("2391", "LAP SHAPE DESIGNATION",
+                "A defective shape is defined for LAP.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1->Overflow of coordinate values\n" +
+                        "        3->The first block includes a circular interpolation command.\n" +
+                        "        4->The circular interpolation command does not include\n" +
+                        "           I, K value.\n" +
+                        "        5->The circular interpolation command is defective.\n" +
+                        "        6->The number of blank shape elements exceeds the limit.\n" +
+                        "        7->The number of machining elements exceeds the limit.\n" +
+                        "        8->Depth of cut is insufficient. (This requires 34 cuts or\n" +
+                        "           over.)\n" +
+                        "        9->The blank shape is reversed. (The shape includes an element\n" +
+                        "           designated in opposition to the cutting direction.)\n" +
+                        "       10->The machining shape is reverse. (The shape includes an\n" +
+                        "           element designated in opposition to the cutting direction.)\n" +
+                        "       11->The blank shape element is imperfect.\n" +
+                        "           (Only one point is designated as a blank shape element.)\n" +
+                        "       12->Only 1-point of intersection can calculate\n" +
+                        "           in gettinng-down-stage (OSP-P100 Only)\n" +
+                        "       *The codes No.8 to 11 occur in blank profiling cycle(APmode V).\n" +
+                        "       [Probable Faulty Locations]Programming error\n" +
+                        "       [Measures to Take]Check the program for defects.");
+
+        ExampleItem MULTI_CYCLE_B_ILLEGAL_ORDER = new ExampleItem("2392", "MULTI CYCLE B ILLEGAL ORDER",
+                "B < 0-deg or B >= 180-deg\n" +
+                        "       In G71, G72 thread cutting cycle, tangent (B/2) is negative or\n" +
+                        "       resulted in overflow.\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of mantissa of floating-point of\n" +
+                        "       tangent (B/2)\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  G71  X100  Z100  B181  D3  H10  F5\n" +
+                        "       [Measures to Take]Check the B command value.\n" +
+                        "       It must be 0<=B<180-deg.");
+
+        ExampleItem MULTI_CYCLE_D_ILLEGAL_ORDER = new ExampleItem("2393", "MULTI CYCLE D ILLEGAL ORDER",
+                "In G71, G72, G73 or G74 mode, no D command is designated or\n" +
+                        "       numerical value of D command is not: 0 < D <= 99999.999\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       G73: Compound grooving cycle on side face\n" +
+                        "       G74: Compound grooving cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->No D command\n" +
+                        "       Others->Hexadecimal number of D value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G71 X100 Z100 B60 H10 F5\n" +
+                        "       [Measures to Take]Check the D command value.\n" +
+                        "       For the example program, insert D command in the program.\n" +
+                        "       N010 G71 X100 Z100 B60 D3 H10 F5");
+
+        ExampleItem MULTI_CYCLE_F_ILLEGAL_ORDER = new ExampleItem("2394", "MULTI CYCLE F ILLEGAL ORDER",
+                "In G71, G72, G73 or G74 mode, no F(thread pitch) command is\n" +
+                        "       designated or numerical value of F command is not:\n" +
+                        "        0 < F <= 99999.999, or 0 < DA <= 99999999\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       G73: Compound grooving cycle on side face\n" +
+                        "       G74: Compound grooving cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->No F command\n" +
+                        "       Others->Hexadecimal number of F value, or hexadecimal number of\n" +
+                        "       DA value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G71 X100 Z100 B60 D3 H10\n" +
+                        "       [Measures to Take]Check the F command value.\n" +
+                        "       For the example program, insert a F command in the program.\n" +
+                        "       N101 G71 X100 Z100 B60 D3 H10 F5");
+
+        ExampleItem MULTI_CYCLE_H_ILLEGAL_ORDER = new ExampleItem("2395", "MULTI CYCLE H ILLEGAL ORDER",
+                "In G71 and G72 thread cutting mode, no H(difference between\n" +
+                        "       major and minor diameters) (diameter command) command is\n" +
+                        "       designated or numerical value of H command is not:\n" +
+                        "       0 < H <= 99999.999\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->No H command\n" +
+                        "       Others->Hexadecimal number of H value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G71 X100 Z100 B60 D3 F5\n" +
+                        "       [Measures to Take]Check the H command value.\n" +
+                        "       For the example program, insert a H command in the program.\n" +
+                        "       N010 G71 X100 Z100 B60 D3 H10 F5");
+
+        ExampleItem MULTI_CYCLE_H_UW_LESS_THAN_D_M73 = new ExampleItem("2396", "MULTI CYCLE H-U(W) LESS THAN D (M73)",
+                "In M73 of G71 or G72 thread cutting mode, the value \"H-U (W)\"\n" +
+                        "       is smaller than D.\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       M73: Thread cutting pattern 1\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G71 X100 Z100 B60 D4 H5 U2 F5 M73\n" +
+                        "       [Measures to Take]Check the D, U and H commands.\n" +
+                        "       For the example program, correct the value since \"H - U >= D\"\n" +
+                        "       is not satisfied.\n" +
+                        "       N010 G71 X100 Z100 B60 D4 H5 U0.2 F5 M73");
+
+        ExampleItem MULTI_CYCLE_I_K_OVER = new ExampleItem("2397", "MULTI CYCLE I,K OVER",
+                "In the G73 and G74 grooving cycle, the parameter of I or K is\n" +
+                        "       greater than the allowable value causing negative groove depth.\n" +
+                        "       G73: Compound grooving cycle on side face\n" +
+                        "       G74: Compound grooving cycle on end face\n" +
+                        "       I: For taper thread, a radial difference between start and end\n" +
+                        "       points should be entered (radius command).\n" +
+                        "       For taper thread, either A or I value should be specified.\n" +
+                        "       K: For taper thread, a difference between start and end points\n" +
+                        "       should be entered.\n" +
+                        "       For taper thread, either A or I value should be specified.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N009 G00 X100 Z100\n" +
+                        "       N010 G73 X50 Z50 I60 K10 D10 L25 F0.2\n" +
+                        "       [Measures to Take]Check the I command value in the G73 mode,\n" +
+                        "       and K command value in the G74 mode.\n" +
+                        "       For the example program, correct the I command value since it\n" +
+                        "       is greater than the target value.\n" +
+                        "       N010 G73 X50 Z50 I6 K10 D10 L25 F0.2");
+
+        ExampleItem MULTI_CYCLE_I_K_ILLEGAL_ORDER = new ExampleItem("2398", "MULTI CYCLE I K ILLEGAL ORDER",
+                "In the G71 mode, K command is designated, both A and I commands\n" +
+                        "       are designated, or neither A nor I command is designated.\n" +
+                        "       In the G72 mode, I command is designated, both A and K commands\n" +
+                        "       are designated, or neither A nor K command is designated.\n" +
+                        "       In G73 and G74 grooving cycle, I and K are not:\n" +
+                        "       0 <= I, K <= 99999.999\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       K: For taper thread, a difference between start and end points\n" +
+                        "       should be entered.\n" +
+                        "       For taper thread, either A or I value should be specified.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       None->Either K command is designated in G71 mode, or I command\n" +
+                        "       in G72 mode.\n" +
+                        "       1->Either both A and I commands are designated, or neither A\n" +
+                        "       nor I command is designated in G71 mode, or either both A and K\n" +
+                        "       commands are designated, or neither A nor K command is\n" +
+                        "       designated in G72 mode.\n" +
+                        "       Others:Hexadecimal number of I or K value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G73 X50 Z50 I-1 K10 D10 L25 F0.2\n" +
+                        "       [Measures to Take]Check the I and K command values.\n" +
+                        "       For the example program, correct the I command value since it\n" +
+                        "       is a negative value.\n" +
+                        "       N010 G73 X50 Z50 I1  K10  D10  L25  F0.2");
+
+        ExampleItem MULTI_CYCLE_L_ILLEGAL_ORDER = new ExampleItem("2399", "MULTI CYCLE L ILLEGAL ORDER",
+                "In G73 and G74 grooving cycle, numerical value of L command is\n" +
+                        "       not: 0 < L <= 99999.999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of L value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G73 X50 Z50 I1 K10 D10 L-25 F0.2\n" +
+                        "       [Measures to Take]Check the L command values.\n" +
+                        "       For the example program, correct the L command value since it\n" +
+                        "       is a negative value.\n" +
+                        "       N010 G73 X50 Z50 I1 K10 D10 L25 F0.2");
+
+        ExampleItem MULTI_CYCLE_ENTRY_IN_LAP = new ExampleItem("2400", "MULTI CYCLE ENTRY IN LAP",
+                "During LAP control, multi cycle command is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       NLAP1 G81\n" +
+                        "       :\n" +
+                        "       N010 G73\n" +
+                        "       :\n" +
+                        "       N019 G80\n" +
+                        "       [Measures to Take]In the LAP shape designation program,\n" +
+                        "       designation of the compound fixed cycle command is not allowed.\n" +
+                        "       Move the related command to a proper position.");
+
+        ExampleItem MULTI_CYCLE_UW_ILLEGAL_ORDER = new ExampleItem("2401", "MULTI CYCLE U(W) ILLEGAL ORDER",
+                "In G71 thread cutting cycle, either W command is designated or\n" +
+                        "       the numerical value of U command is not: 0<=U<=99999.999\n" +
+                        "       In G72 thread cutting cycle, either a U command is designated\n" +
+                        "       or the numerical value of a W command is not: 0<=W<=99999.999\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       U, W: Finish allowance\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       None->In G71, W command is designated, or in G72, U command is\n" +
+                        "       designated.\n" +
+                        "       Others:Hexadecimal number of U (W) value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  G71  X100  Z100  B60  D4\tH5  W0.2  F5\n" +
+                        "       [Measures to Take]Check the U or W command value. Finish\n" +
+                        "       allowance is designated by a U command in the G71 mode and by\n" +
+                        "       a W command in the G72 mode.  In the example program, a W\n" +
+                        "       command is used in the G71 mode--change the W command to the\n" +
+                        "       U command.\n" +
+                        "       N010 G71 X100 Z100 B60 D4 H5 U0.2 F5");
+
+        ExampleItem MULTI_CYCLE_UW_GREATER_THEN_H = new ExampleItem("2402", "MULTI CYCLE U(W) GREATER THEN H",
+                "In G71 or G72 thread cutting cycle, designated finish allowance\n" +
+                        "       U or W is larger than the thread height H.\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  G71  X100  Z100  B60  D4\tH5  U20  F5\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the U(W) or H command.  For the example program, correct\n" +
+                        "       the U command value since it is greater than thread height.\n" +
+                        "       N010 G71 X100 Z100 B60 D4 H5 U0.2 F5");
+
+        ExampleItem MULTI_CYCLE_XZ_ILLEGAL_ORDER = new ExampleItem("2403", "MULTI CYCLE X,Z ILLEGAL ORDER",
+                "In G71, G72, G73 or G74 mode, either X or Z command is not\n" +
+                        "       designated, or the value of them is not:\n" +
+                        "       -99999.999 <=  X (Z) <= 99999.999\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       G73: Compound grooving cycle on side face\n" +
+                        "       G74: Compound grooving cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->Either X or Z command is not designated.\n" +
+                        "       Others->Hexadecimal number of X or Z value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  G71  Z100  B60  D4  H5  U0.2  F5\n" +
+                        "       [Measures to Take]Check the X or Z command.  For the example\n" +
+                        "       program, add an X command to the program.\n" +
+                        "       N010 G71 X100 Z100 B60 D4 H5 U0.2 F5");
+
+        ExampleItem MULTI_CYCLE_ANGLE = new ExampleItem("2404", "MULTI CYCLE ANGLE",
+                "In the G71, G72 thread cutting cycle, A(taper angle) command is\n" +
+                        "       illegal and floating point of thread radius difference cannot\n" +
+                        "       be calculated.\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       bit0->Overflow in converting into integer\n" +
+                        "       bit1->Exponential underflow\n" +
+                        "       bit2->Exponential overflow\n" +
+                        "       bit3->Calculation of root of a negative number\n" +
+                        "       bit4->Division by 0\n" +
+                        "       bit5->Angle overflow for TAN\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G71 X100 Z100 B60 D1 H5 U0.2 F5 A90\n" +
+                        "       [Measures to Take]Check the A command value.\n" +
+                        "       For the example program, correct the A command value.\n" +
+                        "       N010 G71 X100 Z100 B60 D1 H5 U0.2 F5 A170");
+
+        ExampleItem MULTI_CYCLE_TOOL_OFFSET = new ExampleItem("2405", "MULTI CYCLE TOOL OFFSET",
+                "In the G73, G74 grooving cycle, tool offset value specified in\n" +
+                        "       the program differs from the designated shift direction.\n" +
+                        "       Or the difference of the 1st tool offset and the 2nd tool\n" +
+                        "       offset to cutting direction is over the permissible amount.\n" +
+                        "       G73: Compound grooving cycle on side face\n" +
+                        "       G74: Compound grooving cycle on end face\n" +
+                        "       [Object]\n" +
+                        "        SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        80000000->The difference of the 1st tool offset and the 2nd\n" +
+                        "       \t   tool offset to cutting direction is over the\n" +
+                        "       \t   permissible amount.\n" +
+                        "        Others  ->Hexadecimal number of tool offset shift amount\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1)Setting of improper tool offset value\n" +
+                        "        2)Wrong tool offset command designation (program error)\n" +
+                        "          Program Example\n" +
+                        "        <Program>\n" +
+                        "          N009 G00 X100 Z100 T101\n" +
+                        "          N010 G73 X50 Z50 I10 K4 D15 L30 T02\n" +
+                        "        <Tool offset set values>\n" +
+                        "          T1 Z10.000\n" +
+                        "          T2 Z 5.000\n" +
+                        "       [Measures to Take]\n" +
+                        "        <Code 0-7FFFFFFF>\n" +
+                        "         1)Check the tool offset values and tool offset commands in \n" +
+                        "           the program.\n" +
+                        "           For the example program, correct the tool offset value \n" +
+                        "           for T2.\n" +
+                        "              T2 Z15.000\n" +
+                        "        <Code 80000000>\n" +
+                        "         1)Check the tool offset values and tool offset commands in \n" +
+                        "           the program.\n" +
+                        "         2)Check \"Permissible amount in grooving cycle\" in \n" +
+                        "           OPTIONAL PARAMETER(FIXED CYCLE).");
+
+        ExampleItem MULTI_CYCLE_CYCLE_START_POINT = new ExampleItem("2406", "MULTI CYCLE CYCLE START POINT",
+                "In the G71, G72 thread cutting cycle, H command is too large\n" +
+                        "       and the reference point of thread cutting is not located in the\n" +
+                        "       infeeding direction from the cycle start point.\n" +
+                        "       G71: Compound thread cutting cycle on side face\n" +
+                        "       G72: Compound thread cutting cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N009 G00 X100 Z100\n" +
+                        "       N010 G71 X98 Z50 B60 D1 H5 U0.2 F5\n" +
+                        "       [Measures to Take]Check the thread cutting start point command\n" +
+                        "       and thread height command. In the example program, change the\n" +
+                        "       thread cutting start point since the thread height is greater\n" +
+                        "       than the thread cutting start point.\n" +
+                        "       N009 G00 X120 Z100\n" +
+                        "       N010 G71 X98 Z50 B60 D1 H5 U0.2 F5");
+
+        ExampleItem MULTI_CYCLE_ENTRY_IN_NOSE_R_COMP = new ExampleItem("2407", "MULTI CYCLE ENTRY IN NOSE-R COMP.",
+                "During tool nose radius compensation mode, compound fixed\n" +
+                        "       cycle is designated.\n" +
+                        "       G41, G42: Tool nose radius compensation to the left, right\n" +
+                        "       G40: Cancels tool nose radius compensation.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 G41\n" +
+                        "       :\n" +
+                        "       N020 G71\n" +
+                        "       :\n" +
+                        "       N029 G40\n" +
+                        "       [Measures to Take]A compound fixed cycle cannot be used while\n" +
+                        "       the nose R compensation function is active.  Therefore, if the\n" +
+                        "       designation of a compound fixed cycle is required in such a\n" +
+                        "       mode, cancel the nose R compensation mode first.");
+
+        ExampleItem MULTI_CYCLE_WIDTH = new ExampleItem("2408", "MULTI CYCLE WIDTH",
+                "In the G73, G74 grooving cycle, the tool width calculated from\n" +
+                        "       the tool offset value is larger than the groove width.\n" +
+                        "       G73: Compound grooving cycle on side face\n" +
+                        "       G74: Compound grooving cycle on end face\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of final grooving amount\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Setting of improper tool offset value\n" +
+                        "       Program Example:\n" +
+                        "       <Program>\n" +
+                        "       N009 G00 X100 Z100 T101\n" +
+                        "       N010 G73 X50 Z70 I10 K4 D15 L30 T02\n" +
+                        "       <Tool offset set values>\n" +
+                        "       T1 Z10.000\n" +
+                        "       T2 Z60.000\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the tool offset value or the tool offset command. For the\n" +
+                        "       example program, change the tool offset value for T2.\n" +
+                        "       T2 Z15.000");
+
+        ExampleItem TOOL_LIFE_CONTROL_NO_SPEC = new ExampleItem("2409", "TOOL LIFE CONTROL no spec.",
+                "Tool life management variables are designated although the\n" +
+                        "       control has no tool life management specification.\n" +
+                        "       Tool group TG and tool offset group OG are designated.\n" +
+                        "       Mnemonic G code or TLID is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Tool life management variables are designated in the left\n" +
+                        "       part of the expression.\n" +
+                        "       2->Tool life control variables are designated in the right part\n" +
+                        "       of the expression.\n" +
+                        "       5->Tool group TG and tool offset group OG are designated.\n" +
+                        "       Mnemonic G code or TILD is designated.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 TG=1 OG=1\n" +
+                        "       N011 TLID\n" +
+                        "       [Measures to Take]Delete the tool life management commands TG,\n" +
+                        "       OG, and TLID from the program.");
+
+        ExampleItem TOOL_LIFE_CONTROL_SPARE_TOOL_NONE = new ExampleItem("2410", "TOOL LIFE CONTROL spare tool none",
+                "There is no spare tool in the commanded tool group.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the tool group having no spare tool\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change tools with new ones for the tool groups which have no\n" +
+                        "       no spare tools. Initialize the tool life management data in\n" +
+                        "       those groups.\n" +
+                        "       Initialize: The tool life management data is initialized in the\n" +
+                        "       following procedure:\n" +
+                        "       Select the tool data setting mode and press the function key\n" +
+                        "       (ITEM) to display the tool life management screen. When the\n" +
+                        "       function key (INITIALIZE) is pressed, the message \"Initialize\n" +
+                        "       OK (Y/N)!\" appears. Enter \"Y\" and press WRITE.\n" +
+                        "       (To cancel initialization, enter \"N\" and press WRITE.) Enter\n" +
+                        "       the tool group number to be initialized and press WRITE. To\n" +
+                        "       initialize all the tool groups, enter \"0\" and press WRITE.");
+
+        ExampleItem TOOL_LIFE_CONTROL_TOOL_GROUP = new ExampleItem("2411", "TOOL LIFE CONTROL tool group",
+                "Numerical value of tool group command TG is: TG < 1 or TG > 12\n" +
+                        "       For the ATC specification, Indexing a Tool Group not mounted\n" +
+                        "       on the turret, was attempted with the TG commnad.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated TG\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010  TG=-1\n" +
+                        "       [Measures to Take]Check the TG command.\n" +
+                        "       In the example program above, TG command value is negative;\n" +
+                        "       correct the TG command value.\n" +
+                        "       N010  TG=1\n" +
+                        "       For the ATC specification, TG command value of up to \"96\" can\n" +
+                        "       be designated (only at turret A side).");
+
+        ExampleItem TOOL_LIFE_CONTROL_NO_T_ENTRY = new ExampleItem("2412", "TOOL LIFE CONTROL no T-entry",
+                "Tools are not registered in the designated tool group.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]FFFFFFFF\n" +
+                        "       [Probable Faulty Locations]Faulty program or setting error of\n" +
+                        "       tool life management data and/or tool group data\n" +
+                        "       Operation Example:N010\tTG = 1\n" +
+                        "       [Measures to Take]Check the TG command and the information in\n" +
+                        "       the tool life management group information.\n" +
+                        "       In the example above, registration is made so that tool group\n" +
+                        "       number 1 is not used; correct the program or setting of the\n" +
+                        "       tool group information.");
+
+        ExampleItem TOOL_LIFE_CONTROL_TOOL_OFFSET_GROUP = new ExampleItem("2413", "TOOL LIFE CONTROL tool offset group",
+                "Illegal tool offset group number is designated.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated OG\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 OG=10\n" +
+                        "       [Measures to Take]Check the OG command.\n" +
+                        "       In the example program, OG=10 is designated; OG value\n" +
+                        "       programmable is 1, 2, or 3.");
+
+        ExampleItem TOOL_LIFE_CONTROL_NO_T_OFFSET = new ExampleItem("2414", "TOOL LIFE CONTROL no T-offset",
+                "Tool offset number is not registered for the designated tool\n" +
+                        "       offset group.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]FFFFFFFF\n" +
+                        "       [Probable Faulty Locations]Faulty program or setting error of\n" +
+                        "       offset number in the tool life management information table\n" +
+                        "       Offset number setting: The offset number should be set after\n" +
+                        "       displaying the tool data table offset number screen for tool\n" +
+                        "       life management by pressing the function key (ITEM) in tool\n" +
+                        "       data setting mode.\n" +
+                        "       [Measures to Take]When designating an OG command, check whether\n" +
+                        "       the tool offset number is registered in the offset group number\n" +
+                        "       specified by the selected tool.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_NO_SPEC = new ExampleItem("2415", "MULTI-MACHINING CYCLE no spec.",
+                "G code calling fixed cycle for multi-machining model is\n" +
+                        "       designated for a lathe without multi-machining function.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G181 ...\n" +
+                        "       [Measures to Take]G code, G180 through G189, cannot be used for\n" +
+                        "       the machine other than the multi-machining models.\n" +
+                        "       Delete them from the program.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_C = new ExampleItem("2416", "MULTI-MACHINING CYCLE C",
+                "Programmed C value is not: -360-deg < C < 360-deg.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated C value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:G181  X60  Z75\tC360  K48  F40\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the C command in the compound fixed cycle block.\n" +
+                        "       G181 X60 Z75 C0 K48 F40\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_I_K = new ExampleItem("2417", "MULTI-MACHINING CYCLE I,K",
+                "In G181 through G184 and G189 mode cycle, both I and K or\n" +
+                        "       neither I nor K is designated. (I,K shift amount)\n" +
+                        "       In G181 through G184 and G189 mode cycle, designated I and K\n" +
+                        "       values are not: 0 <= I, K <= 99999.999, 0 <= J <= 99999.999\n" +
+                        "       In G185 through G188 mode cycle, designated I and K values are\n" +
+                        "       not: -99999.999 <= I, K <= 99999.999\n" +
+                        "       G181: Drilling cycle\n" +
+                        "       G182: Boring cycle\n" +
+                        "       G183: Deep hole drilling cycle\n" +
+                        "       G184: Tapping cycle\n" +
+                        "       G189: Reaming, boring cycle\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       None->Both I and K commands are designated.\n" +
+                        "       1->I or K command are designated during M964 is effective.\n" +
+                        "       FFFFFFFF->I or K command is omitted.\n" +
+                        "       Others->Hexadecimal number of I and K values\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:G181 X60 Z75 C0 F40\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the I or K command in the compound fixed cycle block.\n" +
+                        "       G181  X60  Z75\tC0  K48  F40\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_Q = new ExampleItem("2418", "MULTI-MACHINING CYCLE Q",
+                "Designated Q value is not: 1 <= Q <= 9999\n" +
+                        "       Q: Used to specify the number of equidistant holes or machining\n" +
+                        "       points for the compound fixed cycle repeating function.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated Q value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:G183 X40 Z81 C0 I46 D10 E1 F40 Q10000\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the Q command in the compound fixed cycle block.\n" +
+                        "       G183 X40 Z81 C0 I46 D10 E1 F40 Q6\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_F = new ExampleItem("2419", "MULTI-MACHINING CYCLE F",
+                "Designated F(cutting feedrate) value is either 0 or negative.\n" +
+                        "       E command value designated with G190 or G192 is either 0 or\n" +
+                        "       negative.\n" +
+                        "       No F command\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->No F command\n" +
+                        "       Others:Hexadecimal number of designated E or F value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program ExampleG183  X40  Z80  C0  I46\tD10  E1  F-40\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the E or F command in the compound fixed cycle block.\n" +
+                        "       G183 X40 Z80 C0 I46 D10 E1 F40\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_L = new ExampleItem("2420", "MULTI-MACHINING CYCLE L",
+                "Designated L value is not: 0 < L <= 99999.999\n" +
+                        "       L: Return amount to the cutting start point in deep hole\n" +
+                        "       drilling cycle\n" +
+                        "       L: Return amount to the cutting start point in deep hole\n" +
+                        "       synchronization tap\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->L<=LK(\"Pecking amount in tapping cycle\" of \n" +
+                        "       \t  an OPTIONAL PARAMETER(MULTIPLE MACHINING) is used \n" +
+                        "       \t  when there is no LK value. )\n" +
+                        "       FFFFFFFE->A different processing pattern instruction was done\n" +
+                        "       \t  at the synchronization tap cycle of a continuous\n" +
+                        "       \t  block. \n" +
+                        "       Others->Hexadecimal number of designated L value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example1:\n" +
+                        "        G183 X40 Z80 C0 I46 D10 E1 F40 L-50\n" +
+                        "       \t\t   <- It is outside the range.\n" +
+                        "        G178 X40 Z80 C0 I46 D10 F40 L0.001\n" +
+                        "       \t\t   <- It is smaller than the parameter value.\n" +
+                        "       Program Example2:\n" +
+                        "        G178 X50 Z50 F=100 K10 LD=10\t     <- There is no L value. \n" +
+                        "             X70 Z30\t\t      L20    <- There is L value. \n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the L command in the compound fixed cycle block.\n" +
+                        "       G183 X40 Z80 C0 I46 D10 E1 F40 L50\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_D = new ExampleItem("2421", "MULTI-MACHINING CYCLE D",
+                "No D command\n" +
+                        "       Designated D value is not: 0 < D <= 99999.999\n" +
+                        "       D: A depth of cut in keyway cutting before deep hole drilling\n" +
+                        "       cycle\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->No D command\n" +
+                        "       Others:Hexadecimal number of designated D value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:G183 X40 Z80 C0 I46 E1 F40 L50\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the D command in the compound fixed cycle block.\n" +
+                        "       G183 X40 Z80 C0 I46 D10 E1 F40 L50\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_X_Z = new ExampleItem("2422", "MULTI-MACHINING CYCLE X,Z",
+                "In the block containing G185 through G188, either X or Z is not\n" +
+                        "       designated. Or, numerical value of X and Z is not:\n" +
+                        "       -99999.999 <=  X, Z <= 99999.999\n" +
+                        "       G185: Thread cutting cycle (side face)\n" +
+                        "       G186: Thread cutting cycle (end face)\n" +
+                        "       G187: Straight thread cutting cycle (side face)\n" +
+                        "       G188: Straight thread cutting cycle (end face)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]FFFFFFFF->No X and Z command\n" +
+                        "             FFFFFFFE->In the G297 command, It instructed the same\n" +
+                        "       \t\tposition as the start point in the cutting\n" +
+                        "       \t\ttarget point\n" +
+                        "       Others:Hexadecimal number of designated X and Z value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:G185 X95 C0 F10 SA=12\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the X or Z command in the compound fixed cycle block.\n" +
+                        "       G185 X95 Z60 C0 F10 SA=12\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_S_A = new ExampleItem("2423", "MULTI-MACHINING CYCLE SA",
+                "Designated SA value is not: 0 < SA <= 20\n" +
+                        "       No SA command\n" +
+                        "       SA: C-axis rotation command\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->No SA command\n" +
+                        "       Others:Hexadecimal number of designated SA value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:G185 X95 Z60 C0 F10 SA=30\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the SA command in the compound fixed cycle block.\n" +
+                        "       G185 X95  Z60  C0  F10\tSA=20\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_FEED_G94 = new ExampleItem("2424", "MULTI-MACHINING CYCLE feed G94",
+                "G185 through G188 is designated in the G94 (feedrate in m/min)\n" +
+                        "       mode.\n" +
+                        "       G185: Thread cutting cycle (side face)\n" +
+                        "       G186: Thread cutting cycle (end face)\n" +
+                        "       G187: Straight thread cutting cycle (side face)\n" +
+                        "       G188: Straight thread cutting cycle (end face)\n" +
+                        "       G94: Feed per minute mode (mm/min)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:G185 G94 X95 Z60 C0 F10 SA=12\n" +
+                        "       [Measures to Take]\n" +
+                        "       Designate the G95 command so that the compound fixed cycle\n" +
+                        "       block (G185 - G188) is in the G95 mode.\n" +
+                        "       G185 G95 X95 Z60 C0 F10 SA=12\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_A = new ExampleItem("2425", "MULTI-MACHINING CYCLE A",
+                "In thread cutting cycle, X-axis travel calculated from A\n" +
+                        "       command value is not in the range from -99999999 to 99999999.\n" +
+                        "       [Code]Hexadecimal number of X-axis travel calculated from A\n" +
+                        "       command\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (for compound fixed cycle block)\n" +
+                        "       Program Example:\n" +
+                        "       G185 X50 Z100 C45 A90 F3 SA=10 ..Wrong\n" +
+                        "       G185 X50 Z100 C45 A30 F3 SA=10 ..Correct\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the A command in the compound fixed cycle.\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_THREAD_CYCLE = new ExampleItem("2426", "MULTI-MACHINING CYCLE thread cycle",
+                "In thread cutting cycle, designated I or K value is too large.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:\n" +
+                        "       G95 G00 X110 Z120\n" +
+                        "       G185 X95 Z60 C0 K-60 F10 SA=12\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the I or K command in the compound fixed cycle block.\n" +
+                        "       G95 G00 X110  Z120\n" +
+                        "       G185 X95 Z60 C0 K-10 F10 SA=12\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_U_W = new ExampleItem("2427", "MULTI-MACHINING CYCLE U,W",
+                "In the G190 (key groove cutting cycle),\n" +
+                        "       1)Both U and W are designated.\n" +
+                        "       2)W command (finishing allowance on face) is designated while\n" +
+                        "       an I command is designated, calling the side face machining\n" +
+                        "       mode.\n" +
+                        "       3)U command (finishing allowance on side face) is designated\n" +
+                        "       while a K command is designated, calling the face machining\n" +
+                        "       mode.\n" +
+                        "       4)U or W command value is outside the allowable range;\n" +
+                        "       0 <= U, W <= 99999.999.\n" +
+                        "       5)Finish allowance designated with a U or W command is greater\n" +
+                        "       than the total infeed amount.\n" +
+                        "       [Character-string]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       None->Case 1)above\n" +
+                        "       FFFFFFFF->Case 2)or 3)above\n" +
+                        "       Others->Case 4)or 5)above\n" +
+                        "       [Probable Faulty Locations]Incorrect program\n" +
+                        "       [Measures to Take]Correct the program.\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_SB = new ExampleItem("2428", "MULTI-MACHINING CYCLE SB",
+                "An SB command is designated before the execution of\n" +
+                        "       synchronized tapping.  Or the SB command value is \"0\".\n" +
+                        "       SB: Specifies the rotary tool speed.\n" +
+                        "       [Measures to Take]Designate an SB command which has a value\n" +
+                        "       other than \"0\" before the execution of synchronized tapping.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_Y_AXIS_MODE = new ExampleItem("2429", "MULTI-MACHINING CYCLE Y-axis mode",
+                "G191 was designated without selecting Y-axis mode,\n" +
+                        "       or designated on B turret.\n" +
+                        "       [Code]\n" +
+                        "       1->G191 command\n" +
+                        "       2->G192 command\n" +
+                        "       [Probable Faulty Locations]Y-axis mode is not selected.\n" +
+                        "       Designation on B turret.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Select the Y-axis mode (by executing G138).\n" +
+                        "       2)Change the turret selection from B to A.");
+
+        ExampleItem ATC_NO_SPEC = new ExampleItem("2430", "ATC no spec.",
+                "On the machine without ATC function, an ATC related command was\n" +
+                        "       issued.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Programming error\n" +
+                        "       On the machine without ATC function, MT, M06, M228, TC, or TL\n" +
+                        "       command was issued.\n" +
+                        "       2) Operation error\n" +
+                        "       Program Example:\n" +
+                        "       M228, M06, MT, TC, TL\n" +
+                        "       Program Example: M228, M06\n" +
+                        "       [Measures to Take]\n" +
+                        "       1) Delete M228, M06, MT, TC, and TL commands from the program.");
+
+        ExampleItem ATC_SYNTAX = new ExampleItem("2431", "ATC syntax",
+                "On the turret without ATC function, an ATC related command was\n" +
+                        "       issued. T, TC, and TL commands are issued at the same time.\n" +
+                        "       TC: Turret index command to ATC position (TC = ##, where ## is\n" +
+                        "       the turret No.)\n" +
+                        "       TL: Tool number index command (TL = &&$$%%, where && is the\n" +
+                        "       nose R compensation No., $$ is the tool No. and %% is the\n" +
+                        "       tool offset No.)\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check if the ATC related commands are correctly specified.");
+
+        ExampleItem ATC_TC = new ExampleItem("2432", "ATC TC",
+                "A nonexistent turret number is specified with TC command.\n" +
+                        "       TC: Turret index command to ATC position (TC = ##, where ## is\n" +
+                        "       the turret No.)\n" +
+                        "       In the spec of\t\"H1 Turret\", TC command expect for \"TC=1\" can\n" +
+                        "       not be executed.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated numerical value\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       :\n" +
+                        "       TC=5\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the TC command. (1 <= TC <= 4)\n" +
+                        "       :\n" +
+                        "       TC=3\n" +
+                        "       :");
+
+        ExampleItem ATC_TL = new ExampleItem("2434", "ATC TL",
+                "An improper value is specified as the TL command value.\n" +
+                        "       Indexing a tool not mounted on the turret was attempted with\n" +
+                        "       the TL command. \n" +
+                        "       The sequence restart function was used to restart a program \n" +
+                        "       which incorporates a TL command for indexing a tool number not\n" +
+                        "       mounted in the turret.\n" +
+                        "         TL:Tool number index command \n" +
+                        "          (TL = &&$$%%, \n" +
+                        "           where && is the nose R compensation No.,\n" +
+                        "       \t  $$ is the tool No.   and \n" +
+                        "       \t  %% is the tool offset No.)\n" +
+                        "       Or, the order of edge-number was larger than the number of\n" +
+                        "       tool-edges. (for the spec of \"Many chips tool\")\n" +
+                        "       Or, in the case of \"TOOL OFFSET 999\" spec and \"MULTI EDGE TOOL\" \n" +
+                        "       spec, tool number were not the following ranges.\n" +
+                        "          MULTI-TOOL  8-EDGES:1-210 or 281-999 \n" +
+                        "          MULTI-TOOL 12-EDGES:1-210 or 321-999 \n" +
+                        "       [Code]\n" +
+                        "        Ordered Tool-number.\n" +
+                        "        FFFFFFFF->In TOOL-ID spec\n" +
+                        "        When the edge-number was ordered, code was \"edge & holder-number\n" +
+                        "        (HEX)\".\n" +
+                        "       [Measures to Take]\n" +
+                        "        When conducting a sequence restart, ensure that the tools\n" +
+                        "        mounted in the turret match the tools specified in the program.");
+
+        ExampleItem ATC_MT = new ExampleItem("2435", "ATC MT",
+                "A wrong tool number or turret number was specified with the MT\n" +
+                        "       command.\n" +
+                        "         MT: Tool preparation command \n" +
+                        "         (MT = $$##, \n" +
+                        "          where $$ is the tool No. and \n" +
+                        "       \t ## is the turret No.\t)\n" +
+                        "       In the spec of\t\"H1 Turret\", MT command expect for \"MT=1\" can\n" +
+                        "       not be executed.\n" +
+                        "       In the case of \"TOOL OFFSET 999\" spec and \"MULTI EDGE TOOL\" spec,\n" +
+                        "       tool number were not the following ranges.\n" +
+                        "          MULTI-TOOL  8-EDGES:1-210 or 281-999\n" +
+                        "          MULTI-TOOL 12-EDGES:1-210 or 321-999\n" +
+                        "       [Code]XXXYY\n" +
+                        "        XXX:Tool number\n" +
+                        "        YY :Turret number");
+
+        ExampleItem ATC_MG = new ExampleItem("2436", "ATC MG",
+                "A wrong magazine number was specified with the MG command.\n" +
+                        "       MG: Magazine index command (MG = **, where ** is the magazine\n" +
+                        "       pot No.)\n" +
+                        "       [Code]Specified magazine number");
+
+        ExampleItem M06_M228_COMMAND_DISABLE = new ExampleItem("2438", "MO6/M228 command disable",
+                "Specified M06,M228,or MG command was illegal.\n" +
+                        "       (M06 is used by M321 command of ATC macro command.)\n" +
+                        "       M06:Tool change command\n" +
+                        "       M228:ATC next tool return command\n" +
+                        "       MG:Magazine index command(MG = **,where**is the magazine pot No.)\n" +
+                        "       [object]Turret\n" +
+                        "       [Code]x\n" +
+                        "       1->M06 was specified though the next tool was not ready.\n" +
+                        "       2->M228 was specified though the next tool was not ready or the\n" +
+                        "          tool return operationwas not ready to start.\n" +
+                        "       3->M06 was specified without positioning the turret in the tool \n" +
+                        "          change position.\n" +
+                        "       5->An MG command was issued with a sequence number that inhibits \n" +
+                        "          magazine indexing.\n" +
+                        "       6->Concerning loader ATC specification, when too(tool kind LL)\n" +
+                        "       which \n" +
+                        "          it exchanges a tool by loader was attached to turret, it went\n" +
+                        "          alog \n" +
+                        "          M06 commands.\n" +
+                        "       7->Tool No.which had set tool data setting mode( * ATC TOOL \n" +
+                        "          INFORMATION * NEXT TOOL) does not coincide with tool No.of \n" +
+                        "          NEXT TOOL preparatory command (MT) at the time of M06 commands.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1.By LB35çU-MATC-Y LU45-MATC-Y, a next tool preparation state \n" +
+                        "          is ATC operation sequence number 12 and 49. By LB15çU-MATC-Y,\n" +
+                        "          a next tool preparation state is ATC operation sequence number 8 \t   \n" +
+                        "          and 51. BY MacTurn50, a next tool preparation state is ATC\n" +
+                        "          operation \n" +
+                        "          sequence number 8.\n" +
+                        "          they are going alog M06 instructions that ATC operation sequence \t   \n" +
+                        "          number is not a next tool preparation state.\n" +
+                        "       1.By LB35çU-MATC-Y LU45-MATC-Y,a tool return operation start \n" +
+                        "          state is ATC operation sequence number 27 and 68.\n" +
+                        "          By LB15çU-MATC-Y LU45-MATC-Y,a tool return operation start \n" +
+                        "          state is ATC operation sequence number 23 and 65.\n" +
+                        "          By MacTurn50,a tool return operation start state is ATC\n" +
+                        "          operation \n" +
+                        "          sequence number 20.They are going along M228 instructions that \n" +
+                        "          ATC operation sequence number is not a tool return operation\n" +
+                        "          state.\n" +
+                        "       1.M06 was issued though the turret is not indexed at the tool\n" +
+                        "       change \n" +
+                        "          pasition. For LB15çU/LB35çU-MATC-Y and LU45-MATC-Y,MG \n" +
+                        "          commands can be issued with the ATC operation sequence number \n" +
+                        "          1,2,41,and 42.\n" +
+                        "          For MacYurn50, MG commands can be issued with the ATC operation \n" +
+                        "          sequence number 1,2.\n" +
+                        "          An MG was issued with a sequence number other than 1,2,41,or 42.\n" +
+                        "       1.After it became a NEXT TOOL preparatory condition, tool NO. as\n" +
+                        "       NEXT \n" +
+                        "          TOOL was designated again.");
+
+        ExampleItem Y_AXIS_NO_SPEC = new ExampleItem("2440", "Y AXIS no spec.",
+                "Order in relation to Y-axis  was performed in the machine\n" +
+                        "       which was not Y-axis specification.\n" +
+                        "       [Object]\n" +
+                        "       System\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "         Program referred to VYMOD-variable in the machine which\n" +
+                        "         was not Y-axis specification.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Deleate VYMOD-variable on program.");
+
+        ExampleItem SADDLE_MACHINE_NO_SPEC = new ExampleItem("2441", "2 saddle machine no spec.",
+                "Concerning 2 saddle machine no spec, the command for\n" +
+                        "       2 saddle machine was designated.\n" +
+                        "       [Object]System\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "         Concerning 2 saddle machine no spec, VTBOR valiable\n" +
+                        "         was referred.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Please deleate VTBOR on program.");
+
+        ExampleItem CARRER_AXIS_VARIABLE_LIMIT_OVER = new ExampleItem("2444", "Carrer axis variable limit over",
+                "The carrier axis rightward/leftward moving command was issued\n" +
+                        "       (by ATC sequence control) exceeding the variable limit.\n" +
+                        "       [Code]Command value in hexadecimal\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The variable limit value is wrongly set.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Check and re-set the variable limit value.");
+
+        ExampleItem COORDINATE_3D_CONVERSION = new ExampleItem("2445", "3-D Coordinate conversion",
+                "G303/G302 command is wrong.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->G303/G302 command is designated though the 3-D Coordinate \n" +
+                        "          conversion specification is not provided.\n" +
+                        "       2->CP instruction is outside the range.\n" +
+                        "           -359.999 <= CP <= 359.999[deg.]\n" +
+                        "       3->CQ instruction is outside the range.\n" +
+                        "           -359.999 <= CQ <= 359.999[deg.]\n" +
+                        "       4->CR instruction is outside the range.\n" +
+                        "           -359.999 <= CR <= 359.999[deg.]\n" +
+                        "       5->H instruction is outside the range.\n" +
+                        "           H = 1\n" +
+                        "       6->It instructed in X/Y/Z/CP/CQ/CR and H when instructing \n" +
+                        "          in G303 at the same time.\n" +
+                        "       7->Rotation axis (CP/CQ/CR) was not instructed in when instructing \n" +
+                        "          in G303. Or, there were two rotation axis instructions \n" +
+                        "          or more in the same block.\n" +
+                        "       8->It instructed in G303 H when the 3-D Coordinate parameter \n" +
+                        "          was a unsetting.\n" +
+                        "       9->It instructed in G11 as follows.\n" +
+                        "           NO Y axis mode\n" +
+                        "           G127-mode\n" +
+                        "           Multi cycle mode\n" +
+                        "           Lap mode\n" +
+                        "           During the cutter radius compensation mode (Nose radius\n" +
+                        "           compensation mode)\n" +
+                        "           G11-mode\n" +
+                        "           COPY-mode\n" +
+                        "           G117-mode\n" +
+                        "           G255-mode\n" +
+                        "           G265-mode\n" +
+                        "           M556-mode\n" +
+                        "       10->It instructed in the G302/G303 mode as follows.\n" +
+                        "           Helical cutting\n" +
+                        "           G20\n" +
+                        "           G21\n" +
+                        "           G22/G23\n" +
+                        "           G24\n" +
+                        "           G25\n" +
+                        "           G30\n" +
+                        "           G31/G32\n" +
+                        "           G33\n" +
+                        "           G34/G35\n" +
+                        "           G62\n" +
+                        "           G71/G72\n" +
+                        "           G73/G74\n" +
+                        "           G77/G78\n" +
+                        "           G80-G88\n" +
+                        "           G101-G103\n" +
+                        "           G107/G108\n" +
+                        "           G112/G113\n" +
+                        "           G116/G117\n" +
+                        "           G126/G127\n" +
+                        "           G131\n" +
+                        "           G132/G133\n" +
+                        "           G136/G137/G138\n" +
+                        "           G140/G141\n" +
+                        "           G152/G153\n" +
+                        "           G185-G188\n" +
+                        "           G254/G255\n" +
+                        "           G264/G265\n" +
+                        "           G269\n" +
+                        "           M555/M556\n" +
+                        "           M798/M799\n" +
+                        "       11->All X/Y/Z are not instructed in by the first axis movement \n" +
+                        "           instruction after the offset(zero offset, zero shift, \n" +
+                        "           and tool offset) is changed.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Incorrect program \n" +
+                        "       [Measure to Take]" +
+                        "       Correct the program.");
+
+        ExampleItem CHUCK_BARRIER_AREA_B = new ExampleItem("2452", "CHUCK BARRIER AREA",
+                "Command to enter the chuck barrier area.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]interference check area\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Setting error\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Check the axis motion commands.\n" +
+                        "       2)Check the setting of the chuck barrier.");
+
+        ExampleItem TAILSTOCK_BARRIER_AREA_B = new ExampleItem("2453", "TAILSTOCK BARRIER AREA",
+                "Command to enter the tailstock barrier area.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]interference check area\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Setting error\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Check the axis motion commands.\n" +
+                        "       2)Check the setting of the chuck barrier.\n" +
+                        "       [Related Specifications]Center work");
+
+        ExampleItem LOAD_MONITOR_TOOL_BROKEN_B = new ExampleItem("2454", "LOAD MONITOR TOOL BROKEN",
+                "While monitoring, cutting load has exceeded the second\n" +
+                        "       limit level for longer than a designated period of time.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code] XXYY\n" +
+                        "       XX:part number(hexadecimal)\n" +
+                        "       YY=00->Z-axis\n" +
+                        "          01->X-axis\n" +
+                        "          02->C-axis\n" +
+                        "          03->Spindle\n" +
+                        "          04->M-tool spindle\n" +
+                        "          05->W-axis\n" +
+                        "          06->Sub spindle (B-spindle)\n" +
+                        "          07->Y-axis\n" +
+                        "          08->B-axis\n" +
+                        "          09->Cb-axis\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The second limit is changed.\n" +
+                        "       2)Time duration to cause the alarm is changed.\n" +
+                        "       3)Cutting conditions are changed.\n" +
+                        "       4)Chipping of the cutting tool");
+
+        ExampleItem ALARM_B_B_AXIS_POSITION_ERROR = new ExampleItem("2455", "ALARM B B-AXIS POSITION ERROR",
+                "During B-Axis brake is effective,the difference of CON and APA\n" +
+                        "       of B-Axis exceeded the limit of position error.\n" +
+                        "       [Probable Faulty Location]\n" +
+                        "       Cutting speed is too fast, or amount of the cut is too much.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the cut condition.");
+
+        ExampleItem W_AXIS_MINUS_VARIABLE_LIMIT_OVER_B = new ExampleItem("2456", "W-axis minus variable limit over",
+                "A W command exceeding the variable limit in the negative\n" +
+                        "       direction is designated.\n" +
+                        "       [Probable Faulty Locations]Faulty program, or setting error of\n" +
+                        "       parameter (W-axis minus variable limit)\n" +
+                        "       [Measures to Take]Check the W-axis command and the value set at\n" +
+                        "       parameter (W-axis minus variable limit).");
+
+        ExampleItem X_AXIS_CORRECTION_STROKE_END_OVER = new ExampleItem("2457", "X-axis correction stroke end over",
+                "In Y-axis command or XY-axis command under Y-axis control, the\n" +
+                        "       XA-axis target point, which includes the X-axis compensation\n" +
+                        "       required for Y-axis movement, exceeds its stroke end.\n" +
+                        "       [Code]\n" +
+                        "       1->Exceeds the minus stroke end.\n" +
+                        "       2->Exceeds the plus stroke end.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1), 2) Programming error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the X-axis position so that the X-axis compensating\n" +
+                        "       motion for Y-axis movement does not exceed the X-axis travel\n" +
+                        "       end limits.");
+
+        ExampleItem RESTART_AXIS_POSITION_IS_ILLEGAL = new ExampleItem("2459", "Restart axis position is illegal",
+                "When any of X-axis, Y-axis, Z-axis was out of the stroke end\n" +
+                        "       limit, restart command was executed.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)When the touch setter measurement function is effective\n" +
+                        "       after the stroke end limit was made invalid and the X/Y/Z\n" +
+                        "       axis was moved out of the stroke end limit, the stroke end\n" +
+                        "       limit invalidity was released. \n" +
+                        "       [Measures to Take]\n" +
+                        "       1)The axis outside the stroke end limit is moved in the stroke\n" +
+                        "       end limit by the manual mode of operation.");
+
+        ExampleItem CHANGE_TIMING_G13_G14 = new ExampleItem("2460", "Change timing G13/G14",
+                "On the models with facing turrets models, G13 and G14 mode is\n" +
+                        "       changed while in incremental programming mode, tool nose radius\n" +
+                        "       compensation mode, LAP mode, and constant cutting speed mode.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Changed in incremental programming mode.\n" +
+                        "       2->Changed in tool nose radius compensation mode.\n" +
+                        "       3->Changed in LAP mode.\n" +
+                        "       4->Changed in constant cutting speed mode.\n" +
+                        "       5->Changed in buffer reading for required angle chamfering\n" +
+                        "       operation\n" +
+                        "       [Probable Faulty Locations]G13, G14 command\n" +
+                        "       Program Example\n" +
+                        "       [Code]1\n" +
+                        "       G13\n" +
+                        "       G00 X100 Z100\n" +
+                        "       G91 X-20 Z20\n" +
+                        "       G14\n" +
+                        "       G00 X50 Z50\n" +
+                        "       :\n" +
+                        "       M02\n" +
+                        "       [Code]5\n" +
+                        "       N010 G13\n" +
+                        "       N020 M03 S1000\n" +
+                        "       N030 G00 X20 Z120\n" +
+                        "       N040 G75 G01 X60 L6 F0.2\n" +
+                        "       N050 G75 Z90 L5*\n" +
+                        "       N060 G14\n" +
+                        "       N070 G00 X100 Z100\n" +
+                        "       :\n" +
+                        "       M02\n" +
+                        "       [Code]4\n" +
+                        "       G13\n" +
+                        "       G96 S100\n" +
+                        "       G00 X100\n" +
+                        "       G14\n" +
+                        "       G00 X20 Z20\n" +
+                        "       M02\n" +
+                        "       *Coordinate values are not determined until the next sequence\n" +
+                        "       is read.\n" +
+                        "       [Measures to Take]For alarms of code 1, 2, 3 or 4, change the\n" +
+                        "       G13 and G14 modes after canceling the operation mode first.\n" +
+                        "       For the alarm of code 5, change the G13 and G14 modes after\n" +
+                        "       designating the end point in the sequence following G75.\n" +
+                        "       [Related Specifications]Facing-turret specification");
+
+        ExampleItem CHANGE_TIMING_G122_123 = new ExampleItem("2462", "Change timing G122/G123",
+                "In the machine with sub-spindle, the coordinate system change\n" +
+                        "       command G122 or G123 is designated while either A or B is in\n" +
+                        "       G141 mode (sub-spindle coordinate system) or while the nose R\n" +
+                        "       compensation is carried out.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XX:Designated G code (in hexadecimal)\n" +
+                        "       [Probable Faulty Locations]Programming error\n" +
+                        "       Program Example:\n" +
+                        "       G141\n" +
+                        "       G123\n" +
+                        "       [Measures to Take]Check and correct the program.\n" +
+                        "       G123\n" +
+                        "       G141");
+
+        ExampleItem CHANGE_TIMING_G140_141_142 = new ExampleItem("2463", "Change timing G140/G141/G142",
+                "With sub-spindle specification models or pickoff chuck\n" +
+                        "       specification models, a spindle designation G code (G140 - main\n" +
+                        "       spindle, G141 - sub spindle, G142 - pickoff spindle) is\n" +
+                        "       designated in the command inhibit state.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Incremental command\n" +
+                        "       2->Nose R compensation\n" +
+                        "       3->LAP\n" +
+                        "       4->Constant peripheral speed control\n" +
+                        "       5->Any-angle chamfering\n" +
+                        "       6->Concerning Unloader specification, when it was not Unloader\n" +
+                        "          carrier right end status, it performed G13/G141 mode\n" +
+                        "          commands.(LT10)\n" +
+                        "          Concerning Unloader specification, when it was not Unloader\n" +
+                        "          Shutter close end status, it performed G13/G141 mode\n" +
+                        "          commands.(MACTURN250/LT200)\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G140\n" +
+                        "       :\n" +
+                        "       G91\n" +
+                        "       G141\n" +
+                        "       :\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the position of G140, G141, or G142 in the program.");
+
+        ExampleItem SPINDLE_TURRET_G_CODE = new ExampleItem("2464", "Spindle/turret G-code",
+                "A spindle turret selection G code (G142) is designated at the\n" +
+                        "       A-turret side. Or a spindle/turret selection G code (G140, or\n" +
+                        "       G141) is designated in other than the sub-spindle or pick-off\n" +
+                        "       specification model.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated G code\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G13\n" +
+                        "       G142\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Correct the program error");
+
+        ExampleItem SYNCHRONIZATION_G_CODE = new ExampleItem("2465", "Synchronization G-code",
+                "G122/G123 is not designated correctly for A and B sides.\n" +
+                        "       Or, G122 or G123 is designated during nose radius compensation.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XYY:\n" +
+                        "       X=2->A/B unmatch\n" +
+                        "       YY:G code\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Check the program.");
+
+        ExampleItem SYNCHRONIZATION_M_CODE = new ExampleItem("2466", "Synchronization M-code",
+                "Improper designation of synchronization M code (M100).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       164->M100 is designated in the tool nose radius compensation\n" +
+                        "       mode.\n" +
+                        "       2XX->For A and B turrets, different synchronization M codes are\n" +
+                        "       designated.\n" +
+                        "       XX:Hexadecimal number of the designated M code (This alarm does\n" +
+                        "       not occur actually.)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Part program\n" +
+                        "       While the NC is in the wait state by M100, the program is not\n" +
+                        "       prefetched. If, however, nose R compensation is activated, M100\n" +
+                        "       cannot be specified because that nose R compensation requires\n" +
+                        "       advanced program reading.\n" +
+                        "       2)For the standard software, no M code other than M100 can be\n" +
+                        "       specified as a command for waiting synchronization. This mean\n" +
+                        "       the alarm indicated by the code 2XX will not occur.\n" +
+                        "       Program Example\n" +
+                        "       [Code]164\n" +
+                        "       N100 G41 G01 X100 F1\n" +
+                        "       N101 M100\n" +
+                        "       [Measures to Take]Eliminate M100 from nose R compensation\n" +
+                        "       function active portion.");
+
+        ExampleItem Y_AXIS_CONTROL_MODE = new ExampleItem("2472", "Y-axis control mode",
+                "The Y-axis control mode is cannot be turned on or off because\n" +
+                        "       the command designating conditions are not satisfied.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->On the 2-saddle model, G138 was specified on B-turret.\n" +
+                        "       2->Coordinate conversion was attempted (by G137) in Y-axis\n" +
+                        "          control mode.\n" +
+                        "       3->The Y-axis control mode ON command (G138) was issued in the\n" +
+                        "          coordinate conversion mode.\n" +
+                        "       4->When automatic operation was performed under Y-axis control,\n" +
+                        "          an axis command was given before G138.\n" +
+                        "       5->When the tailstock is connected, the Y-axis control mode ON\n" +
+                        "          command was issued.\n" +
+                        "       6->While the steady rest was unclamped, the Y-axis control mode\n" +
+                        "          command (G138) was issued.\n" +
+                        "       7->An address character except for C-axis has instructed in\n" +
+                        "          identical block that there is the Y-axis control mode ON\n" +
+                        "          command.\n" +
+                        "       8->When tool retraction interruption mode, the Y-axis control\n" +
+                        "          mode ON/OFF command was issued.\n" +
+                        "       10->The exchange instruction of the Y-axis control mode was\n" +
+                        "          executed on X-axis mirror image coordinate system.\n" +
+                        "        \n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program command error\n" +
+                        "       [Measures to Take]\n" +
+                        "       4)Start automatic operation after turning off the Y-axis\n" +
+                        "         control mode or insert the Y-axis control mode OFF command\n" +
+                        "         before the axis command.");
+
+        ExampleItem W_AXIS_COMMAND_G_CODE = new ExampleItem("2475", "W-axis command G-code",
+                "The G code (G122 or G123) designating on which side, A or B,\n" +
+                        "       the W-axis command should be given is designated for other than\n" +
+                        "       sub-spindle specification models.\n" +
+                        "       It instructed in G code (G122,G123) in the tailstock mode \n" +
+                        "       by a Sub spindle-tailstock Control specification.\n" +
+                        "       It instructed in G code (G122,G123) in the tailstock mode \n" +
+                        "       by a W axis Cut-tailstock Control specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of the designated G code\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       G13   G14\n" +
+                        "       G123  G123\n" +
+                        "       :     G0 W100\n" +
+                        "       :     :\n" +
+                        "       [Measures to Take]Delete G122 or G123 from the program.");
+
+        ExampleItem MIRROR_IMAGE_COORDINATES_SELECT = new ExampleItem("2476", "Mirror image coordinates select",
+                "With sub-spindle specification models or pickoff-spindle\n" +
+                        "       specification models, the coordinate system designated by the\n" +
+                        "       parameter (Bit) No. 34 and the coordinate system designated by\n" +
+                        "       the program (G62) do not agree.\n" +
+                        "       [Code]\n" +
+                        "       1->Unmatch\n" +
+                        "       2->G62Z*\n" +
+                        "              ^other than 0 and 1\n" +
+                        "       3->An address character other than Z is designated.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Faulty parameter Bit setting");
+
+        ExampleItem SUB_SPINDLE_MODE = new ExampleItem("2477", "Sub-spindle mode",
+                "By a sub spindle machine, spindle mode was changed in C axis\n" +
+                        "       connection control.\n" +
+                        "       Concerning new LT control, R Main spindle side was selection\n" +
+                        "       on the side of B Turret.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1->With pickoff spindle, the G code other than G140 is\n" +
+                        "           designated for the G13 (A-turret) side in the G142 mode.\n" +
+                        "        2->The spindle mode is switched in the C-axis control mode.\n" +
+                        "        3->The spindle mode is switched in the flat turning mode.\n" +
+                        "        4->G141 command is designated on B turret of the machine\n" +
+                        "       \twith sub-spindle.\n" +
+                        "        5->In the LT model, sequence restart of the spindle is\n" +
+                        "           designated in the other spindle operation mode.\n" +
+                        "        6->In the LT model, when there was saddle of one side on M02\n" +
+                        "           instruction receipt conditions, another saddle performed\n" +
+                        "           spindle mode changing. Or,when there was saddle of one side\n" +
+                        "           on a synchronism standby condition of spindle mode changing\n" +
+                        "           instruction, another saddle accepted M02 instructions.\n" +
+                        "        7->By LT machine, a saddle of one side under M100 command\n" +
+                        "           receipt condition was changed by another saddle.\n" +
+                        "           Or, a saddle of one side received M100 command under\n" +
+                        "           a synchronous waiting condition of spindle mode\n" +
+                        "           change command.\n" +
+                        "        8->By the machine with Y-axis,G141 command was designated\n" +
+                        "           in Y axis mode.\n" +
+                        "       11->The exchange instruction of the main spindle mode was\n" +
+                        "           executed on X-axis mirror image coordinate system.\n" +
+                        "       13->When tool retraction interruption mode,\n" +
+                        "           G140/G141 command was ordered.\n" +
+                        "       14->Concerning Sub spindle-tailstock Control specification, \n" +
+                        "           G141 command was designated at 'tailstock mode'.\n" +
+                        "       [Probable Faulty Locations]NC part program\n" +
+                        "       Program Example:\n" +
+                        "       1)G13\n" +
+                        "         G142\n" +
+                        "         M84 ->An alarm occurs.\n" +
+                        "         G140\n" +
+                        "       2)G13\n" +
+                        "         G140\n" +
+                        "         G110\n" +
+                        "         G141 ->An alarm occurs.\n" +
+                        "       4)G14\n" +
+                        "         G141(G140) -> An alarm occurs.\n" +
+                        "         M110\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the program");
+
+        ExampleItem WORK_COORDINATE_MODE_COMMAND_NOTHING = new ExampleItem("2478", "Work coordinate mode command nothing",
+                "For the machine with 2-spindle model or pickoff function, the\n" +
+                        "       machining coordinate mode command (G140-G143) is not designated\n" +
+                        "       at the beginning of the program.\n" +
+                        "       Program restart was attempted by the sequence number search\n" +
+                        "       from a sequence other than the sequence for machining\n" +
+                        "       coordinate mode command (G140-G143).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Programming error\n" +
+                        "       [Measures to Take]Enter G140-G143 at the top of the program.");
+
+        ExampleItem CONTOUR_GENERATION_CALCULATION_B = new ExampleItem("2479", "Contour generation calculation",
+                "Floating point calculation error in the preparation processing\n" +
+                        "       for the function generation of the G101, G102 and G103 main\n" +
+                        "       task.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]XYY\n" +
+                        "       YY:\n" +
+                        "       bit0->Overflow in converting into integer\n" +
+                        "       bit1->Exponential underflow\n" +
+                        "       bit2->Exponential overflow\n" +
+                        "       bit3->Calculation of root of a negative number\n" +
+                        "       bit4->Division by 0\n" +
+                        "       bit5->Angle overflow for SIN, COS, TAN and COT\n" +
+                        "       X:\n" +
+                        "       1->Error in G101 processing\n" +
+                        "       2->Error in G102/G103 processing\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Check the contents of error in the program\n" +
+                        "       from the alarm code number; remove the cause which intervenes\n" +
+                        "       the execution of create process command.\n" +
+                        "       [Related Specifications]Create process");
+
+        ExampleItem PROFILE_GENERATION_CALCULATION = new ExampleItem("2480", "Profile generation calculation",
+                "The floating zero point calculation error occurred in the\n" +
+                        "       conversion from (X, C) to CE during the cutter radius\n" +
+                        "       compensation mode (CE Z plane) or contour generation machining\n" +
+                        "       (G132, G133) on the side face.\n" +
+                        "       [Code]XX:\n" +
+                        "       bit0Overflow in converting into integer\n" +
+                        "       bit1->Exponential underflow\n" +
+                        "       bit2->Exponential overflow\n" +
+                        "       bit3->Calculation of root of a negative number\n" +
+                        "       bit4->Division by 0\n" +
+                        "       bit5->Angle overflow for SIN, COS, TAN and COT");
+
+        ExampleItem NC_TURRET_NO_SPEC = new ExampleItem("2486", "NC turret no spec.",
+                " Despite there is not NC turret spec in the machine,\n" +
+                        "       The command for NC-turret was designated.\n" +
+                        "       [Object]System\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "         Concerning NC turret no spec, VTAOR or VTBOR valiable\n" +
+                        "         was referred.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Please deleate VTAOR and VTBOR on program.");
+
+        ExampleItem COORDINATES_CANNOT_BE_SELECTED = new ExampleItem("2487", "Coordinates cannot be selected.",
+                "In the spec of Zero offset 10 or 50 or 100 set:\n" +
+                        "       Coordinates cannot be selected.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1-> Coordinate instruction (G15/G16) was executed while\n" +
+                        "           Constant Surface mode.\n" +
+                        "       2-> Coordinate instruction (G15/G16) was executed while\n" +
+                        "           Nose-R Compensation mode.\n" +
+                        "       3-> Coordinate instruction (G15/G16) was executed while\n" +
+                        "           Coordinate system conversion.\n" +
+                        "       4-> Coordinate instruction (G15/G16) was executed while\n" +
+                        "           Slant Machining mode.\n" +
+                        "       5-> Coordinate instruction (G15/G16) was executed while\n" +
+                        "           Parallel or Rotational shift function of Coordinate \n" +
+                        "           system.\n" +
+                        "       6-> Coordinate instruction (G15/G16) was executed while\n" +
+                        "           COPY function of Coordinate system.\n" +
+                        "       [Measures to Take]\n" +
+                        "       The program instruction is defective.");
+
+        ExampleItem NUSABLE_X_AXIS_COMMAND = new ExampleItem("2488", "UNUSABLE X-axis command",
+                "The instruction related to X-axis was done to there was\n" +
+                        "       no X-axis.\n" +
+                        "       [Object]System\n" +
+                        "       [Code]\n" +
+                        "       1->It instructed in the system variable for X-axis.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error");
+
+        ExampleItem NC_TAILSTOCK_PARAMETER_ERROR = new ExampleItem("2489", "NC Tailstock Parameter error.",
+                "There is an error in the NC tailstock parameter.\n" +
+                        "       [Code]\n" +
+                        "       1->There is an error in the multiple sizing position\n" +
+                        "         command.\n" +
+                        "       2->[RETRACT] is set as a back side more than [W-axis Plus limit].\n" +
+                        "       3->[APPROACH] is set as a back side more than [RETRACT].\n" +
+                        "       4->A torque monitroring system is invalid in case of.\n" +
+                        "          [APPROACH] is set as the front side more than \n" +
+                        "          [WORK POSITION]+[+OK]+2mm.\n" +
+                        "          A torque monitroring ststem is effective in case of.\n" +
+                        "          [APPROACH] is set as the front side more than \n" +
+                        "          [WORK POSITION]+[+OK]+[CENTER HOLE]+5mm.\n" +
+                        "       5->[WORK POSITION]-[-OK] is set as the front side more than \n" +
+                        "          [W-axis Minus limit].\n" +
+                        "       6->[THRUST] is zero.\n" +
+                        "       7->[APPROACH] is set as a back side more than [W-axis Plus limit]\n" +
+                        "          in Teachmode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        NC Tailstock prameter.\n" +
+                        "       [Measures to Take]\n" +
+                        "        NC Tailstock prameter setting.");
+
+        ExampleItem DATA_WORD_CHUCK_PRESSURE = new ExampleItem("2490", "Data word: chuck pressure",
+                "Code]\n" +
+                        "       CHP command value\n" +
+                        "       None:There is no CHP value or CHP value is zero.");
+
+        ExampleItem HORIZEN_BARRIER_INTRUDE = new ExampleItem("2491", "Horizen barrier intrude", "");
+
+        ExampleItem INTERRUPT_PROGRAM_BAD_DIRECT = new ExampleItem("2492", "Interrupt program: bad direct",
+                "The interrupt program is used in a wrong manner.\n" +
+                        "       [Index] Saddle name\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       1: A command between M940 and M945 is issued during\n" +
+                        "          execution of the interrupt program.\n" +
+                        "       2: No interrupt program (O941 to O945) is registered.\n" +
+                        "       3: When interrupt program is executing, though nose R\n" +
+                        "          compensation (G41-G42) is effective, RTI command was\n" +
+                        "          designated without canceling nose R compensation (G40).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       . Programming error\n" +
+                        "       . Unregistered interrupt programs\n" +
+                        "       [Measures to Take]\n" +
+                        "       1: Delete M940 to M945 commands from the interrupt program.\n" +
+                        "       2: Register the programs O941 to O945 in the interrupt\n" +
+                        "          program file (A.INT).Then, resupply the power.\n" +
+                        "       3: Check and correct the program.");
+
+        ExampleItem LINKED_EXTERNAL_EQUIPMENT_PROGRAM_SELECT = new ExampleItem("2493", "Linked external equipment program select",
+                "[Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->PN command value is outside the range from 1 to 9999.\n" +
+                        "       3->No PN command is given after MHPS command.\n" +
+                        "       XXXXYY04->The point data file number or the program file number\n" +
+                        "       did not match the command value.\n" +
+                        "       XXXX ... Point data file number answer\n" +
+                        "       YY ... Program file number answer\n" +
+                        "       [Measures to Take]\n" +
+                        "       If the code 1 appears, set the PN command value in the range\n" +
+                        "       from 1 to 9999.\n" +
+                        "       If the code 3 appears, insert PN command after MHPS command.\n" +
+                        "       If the code XXXXYY04 appears, select the correct program and\n" +
+                        "       point data file.");
+
+        ExampleItem DATA_WORD_CHP = new ExampleItem("2494", "Data word 'CHP'",
+                "The chuck gripping pressure change command is not specified in\n" +
+                        "       the correct format.\n" +
+                        "       Command format ... Specify M329 and CHP=* in the same block.\n" +
+                        "       [Code]\n" +
+                        "       1->The CHP value is not in the following range; 1 =< CHP =< 12.\n" +
+                        "       2->The CHP value is not specified.");
+
+        ExampleItem INVERSE_TIME_FEED_COMMAND_FORMAT = new ExampleItem("2495", "Inverse time feed command format",
+                "A G-code that cannot be specified in the inverse time feed mode is\n" +
+                        "       specified.\n" +
+                        "       Home position command(G20/G21/G24/G25)\n" +
+                        "       Contour generation function command(G101/G102/G103/G132/G133)\n" +
+                        "       Circular thread cutting command(G112/G113)\n" +
+                        "       Fixed cycle command(G31/G32/G33/G34/G35)\n" +
+                        "       Torque skip or torque limit command(G22/G23)\n" +
+                        "       Lathe Auto-Programming(LAP) command(G80-G88)\n" +
+                        "       Z-W axis superimpose control command(G117)\n" +
+                        "       W-axis control ON command(G145)\n" +
+                        "       Tool nose radius compensation(G41/G42)\n" +
+                        "       Compound fixed cycle command(G71-G74/G178/G179/G181-G191)\n" +
+                        "       Positioning overlap(G15)\n" +
+                        "       Gauging cycle(G30))\n" +
+                        "       [Object] \n" +
+                        "       SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the program.");
+
+        ExampleItem CAM_DATA_CANNOT_BE_TRANSMITTED = new ExampleItem("2496", "CAM data cannot be transmitted.",
+                "The cam processing data cannot be transmitted to the PSC unit. \n" +
+                        "       Or the cam compensation data cannot be received from the PSC unit.\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1->It is not EXF or COF or CMF file.\n" +
+                        "       2->It failed in reading the header information. \n" +
+                        "       3->The head of the file cannot be detected. \n" +
+                        "       4->The file version or the number of spindle P.G. pulses or the\n" +
+                        "          synchronous mode specification is wrong.\n" +
+                        "       5->It failed in reading the command value. \n" +
+                        "       6->The head of the command value cannot be detected.\n" +
+                        "       7->The command value exceeds the limit. \n" +
+                        "       8->It failed in reading the compensation value. \n" +
+                        "       9->The head of the compensation value cannot be detected.\n" +
+                        "       10->The header information cannot be written. \n" +
+                        "       11->The command value cannot be written.\n" +
+                        "       12->The compensation value cannot be written.\n" +
+                        "       13->The file cannot be opened. \n" +
+                        "       14->The file cannot be closed. \n" +
+                        "       15->It executed it in FCALL excluding the EXF file.\n" +
+                        "       16->It executed it in FCALLB excluding the COF or the CMF file.\n" +
+                        "       17->It cannot be a transmission to the PSC unit.\n" +
+                        "       18->It cannot be a transmission from the PSC unit.\n" +
+                        "       19->The temporary file is not generable.\n" +
+                        "       20->The file cannot be read.\n" +
+                        "       21->The file cannot be written.\n" +
+                        "       22->The checksum error was found. \n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Error of cam processing data\n" +
+                        "       Set mistake of parameter\n" +
+                        "       Error of hardware\n" +
+                        "       [Measures to Take]\n" +
+                        "       Re-creation of cam processing data\n" +
+                        "       Review of parameter setting");
+
+        ExampleItem T_CODE = new ExampleItem("2497", "T code",
+                "A value 0 was specified with the tool offset commands of both\n" +
+                        "       X- and Z-axes.");
+
+        ExampleItem LEARNING_CANNOT_BE_EXECUTED = new ExampleItem("2498", "Learning cannot be executed.",
+                "The learning control command is wrong. \n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1->When it was not a synchronous mode, M139 was executed. \n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Operator mistake\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review of program");
+
+        ExampleItem SPINDLE_MAKER_LATCH_DATA_ERROR = new ExampleItem("2499", "Spindle maker latch data error",
+                "While the spindle marker latch data was monitored, improper\n" +
+                        "       data was detected.\n" +
+                        "       [Code] XXXXYYYY (hexadecimal)\n" +
+                        "       XXXX: Previous maker latch data\n" +
+                        "       YYYY: Erroneous marker latch data detected");
+
+        ExampleItem MULTI_MACHINING_CYCLE_HS_HI_HJ_HK = new ExampleItem("2500", "MULTI-MACHINING CYCLE HS,HI,HJ,HK",
+                "HS/HI/HJ/HK command is wrong.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Y axis was instructed in by the HS instruction when\n" +
+                        "          it was not Y axis mode.\n" +
+                        "       2->HJ was instructed in when it was not Y axis mode.\n" +
+                        "       3->There are HS, HI or neither HJ nor HK instructions.\n" +
+                        "       4->HK was instructed in when HI was instructed when the\n" +
+                        "          side was processed or the front was processed.\n" +
+                        "       5-> HS/HI/HJ/HK instruction is outside the range.\n" +
+                        "          -99999.999 <= H? <= 99999.999[mm]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Incorrect program\n" +
+                        "       [Measure to Take]\n" +
+                        "       The program is reviewed.");
+
+        ExampleItem SYNCHRONOUS_ERROR_RECOVERING_OPERATION = new ExampleItem("2501", "Synchronous error recovering operation",
+                "An alarm message indicating that the synchronization error\n" +
+                        "       correction mode or synchronized position shift setting mode\n" +
+                        "       has been entered for synchronized axis control.\n" +
+                        "       [Object]\n" +
+                        "       None\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       The synchronization error as expressed by hexadecimal notation\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Indicates that the system is now in a mode for correction of\n" +
+                        "       synchronization errors.\n" +
+                        "       [Example of operation]\n" +
+                        "       Set bit 0 or 1, optional parameter No. 49 to ON to enter the\n" +
+                        "       synchronization error correction or synchronized position shift\n" +
+                        "       setting mode.\n" +
+                        "       [Measures to Take]\n" +
+                        "       This alarm only notifies the operator of the mode and needs no\n" +
+                        "       special action.\n" +
+                        "       Exit the mode to erase the alarm.\n" +
+                        "       [related Specifications]\n" +
+                        "       ZA AXIS SYC. AXIS\n" +
+                        "       XA AXIS SYC. AXIS");
+
+        ExampleItem PROGRAM_COMMAND_ERROR_BLOCK_DELETE = new ExampleItem("2502", "Program Command Error Block Delete",
+                "A number outside the 1-16 range was designated at the \"block\n" +
+                        "       delete No.\".");
+
+        ExampleItem SUBPROGRAM_END_SEQUENCE_NAME = new ExampleItem("2503", "Subprogram END Sequence Name",
+                "[Code]\n" +
+                        "       1->A sequence name existed at the RTS of the subprogram which\n" +
+                        "       was accessed in response to an axis travel call.\n" +
+                        "       2->The specified sequence name (No.) was not found.");
+
+        ExampleItem PREMIUM_THREAD_COMMAND_ERROR = new ExampleItem("2504", "PREMIUM THREAD, command error",
+                "G32 was ordered on premium thread cutting mode. \n" +
+                        "       Or, G32 and M953 were ordered at the same time.\n" +
+                        "       The premium thread cutting command was done in the mode to\n" +
+                        "       which the premium thread cutting was not able to be processed. \n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->G32 was ordered on premium thread cutting mode. \n" +
+                        "          Or, G32 and M953 was ordered at the same time.\n" +
+                        "       2->The premium thread cutting cycle instructed in A/B saddle\n" +
+                        "          synchronized motion mode. \n" +
+                        "       3->The premium thread cutting cycle instructed in Z-W axis\n" +
+                        "          superimpose mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measure to Take]\n" +
+                        "       Check and correct the program.");
+
+        ExampleItem CAM_MACHINE_NO_SPEC = new ExampleItem("2505", "CAM machine no spec.",
+                "The cam command was executed with the machine that was not\n" +
+                        "       the cam specification.\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1->FCALL or FCALLB was executed.\n" +
+                        "       2->M67 or M68 or M69 was executed.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Mistake of program\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review of program");
+
+        ExampleItem TOOL_CENTER_POINT_CONTROL_ILLEGAL = new ExampleItem("2506", "Tool center point control illegal.",
+                "Specified Tool center point control operation was illegal.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "         1->Tool center point control instruction was executed while\n" +
+                        "            not Y axis mode, or Coordinate system\n" +
+                        "            conversion(G136,G137).\n" +
+                        "         2->Tool center point control instruction was executed while\n" +
+                        "            C-axis not connection mode.\n" +
+                        "         3->Tool center point control instruction was executed while\n" +
+                        "            B-axis not connection mode.\n" +
+                        "         4->When instructing in the tool center point control\n" +
+                        "            insertion, positional specification of all axes\n" +
+                        "            (X,Y,Z,B,C) by absolute coordinate (G90) is not done.\n" +
+                        "         5->Tool center point control instruction was executed while\n" +
+                        "            in the sending modes other than G00, G01, G02, and G03. \n" +
+                        "         6->Tool center point control instruction was executed while\n" +
+                        "            tool correction number improper(0 or uninstruction).\n" +
+                        "         7->Tool center point control instruction was executed while\n" +
+                        "            fixed cycle(G71-G74,G178-G192).\n" +
+                        "         8->Tool center point control instruction was executed while\n" +
+                        "            in the nose-R compensation mode(G41,G42),\n" +
+                        "            or compensation of length of tool (G52,G158,G159).\n" +
+                        "         9->Tool center point control instruction was executed while\n" +
+                        "            inverse time mode(G93), or rev/min mode(G95).\n" +
+                        "        10->Tool center point control instruction was executed while\n" +
+                        "            droop ON.\n" +
+                        "        11->Tool center point control instruction was executed while\n" +
+                        "            LAP cycle(G80-G88).\n" +
+                        "        12->Tool center point control instruction was executed while\n" +
+                        "            tool retraction interruption mode.\n" +
+                        "        13->Tool center point control instruction was executed while\n" +
+                        "            slant process mode.\n" +
+                        "        14->Tool center point control instruction was executed while\n" +
+                        "            Outline processing mode(G155).\n" +
+                        "        15->Tool center point control instruction was executed while\n" +
+                        "            W axis overlay-control mode(G117),\n" +
+                        "            or W axis control mode(G145).\n" +
+                        "        16->Tool center point control instruction was executed while\n" +
+                        "            Early check control. \n" +
+                        "        17->Tool center point control instruction was executed while\n" +
+                        "            X axis mirror image coordinate system.\n" +
+                        "        18->Tool center point control instruction was executed while\n" +
+                        "            Parallel shift(G11) or Rotational shift(G217) \n" +
+                        "            of coordinate instruction.\n" +
+                        "        19->When the tailstock is connected, or the steady rest was \n" +
+                        "            unclamped, the Tool center point control instruction was\n" +
+                        "            executed.\n" +
+                        "        20->The TRIC invalid G-code instruction(TRIC auto OFF) and\n" +
+                        "            \"tool center point control instruction mode\" in the same\n" +
+                        "            block.\n" +
+                        "        21->The sequence carriage return instruction in the Tool\n" +
+                        "            center point control instruction mode was done.\n" +
+                        "        22->Tool center point control instruction was executed while\n" +
+                        "            performed by the 2nd spindle.\n" +
+                        "       101->Circular command(G02,G03) including rotation axis(BorC)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       102->Sending modes other than G00, G01, G02, and G03\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       103->Fixed cycle(G71-G74,G178-G192) was executed while\n" +
+                        "            tool center point control mode.\n" +
+                        "       104->Chamfering cycle command(G75,G76)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       105->Zero-shift instruction(G50), or spindle max revolution\n" +
+                        "            (G50) was executed while tool center point control mode.\n" +
+                        "       106->Nose-R compensation mode(G40-G42), or compensation\n" +
+                        "            of length of tool (G52,G158-G160) was executed while\n" +
+                        "            tool center point control mode.\n" +
+                        "       107->Inverse time command(G93), or rev/min command(G95)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       108->Constant Surface command(G96,G97),\n" +
+                        "            or constant surface\tcontrol saddle command(G110,G111)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       109->Droop command(G64,G65) was executed while\n" +
+                        "            tool center point control mode.\n" +
+                        "       110->Lap cycle command(G80-G88) was executed while\n" +
+                        "            tool center point control mode.\n" +
+                        "       111->Tow-along tailstock positioning cycle,\n" +
+                        "            or tow-along steady rest positioning cycle\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       112->Y axis mode(G138), or Coordinate system conversion\n" +
+                        "       \t(G136,G137) was executed while tool center point\n" +
+                        "       \tcontrol mode.\n" +
+                        "       113->Tool retraction interruption mode(G241-G243)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       114->Spindle mode(G140,G141)\twas executed while\n" +
+                        "            tool center point control mode.\n" +
+                        "       115->Torque skip command(G22) or torque limit check(G23) was\n" +
+                        "            executed while tool center point control mode.\n" +
+                        "       116->Synchronized tapping command(G36,G37)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       117->The slant process mode IN/OUT command(G126,G127)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       118->Outline processing mode(G155)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       119->B-axis mode IN/OUT command(G148,G149)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       120->Coordinate instruction command(G15,G16)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       121->W axis overlay-control mode(G116,G117),\n" +
+                        "            or W axis control mode((G144,G145)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       122->C-axis multi rev mode(G120,G121)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       123->Early check control(G98,G99)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       124->X axis mirror image coordinate command(G104,G105)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       125->CASCME(G201),CASCTL(G204) command\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       126->Spindle rev command(S command)\n" +
+                        "       \twas executed while tool center point control mode.\n" +
+                        "       127->Turret indexing command(T command)\n" +
+                        "       \twas executed while tool center point control mode.\n" +
+                        "       128->Instruction(M06,MG,MT,MTM,MTS,MGS) related to ATC\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       129->C-axis connect command(M109,M110),\n" +
+                        "            or C-axis clamp/unclamp command(M146,M147)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       130->C-axis synchronous command(M888-M890)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       131->B-axis clamp/unclamp command(M146,M147)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       132->Anti-crash interference detection release (M866,M867)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       133->Interrupt program function(M940-M945)\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       134->Writing by system variable to \n" +
+                        "            \"zero offset, zero shift, and tool offset\"\n" +
+                        "            was executed while tool center point control mode.\n" +
+                        "       135->P-Code instruction was executed while\n" +
+                        "            tool center point control mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Part program error.\n" +
+                        "       [Measures to Take]\n" +
+                        "       place applicable to above-mentioned code is modified.");
+
+        ExampleItem DATA_WORD_CHP_B = new ExampleItem("2507", "Data Word \"CHP\"",
+                "The command format for chuck grip pressure switching was\n" +
+                        "       incorrect. Command format: M329 CHP=* (in same block)\n" +
+                        "       [Code]\n" +
+                        "       1->The \"1 =< CHP =< 12\" condition is not satisfied.\n" +
+                        "       2->There is no CHP command.");
+
+        ExampleItem MACHINING_MODE_COMMAND_FORMAT = new ExampleItem("2508", "Machining mode command format",
+                "There is an error in machining mode command.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] X\n" +
+                        "       None: It was ordered a command without machining mode command\n" +
+                        "             specification.\n" +
+                        "          1: It was ordered a command except a sequence number before\n" +
+                        "             G270/G271/G272.\n" +
+                        "          2: It was ordered a command expect possible items after\n" +
+                        "             G270/G271/G272.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       Program example: G140 G270\n" +
+                        "       [Measures to Take]\n" +
+                        "       Program Revision: G270 SP=1");
+
+        ExampleItem MULTI_MACHINING_CYCLE_RETURN_POINT = new ExampleItem("2509", "MULTI-MACHINING CYCLE return point",
+                "There is an error in the designated return point of the\n" +
+                        "       multi-machining cycle (G118/M964/M965).\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The G118 sequence has no X,Z command.\n" +
+                        "       2->Multi-machining cycle command is ordered\n" +
+                        "          though M964 is effectived and required\n" +
+                        "          conditions as follows were not satisfied.\n" +
+                        "          [G178,G179,G181-G184,G189,G296,G298]\n" +
+                        "            <Cutting direction is plus>\n" +
+                        "             (1)return point <= cutting start point < \n" +
+                        "       \t cutting target point\n" +
+                        "             (2)actual point <= cutting start point < \n" +
+                        "       \t cutting target point\n" +
+                        "            <Cutting direction is minus>\n" +
+                        "             (1)return point >= cutting start point > \n" +
+                        "       \t cutting target point\n" +
+                        "             (2)actual point >= cutting start point > \n" +
+                        "       \t cutting target point\n" +
+                        "          [G297]\n" +
+                        "            <Cutting direction is plus>\n" +
+                        "             (1)return point < cutting target point < \n" +
+                        "       \t cutting start point\n" +
+                        "             (2)actual point < cutting target point < \n" +
+                        "       \t cutting start point\n" +
+                        "            <Cutting direction is minus>\n" +
+                        "             (1)return point > cutting target point > \n" +
+                        "       \t cutting start point\n" +
+                        "             (2)actual point > cutting target point > \n" +
+                        "       \t cutting start point\n" +
+                        "       3->When M964 was issued, the designated return point is not \n" +
+                        "          define.\n" +
+                        "       4->M964/M965 and M136 is designated in the same block.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the designated return point\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem DATA_WORD_TORQUE_SKIP_OR_TORQUE_LIMIT = new ExampleItem("2510", "Data Word torque skip or torque limit",
+                "The G22 torque skip cycle or G23 torque limit check contains\n" +
+                        "       a D command of which value is larger than the distance between\n" +
+                        "       the start point and the target point.\n" +
+                        "       The G22 torque skip cycle or G23 torque limit check was issued\n" +
+                        "       in Y-axis mode.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code] X\n" +
+                        "       1->The G22 torque skip cycle or G23 torque limit check value is\n" +
+                        "          larger than the distance between the start point and the\n" +
+                        "          target point.\n" +
+                        "       2->The G22 torque skip cycle or G23 torque limit check was\n" +
+                        "          issued in Y-axis mode.\n" +
+                        "       [Probably Faulty Locations]\n" +
+                        "       Specify a D command value smaller than the distance between the\n" +
+                        "       start and target points, or specify the start point at a\n" +
+                        "       position sufficiently far from the target position.");
+
+        ExampleItem REMOTE_BUFFER_OPERATION = new ExampleItem("2511", "Remote buffer operation",
+                "A program in remote buffer operation is illegal.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [code]\n" +
+                        "       1->There was not a receiving program.\n" +
+                        "       2->There is not head % block.\n" +
+                        "       3->There is only head % block.\n" +
+                        "       4->Program block data has ended that there is not EOB(LF) code.\n" +
+                        "       5->Record length is too long.\n" +
+                        "       6->In a program, IF/GOTO/WHILE/DO/END statement exists.\n" +
+                        "       7->At the time of cycle start,an adaptive control communication\n" +
+                        "       is illegal.\n" +
+                        "       8->LAP instruction fitted in a program.\n" +
+                        "       9->MODIN/MODOUT instruction fitted in a program.\n" +
+                        "       A->On a FTP function busy, remote buffer operation was used.\n" +
+                        "       B->COPY instruction fitted in a program.");
+
+        ExampleItem M_TOOL_SPINDLE_OVERLOAD = new ExampleItem("2512", "M-tool spindle overload",
+                "While the M-tool spindle is performing side machining, the\n" +
+                        "       torque applied to the M-tool spindle has exceeded the\n" +
+                        "       allowable limit over the torque monitor time.");
+
+        ExampleItem COORDINATES_CALCULATION = new ExampleItem("2513", "Coordinates calculation",
+                "Coordinates calculation command is wrong.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1->It instructed in Coordinates calculation oder as follows.\n" +
+                        "            It is not a coordinates calculation specification.\n" +
+                        "            During the cutter radius compensation mode \n" +
+                        "            (Nose radius compensation mode)\n" +
+                        "            Lap mode\n" +
+                        "            Arbitrary angle chamfering\n" +
+                        "            NO Y axis mode\n" +
+                        "            G02/G03\n" +
+                        "        2->I instruction is outside the range.\n" +
+                        "            LAA/GRDX(Y)/DGRDX(Y)/SQRX(Y)\n" +
+                        "              -99999.999 <= I <= 99999.999[mm]\n" +
+                        "            BHC/ARC\n" +
+                        "              0.001 <= I <= 99999.999[mm]\n" +
+                        "        3->J instruction is outside the range.\n" +
+                        "            LAA/BHC/ARC\n" +
+                        "              -359.999 <= J <= 359.999[deg.]\n" +
+                        "            GRDX(Y)/DGRDX(Y)/SQRX(Y)\n" +
+                        "              -99999.999 <= J <= 99999.999[mm]\n" +
+                        "        4->K instruction is outside the range.\n" +
+                        "            LAA/GRDX(Y)/DGRDX(Y)/SQRX(Y)/ARC\n" +
+                        "              1 <= K <= 65535\n" +
+                        "            BHC\n" +
+                        "              -65535 <= K <= 65535(excluding 0)\n" +
+                        "        5->D instruction is outside the range.\n" +
+                        "            1 <= D <= 65535\n" +
+                        "        6->Q instruction is outside the range.\n" +
+                        "            DGRDX(Y)\n" +
+                        "              -99999.999 <= Q <= 99999.999[mm]\n" +
+                        "            ARC\n" +
+                        "              -359.999 <= Q <= 359.999[deg.]\n" +
+                        "        7->R instruction is outside the range.\n" +
+                        "            DGRDX(Y)\n" +
+                        "              -99999.999 <= R <= 99999.999[mm]\n" +
+                        "            LOMIT/RSTRT\n" +
+                        "              1 <= K <= 65535\n" +
+                        "       11->The number of the interval of the LAA/ARC instruction is \n" +
+                        "           the number of (10) maximum excess.\n" +
+                        "       12->The pattern point is the number of (65535) maximum excess.\n" +
+                        "       13->R number of LOMIT is the number of (30) maximum excess.\n" +
+                        "       14->It is not I, and is no K, and it is neither LAA instruction\n" +
+                        "           nor order of I and K there is no I instruction.\n" +
+                        "           It is not Q, and is no K, and it is neither ARC instruction\n" +
+                        "           nor order of Q and K there is no Q instruction.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Incorrect program\n" +
+                        "       [Measure to Take]\n" +
+                        "       The program is reviewed.");
+
+        ExampleItem MULTI_CYCLES_C_AXIS_SHIFTS = new ExampleItem("2514", "MULTI CYCLE C-axis shifts",
+                "Droop check timer(parameter) in has passed with C-axis\n" +
+                        "       position shifted more than the width of Droop(parameter)\n" +
+                        "       when starting at the hole processing fixed cycle.\n" +
+                        "       Droop:USER PARAMETER -> DROOP DATA\n" +
+                        "       Droop check timer:OPTIONAL PARAMETER(MULTIPLE MACHINING)\n" +
+                        "        -> Droop check timer in hole processing\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) command value(CON) and actual position(APA) shifted\n" +
+                        "       by the processing before.\n" +
+                        "       2) hole processing fixed cycle started before actual\n" +
+                        "       position(APA) reached Command value(CON).\n" +
+                        "       [Measures to Take]\n" +
+                        "       1) C-axis is unclamped (M146), and the position of C-axis\n" +
+                        "       is mended.\n" +
+                        "       It corrects it to the program to which position (CON) in\n" +
+                        "       which it instructs in C-axis and present location (APA)\n" +
+                        "       do not shift.\n" +
+                        "       2) A set value of Droop check timer of an OPTIONAL\n" +
+                        "       PARAMETER(MULTIPLE MACHINING) at the hole processing\n" +
+                        "       fixed cycle is reviewed.");
+
+        ExampleItem REMOTE_BUFFER_OPERATION_TIME_OUT = new ExampleItem("2515", "Remote buffer operation time out",
+                "While Receiving Machining Program under Protocol B;\n" +
+                        "       Host stopped sending Program, because Time-Span exceeded the\n" +
+                        "       One in parameter.\n" +
+                        "       [Parameter] OPTIONAL PARAMETER (RS232C)\n" +
+                        "       \t     RS232C busy time(s)");
+
+        ExampleItem REMOTE_BUFFER_OPERATION_COMMUNICATION_ERROR = new ExampleItem("2516", "Remote buffer operation communication error",
+                "Under Protocol B; even after NC sent DC3 (Stop Sending Data)\n" +
+                        "       Code to Host, Host sent more than 100 Characters of Data to NC.");
+
+        ExampleItem W_AXIS_CONTROL_MODE = new ExampleItem("2517", "W axis control mode",
+                "When they went along W axis control mode ON/OFF instruction\n" +
+                        "       G145/G144, accepted conditions did not have an instruction\n" +
+                        "       satisfied. They went along an inappropriate instruction in\n" +
+                        "       W axis control mode. Or, they went along the instruction\n" +
+                        "       which can be performed in only W axis control mode by the\n" +
+                        "       state which is not W axis control mode.\n" +
+                        "       Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited.\n" +
+                        "       [Code]\n" +
+                        "       1->G145/G144 instructions were performed by the end of in\n" +
+                        "          nose-R mode or LAP cycle on the side of B. Or, a nose-R\n" +
+                        "          instruction or LAP cycle instruction was performed in\n" +
+                        "          W axis control mode.\n" +
+                        "       2->G145/G144 instructions which was performed on the side of A\n" +
+                        "          and G145/G144 instructions which was performed on the side\n" +
+                        "          of B do not solidarity.\n" +
+                        "       3->Z axis instruction or PZ instruction was performed on the\n" +
+                        "          side of B in W axis control mode.\n" +
+                        "       4->W axis instruction or PW instruction was performed on the\n" +
+                        "          side of A by the state which is not W axis control mode\n" +
+                        "          and it was.\n" +
+                        "       5->An axis movement instruction except for G00/G01 instructions\n" +
+                        "          performed it on the side of B in W axis control mode it\n" +
+                        "          was been.\n" +
+                        "       6->Concerning sequence carriage return, when there is one side\n" +
+                        "          on a synchronization wait state of G145/G144 instructions,\n" +
+                        "          another side has reached a carriage return frock.\n" +
+                        "       7->When there was one side on a synchronization wait state of\n" +
+                        "          G145/G144 instructions, G140/G141 instructions were\n" +
+                        "          performed in another side. Or the reverse.\n" +
+                        "       8->Except for LT specification, G145/G144 instructions were\n" +
+                        "          performed. In addition, when LT specification and a sub\n" +
+                        "          spindle specification are selection together, G145/G144\n" +
+                        "          instructions are used bad.\n" +
+                        "       9->When there was one side on M02 instruction receipt\n" +
+                        "          conditions, G145/G144 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of G145/G144 instructions,\n" +
+                        "          M02 instructions were already accepted on another side.\n" +
+                        "       10->In 1S specification, when a restart to the block which is\n" +
+                        "           not W axis control mode was designated, it has slipped with\n" +
+                        "           the place which a place of W axis carriage returns.\n" +
+                        "       11->When one side spindle is in M100 command receipt condition,\n" +
+                        "           G145/G144 command was given by another side.\n" +
+                        "           Or, when one side spindle was in a synchronous waiting\n" +
+                        "           condition of G145/G144 command, other side spindle received\n" +
+                        "           M100 command.\n" +
+                        "       [Probable Faulty Locations] Part program error\n" +
+                        "       [Measures to take]\n" +
+                        "       place applicable to above-mentioned code is modified.");
+
+        ExampleItem SYNCHRONIZED_TAPPING_COMMAND = new ExampleItem("2518", "Synchronized tapping command",
+                "There is error in a synchronization tap instruction.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] X\n" +
+                        "       1->There is not a synchronization tap specification.\n" +
+                        "       2->It was not C axis connection state at the time of a M tool\n" +
+                        "          spindle synchronization tap instruction.\n" +
+                        "       3->It was C axis connection state at the time of a Main\n" +
+                        "          spindle synchronization tap instruction.\n" +
+                        "       4->It is already in Main spindle synchronized tapping command\n" +
+                        "          by other Turret at the time of Main spindle synchronized\n" +
+                        "          tapping command.\n" +
+                        "       [Probable Faulty Locations] Programming error\n" +
+                        "       [Measures to take]\n" +
+                        "       1)A synchronization tap instruction is deleted from a program.\n" +
+                        "       2)They are C axis connection states.");
+
+        ExampleItem TAILSTOCK_CONTROL_COMMAND = new ExampleItem("2519", "Tailstock Control command",
+                "Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited. \n" +
+                        "       Concerning W axis Cut-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited. \n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->When it was not Sub spindle-tailstock Control specification,\n" +
+                        "       M1152/M1153 was done. \n" +
+                        "       When it was not Sub spindle-tailstock Control specification,\n" +
+                        "       M1159/M1153 was done.\n" +
+                        "       2->The following instructions were done to the same block\n" +
+                        "       as M1152/M1153/M1159.\n" +
+                        "       (1)W-axis\n" +
+                        "       (2)G140/G141\n" +
+                        "       3->A/B Turret different oder M1152/M1153/M1159\n" +
+                        "       4->When the mode is changed(Sub spindle->tailstock),\n" +
+                        "       it doesn't meet the following requirements.\n" +
+                        "       When the mode is changed(W axis Cut->tailstock),\n" +
+                        "       it doesn't meet the following requirements.\n" +
+                        "         [Sub spindle-tailstock]\n" +
+                        "           (1)It is G140.\n" +
+                        "           (2)It is \"work position state\" or \"W-axis Plus limit\".\n" +
+                        "           (3)It is G144. \n" +
+                        "           (4)It is not Z-W axis superimpose mode(G116).\n" +
+                        "           (5)It is \"X-axis Plus limit\".\n" +
+                        "           (6)It is G122.\n" +
+                        "         [W axis cut-tailstock]\n" +
+                        "           (1)It is \"W-axis Plus limit\".\n" +
+                        "           (2)It is G122.\n" +
+                        "       5->When the mode is changed(tailstock->Sub spindle),\n" +
+                        "       it doesn't meet the following requirements.\n" +
+                        "       When the mode is changed(tailstock-> W axis Cut),\n" +
+                        "       it doesn't meet the following requirements.\n" +
+                        "         [Sub spindle-tailstock]\n" +
+                        "           (1)It is G140.\n" +
+                        "           (2)NC TAIL STOCK 1SP Spec code:1\n" +
+                        "       \t It is \"work position state\" or \"W-axis Plus limit\".\n" +
+                        "              NC TAIL STOCK 1SP Spec code:0\n" +
+                        "       \t   It is \"W-axis Plus limit\".\n" +
+                        "           (3)It is not Teachmode. \n" +
+                        "           (4)It is \"X-axis Plus limit\".\n" +
+                        "         [W axis cut-tailstock]\n" +
+                        "           (1)It is \"W-axis Plus limit\".\n" +
+                        "           (2)It is not Teachmode. \n" +
+                        "       6->When there was one side on M1152/M1153/M1159 instruction receipt\n" +
+                        "       conditions, the following instructions were already performed\n" +
+                        "       on another side.\n" +
+                        "       Or,when there was one side on a synchronism standby\n" +
+                        "       condition of the following instructions,\n" +
+                        "       M1152/M1153/M1159 instructions were already accepted on another\n" +
+                        "       side.\n" +
+                        "       (1)G122/G123\n" +
+                        "       (2)G140/G141\n" +
+                        "       (3)G144/G145\n" +
+                        "       (4)G116/G117\n" +
+                        "       (5)M888-M890\n" +
+                        "       (6)M100\n" +
+                        "       (7)P-Code\n" +
+                        "       (8)VEINT\n" +
+                        "       (9)M02\n" +
+                        "       7->M55/M56/M847 was done at 'Sub spindle mode'. \n" +
+                        "       M55/M56/M847 was done at ' W axis Cut mode'. \n" +
+                        "       8->'Sub spindle mode/tailstock mode' before sequence restart\n" +
+                        "       is not matched with 'Sub spindle mode/tailstock mode' after\n" +
+                        "       sequence restart.\n" +
+                        "       'W axis Cut mode/tailstock mode' before sequence restart\n" +
+                        "       is not matched with 'W axis Cut mode/tailstock mode' after\n" +
+                        "       sequence restart.\n" +
+                        "       9-> After 'Sub spindle mode' had been changed, \n" +
+                        "       sequence restart had been done\n" +
+                        "       before W-axis absolute instruction.\n" +
+                        "       10->In 'no work position state', sequence restart had been done\n" +
+                        "       after it instructed in W-axis of 'Sub spindle mode'.\n" +
+                        "       11->Concerning sequence carriage return, when there is one\n" +
+                        "       side on a synchronization wait state of M1152/M1153/M1159\n" +
+                        "       instructions, another side has reached a carriage\n" +
+                        "       return frock.\n" +
+                        "       12->The low thrust of the multiple sizing position before\n" +
+                        "       sequence restart is not matched with the low thrust of\n" +
+                        "       the multiple sizing position after sequence restart.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check each instruction in the program.");
+
+        ExampleItem DATA_WORD_TP = new ExampleItem("2520", "DATA WORD 'TP'",
+                "TP command is wrong.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->When B axis control specification was not selection, it did\n" +
+                        "          TP command. Or it did TP command on the B turret.\n" +
+                        "       2->TP command had singly instructed.\n" +
+                        "       3->Value of TP command had instructed a value except for 0 or 1\n" +
+                        "       [ Probable Faulty Locations ]\n" +
+                        "       Program error\n" +
+                        "       [ Measures to take ]\n" +
+                        "       1)When B axis control specification is not selection,\n" +
+                        "         TP command on the B turret does not do it.\n" +
+                        "       2)TP command instructs by 'T+TP'.\n" +
+                        "       3)It turns an instruction value of TP command into 0 or 1 .\n" +
+                        "         Or, it modifies an instruction value of TP command on an\n" +
+                        "         appropriate value.");
+
+        ExampleItem DATA_WORD_BT = new ExampleItem("2521 ", "DATA WORD 'BT'",
+                "BT command is wrong.\n" +
+                        "       [ Object ] SYSTEM\n" +
+                        "       [ Code ]\n" +
+                        "       1->When B axis control specification was not selection, it did\n" +
+                        "          BT command or, it did BT command on the B turret.\n" +
+                        "       2->BT command had singly instructed. Or, it turned BT command\n" +
+                        "          into MT+TG command in identical block.\n" +
+                        "       3->An instruction value of BT command was a value except for\n" +
+                        "          0 or 1.\n" +
+                        "       [ Probable Faulty Locations ]\n" +
+                        "       Program error.\n" +
+                        "       [ Measures to take ]\n" +
+                        "       1)BT instruction is eliminated.\n" +
+                        "         Or They instruct on the side of A-turret.\n" +
+                        "       2)BT command instructs by TL+BT or TG+BT\n" +
+                        "       3)It turns an instruction value of BT command into 0 or 1.");
+
+        ExampleItem DATA_WORD_BA = new ExampleItem("2522", "DATA WORD 'BA'",
+                "BA command is wrong.\n" +
+                        "       [ Object ] SYSTEM\n" +
+                        "       [ Code ]\n" +
+                        "       1->When B axis control 1 degree pitch specification was not\n" +
+                        "          selection, it did BA command. Or it did BA command on the\n" +
+                        "          B turret.\n" +
+                        "       2->BA command had singly instructed.\n" +
+                        "       3->There is not an instruction value of BA command on range of\n" +
+                        "          +359 from -359 .\n" +
+                        "       [ Probable Faulty Locations ]\n" +
+                        "       Program miss.\n" +
+                        "       [ Measures to take ]\n" +
+                        "       1)BT instruction is eliminated.\n" +
+                        "         Or They instruct on the side of A-turret.\n" +
+                        "       2)BA command instructs by T+BA,TL+BA,TG+BA.\n" +
+                        "       3)It turns an instruction value of BA command into range of\n" +
+                        "         +359 from -359 .");
+
+        ExampleItem THERMISTOR_ERROR = new ExampleItem("2523 ", "Thermistor error",
+                "The thermistor is defective.\n" +
+                        "       [Index] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XYY\n" +
+                        "       X=0->Thermistor temperature dropped to -20 or -70.\n" +
+                        "       X=A->Thermistor temperature change from the temperature\n" +
+                        "            measured last time has exceeded the value set for the\n" +
+                        "            check temperature parameter.\n" +
+                        "       YY=Thermistor channel number\n" +
+                        "       X=B->Thermistor temperature change that exceeds the check\n" +
+                        "            temperature parameter provided for each group\n" +
+                        "       YY=Thermistor group number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Defective TMP board\n" +
+                        "       2) Disconnection of thermistor cable\n" +
+                        "       3) Defective thermistor");
+
+        ExampleItem DATA_WORD_AT = new ExampleItem("2524", "DATA WORD 'AT'",
+                "The AT instruction price has risen the tolerance.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] Instructed AT instruction value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)There is no Attachment specification.\n" +
+                        "       2)It instructed excluding A turret.\n" +
+                        "       3)The AT instruction value exceeds the maximum number\n" +
+                        "         of attachments (number of installing).\n" +
+                        "       4)It instructed in values that were larger than 12 that was\n" +
+                        "         the maximum attachment number on the NC side.\n" +
+                        "       5)The AT instruction value is a value of the minus.\n" +
+                        "       6)The instructed attachment is not in the stocker.\n" +
+                        "       7)There is no stocker information in a present attachment\n" +
+                        "         and the instructed attachment.\n" +
+                        "       [Measures to Take]\n" +
+                        "       The program is corrected.");
+
+        ExampleItem CHUCK_COORDINATE_CHANGE_CONDITION = new ExampleItem("2525", "Chuck coordinate change condition",
+                "In the spec of ACC:\n" +
+                        "       Coordinates cannot be selected.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1-> Coordinate instruction (G124/G125) was executed while\n" +
+                        "           Constant Surface mode.\n" +
+                        "       2-> Coordinate instruction (G124/G125) was executed while\n" +
+                        "           Nose-R Compensation mode.\n" +
+                        "       [Measures to Take]\n" +
+                        "       The program instruction is defective.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_SD = new ExampleItem("2526", "MULTI-MACHINING CYCLE SD",
+                "In the G183, Designated SD value is not: 0 < SD <= 60000\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal number of designated SD value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "        Program Example:\n" +
+                        "         G183X40Z81I46D10E1F40H10HC=5HD=2FB=30FC=20FD=25SD=70000DA=2\n" +
+                        "         DB=4\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the SD command in the compound fixed cycle block.");
+
+        ExampleItem PROGRAM_SELECT_UNSUITABLE = new ExampleItem("2528", "Program select unsuitable",
+                "Program for R side was selection on the side of L and cycle\n" +
+                        "       start was performed. Or, program for L side was selection on\n" +
+                        "       the side of R and cycle start was performed.\n" +
+                        "       [Object] main spindle\n" +
+                        "       [Code]\n" +
+                        "       1->R side program had activated on the side of L.\n" +
+                        "       2->L side program had activated on the side of R.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Operation error of a program selection\n" +
+                        "       [Measures to take]\n" +
+                        "       Right program is chosen.");
+
+        ExampleItem THERMAL_DEVIATION_COMPENSATION = new ExampleItem("2529", "Thermal deviation compensation",
+                "Thermal deviation compensation is impossible since the\n" +
+                        "       temperature data sent via the TMP board is abnormal, or the\n" +
+                        "       total deviation amount exceeded the allowable maximum total\n" +
+                        "       deviation amount of the corresponding axis.\n" +
+                        "       [Index]None\n" +
+                        "       [Character String]\n" +
+                        "       Only in case of code=2,3\n" +
+                        "        Case of VPE[1]- VPE[6]:\n" +
+                        "         (AAAA,BBBB)\n" +
+                        "         AAAA: It is VPE at the alarm.\n" +
+                        "         BBBB: It is VPE of the first time.\n" +
+                        "         <Example>\n" +
+                        "         VPE at the alarm is -99.9um.\n" +
+                        "         VPE of the first time is -600.0um.\n" +
+                        "             (-999,-6000)\n" +
+                        "        Case of VPE[7]- VPE[18]:\n" +
+                        "         (AAAA,BBBB)\n" +
+                        "         AAAA,BBBB: It is VPE at the alarm.\n" +
+                        "         (Case of VPE[17]- VPE[18]: VPE[17],VPE[18])\n" +
+                        "         <Example>\n" +
+                        "         Case of VPE[17]- VPE[18]:\n" +
+                        "          VPE[17] at the alarm is -99.9um.\n" +
+                        "          VPE[18] at the alarm is -600.0um.\n" +
+                        "             (-999,-6000)\n" +
+                        "       [Code]\n" +
+                        "         X=1 ->Abnormal temperature data, input from the TMP board\n" +
+                        "         Y=Thermistor channel number\n" +
+                        "         X=2 ->Case of VPE[1]- VPE[6]\n" +
+                        "       \tThe absolute value of the amount of the change from\n" +
+                        "       \tamount (VPE) of integrated displacement of the \n" +
+                        "       \tfirst time of the correction exceeded the allowable\n" +
+                        "       \tmaximum total deviation amount. \n" +
+                        "           3-> Case of VPE[7]- VPE[18]\n" +
+                        "       \tThe absolute value of \"Expansion/shrinkage\"\n" +
+                        "       \tdisplayed in the correction monitor exceeded\n" +
+                        "       \tthe allowable maximum total deviation amount 2.\n" +
+                        "         YY=VPE number(VPE[9]- VPE [10]:Hexadecimal number\n" +
+                        "            display of \"9\" of VPE[9])\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Defective TMP board or defective thermistor\n" +
+                        "       2) Abnormal parameter data");
+
+        ExampleItem MACHINING_PROCESS_INSTRUCTION_NUMBER = new ExampleItem("2530", "Machining process instruction number",
+                " Machining process instruction number (VWORK) from loader is the\n" +
+                        "       outside of range (VWORK<0, VW ORK>99). Or, at the machining\n" +
+                        "       process instruction number which differed from A Turret in B\n" +
+                        "       Turret command is designated.\n" +
+                        "       [Code] XXXXXXXX (hexadecimal)\n" +
+                        "       XXXXXXXX:An input machining process instruction number\n" +
+                        "       None:At the machining process instruction number which differed\n" +
+                        "       from A Turret in B Turret command is designated\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Instruction miss of a machining process instruction number\n" +
+                        "       [Measures to take]\n" +
+                        "       A machining process instruction number correction");
+
+        ExampleItem MIRROR_TURNING_MODE = new ExampleItem("2531", "Mirror Turnning Mode",
+                "They went a condition along ON/OFF order of mirror turning mode\n" +
+                        "       by the condition which is not satisfied.\n" +
+                        "       Or, they went along the order which is prohibited in mirror\n" +
+                        "       turning mode.\n" +
+                        "       [Code]\n" +
+                        "       1->Mirror turning mode ON/OFF order was performed by the\n" +
+                        "          condition which is not choosing G140 sides. Or, G140/G141\n" +
+                        "          orders were performed in mirror turning mode.\n" +
+                        "       2->Mirror turning mode ON/OFF order was performed by the\n" +
+                        "          condition that W axis controlled mode is not OFF condition\n" +
+                        "          (G144). Or, G144/G145 orders were performed in mirror\n" +
+                        "          turning mode.\n" +
+                        "       3->Mirror turning mode ON/OFF order was performed by the\n" +
+                        "          condition and the mirror image coordinate system that\n" +
+                        "          a coordinate system on the side of both Main spindle of L, R\n" +
+                        "          is choosing a basic coordinate system together is chosen.");
+
+        ExampleItem SYSTEM_VARIABLE_SET_CONDITION_ERROR = new ExampleItem("2532", "System variable set condition error",
+                "Conditions for setting the system variables are not met.\n" +
+                        "       Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited.\n" +
+                        "       [Index] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]X\n" +
+                        "       X=1-> It had instructed before it instructed in M990.\n" +
+                        "       X=2-> The condition to set it is not satisfactory.\n" +
+                        "       X=3-> M990 was executed while editing the parameter in \n" +
+                        "             \"User input parameter\".\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the parameters for the thermal deformation \n" +
+                        "       compensation.");
+
+        ExampleItem STEADY_RESTS_OVER_INTEFERENCE_POS = new ExampleItem("2533", "Steady-rests over interference pos.",
+                "command for Steady-rests, Tail stock or W-axis to exceed the\n" +
+                        "       interference position. \n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1-> right steady-rests interference area (minimal distance).\n" +
+                        "       2-> left steady-rests interference area (maximum distance).\n" +
+                        "       3-> left steady-rests interference area (minimal distance).\n" +
+                        "       4-> right steady-rests interference area (maximum distance).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)program error.\n" +
+                        "       2)interference range parameter is not correctly.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)check the movement command of the axis.\n" +
+                        "       2)set the interference range parameter correctly. ");
+
+        ExampleItem LBB_TURRET_ROTATION_IMPOSSIBLE = new ExampleItem("2534", "LBB turret rotation impossible",
+                "It instructed. it was not possible to instruct in LBB turn (G269)\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "         1->There is no long bore bar specification.\n" +
+                        "         2->It instructed during the fixed cycle.\n" +
+                        "         3->It instructed no Nose-R correction mode.\n" +
+                        "         4->It instructed during the LAP cycle.\n" +
+                        "         5->It instructed in the slope processing mode.\n" +
+                        "         6->It instructed W axis control mode.\n" +
+                        "         7->It instructed X axis mirror image coordinate system.\n" +
+                        "         8->It instructed the translation, the rotational transfer,\n" +
+                        "            and in the COPY mode of coordinates.\n" +
+                        "         9->It instructed while the tailstock and connecting the swinging\n" +
+                        "         stop.\n" +
+                        "       101->T1 or the T3 position was directed stepping over.\n" +
+                        "       102->It is not B axial mode.\n" +
+                        "       103->It is not unclamping of B axis.\n" +
+                        "       104->Z axis is not in the range of tool-post turn OK.\n" +
+                        "       105->X axis is not a plus changeability limit.\n" +
+                        "       106->The YS axis is not at a main spindle center position.\n" +
+                        "       107->It instructed in X axis or Z axis.\n" +
+                        "       108->It instructed excluding G00 and G01.\n" +
+                        "       109->In the LBB attachment state, without auxiliary tool.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       The part that corresponds to the above-mentioned code is corrected");
+
+        ExampleItem WHILE_COMMAND_ERROR = new ExampleItem("2535", "WHILE command error",
+                "Illegal WHILE or DO or END command.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1-> \"[\" is not found following WHILE.\n" +
+                        "       2-> The expression of WHILE command is not comparison expression.\n" +
+                        "       3-> \"DO m\" is not found following \"WHILE [] \".\n" +
+                        "       4-> \"m\" value of \"DO m\" or \"END m\" is not:1<=m<=3.\n" +
+                        "       5-> \"END m\" is not found to \"DO m\".\n" +
+                        "       6-> \"DO m\" is not found to \"END m\".\n" +
+                        "       7-> \"DO m - END m\" loop is intersected.\n" +
+                        "       8-> It is orderd to jump to \"DO m - END m\" loop.\n" +
+                        "       9-> There is \"DO m\" with the same identification number in \"DO m -\n" +
+                        "       END m\" loop.\n" +
+                        "       10-> WHILE or DO or END is ordered in LAP mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Incorrect program\n" +
+                        "       [Measure to Take]\n" +
+                        "       The program is reviewed.");
+
+        ExampleItem COORDINATES_MOVEMENT_ROTATION_COPY = new ExampleItem("2536", "Coordinates movement rotation copy",
+                "G11/G10/COPY/COPE command is wrong.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->G11/G10/COPY/COPE command is designated though the Coordinates \n" +
+                        "          movement rotation copy specification is not provided.\n" +
+                        "       2->It instructed in G11 as follows.\n" +
+                        "          NO G17 Mode\n" +
+                        "          COPY mode\n" +
+                        "          Multi cycle mode\n" +
+                        "          Lap mode\n" +
+                        "          During the cutter radius compensation mode (Nose radius \n" +
+                        "           compensation mode)\n" +
+                        "          NO Y axis mode\n" +
+                        "          G127-mode\n" +
+                        "          G99-mode\n" +
+                        "          G117-mode\n" +
+                        "          G155-mode\n" +
+                        "          G265-mode\n" +
+                        "       3->It instructed in G10/COPYE as follows.\n" +
+                        "          Multi cycle mode\n" +
+                        "          G11-mode [G10 Only]\n" +
+                        "       4->It instructed in the G11/COPY mode as follows.\n" +
+                        "          G11 [COPY Only]\n" +
+                        "          G15/G16\n" +
+                        "          G18/G19/G119\n" +
+                        "          G20/G21/G24/G25\n" +
+                        "          G30\n" +
+                        "          G31-G35\n" +
+                        "          G80-G88\n" +
+                        "          G98/G99\n" +
+                        "          G101-G103\n" +
+                        "          G107/G108\n" +
+                        "          G112/G113\n" +
+                        "          G117\n" +
+                        "          G127\n" +
+                        "          G132/G133\n" +
+                        "          G136\n" +
+                        "          G140/G141\n" +
+                        "          G265\n" +
+                        "       5->It instructed in Q with G178/G179/G181-G184/G190-G191 in the \n" +
+                        "          G11/COPY mode.\n" +
+                        "       6->The side face machining was instructed in with \n" +
+                        "          G178/G179/G181-G184/G190-G191 in the G11/COPY mode.\n" +
+                        "       7->It instructed Q instruction instructing in COPY excluding\n" +
+                        "       1-9999. \n" +
+                        "          It instructed Q instruction in two or more in the MDI mode.\n" +
+                        "       8->It is parallel and the rotation movement and is not instructed \n" +
+                        "          in the done axis by the first axis movement instruction after it \t   \n" +
+                        "          instructs in G11/COPY/G11/COPYE about coordinates.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Incorrect program \n" +
+                        "       [Measure to Take]\n" +
+                        "       Correct the program.");
+
+        ExampleItem SLANT_PROCESS_MODE = new ExampleItem("2537", "SLANT PROCESS MODE",
+                "The slant process mode IN/OUT command(G127/G126) was executed\n" +
+                        "       though the required conditions were not satisfied.\n" +
+                        "       Or,a prohibited command was executed in the slant process mode.\n" +
+                        "       [Code] XX\n" +
+                        "        XX=1->G127 slant process mode ON command were performed by\n" +
+                        "              the condition which is not Y axis mode.\n" +
+                        "              Or, Y axis mode OFF command(G136) was performed in\n" +
+                        "              slant process mode.\n" +
+                        "        XX=2->In nose-R compensation, G127 slant process mode ON\n" +
+                        "              command were performed.\n" +
+                        "              Or, nose-R compensation ON command(G41/G42) was\n" +
+                        "              performed in slant process mode.\n" +
+                        "        XX=3->By the end of LAP cycle, G127 slant process mode ON\n" +
+                        "              command were performed.\n" +
+                        "              Or, LAP command was performed in slant process mode.\n" +
+                        "        XX=4->In slant process mode, G127 slant process mode ON\n" +
+                        "              command were performed.\n" +
+                        "        XX=5->The slant process mode ON command(G127) were executed\n" +
+                        "              during coordinate conversion(by G137) of the coordinate\n" +
+                        "              convertible specification.\n" +
+                        "              Or, coordinate conversion ON command(G137) of the\n" +
+                        "              coordinate convertible specification was performed in\n" +
+                        "              slant process mode.\n" +
+                        "        XX=6->In compoud fixed cycle, the slant process mode ON/OFF\n" +
+                        "              command(G127/G126) were executed.\n" +
+                        "        XX=7->In slant process mode, the axis movement command which\n" +
+                        "              does not correspond for slant process or a compound\n" +
+                        "              fixed cycle command was executed.\n" +
+                        "        XX=8->In the slant process mode, spindle mode command\n" +
+                        "              (G140, G141, G142) was executed.\n" +
+                        "        XX=11->When tool retraction interruption mode,\n" +
+                        "       \tcommand G127/G126 was ordered.\n" +
+                        "       [Probable Faulty Locations] Programming error\n" +
+                        "       [Measures to Take] Correct the program.");
+
+        ExampleItem THIS_SYSTEM_VARIABLE_IWRONG = new ExampleItem("2538", "This system variable is wrong.",
+                "The instructed the system variable cannot be used.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] NONE\n" +
+                        "       [Character-string]\n" +
+                        "        Name of system variable");
+
+        ExampleItem DATA_WORD_B = new ExampleItem("2539", "DATA WORD 'B'",
+                "B command is incorrect.\n" +
+                        "       The B command value specified together with G127 command\n" +
+                        "       is outside the setting range from -359.999 to 359.999.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] Hexadecimal number of B command\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error;for example,G127 B370 causes 5A550 alarm.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Specify a B command value within the range from -359.999\n" +
+                        "       to 359.999.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_H_HC_HD = new ExampleItem("2540", "MULTI-MACHINING CYCLE H,HC,HD",
+                "In the G183, Designated H,HC,HD value is not:\n" +
+                        "        0 <= H,HC,HD <= 99999.999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF:H/HC/HD instruction was done at the traditional G183 \n" +
+                        "       \t\t  instruction of a continuous block.\n" +
+                        "       Others:Hexadecimal number of designated H,HC,HD value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "        Program Example 1:\n" +
+                        "         G183X40Z81I46D10F40H-10HC=5HD=2FB=30FC=20FD=25SD=120DA=2DB=4\n" +
+                        "         G183X40Z81I46D10F40H10HC=100000HD=2FB=30FC=20FD=25SD=120DA=2\n" +
+                        "         DB=4\n" +
+                        "         G183X40Z81I46D10F40H10HC=5HD=100000FB=30FC=20FD=25SD=120DA=2\n" +
+                        "         DB=4\n" +
+                        "        Program Example 2:\n" +
+                        "         N100 G183X120Z200I46D10F40   (H,HC,HD command none)\n" +
+                        "         N101\t  X40Z200I46D5F40H10FB=30FD=25SD=120DA=2DB=4   \n" +
+                        "         (H command)\n" +
+                        "         N102\t  X40Z150I46D4F40HC=20FB=30FD=25SD=120DA=2DB=4 \n" +
+                        "         (HC command)\n" +
+                        "         N103\t  X40Z100I46D3F40HD=30FB=30FD=25SD=120DA=2DB=4 \n" +
+                        "         (HD command)\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the H,HC,HD command in the compound fixed cycle block.");
+
+        ExampleItem PROGRAM_PRINT_COMMAND = new ExampleItem("2541", "PROGRAM PRINT command",
+                "Concerning a format of the following print command, it ordered\n" +
+                        "       another except for a comment sentence to an identical block.\n" +
+                        "       PRINT number = systematic variable (number: 100-105)\n" +
+                        "       [Probable Faulty Locations] A program format\n" +
+                        "       [Measures to take] It amends program.");
+
+        ExampleItem FEED_AXIS_RETRACT_FUNCTION_COMMAND = new ExampleItem("2542", "Feed axis retract function command",
+                "Feed axis retract function command is incorrect.\n" +
+                        "       [Object] None\n" +
+                        "       [Character string] none\n" +
+                        "       [Code]X\n" +
+                        "       1->RT command value is out of the range from 0 to 4.\n" +
+                        "       2->After G268 command is instructed, G140/G141 command is\n" +
+                        "          assigned in without G267 command.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       It amends programming error.");
+
+        ExampleItem TURRET_INDEX_ERROR_POSITION_B = new ExampleItem("2543", "Turret index error position",
+                "Axis feed command was issued in turret index error position.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]None\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)The turret is moved to X-axis or Z-axis plus variable limit\n" +
+                        "         position in MANUAL operation mode, and the turret index\n" +
+                        "         command is executed.");
+
+        ExampleItem TOOL_ID_TOOL_DATA = new ExampleItem("2544", "TOOL-ID TOOL DATA",
+                "Concerning TOOL-ID specification, when it read and wrote tool\n" +
+                        "       data of every kind by the System Variable, since tool data\n" +
+                        "       had not been set correctly, it could not read and write.\n" +
+                        "       Or, since it was not appointed correctly, it could not read and\n" +
+                        "       write.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       None -> Though tool data did not exist, it read tool data by\n" +
+                        "       \tthe System Variable. It has written form revised\n" +
+                        "       \tquantity, tool length, tool life span data using\n" +
+                        "       \ta systematic variable by the condition which a tool\n" +
+                        "       \tnumber was not specified.\n" +
+                        "       1 -> When it wrote tool data of turret by the System Variable,\n" +
+                        "            it performed an entry of tool kind (revised data\n" +
+                        "             identifier) which it can not install on the turret.\n" +
+                        "       2 -> It has written the tool number which it already uses by\n" +
+                        "            other tool.\n" +
+                        "       3 -> When it wrote tool data in a magazine, dummy pot\n" +
+                        "            appointment was turned into the magazine pot which is not\n" +
+                        "            a vacancy pot.\n" +
+                        "       4 -> When it writes tool data in a magazine, it has written\n" +
+                        "            data in a magazine pot of dummy pot appointment.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_LD = new ExampleItem("2545", "MULTI-MACHINING CYCLE LD",
+                "Designated LD value is not: 0 < LD <= 99999.999\n" +
+                        "       LD: A depth of cut in deep hole synchronization tap\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF->LD<=LK(\"Pecking amount in tapping cycle\" of\n" +
+                        "       \t  an OPTIONAL PARAMETER(MULTIPLE MACHINING) is used\n" +
+                        "       \t  when there is no LK value. )\n" +
+                        "       FFFFFFFE->A different processing pattern instruction was done\n" +
+                        "       \t  at the synchronization tap cycle of a continuous\n" +
+                        "       \t  block.\n" +
+                        "       Others->Hexadecimal number of designated LD value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example1:\n" +
+                        "        G178 X40 Z80 C0 I46 F40 L30 LD=-10\n" +
+                        "       \t\t   <- It is outside the range.\n" +
+                        "        G178 X40 Z80 C0 I46 F40 L30 LD=0.001\n" +
+                        "       \t\t   <- It is smaller than the parameter value.\n" +
+                        "       Program Example2:\n" +
+                        "        G178 X50 Z50 F=100 K10 L20\t     <- There is no LD value.\n" +
+                        "             X70 Z30\t\t     LD=10   <- There is LD value.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the LD command in the compound fixed cycle block.\n" +
+                        "       G178 X40 Z80 C0 I46 F40 L30 LD=10\n" +
+                        "       [Related Specifications]Multi-machining model");
+
+        ExampleItem MULTI_MACHINING_CYCLE_LK = new ExampleItem("2546", "MULTI-MACHINING CYCLE LK",
+                "Designated LK value is not: 0 < LK <= 99999.999\n" +
+                        "       LK: Pecking amount in deep hole synchronization tap\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of designated LK value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "       Program Example:\n" +
+                        "        G178 X40 Z80 C0 I46 F40 L30 LD=10 LK=-2\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the LK command in the compound fixed cycle block.\n" +
+                        "        G178 X40 Z80 C0 I46 F40 L30 LD=10 LK=2\n" +
+                        "       [Related Specifications]Multi-machining model ");
+
+        ExampleItem NOTHING_DECIMAL_POINT = new ExampleItem("2547", "Nothing decimal point",
+                "No decimal point on commanded numeric data.\n" +
+                        "       [Character string]\n" +
+                        "       The address character that there is not the decimal point which\n" +
+                        "       it detected at first.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Part program error\n" +
+                        "       [Measures to take]\n" +
+                        "       It adds a decimal point to the numerical command which follows\n" +
+                        "       the address character which was shown by a character string.");
+
+        ExampleItem X_Z_AXIS_SYNCHRONIZED_FEED_MODE = new ExampleItem("2548", "X,Z Axis synchronized feed mode",
+                "It performed X-Z both axis synchronaized feed mode command by\n" +
+                        "       the condition that a receipt valid condition has not formed.\n" +
+                        "       Or, it performed prohibited command in X-Z both axis\n" +
+                        "       synchronaized feed modes.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->It performed M300/M303 commands by the end of in a nose-R\n" +
+                        "          mode or LAP cycle.\n" +
+                        "       2->M300/M303 commands which is performed on the side of A side\n" +
+                        "          and B do not coincide.\n" +
+                        "       3->When there was another side on a synchronous waiting\n" +
+                        "          condition by a receipt of M02 commands, it performed\n" +
+                        "          M300/M303 commands. Or, when there was another side on\n" +
+                        "          a synchronous waiting condition by a receipt of M300/M303\n" +
+                        "          commands, it performed M02 commands.\n" +
+                        "       4->When there was another side on a synchronous waiting\n" +
+                        "          by a receipt of G140/G141 commands, it performed M300 /M303\n" +
+                        "          commands. Or, when there was another side on a synchronous\n" +
+                        "          waiting condition by a receipt of M300/M303 commands,\n" +
+                        "          it performed G140/G141 commands.\n" +
+                        "       5->When there was another side on a synchronous waiting\n" +
+                        "          condition by a receipt of M100  commands, it performed M300/\n" +
+                        "          M303 commands. Or, when there was another side on a\n" +
+                        "          synchronous waiting condition by a receipt of M300/M303\n" +
+                        "          commands, it performed M100 commands.\n" +
+                        "       6->Concerning a sequent return, when there was on the condition\n" +
+                        "          which another side has  realized on a return block,\n" +
+                        "          it performed M300/M303 commands. Or, when there is another\n" +
+                        "          side on a synchronous waiting condition by a receipt of M300\n" +
+                        "          /M303 commands, it has reached a return block of sequent\n" +
+                        "          return.\n" +
+                        "       7->When there was on the condition that the spindle mode which\n" +
+                        "          a mutual saddle is choosing does not coincide, it performed\n" +
+                        "          M300/M303 commands.\n" +
+                        "       8->In X-Z both axis synchronaized feed modes, command of X-Z\n" +
+                        "          both axis synchronaized feed mode invalidity (: M300)\n" +
+                        "          exceptions was performed on the side of B.\n" +
+                        "       9->In X-Z both axis synchronaized feed modes, command of\n" +
+                        "          the following either was performed.\n" +
+                        "          Measure cycle command (: G30), bowling cyclic command\n" +
+                        "          (: G182), tapping cycle command (: G184)\n" +
+                        "       10->It performed M303 commands by the condition that there is\n" +
+                        "           B side on C axis controlled mode.\n" +
+                        "       11->Movement command of axis was performed by M300/M303\n" +
+                        "           commands and an identical block.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Programming error\n" +
+                        "       [Measures to take]\n" +
+                        "       It amends programming error.");
+
+        ExampleItem ATC_TL_TG = new ExampleItem("2549", "ATC TL/TG",
+                "By a restart function, when it returned a sequence, it was\n" +
+                        "       about to return a sequence the program which TL command which\n" +
+                        "       calculates the tool number that there is not on Turret or TG\n" +
+                        "       command has performed.\n" +
+                        "       [Code]\n" +
+                        "       ZZ->A tool number\n" +
+                        "       FFFFFFFF->In TOOL-ID spec, TL-command that divided tool-number\n" +
+                        "       \t  that there is not in turret is performed.\n" +
+                        "       [Measures to take]\n" +
+                        "       Make a tool of the block which resumes a sequence please\n" +
+                        "       coincide with the tool which is installed on Turret when it\n" +
+                        "       returns a sequence.");
+
+        ExampleItem HOME_POSITION_NO_SPEC = new ExampleItem("2550", "Home position no spec",
+                "Though CNC has no \"Home position\" specification,VHPPX or\n" +
+                        "       VHPPZ(home position system variable) is designated.\n" +
+                        "       [ Object ] SYSTEM\n" +
+                        "       [ Probable Faulty Locations ]\n" +
+                        "       1) Though CNC has no \"Home position\" specification, VHPPX or\n" +
+                        "          VHPPZ(home position system variable) is designated in part\n" +
+                        "          program.\n" +
+                        "       Similarly in MDI command is designated.\n" +
+                        "       [ Measures to take ]\n" +
+                        "       1) A program correction");
+
+        ExampleItem EXTERNAL_HOME_POSITION_COMMAND = new ExampleItem("2551", "External home position command",
+                "Illegal condition occurred during execution of external home\n" +
+                        "       position command\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->In execution of external home position command, CON value of\n" +
+                        "          X/Z axis does not coincide when valid signal of external\n" +
+                        "          home position command was switched.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Error in CNC Software");
+
+        ExampleItem BARRIER_AREA_B = new ExampleItem("2552", "Barrier area",
+                "Designated axis command is to enter inside of barrier area.\n" +
+                        "       [Code]\n" +
+                        "       None->The axis command is located inside of\n" +
+                        "             barrier area by axis movement of X-Y plane in Y-axis\n" +
+                        "             mode(in G138 command).\n" +
+                        "       3->In the spec of Sub-Spindle Unit Barria, Feed-axis movement\n" +
+                        "          command that target position is in the barrier-region was\n" +
+                        "          ordered.\n" +
+                        "          The interference range is set by the next screen\n" +
+                        "            \"OPTIONAL PARAMETER Y-axis BARRIER\"  (NO.4-6)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Barrier area boundary is located on a point that added\n" +
+                        "          barrier length set data added minus stroke end limit\n" +
+                        "          position data.\n" +
+                        "          Axis command is located inside of barrier area.\n" +
+                        "       Barrier length set data\n" +
+                        "       X-axis: optional parameter long word No.66(It is Radius)\n" +
+                        "       Y-axis: optional parameter long word No.67\n" +
+                        "       Z-axis: optional parameter long word No.68");
+
+        ExampleItem NO_WHILE_IF_THEN_GOTO_FUNCTION = new ExampleItem("2553", "No WHILE,IF-THEN,GOTO function",
+                "When the user task 3 specification is not selected, WHILE is\n" +
+                        "       ordered.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1-> WHILE is ordered.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Incorrect program\n" +
+                        "       [Measure to Take]\n" +
+                        "       The program is reviewed.");
+
+        ExampleItem SAFETY_SPEED_DATA_ERROR_IN_W_AXIS_MODE = new ExampleItem("2554", "Safety Speed data error in W-axis Mode",
+                "Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       W-axis Mode is mismatched with Safety Speed data.\n" +
+                        "       [Object]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       W-axis Mode which PLC chose differs from the operational\n" +
+                        "       mode which NC chose when a power supply was attached.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Please change Mode Select switch into the mode selected\n" +
+                        "       when a power supply was attached last time,and reset the NC.");
+
+        ExampleItem LINEAR_GUIDE_COVER_AREA_ORDER = new ExampleItem("2555", "Linear guide cover area order",
+                "It ordered in the linear guide cover interference area.\n" +
+                        "       [Object] AXIS, SYSTEM\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       It ordered in the linear guide cover interference area.\n" +
+                        "       [Measure to Take]\n" +
+                        "       Please change the program in the linear guide cover\n" +
+                        "       interference area.");
+
+        ExampleItem DATA_WORD_COOLANT_PREASSURE = new ExampleItem("2556", "DATA WORD Coolant pressure",
+                "The instruction of high-pressure-change (M1197) is wrong.\n" +
+                        "       [Object] None\n" +
+                        "       [Code]\n" +
+                        "        None: M1197 was executed without CLP-instruction.\n" +
+                        "              Or, CLP-instruction was \"0\".\n" +
+                        "        HEX of CLP-instruction: CLP-instruction was outside the range.\n" +
+                        "        FFFFFFFF: Non Spec. of Multi-change for high-pressure-coolant.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "        Correct the program.");
+
+        ExampleItem STEADY_RESTS_ILLEGAL_ORDER = new ExampleItem("2557", "Steady-rests illegal order",
+                "The numerical value is not between from -99999.999 to 99999.999.\n" +
+                        "       or the incremental word is not between from -99999.999 to \n" +
+                        "       99999.999 when converted into absolute value.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]Hexadecimal number of the programmed steady-rests command\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       program error.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change steady-rests command value so that it is within the\n" +
+                        "       allowable range.");
+
+        ExampleItem TURNING_POSITION_SELECT = new ExampleItem("2558", "TURNING POSITION SELECT",
+                "In a MacTurn sub spindle specification, they went along selection\n" +
+                        "       command of upper position / lower position of YS axis turning \n" +
+                        "       position in Y-axis mode.\n" +
+                        "       [Object]\n" +
+                        "        SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        None\n" +
+                        "         ->They went along selection command of YS axis turning position\n" +
+                        "           upper position / lower position in Y-axis mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Program command inferiority\n" +
+                        "       [Measures to take]\n" +
+                        "        When selection command of YS axis turning position upper \n" +
+                        "        position / lower position is performed, after they are Y-axis\n" +
+                        "        mode OFF states, it is performed.");
+
+        ExampleItem IT_IS_NOT_POSSIBLE_TO_TURN_ATTACHMENT = new ExampleItem("2559", "It is not possible to turn attachment.",
+                "It instructed. it was not possible to instruct\n" +
+                        "       in attachment turning command.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->There is no Attachment specification or nor Attachment turn\n" +
+                        "          specification. \n" +
+                        "       2->It instructed during the fixed cycle.\n" +
+                        "       3->It instructed no Nose-R correction mode.\n" +
+                        "       4->It instructed during the LAP cycle.\n" +
+                        "       5->It instructed in the slope processing mode.\n" +
+                        "       6->It instructed W axis control mode.\n" +
+                        "       7->It instructed X axis mirror image coordinate system.\n" +
+                        "       8->It instructed the translation, the rotational transfer,\n" +
+                        "          and in the COPY mode of coordinates.\n" +
+                        "       9->It instructed while the tailstock and connecting the swinging\n" +
+                        "       stop.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       The part that corresponds to the above-mentioned code is corrected.");
+
+        ExampleItem UNUSABLE_TURRET_INDEX = new ExampleItem("2560", "UNUSABLE turret index",
+                "Turret index command was executed during TD command mode.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1-> Execute TL command during TD command mode.\n" +
+                        "       2-> Execute TG command during TD command mode/Non-\"TD/TDG command\".\n" +
+                        "       3-> Execute OF command during TD command mode.\n" +
+                        "       4-> Execute OG command during TD command mode.\n" +
+                        "       5-> Execute TP command during TD command mode.\n" +
+                        "       6-> Execute BT command during TD command mode/Non-\"TD/TDG command\".\n" +
+                        "       7-> Execute OG command during TD command mode/Non-\"TD/TDG command\".\n" +
+                        "       8-> Execute M602/M603 command during TD command mode/Non-\"TD/TDG\n" +
+                        "       command\".\n" +
+                        "       [Measures to Take]\n" +
+                        "       Execute (TD,TDG,OS) command.\n" +
+                        "       Or change to TL command mode then execute turret index.");
+
+        ExampleItem SYSTEM_VARIABLE_ORDER_DISABLE = new ExampleItem("2561", "System variable order disable",
+                "Tool offset system var., Nose-R systme var.\n" +
+                        "       was issued Tool offset position select system var.,\n" +
+                        "       Tool offset auto calculation pattern system var.\n" +
+                        "       same block\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]Check Tool offset position select\n" +
+                        "       system var., Tool offset auto calculation pattern\n" +
+                        "       system var. block.");
+
+        ExampleItem TOOL_POSTURE_FLUCTUATION_REDUCTION = new ExampleItem("2562", "TOOL POSTURE FLUCTUATION REDUCTION",
+                "Tool posture fluctuation reduction is wrong.\n" +
+                        "       [Object]\n" +
+                        "       None\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       1->It instructed in other G, M code, and the address character \n" +
+                        "          at the same time in when instructing in G445/G444 command of\n" +
+                        "           Tool posture fluctuation reduction mode.\n" +
+                        "       2->Tool posture fluctuation reduction mode ON command while it \n" +
+                        "          was not the tool center point control mode OFF.\n" +
+                        "       3->Tool center point control mode OFF command while it was the \n" +
+                        "          Tool posture fluctuation reduction mode ON.\n" +
+                        "       4->TFA,TFB,TFC,TFP,TFQ,TFR command is out of range.\n" +
+                        "       5->It instructed in Permissible level of rotation axis A that \n" +
+                        "          was not the object of Tool posture fluctuation reduction.\n" +
+                        "       6->It instructed in Permissible level of rotation axis B that \n" +
+                        "          was not the object of Tool posture fluctuation reduction.\n" +
+                        "       7->It instructed in Permissible level of rotation axis C that \n" +
+                        "          was not the object of Tool posture fluctuation reduction.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Tool posture fluctuation reduction command(G445,G444) in a \n" +
+                        "       program.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check Tool Posture Fluctuation Reduction command(G445,G444) in \n" +
+                        "       the program.");
+
+        ExampleItem DATA_WORD_TE = new ExampleItem("2563", "DATA WORD 'TE'",
+                "TE-command is wrong.\n" +
+                        "       TE-command instructs the continuing turret-number by the\n" +
+                        "       order of rise.\n" +
+                        "         ex)The command between T2 and T3\n" +
+                        "              TE=23\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] Hexadecimal of TE-command value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Please instruct the command which arranged the continuing\n" +
+                        "       turret-number by the order of rise.\n" +
+                        "       However, the instruction between Tn and T1 of n-angle\n" +
+                        "       turret\tis \"TE=n1\".");
+
+        ExampleItem INDEX_DISABLE_POINT = new ExampleItem("2564", "Index disable point",
+                "Concernig B-axis 1/1000 spec and pendulum-control spec,\n" +
+                        "       Index disable point was designated.\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Please order Index able point.");
+
+        ExampleItem LOAD_MONITOR_SYSTEM_VARIABLE = new ExampleItem("2565", "Load monitor System variable",
+                "In the Load-monitor specification,\n" +
+                        "       1)BASE or 1st-limit,2nd-limit of the axis which does not\n" +
+                        "         exist for the Load-monitor was about to be read or write.\n" +
+                        "       2)In the state of \"ORDER:NG\", VOLPR was ordered.\n" +
+                        "       3)Concerning Sub spindle-tailstock Control specification,\n" +
+                        "         it instructed with the instruction prohibited.\n" +
+                        "         Concerning W axis Cut-tailstock Control specification,\n" +
+                        "         it instructed with the instruction prohibited. \n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code}\n" +
+                        "        1->System-variable \"VLMYB\",\"VLMY1\",\"VLMY2\" was used on the\n" +
+                        "           side of B-turret(G14).\n" +
+                        "        2->In the mathine that was not the Multiple-Machine\n" +
+                        "           specification, System-variable \"VLMCB\",\"VLMC1\",\"VLMC2\",\n" +
+                        "           \"VLMMB\",\"VLMM1\",\"VLMM2\"  was used.\n" +
+                        "        3->Though W-axis did not exist, System-variable \"VLMWB\",\n" +
+                        "           \"VLMW1\",\"VLMW2\" was used.\n" +
+                        "        4->Though the 2nd-spindle did not exist, System-variable\n" +
+                        "           \"VLMBB\",\"VLMB1\",\"VLMB2\"  was used.\n" +
+                        "        5->Though Y-axis did not exist, System-variable \"VLMYB\",\n" +
+                        "           \"VLMY1\",\"VLMY2\" was used.\n" +
+                        "        6->Though M-axis did not exist on the\tB-turret,\n" +
+                        "           System-variable \"VLMMB\",\"VLMM1\",\"VLMM2\" was used on\n" +
+                        "           the side of B-turret(G14).\n" +
+                        "        9->The spec of Tool retraction cycle.\n" +
+                        "           The state A-side was \"VEINT != 0\", and B-side was\n" +
+                        "           \"VEINT != 0\", VOLPR was used.\n" +
+                        "       10->The state A-side was \"VLMON != 0\", and B-side was\n" +
+                        "           \"VLMON != 0\", VOLPR was used.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Program error\n" +
+                        "         Load-monitor specification:\n" +
+                        "         There are System-variable  that cannot be used by the\n" +
+                        "         machine-spec. on System-variable for Load-monitor.\n" +
+                        "         Deleate the System-variable for Load-monitor that\n" +
+                        "         cannot be used.\n" +
+                        "         It is ordered \"VOLPR\" in correct block.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_WITHOUT_M_TOOL_CYCLE_ORDER = new ExampleItem("2566", "MULTI-MACHINING CYCLE without M-tool cycle order",
+                "When MULTI-MACHINING CYCLE command was performed, M-axis was\n" +
+                        "       a stopped state.\n" +
+                        "       MULTI-MACHINING CYCLE command:G181,G182,G183,G185,G186,G187\n" +
+                        "       \t\t\t      G188,G189,G190");
+
+        ExampleItem X_Y_Z_AXIS_ORDER = new ExampleItem("2567", "X,Y,Z axis order",
+                "When the helical-cut specification is not selected or the slant\n" +
+                        "       process mode is established, a circular-cut command and on\n" +
+                        "       X-,Y-,Z-axis command are specified at the same time.\n" +
+                        "       [Object]\n" +
+                        "        SYSTEM\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1)Program error\n" +
+                        "           :\n" +
+                        "          G138\n" +
+                        "          G02 X10 Y10 L5 Z10 F10\n" +
+                        "           :\n" +
+                        "       [Measures to Take]\n" +
+                        "        1)Please do not specify a circular-cut command simultaneously\n" +
+                        "          with X-,Y- or Z-axis.\n" +
+                        "       [Related Specifications]\n" +
+                        "        Y-AXIS SPEC");
+
+        ExampleItem DATA_ORDER_OF = new ExampleItem("2568", "DATA WORD 'OF'",
+                "'OF' command was ordered in a block there was 'T' command\n" +
+                        "        or 'TL', 'TG'.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1)Program error\n" +
+                        "            :\n" +
+                        "          T010101 OF=01\n" +
+                        "            :\n" +
+                        "       [Measures to Take]\n" +
+                        "        1)Do not order 'OF' command in a block there was\n" +
+                        "          'T' command or 'TL', 'TG'.\n" +
+                        "       [Related Specifications]\n" +
+                        "        H1 Turret Spec");
+
+        ExampleItem THERMAL_DEVITATION_COMP_BACKUP_DATA_FILE_WRITE = new ExampleItem("2569", "Thermal devitation comp.Backup data file write",
+                "There is no thermal deviation compensation backup file or\n" +
+                        "       writing to the backup file is disabled.\n" +
+                        "       [Index] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1->There is no thermal deviation compensation backup file.\n" +
+                        "       2->Writing to the thermal deviation compensation backup file is\n" +
+                        "          disabled.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)There is no thermal deviation compensation backup file.\n" +
+                        "       2)Thermal deviation compensation backup file is abnormal.");
+
+        ExampleItem W_AXIS_POSITION_CONDITION = new ExampleItem("2570", "W-axis position condition",
+                "G154 command was specified without designation of\n" +
+                        "       W-axis command.\n" +
+                        "       [Code]\n" +
+                        "       1->G154 command was specified without designation of\n" +
+                        "          W-axis command.\n" +
+                        "       2->G154 command was performed by the side of the 2nd spindle.\n" +
+                        "       3->At the time that thg command of \"Sequence carriage return\"\n" +
+                        "          to block in excess of G154-command was performed,\n" +
+                        "          the actual-position of W-axis differed from the movement\n" +
+                        "          target position of W-axis.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Programming error\n" +
+                        "         Program example:\n" +
+                        "           N010 G154\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Review the G154 command block.\n" +
+                        "           N010 G154 W100");
+
+        ExampleItem W_AXIS_POSITION_NO_SPEC = new ExampleItem("2571", "W-axis position no spec",
+                "G154 was specified thought the machine was not equipped\n" +
+                        "       with B-axis control function, two saddles, and sub spindle.\n" +
+                        "       It instructed in G154 in the tailstock mode by\n" +
+                        "       a Sub spindle-tailstock Control specification.\n" +
+                        "       [Code] \n" +
+                        "        None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Programming error\n" +
+                        "       [Measures to Take]\n" +
+                        "        Specify G154 command only when the machine is equipped\n" +
+                        "        with B-axis control function, two saddles and a sub spindle.");
+
+        ExampleItem DATA_WORD_RC = new ExampleItem("2572", "DATA WORD 'RC'",
+                "RC command value is out of the range from -999 to 999 .\n" +
+                        "       [Code]\n" +
+                        "       RC command value in hexadecimal");
+
+        ExampleItem TAPER_CUTTING_CYCLE = new ExampleItem("2573", "Taper cutting cycle",
+                "Taper cutting cycle order is illegal.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1-> It was not in turning mode.\n" +
+                        "       2-> Taper shape is illegal.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Incorrect program\n" +
+                        "       [Measures to Take]\n" +
+                        "       1) Order in turning mode.\n" +
+                        "       2) Correct command value.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_DA_DB = new ExampleItem("2574", "MULTI-MACHINING CYCLE DA,DB",
+                "In the G183, Designated DA,DB value is not:\n" +
+                        "        0 <= DA,DB <= 99999.999\n" +
+                        "       [Object]\n" +
+                        "       SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal number of designated DA,DB value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "        Program Example:\n" +
+                        "         G183X40Z81I46D10E1F40H10HD=2FB=30FC=20FD=25SD=120DA=-1DB=4\n" +
+                        "         G183X40Z81I46D10E1F40H10HC=5FB=30FC=20FD=25SD=120DA=2\n" +
+                        "         DB=100000\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the DA,DB command in the compound fixed cycle block.");
+
+        ExampleItem DATA_WORD_TD_TDG_OS = new ExampleItem("2575", "DATA WORD 'TD','TDG','OS'",
+                "Specified TD ,TDG ,OS command was illegal.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1-> Wrong TOOL number in TD COMMAND\n" +
+                        "       2-> Wrong TOOL Information Number in TD command\n" +
+                        "       3-> Wrong Turret number in TD command\n" +
+                        "       4-> Wrong Edge point number in TD command\n" +
+                        "       5-> Wrong Group number in TDG command\n" +
+                        "       6-> Wrong Tool information number in TDG command\n" +
+                        "       7-> Wrong OS command\n" +
+                        "       8-> Unusual commands include in TDG command except for M323/423,OS\n" +
+                        "       9-> OS command mistake \n" +
+                        "       10->Execute TD command during TL command mode.\t \n" +
+                        "       11->Execute TDG command during TL command mode. \n" +
+                        "       12->Execute OS command during TL command mode.\t\n" +
+                        "       13->Execute TS command during TL command mode.\t\n" +
+                        "       14->Execute TSG command during TL command mode. \n" +
+                        "       15->Execute M423/M323 during TL command mode.  \n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Incorrect program\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the program.\n" +
+                        "       Execute turret index command.\n" +
+                        "       Change to TD mode then tool preparation command(TD command).");
+
+        ExampleItem DATA_WORD_H = new ExampleItem("2576", "DATA WORD 'H'",
+                "In the spec of Zero offset 10 or 50 or 100 set:\n" +
+                        "       H command is incorrect.The H command value specified together\n" +
+                        "       with G15/G16 command is outside the setting range from 1 to 10\n" +
+                        "       or 50 or 100.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] Hexadecimal number of H command");
+
+        ExampleItem AXIS_MOVEMENT_INSTRUMEN_NOT_PERFORMED = new ExampleItem("2577", "Axis movement instrument not performed",
+                "Axis command is designed although the axis movement\n" +
+                        "       instruction not performed.\n" +
+                        "       [Code]\n" +
+                        "       none\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Programming error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the program");
+
+        ExampleItem NO_D_COMMAND = new ExampleItem("2578", "NO D COMMAND",
+                "When setting values for D(cam major axis) and L(cam lift)\n" +
+                        "       in the cam define data file(LSF), no value is set for D.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       No D(cam major axis) designated.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Designate a D(cam major axis) command value.");
+
+        ExampleItem NO_L_COMMAND = new ExampleItem("2579", "NO L COMMAND",
+                "When setting values for D(cam major axis) and L(cam lift)\n" +
+                        "       in the cam define data file(LSF), no value is set for D.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       No L(cam lift) designated.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Designate an L(cam lift) command value.");
+
+        ExampleItem DATA_WORD_XS = new ExampleItem("2580", "DATA WORD 'XS'",
+                "Illegal Xs-axis(cam-axis) positioning command (asynchronous\n" +
+                        "       mode command).\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       1->Xs-axis rapid positioning command is designated in the\n" +
+                        "          synchronous mode.\n" +
+                        "       2->Xs-axis rapid positioning command is designated in other\n" +
+                        "          than the G00 mode.\n" +
+                        "       3->Xs-axis rapid positioning is executed in the develop mode.\n" +
+                        "       Hexadecimal of positioning command value that exceeded the\n" +
+                        "       allowable input range.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Operator's error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the machine condition in which the Xs-axis rapid\n" +
+                        "       positioning command is designated as well as designated\n" +
+                        "       positioning command");
+
+        ExampleItem CAM_EXECUTE_DATA_DEVELOP_MODE = new ExampleItem("2581", "CAM EXECUTE DATA DEVELOP MODE",
+                "In the cam execute data develop mode, a value is set to D\n" +
+                        "       (major diameter of the eclipse) and L(cam lift value) in\n" +
+                        "       the cam define data file(LSF file).\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Operator's error");
+
+        ExampleItem CAM_EXECUTE_DATA_FILE_RIGHT_PROTECT = new ExampleItem("2582", "CAM EXECUTE DATA FILE RIGHT PROTECT",
+                "The cam execute data file(EXF file) is in the\n" +
+                        "       write-protected condition when an attempt is made to update\n" +
+                        "       the file.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The EXF file is write-protected.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Cancel the write-protect status of the EXF file.");
+
+        ExampleItem COMPENSATION_VALUE_OVER_FLOW = new ExampleItem("2583", "COMPENSATION VALUE OVER FLOW",
+                "Overflow occurred when calculating the initial value of the\n" +
+                        "       compensation value.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal of the compensation value.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The calculated compensation value becomes larger\n" +
+                        "       than 2 bytes.");
+
+        ExampleItem CON_VEROCITY_XS_AXIS = new ExampleItem("2584", "CON VEROCITY XS AXIS",
+                "The command value and the compensation value of the cam\n" +
+                        "       execute data exceeded the allowable spindle speed when\n" +
+                        "       writing these values in the memory.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal of the allowable spindle speed\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The spindle speed designated as an option in developing\n" +
+                        "       the profile data is too large.\n" +
+                        "       The cam lift amount designated in developing the cam define\n" +
+                        "       data is too large.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the spindle speed.\n" +
+                        "       Check tthe cam define data file.");
+
+        ExampleItem XS_AXIS_COMMAND_TURRET_MODE = new ExampleItem("2585", "XS AXIS COMMAND TURRET MODE",
+                "A command related with the Xs-axis designated while the\n" +
+                        "       B-turret is selected.\n" +
+                        "       [Index]None\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       1-> A FCALL commands is designated while the B-turret is\n" +
+                        "           selected.\n" +
+                        "       2-> A synchronous mode ON/OFF command(M68,M69,or M67) is\n" +
+                        "           designated while the B-turret is selected.\n" +
+                        "       3-> The learning control ON command(M139) is designated\n" +
+                        "           while the B-turret is selected.\n" +
+                        "       4-> The Xs-axis rapid feed command(G0 XS=*) is designated\n" +
+                        "           while the B-turret is selected.");
+
+        ExampleItem SYNCHRONOUS_MODE_EXECUTE_IMPOSSIBLE = new ExampleItem("2586", "SYNCHRONOUS MODE EXECUTE IMPOSSIBLE",
+                "Attempt was made to select the revision mode,\n" +
+                        "       shape development mode, or file loading mode during a\n" +
+                        "       synchronous mode.\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       1-> Revision mode was selected during a synchronous mode.\n" +
+                        "       2-> Shape development mode was selected during a synchronous\n" +
+                        "           mode.\n" +
+                        "       3-> File loading mode was selected during a synchronous mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Operation error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Terminate the synchronous mode before selecting the any of\n" +
+                        "       the above modes.");
+
+        ExampleItem NO_A_COMMAND = new ExampleItem("2587", "NO A COMMAND",
+                "The shape of off-center circle was define with D(diameter of\n" +
+                        "       off-center circle), L(offset amount), and OF(offset amount\n" +
+                        "       of reference position).\n" +
+                        "       But, the definition file(LSF file) does not include\n" +
+                        "       A-command (reference angle for development).\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       A-command is omitted.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Enter A-command.");
+
+        ExampleItem DATA_WORD_OF = new ExampleItem("2588", "DATA WORD OF",
+                "The shape of off-center circle was define with A(reference\n" +
+                        "       angle for development), D(diameter of off-center circle),\n" +
+                        "       L(offset amount), and OF(offset amount of reference position).\n" +
+                        "       But, the definition file(LSF file) includes an invide\n" +
+                        "       OF command value.\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       OF command value in hexadecimal\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Invaid OF command value\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the OF command value.");
+
+        ExampleItem DEFINITION_CONDITION = new ExampleItem("2589", "DEFINITION CONDITION",
+                "Among the commands for defining the off-center circle in the\n" +
+                        "       shape definition file(LSF file),\n" +
+                        "       the relation between D command value(diameter of off-center\n" +
+                        "       circle) and L command value(offset amount) does not satisfy\n" +
+                        "       the following condition:\n" +
+                        "       L is larger than 0, and equal to or smaller than D/2.\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]\n" +
+                        "       Deviation value in hexadecimal\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The L-command has a negative value.\n" +
+                        "       2)The L-command value is larger than a half of D command value.\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Enter a positive value for L command.\n" +
+                        "       2)Specify the L-command with a value smaller than a half of\n" +
+                        "         D command value.");
+
+        ExampleItem Y_AXIS_COMMAND = new ExampleItem("2590", "Y-axis command",
+                "In case of \"Y-axis tool offset\" was changed in G136-mode,\n" +
+                        "       movement-command except for G00/G136/G138 was instructed\n" +
+                        "       when \"Y-axis tool offset\" was not effective.\n" +
+                        "       [Code] 1\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1)Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "        1)In case of \"Y-axis tool offset\" was changed in G136-mode,\n" +
+                        "          it instruct G00-command that \"Y-axis tool offset\" do\n" +
+                        "          effective.\n" +
+                        "       [Related Specifications]\n" +
+                        "        CENTER COMP. function");
+
+        ExampleItem DATA_WORD_POINT_COMMAND = new ExampleItem("2591", "DATA WORD point command",
+                "Though it was not transportation mode, axis-movement by\n" +
+                        "       a point instruction had instructed.\n" +
+                        "       A value beyond limits was about to be setting on point data.\n" +
+                        "       Value of 20 or more had instructed on point No .\n" +
+                        "       [Code]\n" +
+                        "       1->Though it was not transportation mode, axis-movement by\n" +
+                        "          a point instruction had instructed.\n" +
+                        "       2->A value beyond limits was about to be setting on point data.\n" +
+                        "       3->Value of 20 or more had instructed on point-number.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the program.");
+
+        ExampleItem COMMAND_OF_WENT_INTO_TRANSPORTATION_BARRIER = new ExampleItem("2592", "Command of went into transportation barrier",
+                "Axis-movement into transportation barrier had instructed.\n" +
+                        "       Axis was about to be moved to area which could not move.\n" +
+                        "       [Code]\n" +
+                        "       1->Axis-movement into transportation barrier had instructed.\n" +
+                        "       2->Axis was about to be moved to area which could not move.\n" +
+                        "          Mobile area is mentioned below.\n" +
+                        "          (1)-->(1),(2),(3),(4)\n" +
+                        "          (2)-->(1),(2),(3)\n" +
+                        "          (3)-->(1),(2),(3),(5)\n" +
+                        "          (4)-->(1),(4)\n" +
+                        "          (5)-->(3),(5)\n" +
+                        "           ........|..............|.......\n" +
+                        "           ...(1)..|.....(2)......|..(3)..\n" +
+                        "           --------|--------------|-------\n" +
+                        "           ........|transportation|.......\n" +
+                        "           ...(4)..|...barrier....|..(5)..\n" +
+                        "           ........|..............|.......\n" +
+                        "        \n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the program.");
+
+        ExampleItem DATA_WORD_CF = new ExampleItem("2593", "DATA WORD 'CF'",
+                "Value of 'CF' command is over the range that be\n" +
+                        "       from 0 to 359999.\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal of 'CF' command");
+
+        ExampleItem DATA_WORD_RJ = new ExampleItem("2594", "DATA WORD 'RJ'",
+                "Value of 'RJ' command is over the range that be\n" +
+                        "       from 1 to 999.\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal of 'RJ' command");
+
+        ExampleItem SYNCHRONIZE_REVOLUTION_OVER = new ExampleItem("2595", "Synchronize revolution over",
+                "In Hob Cuttnig Synchronous mode, an attempt is made to rotate\n" +
+                        "       the M-tool spindle at a speed higher than the main spindle\n" +
+                        "       allowable speed.\n" +
+                        "       [Code]\n" +
+                        "       1->In Hob Cuttnig Synchronous mode, an attempt is made to rotat\n" +
+                        "       the M-tool spindle at a speed higher than the main spindle\n" +
+                        "       allowable speed.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Select the M-tool spindle speed taking the allowable speed of\n" +
+                        "       the main and sub spindle in to consideration.");
+
+        ExampleItem SYNCHRONIZED_TAP_OVERLOAD = new ExampleItem("2596", "Synchronized tap overload",
+                "The load torque of M-axis exceeded a set value while synchronized\n" +
+                        "       tap.\n" +
+                        "       [OBJECT] SYSTEM\n" +
+                        "       [Character string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Cutting load is over.\n" +
+                        "       It sets or the selection is defective of M-axis synchronized tap\n" +
+                        "       torque monitor parameter.\n" +
+                        "       Torque monitor delay time is improper.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Change the torque monitor parameter for setting.\n" +
+                        "       Change the torque monitor delay time for setting.");
+
+        ExampleItem G_15_COMMAND = new ExampleItem("2597", "G15 command",
+                "Though it was not in transportation mode, G15-command\n" +
+                        "       has instructed.\n" +
+                        "       [Code]\n" +
+                        "       1->Though it was not in transportation mode, G15-command\n" +
+                        "          has instructed.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error");
+
+        ExampleItem TOOL_INFORMATION_MANAGEMENT_NO_SPEC = new ExampleItem("2598", "Tool information management no spec", "");
+
+        ExampleItem CANNOT_ORDER_IT_WHILE_MOUNTING_LBB = new ExampleItem("2599", "cannot order it while mounting LBB",
+                "The instruction that was not able to be executed while\n" +
+                        "       installing LBB was done.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->It instructed in M13, M14, and M229.\n" +
+                        "       2->It instructed in M06.\n" +
+                        "       3->It instructed in B command.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       The part that corresponds to the above-mentioned code is corrected.");
+
+        ExampleItem LAW_V_MACHINE_NO_SPEC = new ExampleItem("2600", "LAW-V machine no spec.", "");
+
+        ExampleItem LAW_V_MACHINE_SYNTAX = new ExampleItem("2601", "LAW-V machine syntax", "");
+
+        ExampleItem SHEDULE_PROGRAM_MAIN_PROGRAM_LOAD = new ExampleItem("2602", "SCHEDULE PROGRAM main program load",
+                "An error occurred when a main program was selected in schedule\n" +
+                        "       program.\n" +
+                        "       [Object]None\n" +
+                        "       [Charecter-string]None\n" +
+                        "       [Code]XXXX\n" +
+                        "       5200:An attempt to select a program during the execution \n" +
+                        "            of a main program.\n" +
+                        "       5201:Main program file was not found.\n" +
+                        "       5202:Main program name was not found.\n" +
+                        "       5203:Subprogram name was not found.\n" +
+                        "       5204:Subprogram name was not found after CALL\n" +
+                        "            Subprogram name exceeded 5 characters.\n" +
+                        "            G and M code macro was not defined.\n" +
+                        "       5209:The end of program code was not specified at the end \n" +
+                        "            of a file.\n" +
+                        "       5210:Program stack overflow\n" +
+                        "            Program buffer overflow\n" +
+                        "       5211:The program buffer size excluding the schedule program \n" +
+                        "            and library program was less than 32K byte.\n" +
+                        "       5215:More the 158 characters contain in the one block\n" +
+                        "       5230:The option is not permitted.\n" +
+                        "       5231:Mismatch between the end of file and the end of record\n" +
+                        "       5374:Program selection by DNC-DT failed because of \n" +
+                        "            faulty file name.The total characters of device name,\n" +
+                        "            path name, and file name exceeds 120.\n" +
+                        "       5375:An alarm occurred during program selection by DNC-DT.\n" +
+                        "       [Probably Faulty Locations]\n" +
+                        "       1.Main program selected by schedule program");
+
+        ExampleItem SPINDLE_ROTATION_FLUCTUATION_CONTROL_NO_SPEC = new ExampleItem("2603", "Spindle rotation fluctuation control no spec.",
+                "System variable (VFLTQ, VFLTP, VFLTR) is designated lthough\n" +
+                        "       the control has no Spindle rotation fluctuation control\n" +
+                        "       specification.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Programming error\n" +
+                        "       Programming example:\n" +
+                        "       \tVFLTQ=100\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the system varible from the program.");
+
+        ExampleItem TOW_ALONG_STEADY_REST_NO_SPEC = new ExampleItem("2604", "Tow-along steady rest no spec.",
+                "VSRP (System variable) is designated although the control\n" +
+                        "       has no tow-along steady rest specification.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Programming error\n" +
+                        "          Program Example:\n" +
+                        "            V1=VSRP\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the system variabel \"VSRP\" from the program.");
+
+        ExampleItem TOW_ALONG_TAILSTOCK_NO_SPEC = new ExampleItem("2605", "Tow-along tailstock no spec.",
+                "VPTSP (System variable) is designated although the control\n" +
+                        "       has no tow-along tailstock specification.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Programming error\n" +
+                        "          Program Example:\n" +
+                        "            V1=VPTSP\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the system variabel \"VPTSP\" from the program.");
+
+        ExampleItem READ_WRITE_FILE_OPEN = new ExampleItem("2606", "READ/WRITE File open",
+                "first (READ/WRITE)\n" +
+                        "       This alarm occurs in file operation using FOPENA/B or \n" +
+                        "       FWRITC command.\n" +
+                        "       [Code]\n" +
+                        "         1->FOPENA/B was used to open two or more files.\n" +
+                        "         2->FWRITC was used to open two or more files.\n" +
+                        "         3->The writing file already exists.\n" +
+                        "         4->The reading file is not found.\n" +
+                        "         5->READ command was given without opening a file.\n" +
+                        "         6->WRITE command was given without opening a file.\n" +
+                        "         7->File closing failed.\n" +
+                        "         8->The file close command is normally specified.\n" +
+                        "         9->File attribute error: the reading file is not\n" +
+                        "            a sequential one.\n" +
+                        "        10->The same file had already been instructed \n" +
+                        "            in when having instructed in FWRITC. \n" +
+                        "        11->FOPENA/B FWRITC no spec.\t \n" +
+                        "        4-digits(or 3-digits)->generated error number in decimal");
+
+        ExampleItem DATA_WORD_AP = new ExampleItem("2607", "DATA WORD 'AP'",
+                "The AP command value is larger than  point number of A-axis.");
+
+        ExampleItem DATA_WORD_ON = new ExampleItem("2608", "DATA WORD 'ON'",
+                "he ON command value is larger than max number.");
+
+        ExampleItem A_AXIS_CONTROL_NO_SPEC = new ExampleItem("2609", "A-axis control no spec.",
+                "The spindle table rotation command was performed\n" +
+                        "       in the machine was not A-axis specification.");
+
+        ExampleItem ZERO_OFFSET_INPOSSIBLE = new ExampleItem("2610", "Zero offset select inpossible",
+                "The Zero Offset Select command was performed in\n" +
+                        "       prohibition command practice.");
+
+        ExampleItem SPINDLE_FLUCTUATION_NO_SPEC = new ExampleItem("2611", "Spindle fluctuation control no spec.",
+                "When the spindle or M-spindle fluctuation control specification\n" +
+                        "       is not selected,system variable command of spindle or \n" +
+                        "       M-spindle fluctuation control is designated.\n" +
+                        "       [Object] System\n" +
+                        "       [Code]\n" +
+                        "       None->Spindle fluctuation control no spec.\n" +
+                        "       2->M-spindle fluctuation control no spec.\n" +
+                        "       [Probable faulty Location]\n" +
+                        "       None) \"VFLTQ\", \"VFLTP\" and  \"VFLTR\" are specified in a\n" +
+                        "            program for the control which does not support the \n" +
+                        "            spindle fluctuation control specification.\n" +
+                        "       2)\"VMFLQ\", \"VMFLP\" and\t\"VMFLR\" are specified in a\n" +
+                        "          program for the control which does not support the \n" +
+                        "          M-spindle fluctuation control specification.\n" +
+                        "       [Measure to take]\n" +
+                        "       None)Correct the program; delete \"VFLTQ\", \"VFLTP\" and\n" +
+                        "            \"VFLTR\" command from the prgram.\n" +
+                        "       2)Correct the program; delete \"VMFLQ\", \"VMFLP\" and\n" +
+                        "          \"VMFLR\" command from the prgram.");
+
+        ExampleItem DATA_WORD_TR = new ExampleItem("2612", "DATA WORD 'TR'",
+                "Illigal TR command.\n" +
+                        "       [Code]\n" +
+                        "       1->TR command was executed, when the coordinate system\n" +
+                        "          was selected G13.\n" +
+                        "       2->TR command and T command were ordered at a same block.\n" +
+                        "       3->TR command was ordered without turret position number.\n" +
+                        "       4->The turret position number of TR command was out of a\n" +
+                        "          allowable range (1<=TR<=12).");
+
+        ExampleItem ATC_MTM = new ExampleItem("2613", "ATC MTM",
+                "A wrong tool number was specified with the MTM command.\n" +
+                        "         MTM:Tool preparation command,from sub-magazine to main-magazine\n" +
+                        "             (MTM=$$, where $$ is the tool No.)\n" +
+                        "       In the case of \"TOOL OFFSET 999\" spec and \"MULTI EDGE TOOL\" spec,\n" +
+                        "       tool number were not the following ranges.\n" +
+                        "          MULTI-TOOL  8-EDGES:1-210 or 281-999\n" +
+                        "          MULTI-TOOL 12-EDGES:1-210 or 321-999\n" +
+                        "       [Code]Specified tool number");
+
+        ExampleItem ATC_MTS = new ExampleItem("2614", "ATC MTS",
+                "A wrong tool number was specified with the MTS command.\n" +
+                        "         MTS:Tool preparation command,from main-magazine to sub-magazine\n" +
+                        "             (MTS=$$, where $$ is the tool No.)\n" +
+                        "       In the case of \"TOOL OFFSET 999\" spec and \"MULTI EDGE TOOL\" spec,\n" +
+                        "       tool number were not the following ranges.\n" +
+                        "          MULTI-TOOL  8-EDGES:1-210 or 281-999\n" +
+                        "          MULTI-TOOL 12-EDGES:1-210 or 321-999\n" +
+                        "       [Code]Specified tool number");
+
+        ExampleItem ATC_MGS = new ExampleItem("2615", "ATC MGS",
+                "MGS command is wrong.\n" +
+                        "       MGS:Sub-magazine index command\n" +
+                        "       (MGS=**,where ** is the sub-magazine pot No.)\n" +
+                        "       [code]Specified magazine number");
+
+        ExampleItem B_AXIS_MODE = new ExampleItem("2616", "B-axis mode",
+                "They went along an inappropriate instruction in B axis mode.\n" +
+                        "       Or it was ordered lathe machining mode (G270), C-axis machining\n" +
+                        "       mode (G271) and Y-axis machining mode (G272) in a B-axis mode.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] X\n" +
+                        "       1: They went along an inappropriate instruction in B axis\n" +
+                        "         unclamp or Low Brake.\n" +
+                        "          - An axis movement instruction expect for G00/G01\n" +
+                        "            instruction performed.\n" +
+                        "          - The slant process mode IN/OUT command was performed.\n" +
+                        "          - Nose-R compensation ON command (G41/G42) was performed.\n" +
+                        "          - A command fixed cycle command was executed.\n" +
+                        "       2: In nose-R compensation, B axis unclamp command was\n" +
+                        "         performed. In slant process mode, B axis unclamp command\n" +
+                        "         was performed.\n" +
+                        "       3: When they were B axis clamp, an axis movement instruction.\n" +
+                        "       4: Turret command (T) was performed in B axis mode.\n" +
+                        "       5: Restart to B axis mode is commanded, when mode is not B axis\n" +
+                        "         mode. Restart to mode, which is not B axis mode, is commanded,\n" +
+                        "         when mode is B axis mode.\n" +
+                        "       6: B axis mode ON/OFF command were performed by the condition\n" +
+                        "         which is not T1 or B=0.\n" +
+                        "       7: It was ordered G270/G271/G272 in a B-axis mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Programming error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the program");
+
+        ExampleItem ZERO_SETTING_CONDITION = new ExampleItem("2617", "Zero setting condition",
+                "Zero offset data could not be changed due to the setting for\n" +
+                        "       the system variable.\n" +
+                        "       [Code] X\n" +
+                        "       X = 1 -> An attempt was made to change the Z-axis zero offset\n" +
+                        "       data at the sub spindle side although the W-axis was not\n" +
+                        "       positioned at the variable limit in the positive direction.\n" +
+                        "       [Corrective Action]\n" +
+                        "       Move the W-axis to the variable limit in the positive direction\n" +
+                        "       before changing the zero offset data.");
+
+        ExampleItem THE_SENSOR_TO_DETECT_A_WORK_IS_NOT_PREPARED = new ExampleItem("2618", "The sensor to detect a work is not prepared.",
+                "[Code]\n" +
+                        "        1->The work-piece detection sensor is not indexed, or the \n" +
+                        "           turret station set at the parameter as the station having\n" +
+                        "           a work detection sensor differs from the currently indexed\n" +
+                        "           station.\n" +
+                        "           Under the above condition, the system variable (VWKME) was\n" +
+                        "           issued to specify the measurement direction.\n" +
+                        "        2->The work-piece detection sensor is indexed but the system \n" +
+                        "           variable (VWKME) for specifying the measurement direction\n" +
+                        "           is not issued. \n" +
+                        "           The measurement command (G30) was issued under such condition.");
+
+        ExampleItem DATA_WORD_SW = new ExampleItem("2619", "DATA WORD 'SW'",
+                "Illegal SW command\n" +
+                        "       Numerical value of SW command is not: 0<=SW<=9999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of programmed SW command\n" +
+                        "       SW instruction of SW instruction is not 0\n" +
+                        "       [Probable Faulty Locations]SW command\n" +
+                        "       Program ExampleN010 G00 X500 Z500 M42 SW100000 T0101\n" +
+                        "       [Measures to Take]Change SW command value so that it is within\n" +
+                        "       the allowable range.\n" +
+                        "       Example: N010 G00 X500 Z500 M42 SW30000 T0101");
+
+        ExampleItem READ_UNSTORED_SYSTEM_VARIABLE = new ExampleItem("2622", "Read unstored System variable",
+                "When the optional parameter bit No.65 bit1 is \"0\",\n" +
+                        "       VMPOX/VMPOZ are executed without memorized position.");
+
+        ExampleItem B_AXIS_NO_SPEC = new ExampleItem("2623", "B-axis no spec.",
+                "B-axis G code (G146/G147) is designated although the\n" +
+                        "       control has no B-axis specification.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010  G147\n" +
+                        "       [Measures to Take]Eliminate G146/G147 from the program.");
+
+        ExampleItem TOW_ALONG_STEADY_REST_TYPE_B_NO_SPEC = new ExampleItem("2624", "Tow-along steady rest type-B no spec",
+                "G153 is designated although the control has no tow-along\n" +
+                        "       steady rest specification.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       Program Example:\n" +
+                        "        N010 G153 W100\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the tow-along steady rest command G153 from the program.");
+
+        ExampleItem TOW_ALONG_STEADY_REST_MOVEMENT_CONDITION = new ExampleItem("2625", "Tow-along steady rest movement condition",
+                "G153 (tow-along steady rest positioning cycle) is designated\n" +
+                        "       in other than G13 (A saddle) mode.\n" +
+                        "       G153 is designated without a W command.\n" +
+                        "       G153 is designated during the tool nose radius compensation or\n" +
+                        "       LAP mode.\n" +
+                        "       [Code]\n" +
+                        "       1->G153 designated in other than A saddle.\n" +
+                        "       2->G153 designated without a W command.\n" +
+                        "       3->G153 designated during the tool nose radius compensation\n" +
+                        "          mode.\n" +
+                        "       4->G153 designated during the LAP mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Program error\n" +
+                        "       Program Example:\n" +
+                        "       N010 G153\n" +
+                        "       [Measures to Take]\n" +
+                        "       1) Check the commands in the G153 block.\n" +
+                        "          In the example program above, no W command is designated.\n" +
+                        "          Designate one:\n" +
+                        "       \t\t   N010 G153 W100\n" +
+                        "       \t\t\t     ^^^^");
+
+        ExampleItem W_AXIS_OVERLAP = new ExampleItem("2626", "W-axis overlap",
+                "The W-axis overlap command execute when the command designating\n" +
+                        "       conditions are not satisfied.\n" +
+                        "       They went along an inappropriate instruction in W-axis overlap\n" +
+                        "       mode.\n" +
+                        "       [Object]\n" +
+                        "       SYSTEM\n" +
+                        "       [Code]XX\n" +
+                        "        1->When W-axis overlap specification was not selection,\n" +
+                        "           G116/G117 instructions were performed.\n" +
+                        "        2->When there was one side on M100 instruction receipt condi-\n" +
+                        "           tions, G116/G117 instructions were already performed\n" +
+                        "           on another side. Or,when there was one side on a synchro-\n" +
+                        "           nism standby condition of G116/G117 instructions, M100\n" +
+                        "           instructions were already accepted on another side.\n" +
+                        "        3->Concerning sequence carriage return, when there is one side\n" +
+                        "           on a synchronization wait state of G116/G117 instructions,\n" +
+                        "           another side has reached a carriage return frock.\n" +
+                        "           Or the reverse.\n" +
+                        "        4->When there was one side on a synchronization wait state of\n" +
+                        "           G116/G117 instructions, M02/M30 instructions were performed\n" +
+                        "           in another side. Or the reverse.\n" +
+                        "        5->When there was one side on a synchronization wait state of\n" +
+                        "           G116/G117 instructions, G122/G123 instructions were per-\n" +
+                        "           formed in another side. Or the reverse.\n" +
+                        "        6->G116/G117 instructions were performed in the second spindle\n" +
+                        "           mode.\n" +
+                        "        7->TW instruction was performed by the state which was not W-\n" +
+                        "           axis overlap mode.\n" +
+                        "        8->An axis movement instruction except for G00/G01 instruc-\n" +
+                        "           tions performed it in W-axis overlap mode it was been.\n" +
+                        "        9->G116/G117 instructions were performed in constant cutting\n" +
+                        "           speed mode.\n" +
+                        "       10->SC instruction was performed by the state which was not W-\n" +
+                        "           axis overlap mode.\n" +
+                        "       11->G116/G117 instructions were performed by the end of in nose\n" +
+                        "           -R mode, LAP cycle or any-angle chamfering.\n" +
+                        "       12->G116/G117 instructions which was performed on the side of A\n" +
+                        "           and G116/G117 instructions which was performed on the side\n" +
+                        "           of B do not solidarity.\n" +
+                        "       13->G116/G117 instructions were performed by the end of in\n" +
+                        "           polygon cutting.\n" +
+                        "       14->G116/G117 instructions were performed by the state which\n" +
+                        "           touch setter sensor was not retract.\n" +
+                        "       15->When there was one side on a synchronization wait state of\n" +
+                        "           G116/G117 instructions, P instructions were performed\n" +
+                        "           in another side. Or the reverse.\n" +
+                        "       16->The FW instruction was done following at the compound\n" +
+                        "           fixation cycle at either. \n" +
+                        "             It is not Z-W overlay mode. \n" +
+                        "             Instruction at compound fixation cycles other than G181,\n" +
+                        "            G182, G183, G189, and G190 instruction\n" +
+                        "             Side processing instruction of G181, G182, G183, and G189 \n" +
+                        "            instruction\n" +
+                        "       17->When instructing in G190 of the front processing of G181,\n" +
+                        "           G182, G183, and the G189 instruction of the Z-W\n" +
+                        "           overlay mode instruction or the Z-W overlay mode, the FW\n" +
+                        "           instruction was not done. \n" +
+                        "       18->The FW instruction value is not 0< FW<=99999.999. \n" +
+                        "       19->The KW instruction was done following at the compound\n" +
+                        "           fixation cycle at either. \n" +
+                        "             It is not Z-W overlay mode. \n" +
+                        "             Instruction at compound fixation cycles other than G178?\n" +
+                        "            G184 and G185?G190 instruction\n" +
+                        "             Side processing instruction of G178?G184, G189, and G190 \n" +
+                        "            instruction\n" +
+                        "             When A instruction is done by G186 and the G188\n" +
+                        "            instruction\n" +
+                        "       20->The KW instruction value is not 0<=KW<=99999.999. \n" +
+                        "           It is neither G185?G188 instruction the KW instruction\n" +
+                        "           value is nor -99999.999<=KW<=99999.999. \n" +
+                        "           When not returning to the start point of the cycle when \n" +
+                        "           continuously instructing at the same cycle, the KW\n" +
+                        "           instruction value is smaller than last time. \n" +
+                        "           When instructing in the repetition of G187 straight\n" +
+                        "           screw Kishirei, the KW instruction value is not 0. \n" +
+                        "       21->There is no KW instruction when instructing in the\n" +
+                        "           front processing of G178?G184, G189, and the G190\n" +
+                        "           instruction of the Z-W overlay mode. \n" +
+                        "       22->The RW instruction was done following at the compound\n" +
+                        "           fixation cycle at either. \n" +
+                        "             It is not Z-W overlay mode. \n" +
+                        "             Instruction at compound fixation cycles other than G181,\n" +
+                        "            G182, G183, and G189 instruction\n" +
+                        "             Side processing instruction of G181, G182, G183, and G189 \n" +
+                        "            instruction\n" +
+                        "       23->The RW instruction value is not -99999.999<=RW<=99999.999.\n" +
+                        "           Or, the RW instruction value was 0. \n" +
+                        "       24->The WW instruction was done following at the compound\n" +
+                        "           fixation cycle at either. \n" +
+                        "             It is not Z-W overlay mode. \n" +
+                        "             Instruction at compound fixation cycles other than G178?\n" +
+                        "            G190 instruction\n" +
+                        "             Repetition instruction of G188 straight screw instruction\n" +
+                        "       25->The RW instruction and the WW instruction were done at\n" +
+                        "           the same time at the compound fixation cycle. Or, R\n" +
+                        "           instruction and the WW instruction were done at the same\n" +
+                        "           time by the front processing instruction of G178, G179, and\n" +
+                        "           the G184 instruction. \n" +
+                        "       26->The WW instruction value is not -99999.999<=WW<=99999.999. \n" +
+                        "       27->Neither RW nor the WW instruction are done by compound\n" +
+                        "           fixation cycle in Z-W overlay mode instruction. \n" +
+                        "       28->The direction where W axis was cut changed when continuously \n" +
+                        "           instructing in the Z-W overlay mode at the same cycle. \n" +
+                        "       29->It is compound fixation cycle in Z-W overlay mode\n" +
+                        "           instruction, and there is no amount of the cut of W axis. \n" +
+                        "       30->When it was neither compound fixation cycle in Z-W\n" +
+                        "           overlay mode instruction it was nor a synchronous A/B\n" +
+                        "           tool-post sending mode, Q instruction was done. \n" +
+                        "       31->P instruction was done following at the compound\n" +
+                        "           fixation cycle at either. \n" +
+                        "             It is not Z-W overlay mode. \n" +
+                        "             Synchronous A/B tool-post sending mode inside\n" +
+                        "       32->The amount of the cut of Z axis and W axis is different\n" +
+                        "           because of the following compound fixation cycles in Z-W\n" +
+                        "           overlay mode instruction. \n" +
+                        "             G178,G179,G184,G185?G188\n" +
+                        "       33->The following instructions were done in the Z-W overlay\n" +
+                        "           mode. \n" +
+                        "             Instruction G178?G192 at compound fixation cycle in Y\n" +
+                        "            axis mode\n" +
+                        "             Instruction G77 at main axis tap cycle, G78, G107, and\n" +
+                        "            G108\n" +
+                        "             ..switching off.. screw Kishirei G185?G188 of synchronous\n" +
+                        "            A/B tool-post sending mode\n" +
+                        "             Fine bore instruction(G296) and\n" +
+                        "            backing bore instruction(G297)\n" +
+                        "       34->M964 instruction was done following at the compound\n" +
+                        "           fixation cycles in Z-W overlay mode instruction. \n" +
+                        "             G178,G179,G181,G182,G183,G184,G189,G296,G297,G298\n" +
+                        "       35->G183 and H/HC/HD instructions were done in the Z-W overlay\n" +
+                        "           mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Part program error.\n" +
+                        "       [Measure to take]\n" +
+                        "       Place applicable to above-mentioned code is modified.");
+
+        ExampleItem MULTI_MACHINING_CYCLE_FB_FC_FD = new ExampleItem("2627", "MULTI-MACHINING CYCLE FB,FC,FD",
+                "In the G183, Designated FB,FC,FD value is not:\n" +
+                        "        0 <= FB,FC,FD <= 99999.999\n" +
+                        "       [Object]\n" +
+                        "       SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal number of designated FB,FC,FD value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "        Program Example:\n" +
+                        "         G183X40Z81I46D10E1F40H10HD=2FB=-1FC=20FD=25SD=120DA=2DB=4\n" +
+                        "         G183X40Z81I46D10E1F40HC=5HD=2FB=30FC=100000FD=25SD=120DA=2\n" +
+                        "         DB=4\n" +
+                        "         G183X40Z81I46D10E1F40H10HC=5FB=30FC=20FD=-100SD=120DA=2DB=4\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the FB,FC,FD command in the compound fixed cycle block.");
+
+        ExampleItem DATA_WORD_TW = new ExampleItem("2628", "DATA WORD 'TW'",
+                "Illegal TW command.\n" +
+                        "       In TW=** comand, tool offset number are larger than 32.\n" +
+                        "       (96 for 96-pair specification)\n" +
+                        "       [Object]\n" +
+                        "        SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        Hexadecimal number of TW command.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       (1)TW command.\n" +
+                        "          Program Example:\n" +
+                        "          TW=-3->[Code]FFFFFFFD\n" +
+                        "       [Measures to Take]\n" +
+                        "        TW command must be 32(96 in the case of 96-pair specification)\n" +
+                        "        of smaller.");
+
+        ExampleItem DATA_WORD_FW = new ExampleItem("2629", "DATA WORD 'FW'",
+                "Illegal FW command.\n" +
+                        "       Numerical value of an FW command is either negative or zero.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        2->FW value is either negative or zero.\n" +
+                        "       [Probable Faulty Locations]FW command\n" +
+                        "       (1)Program Example:\n" +
+                        "          G01 X50 Z50 W50 FW=-0.2\n" +
+                        "       [Measures to Take]\n" +
+                        "       (1)Designate only a number within the specified range.");
+
+        ExampleItem DATA_WORD_SC = new ExampleItem("2630", "DATA WORD 'SC'",
+                "Illegal SC command\n" +
+                        "       Numerical value of SC command is not: 0<=SC<=9999\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]Hexadecimal number of programmed SC command\n" +
+                        "        Hexadecimal number of programmed SC command :\n" +
+                        "       \t\tSC instruction is not 0<=SC<=9999.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       (1)SC command\n" +
+                        "          Program Example:\n" +
+                        "          N010 G00 X500 Z500 M42 SC10000 T0101\n" +
+                        "       [Measures to Take]\n" +
+                        "       (1)Change SC command value so that it is within\n" +
+                        "           the allowable range.");
+
+        ExampleItem DNC_DT_PATCH_NAME = new ExampleItem("2631", "DNC-DT Path name",
+                "Program selection by DNC-DT failed because of faulty file name.\n" +
+                        "       The number of characters composed of device name, path name,\n" +
+                        "       and file name exceeds 120.\n" +
+                        "       [Index] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] X\n" +
+                        "       X=1: Faulty file name\n" +
+                        "       X=2: Faulty extension code\n" +
+                        "       X=3: Over 120 characters\n" +
+                        "       X=5: Device assignment at the time of delete is except for HD0.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Schedule program\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the schedule program.");
+
+        ExampleItem DNC_DT_PROGRAM_SELECT = new ExampleItem("2632", "DNC-DT Program select",
+                "An alarm occurred during program selection by DNC-DT.\n" +
+                        "       [Index] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] YY: YY application error NO.\n" +
+                        "       800000XX: XX communicative error NO.\n" +
+                        "       FFFFFFFFF: NC programmes over of a letter of 1 line are edited\n" +
+                        "       FFFFFFFFD: program buffer overflow\n" +
+                        "       XX=6F: Buffer in TCP/IP driver is too small.\n" +
+                        "       XX=72: Descriptor transferred to TCP/IP driver is faulty.\n" +
+                        "       XX=73: Parameters transferred to TCP/IP driver is faulty.\n" +
+                        "       XX=74: There is no empty port in the shared memory.\n" +
+                        "       XX=75: DNC is not connected.\n" +
+                        "       XX=7B: The abort command was ignored.\n" +
+                        "       XX=7D: \"ftp_ms_open\" abnormal termination\n" +
+                        "       XX=7E: \"ftp_ms_close\" abnormal termination\n" +
+                        "       XX=7F: \"ftp_ms_type\" abnormal termination\n" +
+                        "       XX=80: \"ftp_ms_user\" abnormal termination\n" +
+                        "       XX=81: \"ftp_ms_pass\" abnormal termination\n" +
+                        "       XX=82: \"ftp_ms_acct\" abnormal termination\n" +
+                        "       XX=83: \"ftp_ms_delete\" abnormal termination\n" +
+                        "       XX=84: \"ftp_ms_fopen\" abnormal termination\n" +
+                        "       XX=85: \"ftp_ms_fopen_uni\" abnormal termination\n" +
+                        "       XX=86: \"ftp_ms_net_drecv_f\" abnormal termination\n" +
+                        "       XX=87: \"ftp_ms_net_dsend_f\" abnormal termination\n" +
+                        "       XX=88: \"ftp_ms_fclose\" abnormal termination\n" +
+                        "       XX=89: \"ftp_ms_abort\" abnormal termination\n" +
+                        "       XX=8A: \"ftp_ms_chdir\" abnormal termination\n" +
+                        "       XX=8B: \"ftp_ms_mkdir\" abnormal termination\n" +
+                        "       XX=8C: \"ftp_ms_rmdir\" abnormal termination\n" +
+                        "       XX=8D: \"ftp_ms_pwd\" abnormal termination\n" +
+                        "       XX=8E: \"ftp_ms_cdup\" abnormal termination\n" +
+                        "       XX=8F: \"ftp_ms_dopen\" abnormal termination\n" +
+                        "       XX=90: \"ftp_ms_dread\" abnormal termination\n" +
+                        "       XX=91: \"ftp_ms_dclose\" abnormal termination\n" +
+                        "       XX=97: IP address abnormal\n" +
+                        "       XX=98: No IP address\n" +
+                        "       XX=99: Interruption by time out\n" +
+                        "       XX=9A: Disconnection command from the remote host\n" +
+                        "       XX=9B: Abnormal termination of initialization of OS (MORE) on\n" +
+                        "          TCP/IP board\n" +
+                        "       XX=9C: Abnormal termination of initialization of packet driver\n" +
+                        "          or TCP/IP module on TCP/IP board\n" +
+                        "       XX=9D: Abnormal termination of initialization of TELNET client\n" +
+                        "          module on TCP/IP board\n" +
+                        "       XX=9E: Abnormal termination of initialization of TELNET server\n" +
+                        "          module on TCP/IP board\n" +
+                        "       XX=9F: Abnormal termination of initialization of FTP module on\n" +
+                        "          TCP/IP board\n" +
+                        "       XX=A0: Abnormal termination of initialization of socket\n" +
+                        "          interface module on TCP/IP board\n" +
+                        "       XX=A1: Abnormal termination of initialization of TCP/IP board\n" +
+                        "       YY=13: Incorrect channel number\n" +
+                        "       YY=16: Closing the communication line was attempted though it\n" +
+                        "           had not been open.\n" +
+                        "       YY=11: Opening the communication line was attempted though it\n" +
+                        "           had been open.\n" +
+                        "       YY=11: The program has been activated.\n" +
+                        "       YY=06: A time-out occurred in initialization of TCP/IP board\n" +
+                        "          (TCP/IP board is inoperable).\n" +
+                        "          The specified device rejects renaming, canceling its\n" +
+                        "          write-protected state, or offering file system information.\n" +
+                        "          Unknown (unsupported) command was used.\n" +
+                        "       YY=0D: No communication board is mounted.\n" +
+                        "       YY=02: The selected program is not found.\n" +
+                        "       YY=08: Execution failed.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty TCP/IP board; communication error; faulty NC program\n" +
+                        "       [Measures to Take]\n" +
+                        "       Properly set the OSP environment setting file.\n" +
+                        "       Correct the communication environment.\n" +
+                        "       Specify an existing file.");
+
+        ExampleItem DNC_DT_PRELOAD_ERROR = new ExampleItem("2633", "DNC-DT Preload error",
+                "Buffering processing at the DNC-DT was abnormal.\n" +
+                        "       [Index] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       100:Hardware error (hard disk, etc.)\n" +
+                        "       XXYYZZ\n" +
+                        "       XX=\n" +
+                        "       6F->Insufficient buffer in TCP/IP driver\n" +
+                        "       72->Abnormal description passed to TCP/IP driver\n" +
+                        "       73->Abnormal parameter passed to TCP/IP driver\n" +
+                        "       74->No free port in shared memory\n" +
+                        "       75->Not connected\n" +
+                        "       7B->abort disregarded\n" +
+                        "       7D->ftp_ms_open abnormal end\n" +
+                        "       7E->ftp_ms_close abnormal end\n" +
+                        "       7F->ftp_ms_type abnormal end\n" +
+                        "       80->ftp_ms_user abnormal end\n" +
+                        "       81->ftp_ms_pass abnormal end\n" +
+                        "       82->ftp_ms_acct abnormal end\n" +
+                        "       83->ftp_ms_delete abnormal end\n" +
+                        "       84->ftp_ms_fopen abnormal end\n" +
+                        "       85->ftp_ms_fopen_uni abnormal end\n" +
+                        "       86->ftp_ms_net_drecv_f abnormal end\n" +
+                        "       87->ftp_ms_net_dsend_f abnormal end\n" +
+                        "       88->ftp_ms_fclose abnormal end\n" +
+                        "       89->ftp_ms_abort abnormal end\n" +
+                        "       8A->ftp_ms_chdir abnormal end\n" +
+                        "       8D->ftp_ms_pwd abnormal end\n" +
+                        "       8F->ftp_ms_dopen abnormal end\n" +
+                        "       90->ftp_ms_dread abnormal end\n" +
+                        "       91->ftp_ms_dclose abnormal end\n" +
+                        "       97->IP address error\n" +
+                        "       98->No IP address\n" +
+                        "       99->Interrupt due to timeout\n" +
+                        "       9A->Connection cut from remote host\n" +
+                        "       9B->OS (MORE) initialization abnormal end on TCP/IP board\n" +
+                        "       9C->Packet driver or TCP/IP module initialization abnormal end\n" +
+                        "        on TCP/IP board\n" +
+                        "       9F->FTP client module initialization abnormal end on TCP/IP\n" +
+                        "        board\n" +
+                        "       A0->Socket interface module initialization abnormal end on\n" +
+                        "        TCP/IP board\n" +
+                        "       A1->TCP/IP board initialization abnormal end\n" +
+                        "       YY=\n" +
+                        "       10->Buffering task start up\n" +
+                        "       20->Buffering processing initialization\n" +
+                        "       30->Buffering request\n" +
+                        "       40->Getting the number of buffering completion times\n" +
+                        "       50->Taking the buffering file\n" +
+                        "       60->Getting the remaining number of buffering file tables\n" +
+                        "       70->Buffering stop\n" +
+                        "       80->Buffering file lock cancel\n" +
+                        "       90->Buffering request\n" +
+                        "       A0->Buffering file lock cancel\n" +
+                        "       B0->File transfer error\n" +
+                        "       ZZ=\n" +
+                        "       FF->Communication error\n" +
+                        "       02->File not found\n" +
+                        "       03->Buffering task not started\n" +
+                        "       05->No transfer completed file\n" +
+                        "       08->Buffering processing not initialized\n" +
+                        "           Preceding buffering processing not completed\n" +
+                        "       0D->Write-protected file\n" +
+                        "       0E->Buffering task start-up parameter error\n" +
+                        "       11->File already existing, buffering task already started\n" +
+                        "       13->File device name error\n" +
+                        "       16->Illegal initialization parameter,\n" +
+                        "           Not started\n" +
+                        "           Illegal program name");
+
+        ExampleItem DNC_DT_DELETE_ERROR = new ExampleItem("2634", "DNC-DT Delete error",
+                "By delete automatic formatting of a schedule program,\n" +
+                        "       delete of file was not performed normally.\n" +
+                        "       [Index] None\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       FFFFFFFF: Without file,or a file protection ");
+
+        ExampleItem Y_AXIS_MODE = new ExampleItem("2635", "Y axis mode",
+                "The Tool radius compensation command (G41/G42) is instructed\n" +
+                        "       in Y-Z Plane (G19).\n" +
+                        "       [Object] Turret\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XX\n" +
+                        "        XX=19:Y-Z Plane\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        The programming was mistaken.\n" +
+                        "       [Measures to Take]\n" +
+                        "        G41/G42 can not be used in Y-Z Plane.");
+
+        ExampleItem AXIS_MOVEMENT_COMMAND_NOTHING = new ExampleItem("2637", "Axis movement command nothing",
+                "After Geometric transformation G137 commanded, the axis\n" +
+                        "       movement instruction is done in first X-Y block.\n" +
+                        "       After 3-D Coordinate conversion G303/G302 commanded, the axis\n" +
+                        "       movement instruction is done in first X/Y/Z block.\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Program example:\n" +
+                        "        G137\n" +
+                        "        X10 Y20 -> After G137 commanded, there is no axis movement\n" +
+                        "       .\t    instruction in first X-Y block.\n" +
+                        "        G00 Z10\n" +
+                        "       [Measures to Take]\n" +
+                        "        After G137 commanded, the axis movement instruction is done\n" +
+                        "        in first X-Y block.\n" +
+                        "        Program example:\n" +
+                        "         G137\n" +
+                        "         G00 X10 Y20 -> add G00");
+
+        ExampleItem A_B_SADDLE_SYNCHRONIZED_MOTION_COMMAND = new ExampleItem("2638", "A/B saddle synchronized motion command",
+                "[Code]\n" +
+                        "       21->G183 and H/HC/HD instructions were done in the A/B saddle\n" +
+                        "           synchronized mode.");
+
+        ExampleItem C_AXIS_COMMAND_DISABLE_IN_HELICAL_CUT = new ExampleItem("2639", "C-axis command disable in helical cut",
+                "Ordered C-axis moving command when the machine is following\n" +
+                        "       conditions.\n" +
+                        "       [Object] Turret\n" +
+                        "       [Character] none\n" +
+                        "       [Code] X\n" +
+                        "        X=1:Ordered command without X-Y coordinate(G17).\n" +
+                        "        X=2:Ordered command with slant mode(G127).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        The programming was mistaken.\n" +
+                        "       [Measures to Take]\n" +
+                        "        Modify the program.");
+
+        ExampleItem CANT_ROTATE_REVOLUTION_ON_AC_THREAD = new ExampleItem("2640", "Can't rotate revolution on AC thread",
+                "Illegal S command on thread override mode.\n" +
+                        "       Numerical vaule of S command is not follow:\n" +
+                        "          0 < S < Allowable revolution\n" +
+                        "       [Object]Turret\n" +
+                        "       [Code]X\n" +
+                        "       X=1 S command overs alowable range\n" +
+                        "       X=2 S=0\n" +
+                        "       X=3 Revolution overs allowable range\n" +
+                        "       X=4 The spindle does not pass a marker.\n" +
+                        "       [Probable faulty locations]\n" +
+                        "       S command\n" +
+                        "       [Measures to take]\n" +
+                        "       Change S command vaule so that ti is within the\n" +
+                        "       allowable range for thread override function.");
+
+        ExampleItem CANT_EXECUTE_FLUCTUATION_ON_AC_THREAD = new ExampleItem("2641", "Can't execute fluctuation on AC thread",
+                "Execute thread cycle when spinlde fluctuatuin and AC\n" +
+                        "       thread mode.\n" +
+                        "       [Object]\n" +
+                        "        Turret\n" +
+                        "       [Probale faulty locations]\n" +
+                        "        Thread cycle command on spinlde fluctuatuin and AC\n" +
+                        "        thread mode.\n" +
+                        "       [Measures to take]\n" +
+                        "        Execute thread cycle after cut the spinlde fluctuatuin\n" +
+                        "        control.");
+
+        ExampleItem READ_WRITE_NO_EMPTY_SAT = new ExampleItem("2642", "READ/WRITE No empty SAT",
+                "A file cannot be created using FWRITC or WRITE C command\n" +
+                        "       because the output device does not have enough free area.\n" +
+                        "       [Code] Generated error No. in hexadecimal");
+
+        ExampleItem READ_WRITE_FILE_OPEN_B = new ExampleItem("2643", "READ/WRITE File open",
+                "his alarm occurs in file operation using FOPENA/B or FWRITC\n" +
+                        "       command.\n" +
+                        "       [Code]\n" +
+                        "        1->FOPENA/B was used to open two or more files.\n" +
+                        "        2->FWRITC was used to open two or more files.\n" +
+                        "        3->The writing file already exists.\n" +
+                        "        4->The reading file is not found.\n" +
+                        "        5->READ command was given without opening a file.\n" +
+                        "        6->WRITE command was given without opening a file.\n" +
+                        "        7->File closing failed.\n" +
+                        "        8->The file close command is normally specified.\n" +
+                        "        9->File attribute error: the reading file is not a \n" +
+                        "           sequential one.\n" +
+                        "        4-digits(or 3-digits)->generated error number in decimal");
+
+        ExampleItem UNUSABLE_PRINT_REQUEST = new ExampleItem("2644", "Unusable PRINT request",
+                "A PRINT command was given during activation of READ/WRITE or\n" +
+                        "       GET/PUT function.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        A PRINT command was issued during activation of READ/WRITE\n" +
+                        "        or GET/PUT function.\n" +
+                        "       [Measures to Take]\n" +
+                        "        Do not issue any PRINT command during activation of \n" +
+                        "        READ/WRITE or GET/PUT function.");
+
+        ExampleItem YS_AXIS_POSITION_B = new ExampleItem("2645", "YS axis position",
+                "In the status that Y-axis-mode was OFF, YS-axis was not in\n" +
+                        "       the turning-position of SYSTEM-PARAMETER.\n" +
+                        "       And the programa was started in the status.\n" +
+                        "       Or, after changing the spindle-mode, the movement-command\n" +
+                        "       except for Y-axis was performed before moving YS-axis to\n" +
+                        "       turning-position.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->Concerning the spec of \"CENTER COMP.\"\n" +
+                        "          In the status that Y-axis-mode was OFF,\n" +
+                        "          YS-axis was not in the turning-position of\n" +
+                        "          SYSTEM-PARAMETER.\n" +
+                        "          And the programa was started in the status.\n" +
+                        "       2->After changing the spindle-mode, the movement-command\n" +
+                        "          except for Y-axis was performed before moving YS-axis\n" +
+                        "          to turning-position.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error.\n" +
+                        "         The function of \"CENTER COMP.\" was not canceled before\n" +
+                        "         program-end.\n" +
+                        "       2)Turning-position of SYSTEM-PARAMETER was changed.\n" +
+                        "       3)After installing NC-software, program was started before\n" +
+                        "         setting turning-position.\n" +
+                        "       4)After changing the spindle-mode, the command of moving\n" +
+                        "         Y-axis to turning-position was not performed.\n" +
+                        "         ex:\n" +
+                        "       \t:\n" +
+                        "             G141\n" +
+                        "             G00 X100 Z100\n" +
+                        "       \t:\t\n" +
+                        "       [Measures to Take]\n" +
+                        "       1)Correct the program.\n" +
+                        "       2)Restore parameter-data.\n" +
+                        "         Or, it ordered G136/G138-command for returning\n" +
+                        "         turning-position Y-axis.\n" +
+                        "       3)Set turning-position of SYSTEM-PARAMETER.\n" +
+                        "       4)Add G00-command to move turning-position of Y-axis.\n" +
+                        "         ex:\n" +
+                        "       \t:\n" +
+                        "             G141\n" +
+                        "             G00 Y=VYSTP\n" +
+                        "             G00 X100 Z100\n" +
+                        "       \t:");
+
+        ExampleItem SYSTEM_VARIABLE_C_AXIS_SEPARATION = new ExampleItem("2646", "SYSTEM VARIABLE C-axis separation",
+                "Ordered a system variable command for C-axis, when\n" +
+                        "       C-axis doesn't connect.\n" +
+                        "       [Object]\n" +
+                        "        Turret\n" +
+                        "       [Character]\n" +
+                        "        None\n" +
+                        "       [Code]\n" +
+                        "        None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Doesn't connect C-axis.\n" +
+                        "       [Measures to Take]\n" +
+                        "        Order the system variable command for C-axis, adter\n" +
+                        "        C-axis connect(M110).");
+
+        ExampleItem MG_TOOL_READY_CYCLE_NO_SPEC = new ExampleItem("2648", "MG tool ready cycle no spec.",
+                "MG tool ready cycle command was issued at the machine without\n" +
+                        "       MG tool ready cycle specification.\n" +
+                        "       [Object] system\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       (1)Programming error\n" +
+                        "       MG tool ready cycle command was issued at the machine without\n" +
+                        "       MG tool ready cycle specification.\n" +
+                        "       [Measures to Take]\n" +
+                        "       (1)Delete the M820 command from the program.");
+
+        ExampleItem SYSTEM_VARIABLE_Y_AXIS_MODE = new ExampleItem("2649", "SYSTEM VARIABLE Y-axis mode",
+                "Ordered a system variabel command for Y-axis\n" +
+                        "       without Y-axis mode.\n" +
+                        "       [Object]\n" +
+                        "        Turret\n" +
+                        "       [Character]\n" +
+                        "        None\n" +
+                        "       [Code]\n" +
+                        "        None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Y-axis mode.\n" +
+                        "       [Measures to Take]\n" +
+                        "        Oreder the system variable command for Y-axis mode\n" +
+                        "        in Y-axis mode(G138).");
+
+        ExampleItem SYSTEM_VARIABLE_B_AXIS_MODE = new ExampleItem("2650", "SYSTEM VARIABLE B-axis mode",
+                "Ordered a system variable command without B-axis mode.\n" +
+                        "       [Object]\n" +
+                        "        Turret\n" +
+                        "       [Character]\n" +
+                        "        None\n" +
+                        "       [Code]\n" +
+                        "        None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        B-axis mode.\n" +
+                        "       [Measures to Take]\n" +
+                        "        Order the system variable command in B-axis mode.\n" +
+                        "        (G149)");
+
+        ExampleItem C_AXIS_MULTI_REV_MODE = new ExampleItem("2651", "C-axis multi rev mode.",
+                "Specified C-axis multi rev operation was illegal.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1->C-axis multi rev instruction was executed while C-axis not\n" +
+                        "          connection mode.\n" +
+                        "       2->There is an C-axis instruction in the C-axis multi rev \n" +
+                        "          instruction block.\n" +
+                        "       3->Coordinate conversion instruction was executed while\n" +
+                        "          C-axis multi rev mode. C-axis multi rev instruction was\n" +
+                        "          executed while coordinate conversion mode.\n" +
+                        "       4->C-axis multi rev instruction was executed while A/B saddle\n" +
+                        "          synchronous mode.\n" +
+                        "       5->C-axis multi rev instruction was executed while C-axis \n" +
+                        "          synchronous mode.\n" +
+                        "       6->Parallel and rotational shift of coordinate instruction\n" +
+                        "          (G11,COPY,COPYE) was executed while C-axis multi rev mode.\n" +
+                        "          C-axis multi rev instruction was executed while parallel\n" +
+                        "          and rotational shift of coordinate.\n" +
+                        "       7->C-axis rotation direction instruction (M15/M16/M960) was\n" +
+                        "          executed while C-axis multi rev mode.\n" +
+                        "       8->C-axis disconnection instruction (M15/M16/M960) was executed\n" +
+                        "          while C-axis multi rev mode.\n" +
+                        "       9->C-axis zero shift instruction (G50) was executed while\n" +
+                        "          C-axis multi rev mode.\n" +
+                        "       10->QA or SA command was executed while C-axis multi rev mode.\n" +
+                        "       11->Contour generation instruction (G101,G102,G103) was executed\n" +
+                        "           while C-axis multi rev mode.\n" +
+                        "       12->C-axis position or C-axis synchronous side position was over\n" +
+                        "           +9999.999 or -9999.999 while C-axis multi rev mode.\n" +
+                        "       13->C-axis Measure cycle instruction (G30/G131) was executed\n" +
+                        "           while C-axis multi rev mode.\n" +
+                        "       14->With an A/B saddle synchronous mode or a C-axis synchronous\n" +
+                        "           mode, C-axis multi rev mode of the synchronous side is\n" +
+                        "           different from the cover synchronous side.\n" +
+                        "       15->Coordinate calculation instruction was executed while C-axis \n" +
+                        "           multi rev mode.\n" +
+                        "       16->C-axis multi rev instruction was executed while nose-R mode.\n" +
+                        "       17->XY plane(G17) or XZC plane(G119) which was not admitted was \n" +
+                        "           executed with Y-axis mode OFF in C-axis multi rev mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       It amends programming error.");
+
+        ExampleItem DATA_WORD_HA = new ExampleItem("2652", "DATA WORD 'HA'",
+                "Value of 'HA' command is over the range that be \n" +
+                        "       from -359.999 to 359.999.\n" +
+                        "       [Code] \n" +
+                        "        Hexadecimal of 'HA' command");
+
+        ExampleItem DATA_WORD_MN = new ExampleItem("2653", "DATA WORD 'MN'",
+                "Value of 'MN' command is over the range that be \n" +
+                        "       from 0.001 to 999.999.\n" +
+                        "       [Code] \n" +
+                        "        Hexadecimal of 'MN' com");
+
+        ExampleItem HOB_CIRCULAR_CUTTING_COMMAND = new ExampleItem("2654", "Hob circular cutting command",
+                "In the arc hob cutting commands, the designated arc either\n" +
+                        "       is in contact with or intersects the line (called the center\n" +
+                        "       line) passing the center of the arc and in parallel with the\n" +
+                        "       Z-axis.\n" +
+                        "       [Object] \n" +
+                        "        SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1->The start point of the arc cutting is on the center line.\n" +
+                        "        2->The end point of the arc cutting is on the center line.\n" +
+                        "        3->The end and the start points lie in the opposite side in\n" +
+                        "           reference with the center line.\n" +
+                        "        4->The tool advancing direction is different from the commanded\n" +
+                        "           cutting direction (for the arc having shorter arc length\n" +
+                        "           between the start and end points.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Program error\n" +
+                        "          Program Example:\n" +
+                        "          M556 O1 RC=82 HA=20 MN=3.5 F1\n" +
+                        "          M13 SB=1000\n" +
+                        "          G00 X100 Z100\n" +
+                        "          G02 X120 Z110 I10 K0\n" +
+                        "          M12\n" +
+                        "          M555\n" +
+                        "          End point is on the center line.");
+
+        ExampleItem HOB_CUTTING_COMMAND = new ExampleItem("2655", "Hob cutting command",
+                "Spiral gear cutting mode command designated when turret was\n" +
+                        "       not Y-axis mode.\n" +
+                        "       The movement command designated expect for G00,G01,G02,G03\n" +
+                        "       int the spiral gear cutting mode.\n" +
+                        "       [Object]\n" +
+                        "        System\n" +
+                        "       [Code] X\n" +
+                        "        1->Spiral gear cutting mode command designated when turret\n" +
+                        "           was not Y-axis mode.\n" +
+                        "        2->The movement command designated expect for G00,G01,G02,\n" +
+                        "           G03 in the spiral gear cutting mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Program error");
+
+        ExampleItem THE_RANGE_OF_CUTTING_IS_WRONG = new ExampleItem("2656", "The range of cutting is wrong",
+                "In the G183, The value of 'H + HC + HD' over the value of \n" +
+                        "       cutting range. \n" +
+                        "       [Object]\n" +
+                        "       SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       Hexadecimal number of designated value of 'cutting range -\n" +
+                        "        (H+HC+HD)'.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Faulty program (compound fixed cycle block)\n" +
+                        "        Program Example:\n" +
+                        "         N100 G0X300Z300\n" +
+                        "         N101 G183X150Z100I30D10F40H60HC=50HD=40FB=30FC=30FD=25SD=120\n" +
+                        "         DA=2DB=4\n" +
+                        "       [Measures to Take]\n" +
+                        "       Check the H,HC,HD command in the compound fixed cycle block.");
+
+        ExampleItem SYSTEM_VARIABLE_C_AXIS_CONNECT = new ExampleItem("2657", "SYSTEM VARIABLE C-axis connect",
+                "Ordered a system variable command for spindle, with C-axis\n" +
+                        "       connection\n" +
+                        "       [Object]\n" +
+                        "        Turret\n" +
+                        "       [Character]\n" +
+                        "        None\n" +
+                        "       [Code]\n" +
+                        "        None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        C-axis connect.\n" +
+                        "       [Measures to Take]\n" +
+                        "        Order the system variable command without C-axis mode.");
+
+        ExampleItem B_AXIS_INDEPENDENT_ENCODER_IS_ERROR = new ExampleItem("2658", "B-axis independent-encoder is error",
+                "");
+
+        ExampleItem NC_TAILSTOCK_ADVANCE_ERROR_B = new ExampleItem("2659", "NC Tailstock advance error",
+                "Out advance of the NC tailstock\n" +
+                        "       [Code]\n" +
+                        "       1->The current position(APA) is positioned at -side\n" +
+                        "          viewed from the sizing position area1.\n" +
+                        "          Or the torque exceeding the threshold is generated\n" +
+                        "          when the current position(APA) is located at +side\n" +
+                        "          viewed from the sizing position area2 with manual\n" +
+                        "          operation.\n" +
+                        "       2->Difference between sizing position and current position\n" +
+                        "          values has exceeded the allowable limit.");
+
+        ExampleItem NC_TAILSTOCK_NO_SPEC = new ExampleItem("2662", "NC TAILSTOCK no spec.",
+                "G195 is designated although the control has no\n" +
+                        "       NC tailstock specification.\n" +
+                        "       Concerning Sub spindle-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited.\n" +
+                        "       Concerning W axis Cut-tailstock Control specification,\n" +
+                        "       it instructed with the instruction prohibited. \n" +
+                        "       [Code]\n" +
+                        "       None->G195 is designated although the control has no\n" +
+                        "       NC tailstock specification.\n" +
+                        "       1->A system variable (VTSSV and VTSWP and VTSAP and VTSRT) was \n" +
+                        "       ordered the one with the not effective NC tailstock specification.\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:N010 G195 SP=1\n" +
+                        "       [Measures to Take]\n" +
+                        "       Delete the NC tailstock command G152 from the program.");
+
+        ExampleItem TURNING_CUT_CONDITION_ERROR_OF_CAS = new ExampleItem("2663", "Turning cut condition error of CAS",
+                "A necessary condition is insufficient in case of the turning cut.\n" +
+                        "       [Charecter-string]None\n" +
+                        "       [Code]\n" +
+                        "       1-> It tried to rotate the work spindle in states other than \n" +
+                        "       YI=0 (main axis center), and to execute the cutting feed.\n" +
+                        "       2-> It tried to rotate the spindle in the state that YS axis \n" +
+                        "       graphic zero point of the CAS system parameter is not \n" +
+                        "       corresponding to the [TURNING POSITION] parameter value and to \n" +
+                        "       execute the cutting feed.\n" +
+                        "       3-> It tried to rotate the main axis with the amount of a wick high \t\n" +
+                        "        (YS axis) correction exceeds 1mm, and to execute the cutting feed.\n" +
+                        "       [Expected faulty point]\n" +
+                        "       Please confirm the NC program.\n" +
+                        "       Moreover, in the case of code=2, the [TURNING POSITION] setting \n" +
+                        "       value was changed when this machine adjusts it is thought. \n" +
+                        "       Please confirm the YS graphic zero point setting value and \n" +
+                        "       the [TURNING POSITION] setting values.\n" +
+                        "       In the case of code=3, when the amount of a wick high (YS axis) \n" +
+                        "       correction exceeds 1mm, the interference detection cannot be done.\n" +
+                        "       [Treatment measures]\n" +
+                        "       To execute it after it positions it in YI=0, the turnig cut \n" +
+                        "       (The cutting feed is done by rotating the work spindle) corrects \n" +
+                        "       the processing program.\n" +
+                        "       Moreover in the case of code=2, It is changed so that \n" +
+                        "       YS graphic zero point setting value may agree with \n" +
+                        "       the [TURNING POSITION]\tsetting value by turning off the power \n" +
+                        "       and turn it back on again. In old soft version, it is not changed\n" +
+                        "       automatically. Please the same value as the [TURNING POSITION] \n" +
+                        "       setting value is set to YS axis graphic zero point in Slant \n" +
+                        "       Y axis specification machine.\n" +
+                        "       It is necessary to confirm graphic zero point setting value \n" +
+                        "       of other axises, after adjusting the machine.\n" +
+                        "       In the case of code=3, Please cancel CAS function with M867,and \n" +
+                        "       process it after confirming no interference.");
+
+        ExampleItem X_AXIS_MIRR0R_IMAGE_COORDINATES_SELECTED = new ExampleItem("2667", "X-axis mirror image coordinates selected",
+                "The axis movement instruction was executed in AUTO mode,\n" +
+                        "       while X-axis mirror image coordinate system was selected.\n" +
+                        "       Otherwise, C-axis connection instruction or Y-axis mode\n" +
+                        "       instruction was executed in AUTO mode, while X-axis mirror\n" +
+                        "       image coordinate system was selected.\n" +
+                        "       [Code]\n" +
+                        "       1-> The axis movement instruction was executed in AUTO mode\n" +
+                        "           before the G105 instruction was done, while X-axis mirror\n" +
+                        "           image coordinate system was selected.\n" +
+                        "       2-> C-axis connection instruction was executed on X-axis mirror\n" +
+                        "           image coordinate system.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The program instruction is defective.\n" +
+                        "       [Measures to Take]\n" +
+                        "       It starts in X-axis mirror image coordinate system OFF mode.\n" +
+                        "       Otherwise, X-axis mirror image coordinate OFF instruction\n" +
+                        "       G104 is executed, before the axis movement instruction was done\n" +
+                        "       in AUTO mode.");
+
+        ExampleItem X_AXIS_MIRR0R_IMAGE_COORDINATES_IMPOSSIBLE = new ExampleItem("2668", "X-axis mirror image coordinates impossible",
+                " X-axis mirror image coordinate system was not able to be\n" +
+                        "       selected.\n" +
+                        "       [Code]\n" +
+                        "       1-> X-axis mirror image coordinate instruction (G105) was\n" +
+                        "           executed while C-axis connection mode.\n" +
+                        "       2-> X-axis mirror image coordinate instruction (G105) was\n" +
+                        "           executed while Y-axis mode.\n" +
+                        "       3-> X-axis mirror image coordinate instruction (G105) was\n" +
+                        "           executed while Constant Surface mode.\n" +
+                        "       4-> There is an axis movement instruction in the X-axis mirror\n" +
+                        "           image coordinate instruction block (G105).\n" +
+                        "       5-> X-axis mirror image coordinate instruction (G105) was\n" +
+                        "           executed while Nose-R Compensation mode.\n" +
+                        "       [Measures to Take]\n" +
+                        "       The program instruction is defective.");
+
+        ExampleItem C_AXIS_SYNC_CONTROL_NO_SPEC = new ExampleItem("2671", "C-axis sync control no spec.",
+                "On the machine without C-axis sync control function,\n" +
+                        "       M888-M890 was issued.\n" +
+                        "       [Object] System\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Programming\n" +
+                        "       Without C-axis sync control no spec, M-code is issued.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Please delete M888-M890 on program.");
+
+        ExampleItem C_AXIS_SYNC_COMMAND_FORMAT = new ExampleItem("2672", "C-axis sync command format",
+                "Specified C-axis sync command was illegal.\n" +
+                        "       [Object] Axis name or none (spindle)\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       1->Order besides M888 in the sync. side when C-axis sync.\n" +
+                        "          mode (M889/M890)\n" +
+                        "       2->A/B Turret different oder M889-M890\n" +
+                        "       3->B-Turret oder M890 when A-Turret M889, A-Turret oder M890\n" +
+                        "          when B-Turret M889\n" +
+                        "       4-> Oder M888-M890 with M110\n" +
+                        "       5->When there was one side on G122/G123 instruction receipt\n" +
+                        "          conditions, M888-M890 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of M888-M890 instructions,\n" +
+                        "          G122/G123 instructions were already accepted on another\n" +
+                        "          side.\n" +
+                        "       6->When there was one side on G140/G141 instruction receipt\n" +
+                        "          conditions, M888-M890 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of M888-M890 instructions,\n" +
+                        "          G140/G141 instructions were already accepted on another\n" +
+                        "          side.\n" +
+                        "       7->When there was one side on G144/G145 instruction receipt\n" +
+                        "          conditions, M888-M890 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of M888-M890 instructions,\n" +
+                        "          G144/G145 instructions were already accepted on another\n" +
+                        "          side.\n" +
+                        "       8->When there was one side on G116/G117 instruction receipt\n" +
+                        "          conditions, M888-M890 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of M888-M890 instructions,\n" +
+                        "          G116/G117 instructions were already accepted on another\n" +
+                        "          side.\n" +
+                        "       9->When there was one side on M100 instruction receipt\n" +
+                        "          conditions, M888-M890 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of M888-M890 instructions,\n" +
+                        "          M100 instructions were already accepted on another side.\n" +
+                        "       10->When there was one side on P-Code instruction receipt\n" +
+                        "          conditions, M888-M890 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of M888-M890 instructions,\n" +
+                        "          P-Code instructions were already accepted on another\n" +
+                        "          side.\n" +
+                        "       11->When there was one side on VEINT instruction receipt\n" +
+                        "          conditions, M888-M890 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of M888-M890 instructions,\n" +
+                        "          VEINT instructions were already accepted on another side.\n" +
+                        "       12->When there was one side on M02 instruction receipt\n" +
+                        "          conditions, M888-M890 instructions were already performed\n" +
+                        "          on another side. Or,when there was one side on a\n" +
+                        "          synchronism standby condition of M888-M890 instructions,\n" +
+                        "          M02 instructions were already accepted on another side.\n" +
+                        "       13->Concerning sequence carriage return, when there is one\n" +
+                        "          side on a synchronization wait state of M888-M890\n" +
+                        "          instructions, another side has reached a carriage\n" +
+                        "          return frock.\n" +
+                        "       14->Oder M890 when 1S specification\n" +
+                        "       15->Oder M891/M892 when 2S specification\n" +
+                        "       16->Oder M892 when C-axis is not connected\n" +
+                        "       17->Restart Command is executed when M110/M892 mode.\n" +
+                        "       18->M110/M892 ordered when it has reached a return block of sequent\n" +
+                        "       return.\n" +
+                        "       19->The tool retract cycle was ordered on M892/M889/M890 mode.\n" +
+                        "       20->RTI is executed when M892/M889/M890 mode.\n" +
+                        "       21->M888-M890 of the restart return block is different to now\n" +
+                        "       M888-M890.\n" +
+                        "       22->It instructed in M110/M892 in the place where \n" +
+                        "           The Main/Sub spindle does not pass a marker and, Main/Sub chuck \t    \n" +
+                        "           is unclamped.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Part program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       place applicable to above-mentioned code is modified.");
+
+        ExampleItem THE_ININTIAL_CONDITION_MACRO_CANNOT_BE_EXEUTED = new ExampleItem("2674", "The initial condition Macro cannot be executed",
+                "The Macro put into the initial condition (G194 command) ware\n" +
+                        "       not able to be executed.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->The G194 command was executed in the state that was not the\n" +
+                        "          advance mode of One Touch IGF.\n" +
+                        "       2->G194 was executed on this saddle while executing G194 on the\n" +
+                        "          other saddle.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       [Measure to Take]\n" +
+                        "       1)Review the program");
+
+        ExampleItem PROGRAM_BAD_DIRECT_TOOL_DIRECTION = new ExampleItem("2675", "Program bad direct: Tool direction",
+                "There is an error in the tool direction command.\n" +
+                        "       [Object]\n" +
+                        "       None\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "        1: It was specified an axis angle mode in a tool direction mode.\n" +
+                        "        2: A tool direction mode is specified although it is not\n" +
+                        "           included in the specifications.\n" +
+                        "        4: It was specified a tool direction mode in an axis angle mode.\n" +
+                        "        5: It was specified besides D0/D1 in the tool center point\n" +
+                        "           control mode(G255).\n" +
+                        "        6: It was specified I,J,K in a G00/G01 order in an axis angle\n" +
+                        "           mode.\n" +
+                        "        7: It was specified A,B,C in a G00/G01 order in a tool\n" +
+                        "           direction mode.\n" +
+                        "        8: It was specified I,J,K in a G02/G03 order in a tool\n" +
+                        "           direction mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the program.");
+
+        ExampleItem CANNOT_CONVERT_TOOL_DIRECTION_COMMAND = new ExampleItem("2676", "Cannot convert Tool direction command",
+                "Conversion to the angle from the vector failed.\n" +
+                        "       [Object]\n" +
+                        "        None\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "        1: The N TRAVEL LIMIT is larger than the P TRAVEL LIMIT.\n" +
+                        "        2: The ANGLE RANGE is out of range of the TRAVEL LIMIT.\n" +
+                        "        3: The ANGLE RANGE is out of the setting range in the infinite,\n" +
+                        "           the multi-turn or the limited rotary axis.\n" +
+                        "        4: The N LIMIT of the ANGLE RANGE is larger than the P LIMIT\n" +
+                        "           in the multi-turn or the limited rotary axis.\n" +
+                        "        5: Converted angle is out of the ANGLE RANGE.\n" +
+                        "        6: When the N LIMIT of the ANGLE RANGE is larger than the\n" +
+                        "           P LIMIT in an infinite axis, the P LIMIT is less than 0,\n" +
+                        "           or the N LIMIT is more than 360 degrees.\n" +
+                        "        7: When the constitution of the axis was not effective type of\n" +
+                        "           the tool direction command, it was specified a tool\n" +
+                        "           direction mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       The setting of the TRAVEL LIMIT or the ANGLE RANGE is wrong.\n" +
+                        "       [Measures to Take]\n" +
+                        "       Re-set the TRAVEL LIMIT or the ANGLE RANGE.");
+
+        ExampleItem ATTACHMENT_EXCHANGE_IMPOSSIBLE = new ExampleItem("2677", "Attachment exchange impossible",
+                "It instructed. it was not possible to instruct\n" +
+                        "       in attachment data exchange (M798,M799,M1061)\n" +
+                        "       [Object] SYSTEM\n" +
+                        "       [Code]\n" +
+                        "        1->There is no Attachment specification.\n" +
+                        "        2->It instructed during the fixed cycle.\n" +
+                        "        3->It instructed no Nose-R correction mode.\n" +
+                        "        4->It instructed during the LAP cycle.\n" +
+                        "        5->It instructed in the slope processing mode.\n" +
+                        "        6->It instructed W axis control mode.\n" +
+                        "        7->It instructed X axis mirror image coordinate system.\n" +
+                        "        8->It instructed the translation, the rotational transfer,\n" +
+                        "           and in the COPY mode of coordinates.\n" +
+                        "        9->It instructed while the tailstock and connecting the swinging\n" +
+                        "        stop.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Program error\n" +
+                        "       [Measures to Take]\n" +
+                        "       The part that corresponds to the above-mentioned code is corrected.");
+
+        ExampleItem SPM_CONTROL_CANNOT_EXECUTE = new ExampleItem("2678", "SPM Control cannot execute",
+                "Super Precision Machining (SPM) control was attempted when\n" +
+                        "       execution of such control is inhibited.\n" +
+                        "       SPMC(Super Precision Machining control) is the control of\n" +
+                        "       \"Super-NURBS\" or \"Hi-Cut Pro\".\n" +
+                        "       [Object]\n" +
+                        "       None\n" +
+                        "       [Character-string]\n" +
+                        "       None\n" +
+                        "       [Code]\n" +
+                        "       1000000:NURBS mode is selected when the Super-NURBS\n" +
+                        "       \texecution mode is set at OFF.\n" +
+                        "       1010100:NURBS mode is selected during offline servo\n" +
+                        "       \tadjustment.\n" +
+                        "       1010200:NURBS mode is selected during online servo adjustment.\n" +
+                        "       1010300:NURBS mode is selected in the state of command cancel.\n" +
+                        "       1020006:NURBS mode is selected in the cutter radius\n" +
+                        "       \tcompensation mode.\n" +
+                        "       1020007:NURBS mode is selected in the 3-D tool offset mode.\n" +
+                        "       102000A:NURBS mode is selected in the fixed cycle mode.\n" +
+                        "       102000C:NURBS mode is selected without selection of\n" +
+                        "       \tfeed-per-minute mode.\n" +
+                        "       102003F:NURBS mode is selected in the axis name designation\n" +
+                        "       \tmode.\n" +
+                        "       102004D:NURBS mode is selected in the cylindrical side\n" +
+                        "       \tmachining mode.\n" +
+                        "       1020060:NURBS mode is selected in the rapid traverse mode.\n" +
+                        "       2000001:G265/G264 was specified on B-turret.\n" +
+                        "       2000002:G265/G264 was specified on sub-spindle.\n" +
+                        "       2000003:G265/G264 was issued in the tool retraction mode.\n" +
+                        "       2000004:G265/G264 was issued in the HOB mode.\n" +
+                        "       2000005:G265/G264 wad issued in the cutting step feeding mode.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Programming error\n" +
+                        "       [Measures to Take]\n" +
+                        "       Correct the program.");
+
+        ExampleItem DATA_WORD_Q = new ExampleItem("2679", "DATA WORD 'Q'",
+                "The G265 command (Super-NURBS control mode ON) block\n" +
+                        "       has a Q command (Program Filter value: Angle) of which\n" +
+                        "       value is out of the setting range.\n" +
+                        "       [Code]\n" +
+                        "       Q command value in hexadecimal\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Q command in NC program\n" +
+                        "       [Measures to Take]\n" +
+                        "       Filter value: Angle which is appropriate for the G265\n" +
+                        "       command block.");
+
+        ExampleItem DETECTED_SPEED_ERROR_BY_MAGNETICENCODER = new ExampleItem("2682", "Detected speed error by MAGNETIC ENCODER",
+                "The difference between speed feed back value and current\n" +
+                        "       frequency of Magnetic encoder was always observed,\n" +
+                        "       and there was a difference in excessive.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string]None\n" +
+                        "       [Code]XXXXYYYY\n" +
+                        "        XXXX=speed reference value(2B)\n" +
+                        "        YYYY=speed detect value(2B)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Magnetic encoder\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Magnetic encoder");
+
+        ExampleItem MCS_ROTARY_ENCODER_5_INITIALIZE_FAILED_B = new ExampleItem("2683", "MCS Rotary encoder 5 initialize failed",
+                "It failed in initialization of Rotary encoder 5(Others).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 5(Others).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 5(Others).");
+
+        ExampleItem MCS_ROTARY_ENCODER_5_ERROR_B = new ExampleItem("2684", "MCS Rotary encoder 5 error",
+                "");
+
+        ExampleItem MCS_ROTARY_ENCODER_4_INITIALIZE_FAILED_B = new ExampleItem("2685", "MCS Rotary encoder 4 initialize failed",
+                "It failed in initialization of Rotary encoder 4(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 4(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 4(HEIDENHAIN).");
+
+        ExampleItem MCS_ROTARY_ENCODER_4_ERROR_B = new ExampleItem("2686", "MCS Rotary encoder 4 error",
+                "Illegal data was detected in Rotary encoder 4(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 4(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 4(HEIDENHAIN).");
+
+        ExampleItem MCS_ROTARY_ENCODER_3_INITIALIZE_FAILED_B = new ExampleItem("2687", "MCS Rotary encoder 3 initialize failed",
+                "It failed in initialization of Rotary encoder 3(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 3(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 3(HEIDENHAIN).");
+
+        ExampleItem MCS_ROTARY_ENCODER_3_ERROR_B = new ExampleItem("2688", "MCS Rotary encoder 3 error",
+                "Illegal data was detected in Rotary encoder 3(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 3(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 3(HEIDENHAIN).");
+
+        ExampleItem MCS_ROTARY_ENCODER_2_ERROR_B = new ExampleItem("2689", "MCS Rotary encoder 2 error",
+                "Illegal data was detected in Rotary encoder 2(INA-BEARING).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXXXYYYY\n" +
+                        "       XXXX= Content of illegal data\n" +
+                        "             000A[HEX] : illegal data of A aspect voltage\n" +
+                        "             000B[HEX] : illegal data of B aspect voltage\n" +
+                        "       YYYY= Illegal data\n" +
+                        "        XXXX=000A[HEX] : A aspect voltage value\n" +
+                        "        XXXX=000B[HEX] : B aspect voltage value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 2(INA-BEARING).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 2(INA-BEARING).");
+
+        ExampleItem MCS_ROTARY_ENCODER_1_INITIALIZE_FAILED_B = new ExampleItem("2690", "MCS Rotary encoder 1 initialize failed",
+                "It failed in initialization of Rotary encoder 1.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       Same with the alarm No. 0865 \"MCS Encoder initialize failed\"\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 1\n" +
+                        "        Motor encoder\n" +
+                        "        Encoder link cable & connector\n" +
+                        "        Control base of Inverter Unit\n" +
+                        "       [Corrective Action]\n" +
+                        "        Exchange & check on thing Above Unit");
+
+        ExampleItem MCS_ROTARY_ENCODER_1_ERROR_B = new ExampleItem("2691", "MCS Rotary encoder 1 error",
+                "Illegal data was detected in Rotary encoder 1.\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       XX= Rotary encoder status\n" +
+                        "        bit7  alarm\n" +
+                        "        bit6  communication error\n" +
+                        "        8X  The output amplitude is normal.\n" +
+                        "        9X  Output amplitude smallness\n" +
+                        "        AX  Output amplitude bigness\n" +
+                        "        BX  Output amplitude too small\n" +
+                        "       YY= Rotary encoder alarm code\n" +
+                        "        00  Unstart\n" +
+                        "        01  Stop command stop\n" +
+                        "        02  The control parameter is illegal.\n" +
+                        "        0E  Synchronous mistake\n" +
+                        "        0F  The excitation output is illegal.\n" +
+                        "        11  B face Ad offset Voltage decrease\n" +
+                        "        12  A face AD offset voltage decrease\n" +
+                        "        13  A and B face AD offset voltage decrease\n" +
+                        "        15  B face AD offset voltage decrease\n" +
+                        "        16  A face Ad offset voltage rise\n" +
+                        "        17  A and B face AD offset voltage rise\n" +
+                        "        25  B face signal amplitude is excessive\n" +
+                        "        26  A face signal amplitude is excessive\n" +
+                        "        27  A and B face signal amplitude is excessive.\n" +
+                        "        29  The signal amplitude is underestimates.\n" +
+                        "        2D  B face signal amplitude is underestimates.\n" +
+                        "        2E  A and signal amplitude is underestimates.\n" +
+                        "        2F  A and B face signal amplitude is underestimates.\n" +
+                        "        80-FF\tCPU illegal\n" +
+                        "       ZZZZ= Rotary encoder position data\n" +
+                        "        Positional data of each pitch\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 1\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Rotary encoder 1");
+
+        ExampleItem MCS_LINEAR_SCALE_4_INITIALIZE_FAILED_B = new ExampleItem("2692  ALARM-B", "MCS LINEAR SCALE 4 INITIALIZE FAILED",
+                "It failed in initialization of Linear scale 4(Others).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 4(Others).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 4(Others).");
+
+        ExampleItem MCS_LINEAR_SCALE_4_ERROR_B = new ExampleItem("2693  ALARM-B", "MCS LINEAR SCALE 4 ERROR",
+                "Illegal data was detected in Liner scale 4(Others).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 4(Others).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 4(Others).");
+
+        ExampleItem MCS_LINEAR_SCALE_3_INITIALIZE_FAILED_B = new ExampleItem("2694  ALARM-B", "MCS LINEAR SCALE 3 INITIALIZE FAILED",
+                "It failed in initialization of Linear scale 3(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 3(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 3(HEIDENHAIN).");
+
+        ExampleItem MCS_LINEAR_SCALE_3_ERROR_B = new ExampleItem("2695  ALARM-B", "MCS LINEAR SCALE 3 ERROR",
+                "Illegal data was detected in Liner scale 3(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 3(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 3(HEIDENHAIN).");
+
+        ExampleItem MCS_LINEAR_SCALE_2_INITIALIZE_FAILED_B = new ExampleItem("2696  ALARM-B", "MCS LINEAR SCALE 2 INITIALIZE FAILED",
+                "It failed in initialization of Linear scale 2(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 2(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 2(HEIDENHAIN).");
+
+        ExampleItem MCS_LINEAR_SCALE_2_ERROR_B = new ExampleItem("2697  ALARM-B", "MCS LINEAR SCALE 2 ERROR",
+                "Illegal data was detected in Liner scale 2(HEIDENHAIN).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code]\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 2(HEIDENHAIN).\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 2(HEIDENHAIN).");
+
+        ExampleItem MCS_LINEAR_SCALE_1_INITIALIZE_FAILED_B = new ExampleItem("2698  ALARM-B", "MCS LINEAR SCALE 1 INITIALIZE FAILED",
+                "It failed in initialization of Linear scale 1(MITUTOYO).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [Code] XXYYZZZZ\n" +
+                        "       Same with the alarm No. 0865 \"MCS Encoder initialize failed\"\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Rotary encoder 1\n" +
+                        "        Motor encoder\n" +
+                        "        Encoder link cable & connector\n" +
+                        "        Control base of Inverter Unit\n" +
+                        "       [Corrective Action]\n" +
+                        "        Exchange & check on thing Above Unit");
+
+        ExampleItem MCS_LINEAR_SCALE_1_ERROR_B = new ExampleItem("2699  ALARM-B", "MCS LINEAR SCALE 1 ERROR",
+                "Illegal data was detected in Liner scale 1(MITUTOYO).\n" +
+                        "       [Object] Axis\n" +
+                        "       [Character-string] None\n" +
+                        "       [code]XXYYZZZZ\n" +
+                        "       XX= Liner scale 1 status\n" +
+                        "        bit7: alarm\n" +
+                        "        bit6: communication error\n" +
+                        "        bit2: communication error(every detection)\n" +
+                        "        bit0: alarm code distinction bit\n" +
+                        "              (bit0=1: An alarm occurred in MITUTOYO scale.)\n" +
+                        "       YY=Liner scale 1\n" +
+                        "        case of XX=88\n" +
+                        "         bit7: over speed\n" +
+                        "         bit6: communication error\n" +
+                        "         bit5: EEPROM error\n" +
+                        "         bit4: CPU error\n" +
+                        "         bit3: electric capacity error\n" +
+                        "         bit2: photo electron error\n" +
+                        "         bit1: digit match error\n" +
+                        "         bit0: initialize error\n" +
+                        "        case of XX=80\n" +
+                        "         43: MITUTOYO scale no response\n" +
+                        "         44: MITUTOYO scale ID error\n" +
+                        "        case of XX=C0\n" +
+                        "         00-3F: Gateway receive error\n" +
+                        "         46: REQ time over error\n" +
+                        "       ZZZZ= Liner scale 1 position data\n" +
+                        "        position data of every 2mm pitch\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Linear scale 1\n" +
+                        "       [Corrective Action]\n" +
+                        "        Change Linear scale 1");
+
+        ExampleItem DIRECTION_V_VARIABLE = new ExampleItem("2900", "DIRECTION V variable",
+                "An illeagal V number is designated.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem DIRECTION_CHECK_ADDRESS = new ExampleItem("2901", "DIRECTION check address",
+                "An illeagal check address is designated.\n" +
+                        "       [Probable Faulty Locations]Operation error");
+
+        ExampleItem DIRECTION_DATA_OPERATION = new ExampleItem("2902", "DIRECTION data operation",
+                "");
+
+        ExampleItem DIRECTION_SUE_OF_CHARACTER = new ExampleItem("2903", "DIRECTION use of character",
+                "The predetermined character whitch must be entered at the\n" +
+                        "       biginning of a parameter, point data, check adress, program\n" +
+                        "       name, or sequence is not designated when setting or selecting\n" +
+                        "       them. These character are \"V\", \"Z\", \"C\", \"E\", \"O\", \"N\",and \"R\".\n" +
+                        "       All character or symbols is contained in the loader file which\n" +
+                        "       is going to be read into the loader memory.\n" +
+                        "       [Code]Illegal character or symbol\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Defective loader file");
+
+        ExampleItem DIRECTION_NUMERICAL_DATA = new ExampleItem("2904", "DIRECTION numerical data",
+                "The designated data contains too many number of digits.\n" +
+                        "       The number of digits right to the decimal point is too many,\n" +
+                        "       or more than one decimal point is designated in the designated\n" +
+                        "       number.\n" +
+                        "       A decimal point is designated for the system which does not\n" +
+                        "       allow the use of a decimal point(parameter No.90, bit1=0).\n" +
+                        "       [Code]\n" +
+                        "       1->Too many number of digits\n" +
+                        "       2->Illegal designation of a decimal point\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Program error");
+
+        ExampleItem DIRECTION_PARAMETR_POINT = new ExampleItem("2905", "DIRECTION parameter/ point",
+                "An illegal parameter number or point number is designated for\n" +
+                        "       the designated axis, or the prameter or point value for the\n" +
+                        "       designated axis is outside the allowable setting range.\n" +
+                        "       [Object]\n" +
+                        "       2->Y-axis(loader)\n" +
+                        "       3->Z-axis\n" +
+                        "       9->C-axis(robot)\n" +
+                        "       [Code]\n" +
+                        "       1->Illegal parameter/ point number\n" +
+                        "       2->Setting for the parameter/ point is too small\n" +
+                        "       3->Setting for the parameter/ point is too large\n" +
+                        "       4->An attempt was made to set the I/O read valiable for\n" +
+                        "       parameter/ point\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Setting error for the parameter or point");
+
+        ExampleItem DIRECTION_REGISTER = new ExampleItem("2906", "DIRECTION register",
+                "(loader)\n" +
+                        "       Designated register number is illegal or the register\n" +
+                        "       designation method is incorrect.\n" +
+                        "       [Code]\n" +
+                        "       1->Incorrect register number\n" +
+                        "       2->More than one subscript\n" +
+                        "       3->Input register is designated at the left side.\n" +
+                        "       Others->Incorrect register number designated by a subscript\n" +
+                        "       (robot)\n" +
+                        "       The designated register value exceeds the allowable setting\n" +
+                        "       range.\n" +
+                        "       [Code]Register number\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Program error");
+
+        ExampleItem DIRECTION_F = new ExampleItem("2907", "DIRECTION F",
+                "The Value designated for F is outside the allowable range.\n" +
+                        "       [Code]\n" +
+                        "       0->Not related with an axis\n" +
+                        "       2->Y-axis\n" +
+                        "       3->Z-axis\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Program error");
+
+        ExampleItem DIRECTION_E = new ExampleItem("2908", "DIRECTION E",
+                "The E command value exceeds the setting range.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Program error");
+
+        ExampleItem DIRECTION_SEQUENCE_NUMBER = new ExampleItem("2909", "DIRECTION sequence number",
+                "The sequence number which is going to be selected does not\n" +
+                        "       exist.\n" +
+                        "       [Code]\n" +
+                        "       1->The sequence name contains other than alphanumerics.\n" +
+                        "       2->The sequence name contains more than four characters\n" +
+                        "       excluding N.\n" +
+                        "       3->The sequence number which is going to be selected is not\n" +
+                        "       found.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem UNUSABLE_G_CODE_B = new ExampleItem("2910", "UNUSABLE G-code",
+                " An illegal G code is designated.\n" +
+                        "       [Code]Designated G code\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem UNUSABLE_M_CODE_B = new ExampleItem("2911", "UNUSABLE M-code",
+                "An illegal M code is designated.\n" +
+                        "       [Code]Designated M code\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem UNUSABLE_ADDRESS_CHARACTER = new ExampleItem("2912", "UNUSABLE address character",
+                "An illegal address character code is designated.\n" +
+                        "       Address character: NC-defined variable expressed in an\n" +
+                        "       alphabetic character except G, M, N, O, and V\n" +
+                        "       [Code]Designated character\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem UNUSABLE_MNEMONIC = new ExampleItem("2913", "UNUSABLE mnemonic",
+                "An illegal mnemonic is designated.\n" +
+                        "       [Code]Designated character-string\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem UNUSABLE_DIRECTION_OF_LEFT_PART = new ExampleItem("2914", "UNUSABLE direction of left part",
+                "A register of an unusable number was designated on the left\n" +
+                        "       part.\n" +
+                        "       [Probable Faulty Locations]Programming error");
+
+        ExampleItem EXPRESSION_CALCULATION_B = new ExampleItem("2915", "EXPRESSION calculation",
+                "An error occurred in the operation of expression.\n" +
+                        "       (loader)\n" +
+                        "       [Code]XXYY\n" +
+                        "       XX:\n" +
+                        "       bit0->Overflow in addition/subtraction\n" +
+                        "       bit1->Overflow in conversion of ABS into integer\n" +
+                        "       bit2->Conversion from BCD into BIN\n" +
+                        "       bit3->Conversion from BIN into BCD\n" +
+                        "       bit4->Designation of DROUND, DFIX, or DFUP in other than\n" +
+                        "       mm unit system.\n" +
+                        "       YY:floating point calculation error\n" +
+                        "       bit0->Overflow in conversion into integer\n" +
+                        "       bit1->Exponent underflow\n" +
+                        "       bit2->Exponent overflow\n" +
+                        "       bit3->Square root of a negative value\n" +
+                        "       bit4->Division by 0\n" +
+                        "       bit5->Overflow in angle\n" +
+                        "       bit6->A numeric value of ASIN is greater than 1.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem EXPRESSION_SYNTAX_B = new ExampleItem("2916", "EXPRESSION syntax",
+                "Syntax of an expression is incorrect\n" +
+                        "       [Code]\n" +
+                        "       1->An attempt is made to excute subscript calculation while in\n" +
+                        "       subscript calculation.\n" +
+                        "       2->No '[' at the beginning of a subscript expression.\n" +
+                        "       3->More than one subscript exressions.\n" +
+                        "       4->Mismatch in the numbers of left brackets and right brackets.\n" +
+                        "       5->ncorrect number of operands which the operator has.\n" +
+                        "       6->The sequence ends while in an expression.\n" +
+                        "       7->More than one answer for the expression.\n" +
+                        "       (robot)\n" +
+                        "       [Code]\n" +
+                        "       1->Three or more subscripts were appended.\n" +
+                        "       2->Right and left elements do not correspond normally.\n" +
+                        "       3->The expression contains an illegal operator.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem EXPRESSION_RIGHT_PART_B = new ExampleItem("2917", "EXPRESSION right part",
+                "A command which is not allowed is designated in the right side\n" +
+                        "       of the expression.\n" +
+                        "       [Code]XXYY:Factor classification code/Factor parameter\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem EXPRESSION_LEFT_PART = new ExampleItem("2918", "EXPRESSION left part",
+                "A command which is not allowed is designated in the left side\n" +
+                        "       of the expression.\n" +
+                        "       [Code]XXYY:Factor classification code/Factor parameter\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem EXPRESSION_BUFFER_OVER_B = new ExampleItem("2919", "EXPRESSION buffer over",
+                "Expression size is too large, causing overflow of stack.\n" +
+                        "       [Code]\n" +
+                        "       1->Overflow of operator stack\n" +
+                        "       2->Overflow of operator data stack\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem VARIABLE_BUFFER_OVER_B = new ExampleItem("2920", "VARIABLE buffer over",
+                "Too many variables are used, causing overflow of stack.\n" +
+                        "       [Code]\n" +
+                        "       1->The number of factor classification codes and factor\n" +
+                        "       parameters exceeded 127.\n" +
+                        "       2->The number of factor of factor data exceeded 64.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem PROGRAM_DIRECT_PROGRAM_NAME_B = new ExampleItem("2921", "PROGRAM DIRECT program name",
+                "Program name designation is incorrect.\n" +
+                        "       [Code]\n" +
+                        "       1->No subprogram name is designated following \"CALL\", or the\n" +
+                        "       subprgram assigned the designated subprogram name is not found.\n" +
+                        "       2->No program name is designated following \"O\", or the program\n" +
+                        "       name consists of more than five characters including \"O\".\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem PROGRAM_DIRECT_V_VARIABLE = new ExampleItem("2922", "PROGRAM DIRECT V variable",
+                "loader)\n" +
+                        "       An illegal number is designated following ZV or YV. Or, the use\n" +
+                        "       of subscript is incorrect.\n" +
+                        "       [Code]\n" +
+                        "       1->A subscript is used while the system does not support the\n" +
+                        "       subscript specification.\n" +
+                        "       2->More than one subscript.\n" +
+                        "       Other than 0 to 99->Incorrect designation of a point number.\n" +
+                        "       (robot)\n" +
+                        "       Subsequently to ZV or CV, a variable number was designated with\n" +
+                        "       an unusable characters.\n" +
+                        "       [Code]\n" +
+                        "       Variable number\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem PROGRAM_DIRECT_USE_OF_CHARACTER_B = new ExampleItem("2923", "PROGRAM DIRECT use of character",
+                "A symbol which cannot be used is entered in the program.\n" +
+                        "       [Code]Designated symbol\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem PROGRAM_DIRECT_G_CODE_B = new ExampleItem("2924", "PROGRAM DIRECT G-code",
+                "A G code which cannot be used is entered in the program.\n" +
+                        "       [Code]Designated G code\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem BRANCH_SEQUENCE_NAME = new ExampleItem("2925", "BRANCH sequence name",
+                "Sequence name designated is incorrect.\n" +
+                        "       (loader)\n" +
+                        "       [Code]\n" +
+                        "       1->No sequence name\n" +
+                        "       2->Designated sequence name is not found.\n" +
+                        "       (robot)\n" +
+                        "       [Code]\n" +
+                        "       1->The \"IF\" or \"GOTO\" statement does not have a destination\n" +
+                        "       sequence or the designated sequence does not exist in the\n" +
+                        "       program.\n" +
+                        "       2->No sequence name is designated after the address character\n" +
+                        "       N or the sequence name is composed of more than five characters\n" +
+                        "       including N.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem BRANCH_CONDITION = new ExampleItem("2926", "BRANCH condition",
+                "IF instruction designation is incorrect, or condition judgement\n" +
+                        "       expression is incorrect.\n" +
+                        "       [Code]\n" +
+                        "       1->No left bracket '[' is designated following IF.\n" +
+                        "       2->The expression designated between '[' and ']' is not the\n" +
+                        "       comparison.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem PARAMETER_SETTING_ILLEGAL = new ExampleItem("2927", "Parameter setting illegal",
+                "Data setting command is designated for a parameter number for\n" +
+                        "       which setting is not allowed.\n" +
+                        "       [Object]\n" +
+                        "       2->Y-axis(loader)\n" +
+                        "       3->Z-axis\n" +
+                        "       9->C-axis(robot)\n" +
+                        "       [Code]Designated parameter number\n" +
+                        "       [Probable Faulty Locations]Prameter setting error");
+
+        ExampleItem PARAMETER_PLAYBACK_IMPOSSIBLE = new ExampleItem("2928", "Parameter playback impossible",
+                "An attempt was made to set the data in the playback mode for a\n" +
+                        "       parameter for which data setting in the playback mode is not\n" +
+                        "       allowed.\n" +
+                        "       [Probable Faulty Locations]Operation error");
+
+        ExampleItem REGISTER_SET_IMPOSSIBLE = new ExampleItem("2929", "Register set impossible",
+                "An attempt was made to set a register (No. 48 or 49) for which\n" +
+                        "       setting is not allowed.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem PROGRAM_PLUS_VAR_LIMT_OVER = new ExampleItem("2930", "Program plus var. limit over",
+                "Axis movement command value exceed the soft-limit in the\n" +
+                        "       positive direction.\n" +
+                        "       (robot)The axis command value exceeds the plus software limit\n" +
+                        "       determined by the current swing position.\n" +
+                        "       [Object]\n" +
+                        "       2->Y-axis(loader)\n" +
+                        "       3->Z-axis\n" +
+                        "       9->C-axis(robot)\n" +
+                        "       [Code]Command value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem PROGRAM_MINUS_VAR_LIMT_OVER = new ExampleItem("2931", "Program minus var. limit over",
+                "Axis movement command value exceed the soft-limit in the\n" +
+                        "       negative direction.\n" +
+                        "       (robot)The axis command value exceeds the minus software limit\n" +
+                        "       determined by the current swing position.\n" +
+                        "       [Object]\n" +
+                        "       2->Y-axis(loader)\n" +
+                        "       3->Z-axis\n" +
+                        "       9->C-axis(robot)\n" +
+                        "       [Code]Command value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem PROGRAM_REQUEST_ILLEGAL = new ExampleItem("2932", "Program request illegal",
+                "When the loader(robot)-service request is given from the NC\n" +
+                        "       lathe, no loader(robot) program name is designated.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem PROGRAM_REQUEST_IMPOSSIBLE = new ExampleItem("2933", "Program request impossible",
+                "(loader)\n" +
+                        "       When the loader-service request is given from the NC lathe, the\n" +
+                        "       loader is not ready for accepting it.\n" +
+                        "       [Object]\n" +
+                        "       0->Not related with an axis\n" +
+                        "       2->Y-axis\n" +
+                        "       3->Z-axis\n" +
+                        "       [Code]\n" +
+                        "       1->The loader is not in the program operation mode when it\n" +
+                        "          receives the request 0.\n" +
+                        "       2->The loader is not in the program operation mode when it\n" +
+                        "          receives the request 1.\n" +
+                        "       3->The loader is not in the program operation mode when it\n" +
+                        "          receives the request 2.\n" +
+                        "       4->The loader is not in the program operation mode when it\n" +
+                        "          receives the request 3.\n" +
+                        "       5->The loader is not at the home position when the loader\n" +
+                        "          request is given.\n" +
+                        "       6->The loader is not in the program operation mode.\n" +
+                        "       7->The loader is in the machine lock state.\n" +
+                        "       8->The key switch on the loader operation panel is at neither\n" +
+                        "          the AUTO nor the OFF position.\n" +
+                        "       9->\"Loader cycle start conditions\" input signal has turned it\n" +
+                        "          off.\n" +
+                        "       10->A loader instruction panel was detached from an operational\n" +
+                        "           panel, and single block was an OFF condition.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The Key switch on the loader operation panel is at neither\n" +
+                        "       the AUTO nor the OFF position.\n" +
+                        "       2)The mode selection is not [PROG] (program operation).\n" +
+                        "       3)The loader is not lacated in the range designated by the\n" +
+                        "       setting for parameters No.64 and No.65.\n" +
+                        "       4)The loader is in the machine lock state.\n" +
+                        "       (robot)\n" +
+                        "       When transfer of the robot program was requested by the lathe,\n" +
+                        "       the robot was not in the condition for accepting the request.\n" +
+                        "       [Code]\n" +
+                        "       1->The robot is not in the program operation mode.\n" +
+                        "       2->The robot is in state of machine lock.\n" +
+                        "       3->The robot key switch is set at neither [SYSTEM LINK] nor\n" +
+                        "       [PANEL LOCK].\n" +
+                        "       4->The swing is not in A-position.\n" +
+                        "       5->The C-axis is not outside the lathe.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The key switch is set at neither [SYSTEM LINK] nor\n" +
+                        "       [PANEL LOCK].\n" +
+                        "       2)The program operation mode is not selected.\n" +
+                        "       3)The swing is not in A-position.\n" +
+                        "       4)The C-axis is not outside the lathe.\n" +
+                        "       5)The robot is in state of machine lock.");
+
+        ExampleItem PROGRAM_EXTERNAL_REQUEST_IMPOSSIBLE = new ExampleItem("2934", "Program external request impossible",
+                "When transfer of the robot program was requested by an external\n" +
+                        "       unit, the robot was not in the condition for accepting the\n" +
+                        "       request.\n" +
+                        "       [Code]\n" +
+                        "       1->The robot is not in the program operation mode.\n" +
+                        "       2->The robot is in state of machine lock.\n" +
+                        "       3->The robot key switch is set at neither [SYSTEM LINK] nor\n" +
+                        "       [PANEL LOCK].\n" +
+                        "       4->The swing is not in A-position.\n" +
+                        "       5->The C-axis is not outside the lathe.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)The key switch is set at neither [SYSTEM LINK] nor\n" +
+                        "       [PANEL LOCK].\n" +
+                        "       2)The program operation mode is not selected.\n" +
+                        "       3)The swing is not in A-position.\n" +
+                        "       4)The C-axis is not outside the lathe.\n" +
+                        "       5)The robot is in state of machine lock.");
+
+        ExampleItem PROGRAM_IS_NOT_SELECT = new ExampleItem("2935", "Program is not select",
+                "The CYCLE START button is pressed while the program name\n" +
+                        "       (number) is not selected in the program operation mode.\n" +
+                        "       [Probable Faulty Locations]Operation error");
+
+        ExampleItem NO_PROGRAM = new ExampleItem("2936", "No program",
+                "The loader(robot) program or the subprogram requested is not\n" +
+                        "       found.\n" +
+                        "       [Code]\n" +
+                        "       1->The loader(robot) program or subprogram requested from the\n" +
+                        "       NC lathe is not found, or the loader program going to be\n" +
+                        "       selected is not found.\n" +
+                        "       2->Among the requested loader(robot) programs and the loader\n" +
+                        "       (robot) program going to be selected, the subprogram designated\n" +
+                        "       following \"CALL\" is not found.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Program error");
+
+        ExampleItem PROGRAM_END_CODE = new ExampleItem("2937", "Program end code",
+                "The designated program end code is improper.\n" +
+                        "       [Code]\n" +
+                        "       1->M02 or M30 is not entered at the end of the program.\n" +
+                        "       2->RTS is found in the main program\n" +
+                        "       3->RTS is not entered in the subprogram.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Program error");
+
+        ExampleItem PROGRAM_ANALYSIS_FINISH = new ExampleItem("2938", "Program analysis finish",
+                "Analysis for the next sequence has been completed when an\n" +
+                        "       attempt is made to move an axis after changing the operation\n" +
+                        "       mode from the program operation mode to the NDI or manual\n" +
+                        "       operation mode.\n" +
+                        "       [Object]\n" +
+                        "       0->Not related with an axis\n" +
+                        "       2->Y-axis(loader)\n" +
+                        "       3->Z-axis\n" +
+                        "       9->C-axis(robot)\n" +
+                        "       [Code]\n" +
+                        "       1->Analysis for the next sequence has been completed in the\n" +
+                        "       program operation mode when an attempt is made to move an axis\n" +
+                        "       after changing the operation mode from the program operation\n" +
+                        "       mode to the MDI or manual operation mode.\n" +
+                        "       2->Analysis for the next sequence has been completed in the\n" +
+                        "       program operation mode when an attempt is made to move an axis\n" +
+                        "       using an axis movement key after changing the operation mode\n" +
+                        "       from the program mode to the MDI or manual operation mode.\n" +
+                        "       3->Analysis for the next sequence has been completed in the\n" +
+                        "       program operation mode when an attempt is made to move an axis\n" +
+                        "       using an step feed key after changing the operation mode from\n" +
+                        "       the program mode to the MDI or manual operation mode.\n" +
+                        "       [Probable Faulty Locations]Operation error");
+
+        ExampleItem SUB_PROGRAM_STACK_B = new ExampleItem("2939 ", "SUB PROGRAM stack",
+                "The number of RTS commands (return from subprogram)is more than\n" +
+                        "       number of CALL commands (subprogram call).\n" +
+                        "       Or the nesting level of subprogram call exceed eight.\n" +
+                        "       [Code]\n" +
+                        "       1->The number of RTS commands (return from subprogram) is more\n" +
+                        "       than the number of CALL commands (subprogram call).\n" +
+                        "       2->The nesting level of subprogram call exceeded eight.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem SUB_PROGRAM_PROGRAM_NAME_B = new ExampleItem("2940", "SUB PROGRAM program name",
+                "Designation of subprogram name is incorrect.\n" +
+                        "       [Code]\n" +
+                        "        1->Subprogram number is not designated following CALL.\n" +
+                        "        2->The subprogram name contains more than five characters\n" +
+                        "           including \"O\".\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1)Operation error\n" +
+                        "        2)Program error");
+
+        ExampleItem SUB_PROGRAM_BUFFER_OVER = new ExampleItem("2941", "SUB PROGRAM buffer over",
+                "The loader(robot) program requested by the NC lathe or the one\n" +
+                        "       going to be selected uses more than 32 kinds of subprograms.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1)Operation error\n" +
+                        "        2)Program error");
+
+        ExampleItem DIRECTION_IMPOSSIBLE_ON_RUNNING = new ExampleItem("2942", "Direction impossible on running",
+                "One word advance or one word return command, or\n" +
+                        "       program/sequence number selection command is given while the\n" +
+                        "       loader(robot) is operating.\n" +
+                        "       [Code]\n" +
+                        "        1->One word return command is given while the loader(robot)\n" +
+                        "           is operating.\n" +
+                        "        2->One word advance command is given while the loader(robot)\n" +
+                        "           is operating.\n" +
+                        "        3->Program/sequence number selection command is given while\n" +
+                        "           the loader(robot) is operating.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Operation error");
+
+        ExampleItem DATA_FILE_READ = new ExampleItem("2943", "Data file read",
+                "There is no V number command in the loader(robot) file which is\n" +
+                        "       going to be read into the loader memory.\n" +
+                        "       [Object]\n" +
+                        "        0->Not related with an axis\n" +
+                        "        2->Y-axis(loader)\n" +
+                        "        3->Z-axis\n" +
+                        "        9->C-axis(robot)\n" +
+                        "       [Code]\n" +
+                        "        Z->A Z command is given without a V number command.\n" +
+                        "        Y->A Y command is given without a V number command.\n" +
+                        "        R->A R command is given without a V number command.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        Faulty loader file");
+
+        ExampleItem COMMENT_END_CODE_NOT_FOUND = new ExampleItem("2944", "Comment end code not found",
+                "There is no comment end character \")\" which corresponds to the\n" +
+                        "       comment start charactor \")\".\n" +
+                        "       [Code]\n" +
+                        "        1->Comment in the program\n" +
+                        "        2->Comment in the loader(robot) data file\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "        1)Program error\n" +
+                        "        2)Loader(robot) data file edit error");
+
+        ExampleItem EQUAL_IS_NOT_EXIST_B = new ExampleItem("2945", "Equal is not exist",
+                "The register command on the left part is not follows by \"=\".\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Programming error");
+
+        ExampleItem NO_SPEC = new ExampleItem("2946", "No spec.",
+                "A command related with the specification which is not supported\n" +
+                        "       is given.\n" +
+                        "       A hand operating command is given in the automatic or MDI mode\n" +
+                        "       while the hand specification is not supported.\n" +
+                        "       [Code]None or M code\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Operation error\n" +
+                        "       2)Corresponding specification not purchased");
+
+        ExampleItem DIRECTION_Y = new ExampleItem("2948", "DIRECTION Y",
+                "Y-axis command value is outside the range from -9999.99 to\n" +
+                        "       9999.99.\n" +
+                        "       [Code]Y-axis command value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem DIRECTION_Z = new ExampleItem("2949", "DIRECTION Z",
+                "Z -axis command value is outside the range from -9999.99 to\n" +
+                        "       9999.99.\n" +
+                        "       [Code]Z-axis command value\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem DIRECTION_D = new ExampleItem("2950", "DIRECTION D",
+                "D command value for torque skip is outside the limit or below\n" +
+                        "       the positioning start point value.\n" +
+                        "       [Code]D command value\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem DIRECTION_L = new ExampleItem("2951", "DIRECTION L",
+                "L command value for torque skip is outside the limit.\n" +
+                        "       [Code]L command value\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem DIRECTION_SU = new ExampleItem("2952", "DIRECTION SU",
+                "SU command value is incorrect.\n" +
+                        "       [Code]\n" +
+                        "       1->No SU command is designated in the G27 block.\n" +
+                        "       2->SU command value is not 50 <= SU <= 100.\n" +
+                        "       3->An axis motion command is designated in the G27 or G26\n" +
+                        "       block.");
+
+        ExampleItem DIRECTION_TORQUE_LIMIT = new ExampleItem("2953", "DIRECTION torque limit",
+                "Toruque limit, torque skip or torque limit check command is\n" +
+                        "       designated incorrectly.\n" +
+                        "       [Code]\n" +
+                        "       1->No T* command in the G22,G23 or G29 block.\n" +
+                        "       2->T* command value is outside the allowable range.\n" +
+                        "       G29: 1 <= T* <= setting for parameter No.85(Y)\n" +
+                        "       G22: 1 <= T* <= T* value in the G29 block.\n" +
+                        "       G23: 1 <= T* <= T* calue in the G29 block.\n" +
+                        "       3->In the G22,G23 block, axis designation does agree with each\n" +
+                        "       other for target value setting and set torque value.\n" +
+                        "       4->An axis motion command is designated in the G29 or G28\n" +
+                        "       block.\n" +
+                        "       5->In the G22,G23 mode, both Z and Y are designated in the same\n" +
+                        "       block, or neither Z or Y is designated.\n" +
+                        "       6->Overlapped T* command in the G22,G23 mode.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem PROGRAM_DIRECT_M_CODE_B = new ExampleItem("2954", "PROGRAM DIRECT M-code",
+                "An M code not supported by the selected specification is\n" +
+                        "       designated.\n" +
+                        "       [Code]Designated M code\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem PROGRAM_DIRECT_EQUAL = new ExampleItem("2955", "PROGRAM DIRECT equal",
+                "Wrong usage of \"=\" symbol.\n" +
+                        "       [Code]XXYY(Factor classification code/ Factor parameter)\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem MACHINE_CHANGE_M_CODE = new ExampleItem("2956", "Machine change M-code",
+                "For the multiple NC lathe specification, an M code is given for\n" +
+                        "       the NC while the NC lathe change command is not given.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem G22_FEED = new ExampleItem("2957", "G22 feed",
+                "The numerical value designated for F is \"0\".\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem MAIN_SEQUENE = new ExampleItem("2958", "Main sequene", "" +
+                "The task has not been finished within the specified period.\n" +
+                "       [Probable Faulty Locations]Bug");
+
+        ExampleItem BARRIER_LIMIT = new ExampleItem("2959", "Brrier limit",
+                "The program which causes interference with the NC lathe or\n" +
+                        "       peripheral equipment has been read.\n" +
+                        "       [Code]The barrier number causing interference\n" +
+                        "       11->The program which causes interference with the\n" +
+                        "           machine not linked has been read.\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem USER_RESERVE_CODE_2960 = new ExampleItem("2960", "User reserve code",
+                "The alarm set for register No.98. This alarm occuers if the\n" +
+                        "       following program is executed.\n" +
+                        "       R98=****(**** is displayed in a code.)\n" +
+                        "       [Code]The code set for register No.98.\n" +
+                        "       Probable cauuse:Conditions set by the program");
+
+        ExampleItem CALCULATION_FUNCTION_NO_SPEC_B = new ExampleItem("2961", "Calculation function no spec.",
+                "The designated operation function is not supported.\n" +
+                        "       [Code]\n" +
+                        "       1->SIN, COS, TAN, ATAN, SQRT, ABS, BIN, BCD, ROUND, FIX, DFUP\n" +
+                        "       2->ATAN2, MOD\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem SUBSCRIPT_FUNCTION_NO_SPEC = new ExampleItem("2962", "Subscript function no spec.",
+                "An attempt is made to execute a subscript operation although\n" +
+                        "       the corresponding function is not supported.\n" +
+                        "       [Code]1\n" +
+                        "       [Probable Faulty Locations]Program error");
+
+        ExampleItem NC_PROGRAM_SELECT = new ExampleItem("2964", "NC program select",
+                "When the NC program selection command is given to the NC lathe,\n" +
+                        "       the NC program number set for resister No.90(No.91 for the NC\n" +
+                        "       lathe No.2)is either \"0\" or larger than \"9999\".\n" +
+                        "       [Code]NC program number set for the register\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Program error\n" +
+                        "       2)Operation error");
+
+        ExampleItem EXPRESSION_SUBSCRIPT_B = new ExampleItem("2965", "EXPRESSION subscript",
+                "The variable name specified by IO read variable was not found.\n" +
+                        "       [Character-string]Variable name\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1) Programming error\n" +
+                        "       for robot:\n" +
+                        "       The answer to the specified M code failed to come ON within the\n" +
+                        "       time set at the parameter No. 83 (Z).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Check of answer signal");
+
+        ExampleItem M_CODE_TIME_OVER_B = new ExampleItem("2966", "M-code time over",
+                "The answer to the specified M code failed to come ON within the\n" +
+                        "       time set at the parameter No. 88 (Y).\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Check of answer signal");
+
+        ExampleItem CYCLE_TIME_OVER_B = new ExampleItem("2967", "Cycle time over",
+                "After the start of loader program, the time set at the\n" +
+                        "       parameter No. 89 (Y) elapsed before reception of M02.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Time setting error\n" +
+                        "       2)Find out the factors in prolonged cycle time.\n" +
+                        "        ");
+
+        ExampleItem PROGRAM_SELECTION = new ExampleItem("2968", "Program selection",
+                "When a program was selected by the external program selection\n" +
+                        "       function, the program number was not found. Or, program\n" +
+                        "       selection was attempted during loader operation.\n" +
+                        "       [Code]\n" +
+                        "       1->The selected program was not found.\n" +
+                        "       2->Program selection was attempted during loader operation.\n" +
+                        "       3->There is not a program number between 9999 from 0.\n" +
+                        "       4->It is not loader program running mode.\n" +
+                        "       5->The selected program file was not found.\n" +
+                        "       6->The selected point data file was not found.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Operation error\n" +
+                        "       Specify the correct program number.");
+
+        ExampleItem G23_FEED = new ExampleItem("2969", "G23 FEED",
+                "Feed command F of G23 is 0.");
+
+        ExampleItem DIRECTION_X = new ExampleItem("2970", "DIRECTION X",
+                "Commanded X-Position is Not within [-9999.99, 9999.99].\n" +
+                        "       [Code] Commanded X-Position");
+
+        ExampleItem DIRECTION_I = new ExampleItem("2971", "DIRECTION I",
+                "Under G15 (New Position) Command, Commanded I-Position is Not\n" +
+                        "       within [0, 9999.99].\n" +
+                        "       [Code] Commanded I-Position, in Hexadecimal");
+
+        ExampleItem DIRECTION_J = new ExampleItem("2972", "DIRECTION J",
+                "Under G15 (New Position) Command, Commanded J-Position is Not\n" +
+                        "       within [0, 9999.99].\n" +
+                        "       [Code] Commanded J-Position, in Hexadecimal");
+
+        ExampleItem DIRECTION_K = new ExampleItem("2973", "DIRECTION K",
+                "Under G15 (New Position) Command, Commanded K-Position is Not\n" +
+                        "       within [0, 9999.99].\n" +
+                        "       [Code] Commanded K-Position, in Hexadecimal");
+
+        ExampleItem PROGRAM_DIRECT_HEXADECIMAL_DATA_B = new ExampleItem("2974", "PROGRAM DIRECT hexadecimal data",
+                "Setting of hexadecimal data for the user reserved alarm comment\n" +
+                        "       system variable is wrong.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No hexadecimal data following $ symbol\n" +
+                        "       2->Hexadecimal data exceeds 8 digits (4 bytes)\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       R701=$XY <- XY is not hexadecimal data.\n" +
+                        "       :\n" +
+                        "       [Measures to Take] Check the R7** command.\n" +
+                        "       :\n" +
+                        "       R701=$A4\n" +
+                        "       :");
+
+        ExampleItem PROGRAM_DIRECT__CHARACTER_STRING = new ExampleItem("2975", "PROGRAM DIRECT character string",
+                "Setting of character-string for the user reserved alarm comment\n" +
+                        "       system variable is wrong.\n" +
+                        "       [Object]SYSTEM\n" +
+                        "       [Code]\n" +
+                        "       1->No character-string set\n" +
+                        "       2->Character-string length is longer than 16 characters\n" +
+                        "       3->Character-string does not end within a block\n" +
+                        "       [Probable Faulty Locations]Program error\n" +
+                        "       Program Example:\n" +
+                        "       :\n" +
+                        "       R701='ABCDEFGHIJKLMNOPQ' <- Longer than 16 characters.\n" +
+                        "       :\n" +
+                        "       [Measures to Take]Check the R7** command\n" +
+                        "       :\n" +
+                        "       R701='ABCDEFGHIJKLMNOP'\n" +
+                        "       :");
+
+        ExampleItem STOPPER_POSITION_DATA_ILLEGAL = new ExampleItem("2976", "Stopper position data illegal",
+                "Stopper position data illegal within the Main spindle which it\n" +
+                        "       read from absolutely decoder.\n" +
+                        "       [Code]\n" +
+                        "       1->Position data surpassed permissive scope.\n" +
+                        "       2->Position data is not BCD code.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Absolutely decoder");
+
+        ExampleItem PROGRAM_SELECT_UNSUITABLE_B = new ExampleItem("2977", "Program select unsuitable",
+                "Program for R side was selection on the side of L and cycle\n" +
+                        "       start was performed. Or, program for L side was selection on\n" +
+                        "       the side of R and cycle start was performed.\n" +
+                        "       [Object] main spindle\n" +
+                        "       [Code]\n" +
+                        "       1->R side program had activated on the side of L.\n" +
+                        "       2->L side program had activated on the side of R.\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       Operation error of a program selection\n" +
+                        "       [Measures to take]\n" +
+                        "       Right program is chosen.");
+
+        ExampleItem DIRECTION_V = new ExampleItem("2978", "DIRECTION V",
+                "Directive value of V axis is beyond the scope of\n" +
+                        "       -9999.99ü`9999.99.\n" +
+                        "       [Code]\n" +
+                        "       V axis directive value");
+
+        ExampleItem DIRECTION_C = new ExampleItem("2979", "DIRECTION C",
+                "Command value of C is beyond the scope of-99999.99ü`99999.99.\n" +
+                        "       [ Code ]\n" +
+                        "       C command value\n" +
+                        "       [ Probable Faulty Locations ]\n" +
+                        "       Part program error Operation error");
+
+        ExampleItem NOTHING_DECIMAL_POINT_B = new ExampleItem("2980", "Nothing decimal point",
+                "There was not a decimal point on numeric data of command.\n" +
+                        "       [ Character string ]\n" +
+                        "       The address character that there is not the decimal point which\n" +
+                        "       it detected at first.\n" +
+                        "       [ Probable Faulty Locations ] Programming error\n" +
+                        "       [ Measures to take ]\n" +
+                        "       It adds a decimal point to the numerical command which follows\n" +
+                        "       the address character which was shown by a character string.");
+
+        ExampleItem DIRECTION_Q = new ExampleItem("2981", "DIRECTION Q",
+                "Q command of G15 order is beyond the range.(Q-range is from 0\n" +
+                        "       to 99999.999)\n" +
+                        "       [Code]Q-command\n" +
+                        "       [Measures to Take]\n" +
+                        "       Review the value of Q-command.");
+
+        ExampleItem TIME_OVER = new ExampleItem("2982", "Time over",
+                "The running time between M-code of time over check start\n" +
+                        "       (M677) and M-code of time over check end (M678) exceeds\n" +
+                        "       the puration set by parameter (N0.89).\n" +
+                        "       [Code]\n" +
+                        "       None\n" +
+                        "       [Probable Faulty Locations]\n" +
+                        "       1)Time setting error\n" +
+                        "       2)Find out the factors in prolonged running time.");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
+        ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
+
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
 
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
@@ -8492,7 +18715,8 @@ public class AlarmList {
         ExampleItem SYSTEM_GENERATE = new ExampleItem("", "", "");
 
 
-// ------------------------------------------------------------------------------------------------------------------------------//
+// -----
+// -------------------------------------------------------------------------------------------------------------------------//
 
 
         list.add(BUS_ERROR);
@@ -8979,10 +19203,10 @@ public class AlarmList {
         list.add(MCS_FULL_ABSO_SCALE_INITIAL_B);
         list.add(MCS_AXIS_STOP_SIGNAL_ERROR_B);
         list.add(PROGRAM_DIRECT_G_CODE);
-        list.add();
-        list.add();
-        list.add();
-        list.add();
+        list.add(PROGRAM_DIRECT_M_CODE);
+        list.add(PROGRAM_DIRECT_COMMON_VARIABLE);
+        list.add(PROGRAM_DIRECT_SYSTEM_VARIABLE);
+        list.add(PROGRAM_DIRECT_SEQUENCE_NAME);
         list.add();
         list.add();
         list.add();

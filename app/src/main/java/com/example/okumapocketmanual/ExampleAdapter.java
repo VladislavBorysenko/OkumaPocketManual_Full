@@ -101,7 +101,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
                 String filterPattern = constraint.toString().toUpperCase().trim();
 
                 for (ExampleItem item : exampleListFull) {
-                    if (item.getAlarmName().toUpperCase().contains(filterPattern)||item.getAlarmNumber().toUpperCase().contains(filterPattern)) {
+                    if (item.getAlarmName().contains(filterPattern)||item.getAlarmNumber().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
